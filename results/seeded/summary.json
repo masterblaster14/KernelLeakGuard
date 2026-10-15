@@ -1,0 +1,30 @@
+[
+  {
+    "name": "brd_blk_alloc_disk",
+    "module": "brd",
+    "file": "drivers/block/brd.c",
+    "function": "brd_alloc",
+    "removed": "brd_free_device(brd);",
+    "removed_line": 350,
+    "bug": "On the blk_alloc_disk()/add_disk() failure path of brd_alloc() the brd_device obtained from brd_find_or_alloc_device() is released by brd_free_device(brd). Removing that call leaks the brd_device (and its xarray) when disk allocation fails during module initialisation.",
+    "reachable": "brd_init() calls brd_alloc() in a loop at module load, so failing blk_alloc_disk()/add_disk() with fail-nth reproduces the leak.",
+    "detected": true,
+    "pre_existing_warnings": 0,
+    "warnings": [
+      {
+        "alloc": 317,
+        "allocator": "brd_find_or_alloc_device",
+        "exit": 351,
+        "return": "?",
+        "confidence": "low"
+      }
+    ],
+    "dependencies": [],
+    "confirmed": false,
+    "fix_patch": "--- a/brd.c\n+++ b/brd.c\n@@ -347,7 +347,7 @@\n out_cleanup_disk:\n \tput_disk(disk);\n out_free_dev:\n-\t/* KLG-SEED: removed brd_free_device(brd); */\n+\tbrd_free_device(brd);\n \treturn err;\n }\n \n",
+    "fix_compiles": true,
+    "fix_static_clean": true,
+    "fix_runtime_clean": null,
+    "fixed": true
+  }
+]

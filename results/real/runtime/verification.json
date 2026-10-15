@@ -15,69 +15,6 @@
       "tests": []
     },
     {
-      "id": "bonding:bond_arp_send_all:3078:3097",
-      "module": "bonding",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (bond_main.c:3078, bond_main.c:3058)",
-      "tests": []
-    },
-    {
-      "id": "bonding:bond_ns_send_all:3261:3283",
-      "module": "bonding",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (bond_main.c:3261)",
-      "tests": []
-    },
-    {
-      "id": "bonding:bond_verify_device_path:3028:3031",
-      "module": "bonding",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (bond_main.c:3028, bond_main.c:3028, bond_main.c:3028)",
-      "tests": []
-    },
-    {
-      "id": "bonding:bond_verify_device_path:3028:3042",
-      "module": "bonding",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (bond_main.c:3028, bond_main.c:3028)",
-      "tests": []
-    },
-    {
-      "id": "bonding:bond_verify_device_path:3028:3039",
-      "module": "bonding",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (bond_main.c:3028, bond_main.c:3034)",
-      "tests": []
-    },
-    {
-      "id": "bonding:alb_upper_dev_walk:992:994",
-      "module": "bonding",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (bond_alb.c:992)",
-      "tests": []
-    },
-    {
-      "id": "tun:update_filter:832:834",
-      "module": "tun",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (tun.c:832)",
-      "tests": []
-    },
-    {
-      "id": "vxlan:__vxlan_sock_add:3671:3675",
-      "module": "vxlan",
-      "status": "inconclusive",
-      "reason": "no failing call controls the leaking path",
-      "tests": []
-    },
-    {
-      "id": "vxlan:__vxlan_mdb_add:1251:1253",
-      "module": "vxlan",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (vxlan_mdb.c:1251)",
-      "tests": []
-    },
-    {
       "id": "vxlan:vxlan_mdb_remote_src_add:853:876",
       "module": "vxlan",
       "status": "inconclusive",
@@ -103,57 +40,6 @@
       "module": "mac80211_hwsim",
       "status": "inconclusive",
       "reason": "no fault point reaches the failing call (mac80211_hwsim.c:6507)",
-      "tests": []
-    },
-    {
-      "id": "brd:brd_alloc:317:319",
-      "module": "brd",
-      "status": "not-reproduced",
-      "reason": "predicted failure injected, no object left unreferenced",
-      "tests": [
-        {
-          "test": "brd__n9",
-          "fail_nth": 9,
-          "expected_frame": "brd_alloc+0xd8/0x2a0",
-          "attempts": 4,
-          "fault_hits": 3,
-          "missed": false,
-          "returns": [
-            0
-          ],
-          "leaks": []
-        },
-        {
-          "test": "brd__n11",
-          "fail_nth": 11,
-          "expected_frame": "brd_alloc+0xd8/0x2a0",
-          "attempts": 8,
-          "fault_hits": 3,
-          "missed": false,
-          "returns": [
-            0
-          ],
-          "leaks": []
-        },
-        {
-          "test": "brd__n333",
-          "fail_nth": 333,
-          "expected_frame": "brd_alloc+0xd8/0x2a0",
-          "attempts": 4,
-          "fault_hits": 3,
-          "missed": false,
-          "returns": [
-            0
-          ],
-          "leaks": []
-        }
-      ]
-    },
-    {
-      "id": "zram:disksize_store:2518:2541",
-      "module": "zram",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (zram_drv.c:2518)",
       "tests": []
     },
     {
@@ -206,13 +92,6 @@
       "tests": []
     },
     {
-      "id": "scsi_debug:sdebug_error_write:1158:1160",
-      "module": "scsi_debug",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (scsi_debug.c:1158)",
-      "tests": []
-    },
-    {
       "id": "scsi_debug:sdebug_add_host_helper:8851:8888",
       "module": "scsi_debug",
       "status": "inconclusive",
@@ -262,55 +141,6 @@
       "tests": []
     },
     {
-      "id": "hfs:hfs_bnode_unlink:287:317",
-      "module": "hfs",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (bnode.c:287)",
-      "tests": []
-    },
-    {
-      "id": "hfs:hfs_bnode_unlink:298:317",
-      "module": "hfs",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (bnode.c:298)",
-      "tests": []
-    },
-    {
-      "id": "hfs:hfs_brec_insert:78:80",
-      "module": "hfs",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (brec.c:78)",
-      "tests": []
-    },
-    {
-      "id": "hfs:hfs_brec_insert:102:104",
-      "module": "hfs",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (brec.c:102)",
-      "tests": []
-    },
-    {
-      "id": "hfs:hfs_btree_inc_height:486:488",
-      "module": "hfs",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (brec.c:486)",
-      "tests": []
-    },
-    {
-      "id": "hfs:hfs_btree_inc_height:490:493",
-      "module": "hfs",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (brec.c:490)",
-      "tests": []
-    },
-    {
-      "id": "hfs:hfs_brec_update_parent:386:388",
-      "module": "hfs",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (brec.c:386)",
-      "tests": []
-    },
-    {
       "id": "hfs:hfs_brec_update_parent:386:391",
       "module": "hfs",
       "status": "inconclusive",
@@ -318,45 +148,10 @@
       "tests": []
     },
     {
-      "id": "hfs:hfs_brec_update_parent:414:416",
-      "module": "hfs",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (brec.c:414)",
-      "tests": []
-    },
-    {
-      "id": "hfs:hfs_brec_remove:201:203",
-      "module": "hfs",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (brec.c:201)",
-      "tests": []
-    },
-    {
-      "id": "hfs:hfs_btree_write:203:224",
-      "module": "hfs",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (btree.c:203)",
-      "tests": []
-    },
-    {
-      "id": "hfs:hfs_bmap_free:370:418",
-      "module": "hfs",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (btree.c:370)",
-      "tests": []
-    },
-    {
       "id": "hfs:hfs_bmap_free:387:418",
       "module": "hfs",
       "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (btree.c:387)",
-      "tests": []
-    },
-    {
-      "id": "hfs:hfs_correct_next_unused_CNID:259:263",
-      "module": "hfs",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (catalog.c:259)",
+      "reason": "no failing call controls the leaking path",
       "tests": []
     },
     {
@@ -377,28 +172,14 @@
       "id": "hfs:hfs_correct_next_unused_CNID:272:330",
       "module": "hfs",
       "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (catalog.c:272, catalog.c:272)",
+      "reason": "no fault point reaches the failing call (catalog.c:272)",
       "tests": []
     },
     {
       "id": "hfs:hfs_correct_next_unused_CNID:272:331",
       "module": "hfs",
       "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (catalog.c:272, catalog.c:272)",
-      "tests": []
-    },
-    {
-      "id": "erofs:erofs_xattr_prefixes_init:506:525",
-      "module": "erofs",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (xattr.c:506, xattr.c:506)",
-      "tests": []
-    },
-    {
-      "id": "erofs:z_erofs_parse_cfgs:457:475",
-      "module": "erofs",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (decompressor.c:457, decompressor.c:457)",
+      "reason": "no fault point reaches the failing call (catalog.c:272)",
       "tests": []
     },
     {
@@ -406,13 +187,6 @@
       "module": "erofs",
       "status": "inconclusive",
       "reason": "no fault point reaches the failing call (zdata.c:1700, zdata.c:1723, zdata.c:1746, zdata.c:1700, zdata.c:1723, zdata.c:1746, zdata.c:1760)",
-      "tests": []
-    },
-    {
-      "id": "erofs:z_erofs_register_pcluster:760:762",
-      "module": "erofs",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (zdata.c:760)",
       "tests": []
     },
     {
@@ -434,20 +208,6 @@
       "module": "snd_aloop",
       "status": "inconclusive",
       "reason": "no fault point reaches the failing call (aloop.c:1271)",
-      "tests": []
-    },
-    {
-      "id": "uinput:uinput_ioctl_handler:999:1106",
-      "module": "uinput",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (uinput.c:999)",
-      "tests": []
-    },
-    {
-      "id": "uinput:uinput_setup_device_legacy:564:566",
-      "module": "uinput",
-      "status": "inconclusive",
-      "reason": "no fault point reaches the failing call (uinput.c:564)",
       "tests": []
     }
   ],
@@ -1278,6 +1038,7 @@
         "errno": 12,
         "traced": true,
         "unresolved": {
+          "__pfx_bond_init": "__pfx_bond_init+0x10/0x10",
           "__pfx_init_module": "__pfx_init_module+0x10/0x10"
         }
       },
@@ -67091,57 +66852,6 @@
       },
       {
         "n": 740,
-        "locs": [
-          [
-            "main.c",
-            2071
-          ],
-          [
-            "main.c",
-            2125
-          ],
-          [
-            "main.c",
-            2071
-          ],
-          [
-            "main.c",
-            2125
-          ]
-        ],
-        "frames": [
-          "null_add_dev+0x5c3/0x6e0",
-          "init_module+0xf3/0xff0",
-          "null_add_dev+0x5c3/0x6e0",
-          "init_module+0xf3/0xff0"
-        ],
-        "ret": 0,
-        "errno": 0,
-        "traced": true,
-        "unresolved": {
-          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
-        }
-      },
-      {
-        "n": 742,
-        "locs": [],
-        "frames": [],
-        "ret": 0,
-        "errno": 0,
-        "traced": false,
-        "unresolved": {}
-      },
-      {
-        "n": 743,
-        "locs": [],
-        "frames": [],
-        "ret": 0,
-        "errno": 0,
-        "traced": false,
-        "unresolved": {}
-      },
-      {
-        "n": 744,
         "locs": [],
         "frames": [],
         "ret": 0,
@@ -67222,34 +66932,49 @@
         "unresolved": {}
       },
       {
-        "n": 758,
+        "n": 757,
         "locs": [],
         "frames": [],
         "ret": 0,
         "errno": 0,
         "traced": false,
         "unresolved": {}
+      },
+      {
+        "n": 758,
+        "locs": [
+          [
+            "main.c",
+            2071
+          ],
+          [
+            "main.c",
+            2125
+          ],
+          [
+            "main.c",
+            2071
+          ],
+          [
+            "main.c",
+            2125
+          ]
+        ],
+        "frames": [
+          "null_add_dev+0x5c3/0x6e0",
+          "init_module+0xf3/0xff0",
+          "null_add_dev+0x5c3/0x6e0",
+          "init_module+0xf3/0xff0"
+        ],
+        "ret": 0,
+        "errno": 0,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
       },
       {
         "n": 759,
-        "locs": [],
-        "frames": [],
-        "ret": 0,
-        "errno": 0,
-        "traced": false,
-        "unresolved": {}
-      },
-      {
-        "n": 762,
-        "locs": [],
-        "frames": [],
-        "ret": 0,
-        "errno": 0,
-        "traced": false,
-        "unresolved": {}
-      },
-      {
-        "n": 763,
         "locs": [],
         "frames": [],
         "ret": 0,
@@ -67475,6 +67200,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -67484,6 +67213,7 @@
           "brd_alloc+0xd8/0x2a0",
           "brd_alloc+0xd8/0x2a0",
           "brd_alloc+0x181/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -67696,10 +67426,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -67707,7 +67433,6 @@
           "brd_alloc+0x195/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x195/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -68717,10 +68442,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -68728,7 +68449,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -68764,10 +68484,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -68775,7 +68491,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -70107,10 +69822,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -70118,7 +69829,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -70382,6 +70092,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -70389,6 +70103,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -70508,10 +70223,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -70519,7 +70230,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -70723,6 +70433,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -70730,6 +70444,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -71059,6 +70774,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -71066,6 +70785,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -71101,6 +70821,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -71108,6 +70832,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -71437,10 +71162,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -71448,7 +71169,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -71484,10 +71204,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -71495,7 +71211,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -71699,10 +71414,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -71710,7 +71421,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -72166,6 +71876,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -72173,6 +71887,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -72208,10 +71923,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -72219,7 +71930,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -72255,6 +71965,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -72262,6 +71976,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -72297,10 +72012,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -72308,7 +72019,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -72806,6 +72516,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -72813,6 +72527,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -72895,10 +72610,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -72906,7 +72617,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -73568,10 +73278,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -73581,7 +73287,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -73743,6 +73448,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -73750,6 +73459,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -75017,6 +74727,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -75024,6 +74738,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -75059,6 +74774,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -75066,6 +74785,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -75101,6 +74821,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -75108,6 +74832,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -76109,6 +75834,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -76116,6 +75845,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -76277,10 +76007,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -76288,7 +76014,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -76450,6 +76175,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -76457,6 +76186,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -76618,6 +76348,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -76625,6 +76359,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -77560,10 +77295,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -77571,7 +77302,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -77943,10 +77673,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -77954,7 +77680,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -78326,6 +78051,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -78333,6 +78062,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -78452,10 +78182,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -78463,7 +78189,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -78709,6 +78434,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -78716,6 +78445,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -78751,6 +78481,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -78758,6 +78492,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -78835,6 +78570,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -78842,6 +78581,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -78961,10 +78701,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -78972,7 +78708,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -79404,10 +79139,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -79415,7 +79146,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -79577,6 +79307,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -79584,6 +79318,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -81250,6 +80985,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -81257,6 +80996,7 @@
           "brd_alloc+0x195/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x195/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -82261,6 +82001,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -82268,6 +82012,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -82387,6 +82132,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -82394,6 +82143,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -82471,6 +82221,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -82478,6 +82232,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -82639,10 +82394,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -82650,7 +82401,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -83129,6 +82879,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -83136,6 +82890,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -83651,6 +83406,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -83658,6 +83417,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -83861,6 +83621,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -83868,6 +83632,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -84113,10 +83878,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -84124,7 +83885,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -84328,6 +84088,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -84335,6 +84099,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -84706,6 +84471,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -84713,6 +84482,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -84832,6 +84602,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -84839,6 +84613,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -85084,10 +84859,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -85095,7 +84866,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -85677,10 +85447,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -85688,7 +85454,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -85850,10 +85615,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -85861,7 +85622,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -85981,10 +85741,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -85992,7 +85748,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -86028,10 +85783,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -86039,7 +85790,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -86075,6 +85825,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -86082,6 +85836,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -86579,6 +86334,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -86586,6 +86345,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -86747,10 +86507,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -86758,7 +86514,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -86836,10 +86591,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -86847,7 +86598,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -86883,10 +86633,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -86894,7 +86640,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -87024,10 +86769,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -87035,7 +86776,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -87207,10 +86947,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -87218,7 +86954,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -87802,6 +87537,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -87809,6 +87548,7 @@
           "brd_alloc+0x181/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x181/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -87844,6 +87584,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -87851,6 +87595,7 @@
           "brd_alloc+0x181/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x181/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -88105,6 +87850,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -88112,6 +87861,7 @@
           "brd_alloc+0x195/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x195/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -88468,6 +88218,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -88475,6 +88229,7 @@
           "brd_alloc+0x195/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x195/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -88552,6 +88307,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -88559,6 +88318,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -89943,10 +89703,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -89954,7 +89710,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -90242,6 +89997,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -90249,6 +90008,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -90452,6 +90212,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -90459,6 +90223,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -90536,10 +90301,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -90547,7 +90308,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -90877,6 +90637,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -90884,6 +90648,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -91339,6 +91104,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -91346,6 +91115,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -91483,6 +91253,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -91490,6 +91264,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -92197,6 +91972,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -92204,6 +91983,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -92869,10 +92649,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -92880,7 +92656,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -92976,6 +92751,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -92983,6 +92762,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -93060,10 +92840,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -93071,7 +92847,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -94209,6 +93984,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -94216,6 +93995,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -94686,6 +94466,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -94693,6 +94477,7 @@
           "brd_alloc+0x195/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x195/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -95133,6 +94918,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -95140,6 +94929,7 @@
           "brd_alloc+0x195/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x195/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -95252,36 +95042,12 @@
       },
       {
         "n": 1346,
-        "locs": [
-          [
-            "brd.c",
-            341
-          ],
-          [
-            "brd.c",
-            421
-          ],
-          [
-            "brd.c",
-            341
-          ],
-          [
-            "brd.c",
-            421
-          ]
-        ],
-        "frames": [
-          "brd_alloc+0x203/0x2a0",
-          "init_module+0xb6/0xff0",
-          "brd_alloc+0x203/0x2a0",
-          "init_module+0xb6/0xff0"
-        ],
+        "locs": [],
+        "frames": [],
         "ret": 0,
         "errno": 0,
-        "traced": true,
-        "unresolved": {
-          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
-        }
+        "traced": false,
+        "unresolved": {}
       },
       {
         "n": 1347,
@@ -95351,10 +95117,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -95362,7 +95124,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -95556,36 +95317,12 @@
       },
       {
         "n": 1360,
-        "locs": [
-          [
-            "brd.c",
-            341
-          ],
-          [
-            "brd.c",
-            421
-          ],
-          [
-            "brd.c",
-            341
-          ],
-          [
-            "brd.c",
-            421
-          ]
-        ],
-        "frames": [
-          "brd_alloc+0x203/0x2a0",
-          "init_module+0xb6/0xff0",
-          "brd_alloc+0x203/0x2a0",
-          "init_module+0xb6/0xff0"
-        ],
+        "locs": [],
+        "frames": [],
         "ret": 0,
         "errno": 0,
-        "traced": true,
-        "unresolved": {
-          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
-        }
+        "traced": false,
+        "unresolved": {}
       },
       {
         "n": 1361,
@@ -95724,36 +95461,12 @@
       },
       {
         "n": 1368,
-        "locs": [
-          [
-            "brd.c",
-            341
-          ],
-          [
-            "brd.c",
-            421
-          ],
-          [
-            "brd.c",
-            341
-          ],
-          [
-            "brd.c",
-            421
-          ]
-        ],
-        "frames": [
-          "brd_alloc+0x203/0x2a0",
-          "init_module+0xb6/0xff0",
-          "brd_alloc+0x203/0x2a0",
-          "init_module+0xb6/0xff0"
-        ],
+        "locs": [],
+        "frames": [],
         "ret": 0,
         "errno": 0,
-        "traced": true,
-        "unresolved": {
-          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
-        }
+        "traced": false,
+        "unresolved": {}
       },
       {
         "n": 1369,
@@ -96033,6 +95746,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -96040,6 +95757,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -96201,10 +95919,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -96212,7 +95926,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -96332,6 +96045,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -96339,6 +96056,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -96458,6 +96176,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -96465,6 +96187,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -96527,12 +96250,36 @@
       },
       {
         "n": 1406,
-        "locs": [],
-        "frames": [],
+        "locs": [
+          [
+            "brd.c",
+            341
+          ],
+          [
+            "brd.c",
+            421
+          ],
+          [
+            "brd.c",
+            341
+          ],
+          [
+            "brd.c",
+            421
+          ]
+        ],
+        "frames": [
+          "brd_alloc+0x203/0x2a0",
+          "init_module+0xb6/0xff0",
+          "brd_alloc+0x203/0x2a0",
+          "init_module+0xb6/0xff0"
+        ],
         "ret": 0,
         "errno": 0,
-        "traced": false,
-        "unresolved": {}
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
       },
       {
         "n": 1407,
@@ -96686,6 +96433,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -96693,6 +96444,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -96728,10 +96480,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -96739,7 +96487,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -96901,10 +96648,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -96912,7 +96655,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -97032,10 +96774,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -97043,7 +96781,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -97064,41 +96801,12 @@
       },
       {
         "n": 1432,
-        "locs": [
-          [
-            "brd.c",
-            341
-          ],
-          [
-            "brd.c",
-            421
-          ],
-          [
-            "brd.c",
-            341
-          ],
-          [
-            "brd.c",
-            356
-          ],
-          [
-            "brd.c",
-            421
-          ]
-        ],
-        "frames": [
-          "brd_alloc+0x203/0x2a0",
-          "init_module+0xb6/0xff0",
-          "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
-          "init_module+0xb6/0xff0"
-        ],
+        "locs": [],
+        "frames": [],
         "ret": 0,
         "errno": 0,
-        "traced": true,
-        "unresolved": {
-          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
-        }
+        "traced": false,
+        "unresolved": {}
       },
       {
         "n": 1433,
@@ -97546,10 +97254,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -97557,7 +97261,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -97578,12 +97281,36 @@
       },
       {
         "n": 1456,
-        "locs": [],
-        "frames": [],
+        "locs": [
+          [
+            "brd.c",
+            341
+          ],
+          [
+            "brd.c",
+            421
+          ],
+          [
+            "brd.c",
+            341
+          ],
+          [
+            "brd.c",
+            421
+          ]
+        ],
+        "frames": [
+          "brd_alloc+0x203/0x2a0",
+          "init_module+0xb6/0xff0",
+          "brd_alloc+0x203/0x2a0",
+          "init_module+0xb6/0xff0"
+        ],
         "ret": 0,
         "errno": 0,
-        "traced": false,
-        "unresolved": {}
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
       },
       {
         "n": 1457,
@@ -97863,10 +97590,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -97874,7 +97597,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -98288,6 +98010,10 @@
           ],
           [
             "brd.c",
+            356
+          ],
+          [
+            "brd.c",
             421
           ]
         ],
@@ -98295,6 +98021,7 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
+          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -98372,10 +98099,6 @@
           ],
           [
             "brd.c",
-            356
-          ],
-          [
-            "brd.c",
             421
           ]
         ],
@@ -98383,7 +98106,6 @@
           "brd_alloc+0x203/0x2a0",
           "init_module+0xb6/0xff0",
           "brd_alloc+0x203/0x2a0",
-          "__pfx_brd_alloc+0x10/0x10",
           "init_module+0xb6/0xff0"
         ],
         "ret": 0,
@@ -102976,36 +102698,12 @@
       },
       {
         "n": 221,
-        "locs": [
-          [
-            "zram_drv.c",
-            2720
-          ],
-          [
-            "zram_drv.c",
-            2900
-          ],
-          [
-            "zram_drv.c",
-            2720
-          ],
-          [
-            "zram_drv.c",
-            2900
-          ]
-        ],
-        "frames": [
-          "zram_add+0x17f/0x200",
-          "init_module+0x7c/0xff0",
-          "zram_add+0x17f/0x200",
-          "init_module+0x7c/0xff0"
-        ],
-        "ret": -1,
-        "errno": 12,
-        "traced": true,
-        "unresolved": {
-          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
-        }
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
       },
       {
         "n": 222,
@@ -103564,12 +103262,36 @@
       },
       {
         "n": 249,
-        "locs": [],
-        "frames": [],
-        "ret": 0,
-        "errno": 0,
-        "traced": false,
-        "unresolved": {}
+        "locs": [
+          [
+            "zram_drv.c",
+            2720
+          ],
+          [
+            "zram_drv.c",
+            2900
+          ],
+          [
+            "zram_drv.c",
+            2720
+          ],
+          [
+            "zram_drv.c",
+            2900
+          ]
+        ],
+        "frames": [
+          "zram_add+0x17f/0x200",
+          "init_module+0x7c/0xff0",
+          "zram_add+0x17f/0x200",
+          "init_module+0x7c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
       },
       {
         "n": 250,
@@ -103792,12 +103514,36 @@
       },
       {
         "n": 261,
-        "locs": [],
-        "frames": [],
-        "ret": 0,
-        "errno": 0,
-        "traced": false,
-        "unresolved": {}
+        "locs": [
+          [
+            "zram_drv.c",
+            2720
+          ],
+          [
+            "zram_drv.c",
+            2900
+          ],
+          [
+            "zram_drv.c",
+            2720
+          ],
+          [
+            "zram_drv.c",
+            2900
+          ]
+        ],
+        "frames": [
+          "zram_add+0x17f/0x200",
+          "init_module+0x7c/0xff0",
+          "zram_add+0x17f/0x200",
+          "init_module+0x7c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
       },
       {
         "n": 262,
@@ -103978,36 +103724,12 @@
       },
       {
         "n": 271,
-        "locs": [
-          [
-            "zram_drv.c",
-            2720
-          ],
-          [
-            "zram_drv.c",
-            2900
-          ],
-          [
-            "zram_drv.c",
-            2720
-          ],
-          [
-            "zram_drv.c",
-            2900
-          ]
-        ],
-        "frames": [
-          "zram_add+0x17f/0x200",
-          "init_module+0x7c/0xff0",
-          "zram_add+0x17f/0x200",
-          "init_module+0x7c/0xff0"
-        ],
-        "ret": -1,
-        "errno": 12,
-        "traced": true,
-        "unresolved": {
-          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
-        }
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
       },
       {
         "n": 272,
@@ -104380,8 +104102,8 @@
           "zram_add+0x17f/0x200",
           "init_module+0x7c/0xff0"
         ],
-        "ret": -1,
-        "errno": 12,
+        "ret": 0,
+        "errno": 0,
         "traced": true,
         "unresolved": {
           "__pfx_init_module": "__pfx_init_module+0x10/0x10"
@@ -105238,12 +104960,36 @@
       },
       {
         "n": 331,
-        "locs": [],
-        "frames": [],
-        "ret": 0,
-        "errno": 0,
-        "traced": false,
-        "unresolved": {}
+        "locs": [
+          [
+            "zram_drv.c",
+            2720
+          ],
+          [
+            "zram_drv.c",
+            2900
+          ],
+          [
+            "zram_drv.c",
+            2720
+          ],
+          [
+            "zram_drv.c",
+            2900
+          ]
+        ],
+        "frames": [
+          "zram_add+0x17f/0x200",
+          "init_module+0x7c/0xff0",
+          "zram_add+0x17f/0x200",
+          "init_module+0x7c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
       },
       {
         "n": 332,
@@ -105734,19 +105480,9 @@
           [
             "zram_drv.c",
             2900
-          ],
-          [
-            "zram_drv.c",
-            2720
-          ],
-          [
-            "zram_drv.c",
-            2900
           ]
         ],
         "frames": [
-          "zram_add+0x17f/0x200",
-          "init_module+0x7c/0xff0",
           "zram_add+0x17f/0x200",
           "init_module+0x7c/0xff0",
           "zram_add+0x17f/0x200",
@@ -105870,19 +105606,9 @@
           [
             "zram_drv.c",
             2900
-          ],
-          [
-            "zram_drv.c",
-            2720
-          ],
-          [
-            "zram_drv.c",
-            2900
           ]
         ],
         "frames": [
-          "zram_add+0x17f/0x200",
-          "init_module+0x7c/0xff0",
           "zram_add+0x17f/0x200",
           "init_module+0x7c/0xff0",
           "zram_add+0x17f/0x200",
@@ -105972,8 +105698,8 @@
           "zram_add+0x17f/0x200",
           "init_module+0x7c/0xff0"
         ],
-        "ret": 0,
-        "errno": 0,
+        "ret": -1,
+        "errno": 12,
         "traced": true,
         "unresolved": {
           "__pfx_init_module": "__pfx_init_module+0x10/0x10"
@@ -106269,6 +105995,261 @@
       },
       {
         "n": 7,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 8,
+        "locs": [
+          [
+            "scsi_debug.c",
+            8780
+          ],
+          [
+            "scsi_debug.c",
+            8628
+          ],
+          [
+            "scsi_debug.c",
+            8780
+          ],
+          [
+            "scsi_debug.c",
+            8780
+          ],
+          [
+            "scsi_debug.c",
+            8780
+          ],
+          [
+            "scsi_debug.c",
+            8780
+          ],
+          [
+            "scsi_debug.c",
+            8628
+          ]
+        ],
+        "frames": [
+          "sdebug_add_store+0xca/0x570",
+          "init_module+0x35f/0xff0",
+          "sdebug_add_store+0xca/0x570",
+          "sdebug_add_store+0xca/0x570",
+          "sdebug_add_store+0xca/0x570",
+          "sdebug_add_store+0xca/0x570",
+          "init_module+0x35f/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 9,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 10,
+        "locs": [
+          [
+            "scsi_debug.c",
+            8780
+          ],
+          [
+            "scsi_debug.c",
+            8628
+          ],
+          [
+            "scsi_debug.c",
+            8780
+          ],
+          [
+            "scsi_debug.c",
+            8780
+          ],
+          [
+            "scsi_debug.c",
+            8780
+          ],
+          [
+            "scsi_debug.c",
+            8628
+          ]
+        ],
+        "frames": [
+          "sdebug_add_store+0xca/0x570",
+          "init_module+0x35f/0xff0",
+          "sdebug_add_store+0xca/0x570",
+          "sdebug_add_store+0xca/0x570",
+          "sdebug_add_store+0xca/0x570",
+          "init_module+0x35f/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 11,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 12,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 13,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 14,
+        "locs": [
+          [
+            "scsi_debug.c",
+            8633
+          ],
+          [
+            "scsi_debug.c",
+            8633
+          ]
+        ],
+        "frames": [
+          "init_module+0x37e/0xff0",
+          "init_module+0x37e/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 15,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 16,
+        "locs": [
+          [
+            "scsi_debug.c",
+            8633
+          ],
+          [
+            "scsi_debug.c",
+            8633
+          ]
+        ],
+        "frames": [
+          "init_module+0x37e/0xff0",
+          "init_module+0x37e/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 17,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 18,
+        "locs": [
+          [
+            "scsi_debug.c",
+            8633
+          ],
+          [
+            "scsi_debug.c",
+            8633
+          ]
+        ],
+        "frames": [
+          "init_module+0x37e/0xff0",
+          "init_module+0x37e/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 19,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 20,
+        "locs": [
+          [
+            "scsi_debug.c",
+            8633
+          ],
+          [
+            "scsi_debug.c",
+            8633
+          ]
+        ],
+        "frames": [
+          "init_module+0x37e/0xff0",
+          "init_module+0x37e/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 21,
         "locs": [],
         "frames": [],
         "ret": 0,
@@ -106620,12 +106601,37 @@
       },
       {
         "n": 17,
-        "locs": [],
-        "frames": [],
+        "locs": [
+          [
+            "inode.c",
+            87
+          ],
+          [
+            "inode.c",
+            728
+          ],
+          [
+            "inode.c",
+            87
+          ],
+          [
+            "inode.c",
+            728
+          ]
+        ],
+        "frames": [
+          "init_inodecache+0x49/0xf90",
+          "init_module+0xf/0x50",
+          "init_inodecache+0x49/0xf90",
+          "init_module+0xf/0x50"
+        ],
         "ret": 0,
         "errno": 0,
-        "traced": false,
-        "unresolved": {}
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_once": "__pfx_init_once+0x10/0x10",
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
       },
       {
         "n": 18,
@@ -109889,27 +109895,12 @@
       },
       {
         "n": 29,
-        "locs": [
-          [
-            "super.c",
-            462
-          ],
-          [
-            "super.c",
-            462
-          ]
-        ],
-        "frames": [
-          "init_module+0x4e/0xff0",
-          "init_module+0x4e/0xff0"
-        ],
+        "locs": [],
+        "frames": [],
         "ret": 0,
         "errno": 0,
-        "traced": true,
-        "unresolved": {
-          "__pfx_hfs_init_once": "__pfx_hfs_init_once+0x10/0x10",
-          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
-        }
+        "traced": false,
+        "unresolved": {}
       },
       {
         "n": 30,
@@ -110219,12 +110210,27 @@
       },
       {
         "n": 49,
-        "locs": [],
-        "frames": [],
+        "locs": [
+          [
+            "super.c",
+            462
+          ],
+          [
+            "super.c",
+            462
+          ]
+        ],
+        "frames": [
+          "init_module+0x4e/0xff0",
+          "init_module+0x4e/0xff0"
+        ],
         "ret": 0,
         "errno": 0,
-        "traced": false,
-        "unresolved": {}
+        "traced": true,
+        "unresolved": {
+          "__pfx_hfs_init_once": "__pfx_hfs_init_once+0x10/0x10",
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
       },
       {
         "n": 50,
@@ -111107,12 +111113,31 @@
       },
       {
         "n": 27,
-        "locs": [],
-        "frames": [],
+        "locs": [
+          [
+            "super.c",
+            958
+          ],
+          [
+            "super.c",
+            958
+          ],
+          [
+            "super.c",
+            842
+          ]
+        ],
+        "frames": [
+          "init_module+0x4d/0xe0",
+          "init_module+0x4d/0xe0",
+          "__pfx_erofs_inode_init_once+0x10/0x10"
+        ],
         "ret": 0,
         "errno": 0,
-        "traced": false,
-        "unresolved": {}
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
       },
       {
         "n": 28,
@@ -111941,20 +111966,12 @@
         "n": 73,
         "locs": [
           [
-            "zutil.c",
-            306
+            "super.c",
+            958
           ],
           [
             "super.c",
-            965
-          ],
-          [
-            "zutil.c",
-            306
-          ],
-          [
-            "super.c",
-            965
+            958
           ],
           [
             "super.c",
@@ -111962,14 +111979,12 @@
           ]
         ],
         "frames": [
-          "erofs_init_shrinker+0x1a/0xa10",
-          "init_module+0x7f/0xe0",
-          "erofs_init_shrinker+0x1a/0xa10",
-          "init_module+0x7f/0xe0",
+          "init_module+0x4d/0xe0",
+          "init_module+0x4d/0xe0",
           "__pfx_erofs_inode_init_once+0x10/0x10"
         ],
-        "ret": -1,
-        "errno": 12,
+        "ret": 0,
+        "errno": 0,
         "traced": true,
         "unresolved": {
           "__pfx_init_module": "__pfx_init_module+0x10/0x10"
@@ -112107,16 +112122,36 @@
         "n": 79,
         "locs": [
           [
+            "zutil.c",
+            136
+          ],
+          [
+            "decompressor.c",
+            483
+          ],
+          [
             "zdata.c",
-            466
+            461
           ],
           [
             "super.c",
             969
           ],
           [
+            "zutil.c",
+            136
+          ],
+          [
+            "zutil.c",
+            136
+          ],
+          [
+            "decompressor.c",
+            483
+          ],
+          [
             "zdata.c",
-            466
+            461
           ],
           [
             "super.c",
@@ -112128,9 +112163,14 @@
           ]
         ],
         "frames": [
-          "z_erofs_init_subsystem+0x77/0x2b0",
+          "z_erofs_gbuf_init+0x53/0xf0",
+          "z_erofs_init_decompressor+0x27/0x80",
+          "z_erofs_init_subsystem+0x21/0x2b0",
           "init_module+0x98/0xe0",
-          "z_erofs_init_subsystem+0x77/0x2b0",
+          "z_erofs_gbuf_init+0x53/0xf0",
+          "z_erofs_gbuf_init+0x53/0xf0",
+          "z_erofs_init_decompressor+0x27/0x80",
+          "z_erofs_init_subsystem+0x21/0x2b0",
           "init_module+0x98/0xe0",
           "__pfx_erofs_inode_init_once+0x10/0x10"
         ],
@@ -112152,41 +112192,12 @@
       },
       {
         "n": 81,
-        "locs": [
-          [
-            "zdata.c",
-            466
-          ],
-          [
-            "super.c",
-            969
-          ],
-          [
-            "zdata.c",
-            466
-          ],
-          [
-            "super.c",
-            969
-          ],
-          [
-            "super.c",
-            842
-          ]
-        ],
-        "frames": [
-          "z_erofs_init_subsystem+0x77/0x2b0",
-          "init_module+0x98/0xe0",
-          "z_erofs_init_subsystem+0x77/0x2b0",
-          "init_module+0x98/0xe0",
-          "__pfx_erofs_inode_init_once+0x10/0x10"
-        ],
-        "ret": -1,
-        "errno": 12,
-        "traced": true,
-        "unresolved": {
-          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
-        }
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
       },
       {
         "n": 82,
@@ -117335,12 +117346,41 @@
       },
       {
         "n": 299,
-        "locs": [],
-        "frames": [],
+        "locs": [
+          [
+            "zdata.c",
+            466
+          ],
+          [
+            "super.c",
+            969
+          ],
+          [
+            "zdata.c",
+            466
+          ],
+          [
+            "super.c",
+            969
+          ],
+          [
+            "super.c",
+            842
+          ]
+        ],
+        "frames": [
+          "z_erofs_init_subsystem+0x18b/0x2b0",
+          "init_module+0x98/0xe0",
+          "z_erofs_init_subsystem+0x18b/0x2b0",
+          "init_module+0x98/0xe0",
+          "__pfx_erofs_inode_init_once+0x10/0x10"
+        ],
         "ret": 0,
         "errno": 0,
-        "traced": false,
-        "unresolved": {}
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
       },
       {
         "n": 300,
@@ -118707,12 +118747,41 @@
       },
       {
         "n": 359,
-        "locs": [],
-        "frames": [],
+        "locs": [
+          [
+            "zdata.c",
+            466
+          ],
+          [
+            "super.c",
+            969
+          ],
+          [
+            "zdata.c",
+            466
+          ],
+          [
+            "super.c",
+            969
+          ],
+          [
+            "super.c",
+            842
+          ]
+        ],
+        "frames": [
+          "z_erofs_init_subsystem+0x1e7/0x2b0",
+          "init_module+0x98/0xe0",
+          "z_erofs_init_subsystem+0x1e7/0x2b0",
+          "init_module+0x98/0xe0",
+          "__pfx_erofs_inode_init_once+0x10/0x10"
+        ],
         "ret": 0,
         "errno": 0,
-        "traced": false,
-        "unresolved": {}
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
       },
       {
         "n": 360,
@@ -119641,14 +119710,14 @@
           ]
         ],
         "frames": [
-          "z_erofs_init_subsystem+0x1e7/0x2b0",
+          "z_erofs_init_subsystem+0x243/0x2b0",
           "init_module+0x98/0xe0",
-          "z_erofs_init_subsystem+0x1e7/0x2b0",
+          "z_erofs_init_subsystem+0x243/0x2b0",
           "init_module+0x98/0xe0",
           "__pfx_erofs_inode_init_once+0x10/0x10"
         ],
-        "ret": 0,
-        "errno": 0,
+        "ret": -1,
+        "errno": 12,
         "traced": true,
         "unresolved": {
           "__pfx_init_module": "__pfx_init_module+0x10/0x10"
@@ -119788,41 +119857,12 @@
       },
       {
         "n": 405,
-        "locs": [
-          [
-            "zdata.c",
-            466
-          ],
-          [
-            "super.c",
-            969
-          ],
-          [
-            "zdata.c",
-            466
-          ],
-          [
-            "super.c",
-            969
-          ],
-          [
-            "super.c",
-            842
-          ]
-        ],
-        "frames": [
-          "z_erofs_init_subsystem+0x243/0x2b0",
-          "init_module+0x98/0xe0",
-          "z_erofs_init_subsystem+0x243/0x2b0",
-          "init_module+0x98/0xe0",
-          "__pfx_erofs_inode_init_once+0x10/0x10"
-        ],
+        "locs": [],
+        "frames": [],
         "ret": 0,
         "errno": 0,
-        "traced": true,
-        "unresolved": {
-          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
-        }
+        "traced": false,
+        "unresolved": {}
       },
       {
         "n": 406,
@@ -119900,21 +119940,11 @@
             969
           ],
           [
-            "zdata.c",
-            466
-          ],
-          [
-            "super.c",
-            969
-          ],
-          [
             "super.c",
             842
           ]
         ],
         "frames": [
-          "z_erofs_init_subsystem+0x243/0x2b0",
-          "init_module+0x98/0xe0",
           "z_erofs_init_subsystem+0x243/0x2b0",
           "init_module+0x98/0xe0",
           "z_erofs_init_subsystem+0x243/0x2b0",
@@ -120014,21 +120044,11 @@
             969
           ],
           [
-            "zdata.c",
-            466
-          ],
-          [
-            "super.c",
-            969
-          ],
-          [
             "super.c",
             842
           ]
         ],
         "frames": [
-          "z_erofs_init_subsystem+0x243/0x2b0",
-          "init_module+0x98/0xe0",
           "z_erofs_init_subsystem+0x243/0x2b0",
           "init_module+0x98/0xe0",
           "z_erofs_init_subsystem+0x243/0x2b0",
@@ -120523,12 +120543,41 @@
       },
       {
         "n": 435,
-        "locs": [],
-        "frames": [],
+        "locs": [
+          [
+            "zdata.c",
+            466
+          ],
+          [
+            "super.c",
+            969
+          ],
+          [
+            "zdata.c",
+            466
+          ],
+          [
+            "super.c",
+            969
+          ],
+          [
+            "super.c",
+            842
+          ]
+        ],
+        "frames": [
+          "z_erofs_init_subsystem+0x243/0x2b0",
+          "init_module+0x98/0xe0",
+          "z_erofs_init_subsystem+0x243/0x2b0",
+          "init_module+0x98/0xe0",
+          "__pfx_erofs_inode_init_once+0x10/0x10"
+        ],
         "ret": 0,
         "errno": 0,
-        "traced": false,
-        "unresolved": {}
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
       },
       {
         "n": 436,
@@ -120635,24 +120684,6 @@
       },
       {
         "n": 441,
-        "locs": [],
-        "frames": [],
-        "ret": 0,
-        "errno": 0,
-        "traced": false,
-        "unresolved": {}
-      },
-      {
-        "n": 442,
-        "locs": [],
-        "frames": [],
-        "ret": 0,
-        "errno": 0,
-        "traced": false,
-        "unresolved": {}
-      },
-      {
-        "n": 443,
         "locs": [
           [
             "zdata.c",
@@ -120688,6 +120719,24 @@
         "unresolved": {
           "__pfx_init_module": "__pfx_init_module+0x10/0x10"
         }
+      },
+      {
+        "n": 442,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 443,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
       },
       {
         "n": 444,
@@ -122168,20 +122217,20 @@
         "n": 508,
         "locs": [
           [
-            "sysfs.c",
-            294
+            "zdata.c",
+            470
           ],
           [
             "super.c",
-            973
+            969
           ],
           [
-            "sysfs.c",
-            294
+            "zdata.c",
+            470
           ],
           [
             "super.c",
-            973
+            969
           ],
           [
             "super.c",
@@ -122189,14 +122238,14 @@
           ]
         ],
         "frames": [
-          "erofs_init_sysfs+0x1e/0x90",
-          "init_module+0xaa/0xe0",
-          "erofs_init_sysfs+0x1e/0x90",
-          "init_module+0xaa/0xe0",
+          "z_erofs_init_subsystem+0x26e/0x2b0",
+          "init_module+0x98/0xe0",
+          "z_erofs_init_subsystem+0x26e/0x2b0",
+          "init_module+0x98/0xe0",
           "__pfx_erofs_inode_init_once+0x10/0x10"
         ],
         "ret": -1,
-        "errno": 22,
+        "errno": 12,
         "traced": true,
         "unresolved": {
           "__pfx_init_module": "__pfx_init_module+0x10/0x10"
@@ -122307,12 +122356,41 @@
       },
       {
         "n": 514,
-        "locs": [],
-        "frames": [],
-        "ret": 0,
-        "errno": 0,
-        "traced": false,
-        "unresolved": {}
+        "locs": [
+          [
+            "sysfs.c",
+            298
+          ],
+          [
+            "super.c",
+            973
+          ],
+          [
+            "sysfs.c",
+            298
+          ],
+          [
+            "super.c",
+            973
+          ],
+          [
+            "super.c",
+            842
+          ]
+        ],
+        "frames": [
+          "erofs_init_sysfs+0x5c/0x90",
+          "init_module+0xaa/0xe0",
+          "erofs_init_sysfs+0x5c/0x90",
+          "init_module+0xaa/0xe0",
+          "__pfx_erofs_inode_init_once+0x10/0x10"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
       },
       {
         "n": 515,
@@ -123191,41 +123269,12 @@
       },
       {
         "n": 552,
-        "locs": [
-          [
-            "sysfs.c",
-            298
-          ],
-          [
-            "super.c",
-            973
-          ],
-          [
-            "sysfs.c",
-            298
-          ],
-          [
-            "super.c",
-            973
-          ],
-          [
-            "super.c",
-            842
-          ]
-        ],
-        "frames": [
-          "erofs_init_sysfs+0x5c/0x90",
-          "init_module+0xaa/0xe0",
-          "erofs_init_sysfs+0x5c/0x90",
-          "init_module+0xaa/0xe0",
-          "__pfx_erofs_inode_init_once+0x10/0x10"
-        ],
-        "ret": -1,
-        "errno": 12,
-        "traced": true,
-        "unresolved": {
-          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
-        }
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
       },
       {
         "n": 553,
@@ -123473,12 +123522,41 @@
       },
       {
         "n": 564,
-        "locs": [],
-        "frames": [],
-        "ret": 0,
-        "errno": 0,
-        "traced": false,
-        "unresolved": {}
+        "locs": [
+          [
+            "sysfs.c",
+            298
+          ],
+          [
+            "super.c",
+            973
+          ],
+          [
+            "sysfs.c",
+            298
+          ],
+          [
+            "super.c",
+            973
+          ],
+          [
+            "super.c",
+            842
+          ]
+        ],
+        "frames": [
+          "erofs_init_sysfs+0x5c/0x90",
+          "init_module+0xaa/0xe0",
+          "erofs_init_sysfs+0x5c/0x90",
+          "init_module+0xaa/0xe0",
+          "__pfx_erofs_inode_init_once+0x10/0x10"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
       },
       {
         "n": 565,
@@ -123821,7 +123899,7 @@
           "init_module+0x37/0xff0"
         ],
         "ret": -1,
-        "errno": 12,
+        "errno": 22,
         "traced": true,
         "unresolved": {
           "__pfx_init_module": "__pfx_init_module+0x10/0x10"
@@ -125023,6 +125101,10 @@
           ],
           [
             "aloop.c",
+            1886
+          ],
+          [
+            "aloop.c",
             1903
           ]
         ],
@@ -125030,6 +125112,7 @@
           "loopback_probe+0x77/0x6f0",
           "init_module+0xaa/0xff0",
           "loopback_probe+0x77/0x6f0",
+          "__pfx_loopback_probe+0x10/0x10",
           "init_module+0xaa/0xff0"
         ],
         "ret": -1,
@@ -125131,18 +125214,6 @@
       "bonding__control"
     ],
     [
-      "brd__control"
-    ],
-    [
-      "brd__n9"
-    ],
-    [
-      "brd__n11"
-    ],
-    [
-      "brd__n333"
-    ],
-    [
       "erofs__control"
     ],
     [
@@ -125161,16 +125232,7 @@
       "squashfs__control"
     ],
     [
-      "tun__control"
-    ],
-    [
-      "uinput__control"
-    ],
-    [
       "vxlan__control"
-    ],
-    [
-      "zram__control"
     ]
   ],
   "sweep_leaks": [
@@ -125178,7 +125240,7 @@
       "module": "erofs",
       "file": "zdata.c",
       "line": 466,
-      "objects": 21,
+      "objects": 15,
       "size": 32,
       "backtrace": [
         "__kmalloc_node_track_caller_noprof+0x2cf/0x4d0",
@@ -125194,10 +125256,10 @@
       ]
     }
   ],
-  "hybrid_executions": 6208,
-  "mapping_executions": 6156,
-  "confirm_executions": 52,
-  "kmemleak_rounds": 15,
+  "hybrid_executions": 6190,
+  "mapping_executions": 6166,
+  "confirm_executions": 24,
+  "kmemleak_rounds": 8,
   "crashes": {
     "mapping": [
       {
@@ -125211,22 +125273,22 @@
           "BUG: unable to handle page fault for address: ffffffffa023a650",
           "#PF: supervisor read access in kernel mode",
           "#PF: error_code(0x0000) - not-present page",
-          "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 6123067 PTE 0",
+          "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 60a4067 PTE 0",
           "Oops: Oops: 0000 [#1] SMP NOPTI",
-          "CPU: 0 UID: 0 PID: 1197 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) ",
+          "CPU: 1 UID: 0 PID: 1195 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) ",
           "Tainted: [O]=OOT_MODULE",
           "Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014",
           "RIP: 0010:bdev_release+0x129/0x170",
           "Code: 4c 89 ef e8 d9 07 00 00 49 8b 7d 10 eb 18 f0 ff 8b 80 fc ff ff 75 08 4c 89 e7 e8 c2 07 00 00 48 8b bb 50 fc ff ff 48 8b 47 48 <4c> 8b 58 18 4d 85 db 74 06 2e e8 d8 a0 be 00 4c 89 ff e8 10 32 be",
-          "RSP: 0018:ff1100000674fe58 EFLAGS: 00010286",
-          "RAX: ffffffffa023a638 RBX: ff11000004df3c00 RCX: 0000000000000001",
-          "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff11000006d9b400",
-          "RBP: 0000000000000000 R08: ff110000061aeae0 R09: 00000000802a0024",
-          "R10: ff110000061ae0c0 R11: ffffffff817a34e0 R12: ff11000004df3840",
-          "R13: ff11000005ee3840 R14: ff11000006d9b400 R15: ff11000006d9b568",
-          "FS:  000000003daf53c0(0000) GS:ff110000f5488000(0000) knlGS:0000000000000000",
+          "RSP: 0018:ff11000006b5be58 EFLAGS: 00010286",
+          "RAX: ffffffffa023a638 RBX: ff11000004c81cc0 RCX: 0000000000000001",
+          "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff11000006c86000",
+          "RBP: 0000000000000000 R08: ff11000005feb300 R09: 00000000802a0012",
+          "R10: ff11000005feb540 R11: ffffffff817a34e0 R12: ff11000004c81900",
+          "R13: ff1100000591b9c0 R14: ff11000006c86000 R15: ff11000006c86168",
+          "FS:  00000000353933c0(0000) GS:ff110000f5588000(0000) knlGS:0000000000000000",
           "CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033",
-          "CR2: ffffffffa023a650 CR3: 00000000060e7000 CR4: 0000000000751ef0",
+          "CR2: ffffffffa023a650 CR3: 000000000654e000 CR4: 0000000000751ef0",
           "PKRU: 55555554",
           "Call Trace:",
           "<TASK>",
@@ -125238,12 +125300,12 @@
           "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
           "RIP: 0033:0x42d90d",
           "Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48",
-          "RSP: 002b:00007fff6ac22b08 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
+          "RSP: 002b:00007ffc44a4b538 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
           "RAX: fffffffffffffff4 RBX: 00000000000002e3 RCX: 000000000042d90d",
           "RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006",
-          "RBP: 00007fff6ac22b18 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
-          "R10: 0000000000000000 R11: 0000000000000246 R12: 00007fff6ac22cd0",
-          "R13: 0000000000000006 R14: 0000000000000001 R15: 00007fff6ac22b10",
+          "RBP: 00007ffc44a4b548 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
+          "R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffc44a4b700",
+          "R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffc44a4b540",
           "</TASK>",
           "Modules linked in: crc_t10dif zsmalloc configfs ip6_udp_tunnel udp_tunnel klg_modwatch(O) [last unloaded: null_blk]",
           "CR2: ffffffffa023a650",
@@ -125261,22 +125323,22 @@
           "BUG: unable to handle page fault for address: ffffffffa023a650",
           "#PF: supervisor read access in kernel mode",
           "#PF: error_code(0x0000) - not-present page",
-          "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 6066067 PTE 0",
+          "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 60c7067 PTE 0",
           "Oops: Oops: 0000 [#1] SMP NOPTI",
-          "CPU: 0 UID: 0 PID: 88 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) ",
+          "CPU: 1 UID: 0 PID: 87 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) ",
           "Tainted: [O]=OOT_MODULE",
           "Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014",
           "RIP: 0010:bdev_release+0x129/0x170",
           "Code: 4c 89 ef e8 d9 07 00 00 49 8b 7d 10 eb 18 f0 ff 8b 80 fc ff ff 75 08 4c 89 e7 e8 c2 07 00 00 48 8b bb 50 fc ff ff 48 8b 47 48 <4c> 8b 58 18 4d 85 db 74 06 2e e8 d8 a0 be 00 4c 89 ff e8 10 32 be",
-          "RSP: 0018:ff11000006007e58 EFLAGS: 00010286",
-          "RAX: ffffffffa023a638 RBX: ff11000004df1040 RCX: 0000000000000001",
-          "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff11000005bf3400",
-          "RBP: 0000000000000000 R08: ff110000061fd600 R09: 00000000802a0024",
-          "R10: ff110000061fd0c0 R11: ffffffff817a34e0 R12: ff11000004df0c80",
-          "R13: ff11000005f40600 R14: ff11000005bf3400 R15: ff11000005bf3568",
-          "FS:  000000000d0753c0(0000) GS:ff110000f5488000(0000) knlGS:0000000000000000",
+          "RSP: 0018:ff11000005bd3e58 EFLAGS: 00010286",
+          "RAX: ffffffffa023a638 RBX: ff11000004df3c00 RCX: 0000000000000001",
+          "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff11000005bedc00",
+          "RBP: 0000000000000000 R08: 0000000000000000 R09: ff110000060ad900",
+          "R10: 0000000000000016 R11: ffffffff817a34e0 R12: ff11000004df3840",
+          "R13: ff1100000558d9c0 R14: ff11000005bedc00 R15: ff11000005bedd68",
+          "FS:  000000003a39f3c0(0000) GS:ff110000f5588000(0000) knlGS:0000000000000000",
           "CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033",
-          "CR2: ffffffffa023a650 CR3: 0000000006191000 CR4: 0000000000751ef0",
+          "CR2: ffffffffa023a650 CR3: 0000000005ff1000 CR4: 0000000000751ef0",
           "PKRU: 55555554",
           "Call Trace:",
           "<TASK>",
@@ -125288,12 +125350,12 @@
           "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
           "RIP: 0033:0x42d90d",
           "Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48",
-          "RSP: 002b:00007ffcfdd09d38 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
+          "RSP: 002b:00007ffef8854688 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
           "RAX: fffffffffffffff4 RBX: 00000000000002e5 RCX: 000000000042d90d",
           "RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006",
-          "RBP: 00007ffcfdd09d48 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
-          "R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffcfdd09f00",
-          "R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffcfdd09d40",
+          "RBP: 00007ffef8854698 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
+          "R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffef8854850",
+          "R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffef8854690",
           "</TASK>",
           "Modules linked in: crc_t10dif zsmalloc configfs ip6_udp_tunnel udp_tunnel klg_modwatch(O) [last unloaded: null_blk]",
           "CR2: ffffffffa023a650",
@@ -125305,28 +125367,28 @@
         "kind": "crash",
         "where": {
           "log": "sweep_null_blk",
-          "fail_nth": 745
+          "fail_nth": 742
         },
         "console": [
           "BUG: unable to handle page fault for address: ffffffffa023a650",
           "#PF: supervisor read access in kernel mode",
           "#PF: error_code(0x0000) - not-present page",
-          "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 5eab067 PTE 0",
+          "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 5fd3067 PTE 0",
           "Oops: Oops: 0000 [#1] SMP NOPTI",
-          "CPU: 0 UID: 0 PID: 88 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) ",
+          "CPU: 1 UID: 0 PID: 88 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) ",
           "Tainted: [O]=OOT_MODULE",
           "Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014",
           "RIP: 0010:bdev_release+0x129/0x170",
           "Code: 4c 89 ef e8 d9 07 00 00 49 8b 7d 10 eb 18 f0 ff 8b 80 fc ff ff 75 08 4c 89 e7 e8 c2 07 00 00 48 8b bb 50 fc ff ff 48 8b 47 48 <4c> 8b 58 18 4d 85 db 74 06 2e e8 d8 a0 be 00 4c 89 ff e8 10 32 be",
-          "RSP: 0018:ff11000005ca3e58 EFLAGS: 00010286",
-          "RAX: ffffffffa023a638 RBX: ff11000004c80a00 RCX: 0000000000000001",
-          "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff11000005b26800",
-          "RBP: 0000000000000000 R08: ff110000061634c1 R09: ff11000005faeb40",
-          "R10: 0000000000000019 R11: ffffffff817a34e0 R12: ff11000004c80640",
-          "R13: ff110000056fb840 R14: ff11000005b26800 R15: ff11000005b26968",
-          "FS:  00000000188533c0(0000) GS:ff110000f5488000(0000) knlGS:0000000000000000",
+          "RSP: 0018:ff110000060ffe58 EFLAGS: 00010286",
+          "RAX: ffffffffa023a638 RBX: ff11000004df3c00 RCX: 0000000000000001",
+          "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff11000005b32000",
+          "RBP: 0000000000000000 R08: ff11000005d89cc0 R09: 00000000002a0028",
+          "R10: ff11000005d89ea0 R11: ffffffff817a34e0 R12: ff11000004df3840",
+          "R13: ff11000005f04600 R14: ff11000005b32000 R15: ff11000005b32168",
+          "FS:  000000002eb623c0(0000) GS:ff110000f5588000(0000) knlGS:0000000000000000",
           "CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033",
-          "CR2: ffffffffa023a650 CR3: 0000000005e8b000 CR4: 0000000000751ef0",
+          "CR2: ffffffffa023a650 CR3: 00000000060a6000 CR4: 0000000000751ef0",
           "PKRU: 55555554",
           "Call Trace:",
           "<TASK>",
@@ -125338,12 +125400,12 @@
           "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
           "RIP: 0033:0x42d90d",
           "Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48",
-          "RSP: 002b:00007fff622b73d8 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
-          "RAX: fffffffffffffff4 RBX: 00000000000002e9 RCX: 000000000042d90d",
+          "RSP: 002b:00007ffddc6684a8 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
+          "RAX: fffffffffffffff4 RBX: 00000000000002e6 RCX: 000000000042d90d",
           "RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006",
-          "RBP: 00007fff622b73e8 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
-          "R10: 0000000000000000 R11: 0000000000000246 R12: 00007fff622b75a0",
-          "R13: 0000000000000006 R14: 0000000000000001 R15: 00007fff622b73e0",
+          "RBP: 00007ffddc6684b8 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
+          "R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffddc668670",
+          "R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffddc6684b0",
           "</TASK>",
           "Modules linked in: crc_t10dif zsmalloc configfs ip6_udp_tunnel udp_tunnel klg_modwatch(O) [last unloaded: null_blk]",
           "CR2: ffffffffa023a650",
@@ -125355,28 +125417,28 @@
         "kind": "crash",
         "where": {
           "log": "sweep_null_blk",
-          "fail_nth": 746
+          "fail_nth": 743
         },
         "console": [
           "BUG: unable to handle page fault for address: ffffffffa023a650",
           "#PF: supervisor read access in kernel mode",
           "#PF: error_code(0x0000) - not-present page",
-          "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 60e2067 PTE 0",
+          "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 60d0067 PTE 0",
           "Oops: Oops: 0000 [#1] SMP NOPTI",
-          "CPU: 1 UID: 0 PID: 88 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) ",
+          "CPU: 1 UID: 0 PID: 87 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) ",
           "Tainted: [O]=OOT_MODULE",
           "Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014",
           "RIP: 0010:bdev_release+0x129/0x170",
           "Code: 4c 89 ef e8 d9 07 00 00 49 8b 7d 10 eb 18 f0 ff 8b 80 fc ff ff 75 08 4c 89 e7 e8 c2 07 00 00 48 8b bb 50 fc ff ff 48 8b 47 48 <4c> 8b 58 18 4d 85 db 74 06 2e e8 d8 a0 be 00 4c 89 ff e8 10 32 be",
-          "RSP: 0018:ff11000006077e58 EFLAGS: 00010286",
-          "RAX: ffffffffa023a638 RBX: ff11000004df3c00 RCX: 0000000000000001",
-          "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff11000005c83800",
-          "RBP: 0000000000000000 R08: ff11000005fe3958 R09: ff11000006199120",
-          "R10: 0000000000000018 R11: ffffffff817a34e0 R12: ff11000004df3840",
-          "R13: ff11000005ed4840 R14: ff11000005c83800 R15: ff11000005c83968",
-          "FS:  000000002df2c3c0(0000) GS:ff110000f5588000(0000) knlGS:0000000000000000",
+          "RSP: 0018:ff11000005cebe58 EFLAGS: 00010286",
+          "RAX: ffffffffa023a638 RBX: ff11000004df4240 RCX: 0000000000000001",
+          "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff11000006075800",
+          "RBP: 0000000000000000 R08: ff11000005fc1809 R09: ff1100000600e9c0",
+          "R10: 0000000000000018 R11: ffffffff817a34e0 R12: ff11000004df3e80",
+          "R13: ff11000005be59c0 R14: ff11000006075800 R15: ff11000006075968",
+          "FS:  000000002db363c0(0000) GS:ff110000f5588000(0000) knlGS:0000000000000000",
           "CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033",
-          "CR2: ffffffffa023a650 CR3: 0000000005f62000 CR4: 0000000000751ef0",
+          "CR2: ffffffffa023a650 CR3: 0000000005c2e000 CR4: 0000000000751ef0",
           "PKRU: 55555554",
           "Call Trace:",
           "<TASK>",
@@ -125388,12 +125450,12 @@
           "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
           "RIP: 0033:0x42d90d",
           "Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48",
-          "RSP: 002b:00007fff2219b258 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
-          "RAX: fffffffffffffff4 RBX: 00000000000002ea RCX: 000000000042d90d",
+          "RSP: 002b:00007ffffc6f8c38 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
+          "RAX: fffffffffffffff4 RBX: 00000000000002e7 RCX: 000000000042d90d",
           "RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006",
-          "RBP: 00007fff2219b268 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
-          "R10: 0000000000000000 R11: 0000000000000246 R12: 00007fff2219b420",
-          "R13: 0000000000000006 R14: 0000000000000001 R15: 00007fff2219b260",
+          "RBP: 00007ffffc6f8c48 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
+          "R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffffc6f8e00",
+          "R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffffc6f8c40",
           "</TASK>",
           "Modules linked in: crc_t10dif zsmalloc configfs ip6_udp_tunnel udp_tunnel klg_modwatch(O) [last unloaded: null_blk]",
           "CR2: ffffffffa023a650",
@@ -125405,28 +125467,28 @@
         "kind": "crash",
         "where": {
           "log": "sweep_null_blk",
-          "fail_nth": 752
+          "fail_nth": 744
         },
         "console": [
           "BUG: unable to handle page fault for address: ffffffffa023a650",
           "#PF: supervisor read access in kernel mode",
           "#PF: error_code(0x0000) - not-present page",
-          "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 60b3067 PTE 0",
+          "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 6112067 PTE 0",
           "Oops: Oops: 0000 [#1] SMP NOPTI",
-          "CPU: 1 UID: 0 PID: 87 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) ",
+          "CPU: 0 UID: 0 PID: 86 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) ",
           "Tainted: [O]=OOT_MODULE",
           "Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014",
           "RIP: 0010:bdev_release+0x129/0x170",
           "Code: 4c 89 ef e8 d9 07 00 00 49 8b 7d 10 eb 18 f0 ff 8b 80 fc ff ff 75 08 4c 89 e7 e8 c2 07 00 00 48 8b bb 50 fc ff ff 48 8b 47 48 <4c> 8b 58 18 4d 85 db 74 06 2e e8 d8 a0 be 00 4c 89 ff e8 10 32 be",
-          "RSP: 0018:ff11000006083e58 EFLAGS: 00010286",
-          "RAX: ffffffffa023a638 RBX: ff11000004df35c0 RCX: 0000000000000001",
-          "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff11000005f56000",
-          "RBP: 0000000000000000 R08: 0000000000000000 R09: ff11000005d36cc0",
-          "R10: 0000000000000015 R11: ffffffff817a34e0 R12: ff11000004df3200",
-          "R13: ff110000055db900 R14: ff11000005f56000 R15: ff11000005f56168",
-          "FS:  00000000107cb3c0(0000) GS:ff110000f5588000(0000) knlGS:0000000000000000",
+          "RSP: 0018:ff11000005f37e58 EFLAGS: 00010286",
+          "RAX: ffffffffa023a638 RBX: ff11000004df0a00 RCX: 0000000000000001",
+          "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff11000005f4d000",
+          "RBP: 0000000000000000 R08: ff11000005ee4de0 R09: 00000000802a0024",
+          "R10: ff11000005ee4cc0 R11: ffffffff817a34e0 R12: ff11000004df0640",
+          "R13: ff110000055086c0 R14: ff11000005f4d000 R15: ff11000005f4d168",
+          "FS:  000000001d3f33c0(0000) GS:ff110000f5488000(0000) knlGS:0000000000000000",
           "CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033",
-          "CR2: ffffffffa023a650 CR3: 0000000005eea000 CR4: 0000000000751ef0",
+          "CR2: ffffffffa023a650 CR3: 0000000006486000 CR4: 0000000000751ef0",
           "PKRU: 55555554",
           "Call Trace:",
           "<TASK>",
@@ -125438,12 +125500,12 @@
           "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
           "RIP: 0033:0x42d90d",
           "Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48",
-          "RSP: 002b:00007ffcb1cdf048 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
-          "RAX: fffffffffffffff4 RBX: 00000000000002f0 RCX: 000000000042d90d",
+          "RSP: 002b:00007ffc38fa6478 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
+          "RAX: fffffffffffffff4 RBX: 00000000000002e8 RCX: 000000000042d90d",
           "RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006",
-          "RBP: 00007ffcb1cdf058 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
-          "R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffcb1cdf210",
-          "R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffcb1cdf050",
+          "RBP: 00007ffc38fa6488 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
+          "R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffc38fa6640",
+          "R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffc38fa6480",
           "</TASK>",
           "Modules linked in: crc_t10dif zsmalloc configfs ip6_udp_tunnel udp_tunnel klg_modwatch(O) [last unloaded: null_blk]",
           "CR2: ffffffffa023a650",
@@ -125455,28 +125517,28 @@
         "kind": "crash",
         "where": {
           "log": "sweep_null_blk",
-          "fail_nth": 756
+          "fail_nth": 745
         },
         "console": [
           "BUG: unable to handle page fault for address: ffffffffa023a650",
           "#PF: supervisor read access in kernel mode",
           "#PF: error_code(0x0000) - not-present page",
-          "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 607e067 PTE 0",
+          "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 605a067 PTE 0",
           "Oops: Oops: 0000 [#1] SMP NOPTI",
-          "CPU: 0 UID: 0 PID: 87 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) ",
+          "CPU: 0 UID: 0 PID: 88 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) ",
           "Tainted: [O]=OOT_MODULE",
           "Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014",
           "RIP: 0010:bdev_release+0x129/0x170",
           "Code: 4c 89 ef e8 d9 07 00 00 49 8b 7d 10 eb 18 f0 ff 8b 80 fc ff ff 75 08 4c 89 e7 e8 c2 07 00 00 48 8b bb 50 fc ff ff 48 8b 47 48 <4c> 8b 58 18 4d 85 db 74 06 2e e8 d8 a0 be 00 4c 89 ff e8 10 32 be",
-          "RSP: 0018:ff11000006043e58 EFLAGS: 00010286",
-          "RAX: ffffffffa023a638 RBX: ff11000004df0a00 RCX: 0000000000000001",
-          "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff1100000588dc00",
-          "RBP: 0000000000000000 R08: ff110000792295b0 R09: 0000000000000000",
-          "R10: ff110000059ac800 R11: ffffffff817a34e0 R12: ff11000004df0640",
-          "R13: ff110000058f2900 R14: ff1100000588dc00 R15: ff1100000588dd68",
-          "FS:  00000000128ff3c0(0000) GS:ff110000f5488000(0000) knlGS:0000000000000000",
+          "RSP: 0018:ff11000006463e58 EFLAGS: 00010286",
+          "RAX: ffffffffa023a638 RBX: ff11000004c83c00 RCX: 0000000000000001",
+          "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff11000005eee000",
+          "RBP: 0000000000000000 R08: 0000000000000000 R09: ff11000005f73e40",
+          "R10: 000000000000001a R11: ffffffff817a34e0 R12: ff11000004c83840",
+          "R13: ff1100000557b6c0 R14: ff11000005eee000 R15: ff11000005eee168",
+          "FS:  000000001ae993c0(0000) GS:ff110000f5488000(0000) knlGS:0000000000000000",
           "CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033",
-          "CR2: ffffffffa023a650 CR3: 00000000060b9000 CR4: 0000000000751ef0",
+          "CR2: ffffffffa023a650 CR3: 00000000060a6000 CR4: 0000000000751ef0",
           "PKRU: 55555554",
           "Call Trace:",
           "<TASK>",
@@ -125488,12 +125550,12 @@
           "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
           "RIP: 0033:0x42d90d",
           "Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48",
-          "RSP: 002b:00007fff631c9518 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
-          "RAX: fffffffffffffff4 RBX: 00000000000002f4 RCX: 000000000042d90d",
+          "RSP: 002b:00007fff472e3c98 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
+          "RAX: fffffffffffffff4 RBX: 00000000000002e9 RCX: 000000000042d90d",
           "RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006",
-          "RBP: 00007fff631c9528 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
-          "R10: 0000000000000000 R11: 0000000000000246 R12: 00007fff631c96e0",
-          "R13: 0000000000000006 R14: 0000000000000001 R15: 00007fff631c9520",
+          "RBP: 00007fff472e3ca8 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
+          "R10: 0000000000000000 R11: 0000000000000246 R12: 00007fff472e3e60",
+          "R13: 0000000000000006 R14: 0000000000000001 R15: 00007fff472e3ca0",
           "</TASK>",
           "Modules linked in: crc_t10dif zsmalloc configfs ip6_udp_tunnel udp_tunnel klg_modwatch(O) [last unloaded: null_blk]",
           "CR2: ffffffffa023a650",
@@ -125505,28 +125567,28 @@
         "kind": "crash",
         "where": {
           "log": "sweep_null_blk",
-          "fail_nth": 757
+          "fail_nth": 746
         },
         "console": [
           "BUG: unable to handle page fault for address: ffffffffa023a650",
           "#PF: supervisor read access in kernel mode",
           "#PF: error_code(0x0000) - not-present page",
-          "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 5fd2067 PTE 0",
+          "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 5f4b067 PTE 0",
           "Oops: Oops: 0000 [#1] SMP NOPTI",
           "CPU: 1 UID: 0 PID: 88 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) ",
           "Tainted: [O]=OOT_MODULE",
           "Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014",
           "RIP: 0010:bdev_release+0x129/0x170",
           "Code: 4c 89 ef e8 d9 07 00 00 49 8b 7d 10 eb 18 f0 ff 8b 80 fc ff ff 75 08 4c 89 e7 e8 c2 07 00 00 48 8b bb 50 fc ff ff 48 8b 47 48 <4c> 8b 58 18 4d 85 db 74 06 2e e8 d8 a0 be 00 4c 89 ff e8 10 32 be",
-          "RSP: 0018:ff1100000609fe58 EFLAGS: 00010286",
-          "RAX: ffffffffa023a638 RBX: ff11000004c83c00 RCX: 0000000000000001",
-          "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff11000006064400",
-          "RBP: 0000000000000000 R08: ff1100000602f180 R09: 00000000802a0026",
-          "R10: ff1100000602f8a0 R11: ffffffff817a34e0 R12: ff11000004c83840",
-          "R13: ff11000005627480 R14: ff11000006064400 R15: ff11000006064568",
-          "FS:  00000000121db3c0(0000) GS:ff110000f5588000(0000) knlGS:0000000000000000",
+          "RSP: 0018:ff11000005b5fe58 EFLAGS: 00010286",
+          "RAX: ffffffffa023a638 RBX: ff11000004df3c00 RCX: 0000000000000001",
+          "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff11000005be7c00",
+          "RBP: 0000000000000000 R08: ff11000006149a00 R09: ff11000005bbeea0",
+          "R10: 000000000000001c R11: ffffffff817a34e0 R12: ff11000004df3840",
+          "R13: ff11000005b1f300 R14: ff11000005be7c00 R15: ff11000005be7d68",
+          "FS:  0000000036b863c0(0000) GS:ff110000f5588000(0000) knlGS:0000000000000000",
           "CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033",
-          "CR2: ffffffffa023a650 CR3: 00000000064f6000 CR4: 0000000000751ef0",
+          "CR2: ffffffffa023a650 CR3: 00000000060c8000 CR4: 0000000000751ef0",
           "PKRU: 55555554",
           "Call Trace:",
           "<TASK>",
@@ -125538,12 +125600,12 @@
           "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
           "RIP: 0033:0x42d90d",
           "Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48",
-          "RSP: 002b:00007ffc16bde918 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
-          "RAX: fffffffffffffff4 RBX: 00000000000002f5 RCX: 000000000042d90d",
+          "RSP: 002b:00007ffcd134e848 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
+          "RAX: fffffffffffffff4 RBX: 00000000000002ea RCX: 000000000042d90d",
           "RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006",
-          "RBP: 00007ffc16bde928 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
-          "R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffc16bdeae0",
-          "R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffc16bde920",
+          "RBP: 00007ffcd134e858 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
+          "R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffcd134ea10",
+          "R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffcd134e850",
           "</TASK>",
           "Modules linked in: crc_t10dif zsmalloc configfs ip6_udp_tunnel udp_tunnel klg_modwatch(O) [last unloaded: null_blk]",
           "CR2: ffffffffa023a650",
@@ -125555,28 +125617,28 @@
         "kind": "crash",
         "where": {
           "log": "sweep_null_blk",
-          "fail_nth": 760
+          "fail_nth": 752
         },
         "console": [
           "BUG: unable to handle page fault for address: ffffffffa023a650",
           "#PF: supervisor read access in kernel mode",
           "#PF: error_code(0x0000) - not-present page",
-          "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 5f69067 PTE 0",
+          "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 60f0067 PTE 0",
           "Oops: Oops: 0000 [#1] SMP NOPTI",
-          "CPU: 0 UID: 0 PID: 87 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) ",
+          "CPU: 0 UID: 0 PID: 88 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) ",
           "Tainted: [O]=OOT_MODULE",
           "Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014",
           "RIP: 0010:bdev_release+0x129/0x170",
           "Code: 4c 89 ef e8 d9 07 00 00 49 8b 7d 10 eb 18 f0 ff 8b 80 fc ff ff 75 08 4c 89 e7 e8 c2 07 00 00 48 8b bb 50 fc ff ff 48 8b 47 48 <4c> 8b 58 18 4d 85 db 74 06 2e e8 d8 a0 be 00 4c 89 ff e8 10 32 be",
-          "RSP: 0018:ff1100000640be58 EFLAGS: 00010286",
-          "RAX: ffffffffa023a638 RBX: ff11000004e30a00 RCX: 0000000000000001",
-          "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff11000005f4bc00",
-          "RBP: 0000000000000000 R08: ff11000006046240 R09: 00000000802a0024",
-          "R10: ff11000006046d80 R11: ffffffff817a34e0 R12: ff11000004e30640",
-          "R13: ff11000005ecb900 R14: ff11000005f4bc00 R15: ff11000005f4bd68",
-          "FS:  0000000031c823c0(0000) GS:ff110000f5488000(0000) knlGS:0000000000000000",
+          "RSP: 0018:ff11000005d23e58 EFLAGS: 00010286",
+          "RAX: ffffffffa023a638 RBX: ff11000004c84240 RCX: 0000000000000001",
+          "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff11000006079c00",
+          "RBP: 0000000000000000 R08: ff11000005f8c568 R09: ff110000060dd300",
+          "R10: 000000000000001a R11: ffffffff817a34e0 R12: ff11000004c83e80",
+          "R13: ff11000005e29480 R14: ff11000006079c00 R15: ff11000006079d68",
+          "FS:  0000000018c133c0(0000) GS:ff110000f5488000(0000) knlGS:0000000000000000",
           "CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033",
-          "CR2: ffffffffa023a650 CR3: 0000000006177000 CR4: 0000000000751ef0",
+          "CR2: ffffffffa023a650 CR3: 00000000061ce000 CR4: 0000000000751ef0",
           "PKRU: 55555554",
           "Call Trace:",
           "<TASK>",
@@ -125588,12 +125650,12 @@
           "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
           "RIP: 0033:0x42d90d",
           "Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48",
-          "RSP: 002b:00007fffc68e75b8 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
-          "RAX: fffffffffffffff4 RBX: 00000000000002f8 RCX: 000000000042d90d",
+          "RSP: 002b:00007ffd74d57f78 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
+          "RAX: fffffffffffffff4 RBX: 00000000000002f0 RCX: 000000000042d90d",
           "RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006",
-          "RBP: 00007fffc68e75c8 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
-          "R10: 0000000000000000 R11: 0000000000000246 R12: 00007fffc68e7780",
-          "R13: 0000000000000006 R14: 0000000000000001 R15: 00007fffc68e75c0",
+          "RBP: 00007ffd74d57f88 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
+          "R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffd74d58140",
+          "R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffd74d57f80",
           "</TASK>",
           "Modules linked in: crc_t10dif zsmalloc configfs ip6_udp_tunnel udp_tunnel klg_modwatch(O) [last unloaded: null_blk]",
           "CR2: ffffffffa023a650",
@@ -125605,28 +125667,28 @@
         "kind": "crash",
         "where": {
           "log": "sweep_null_blk",
-          "fail_nth": 761
+          "fail_nth": 756
         },
         "console": [
           "BUG: unable to handle page fault for address: ffffffffa023a650",
           "#PF: supervisor read access in kernel mode",
           "#PF: error_code(0x0000) - not-present page",
-          "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 606b067 PTE 0",
+          "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 5f4c067 PTE 0",
           "Oops: Oops: 0000 [#1] SMP NOPTI",
-          "CPU: 0 UID: 0 PID: 87 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) ",
+          "CPU: 1 UID: 0 PID: 88 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) ",
           "Tainted: [O]=OOT_MODULE",
           "Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014",
           "RIP: 0010:bdev_release+0x129/0x170",
           "Code: 4c 89 ef e8 d9 07 00 00 49 8b 7d 10 eb 18 f0 ff 8b 80 fc ff ff 75 08 4c 89 e7 e8 c2 07 00 00 48 8b bb 50 fc ff ff 48 8b 47 48 <4c> 8b 58 18 4d 85 db 74 06 2e e8 d8 a0 be 00 4c 89 ff e8 10 32 be",
-          "RSP: 0018:ff11000006173e58 EFLAGS: 00010286",
-          "RAX: ffffffffa023a638 RBX: ff11000004df3c00 RCX: 0000000000000001",
-          "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff11000005fe1c00",
-          "RBP: 0000000000000000 R08: ff11000005faf960 R09: 00000000802a0016",
-          "R10: ff11000005faf840 R11: ffffffff817a34e0 R12: ff11000004df3840",
-          "R13: ff11000005f34540 R14: ff11000005fe1c00 R15: ff11000005fe1d68",
-          "FS:  00000000399243c0(0000) GS:ff110000f5488000(0000) knlGS:0000000000000000",
+          "RSP: 0018:ff110000061afe58 EFLAGS: 00010246",
+          "RAX: ffffffffa023a638 RBX: ff11000004e31040 RCX: 0000000000000001",
+          "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff1100000619dc00",
+          "RBP: 0000000000000000 R08: 0000000000000000 R09: ff11000005f07a80",
+          "R10: 0000000000000015 R11: ffffffff817a34e0 R12: ff11000004e30c80",
+          "R13: ff1100000560ab40 R14: ff1100000619dc00 R15: ff1100000619dd68",
+          "FS:  0000000000d303c0(0000) GS:ff110000f5588000(0000) knlGS:0000000000000000",
           "CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033",
-          "CR2: ffffffffa023a650 CR3: 00000000061dc000 CR4: 0000000000751ef0",
+          "CR2: ffffffffa023a650 CR3: 0000000005ff8000 CR4: 0000000000751ef0",
           "PKRU: 55555554",
           "Call Trace:",
           "<TASK>",
@@ -125638,12 +125700,12 @@
           "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
           "RIP: 0033:0x42d90d",
           "Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48",
-          "RSP: 002b:00007fffce4f14d8 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
-          "RAX: fffffffffffffff4 RBX: 00000000000002f9 RCX: 000000000042d90d",
+          "RSP: 002b:00007fffc7ec68f8 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
+          "RAX: fffffffffffffff4 RBX: 00000000000002f4 RCX: 000000000042d90d",
           "RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006",
-          "RBP: 00007fffce4f14e8 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
-          "R10: 0000000000000000 R11: 0000000000000246 R12: 00007fffce4f16a0",
-          "R13: 0000000000000006 R14: 0000000000000001 R15: 00007fffce4f14e0",
+          "RBP: 00007fffc7ec6908 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
+          "R10: 0000000000000000 R11: 0000000000000246 R12: 00007fffc7ec6ac0",
+          "R13: 0000000000000006 R14: 0000000000000001 R15: 00007fffc7ec6900",
           "</TASK>",
           "Modules linked in: crc_t10dif zsmalloc configfs ip6_udp_tunnel udp_tunnel klg_modwatch(O) [last unloaded: null_blk]",
           "CR2: ffffffffa023a650",
@@ -125655,28 +125717,28 @@
         "kind": "crash",
         "where": {
           "log": "sweep_null_blk",
-          "fail_nth": 764
+          "fail_nth": 760
         },
         "console": [
           "BUG: unable to handle page fault for address: ffffffffa023a650",
           "#PF: supervisor read access in kernel mode",
           "#PF: error_code(0x0000) - not-present page",
-          "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 5f48067 PTE 0",
+          "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 6094067 PTE 0",
           "Oops: Oops: 0000 [#1] SMP NOPTI",
-          "CPU: 1 UID: 0 PID: 87 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) ",
+          "CPU: 0 UID: 0 PID: 87 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) ",
           "Tainted: [O]=OOT_MODULE",
           "Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014",
           "RIP: 0010:bdev_release+0x129/0x170",
           "Code: 4c 89 ef e8 d9 07 00 00 49 8b 7d 10 eb 18 f0 ff 8b 80 fc ff ff 75 08 4c 89 e7 e8 c2 07 00 00 48 8b bb 50 fc ff ff 48 8b 47 48 <4c> 8b 58 18 4d 85 db 74 06 2e e8 d8 a0 be 00 4c 89 ff e8 10 32 be",
-          "RSP: 0018:ff11000006043e58 EFLAGS: 00010286",
-          "RAX: ffffffffa023a638 RBX: ff11000004df3c00 RCX: 0000000000000001",
-          "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff11000005d0ec00",
-          "RBP: 0000000000000000 R08: 0000000000000000 R09: ff1100000614f1e0",
-          "R10: ff11000005394800 R11: ffffffff817a34e0 R12: ff11000004df3840",
-          "R13: ff11000005d7a540 R14: ff11000005d0ec00 R15: ff11000005d0ed68",
-          "FS:  000000002b0b13c0(0000) GS:ff110000f5588000(0000) knlGS:0000000000000000",
+          "RSP: 0018:ff11000005f77e58 EFLAGS: 00010286",
+          "RAX: ffffffffa023a638 RBX: ff11000004df4240 RCX: 0000000000000001",
+          "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff1100000485f000",
+          "RBP: 0000000000000000 R08: ff110000061eb480 R09: 00000000802a0014",
+          "R10: ff110000061eb8a0 R11: ffffffff817a34e0 R12: ff11000004df3e80",
+          "R13: ff11000005581a80 R14: ff1100000485f000 R15: ff1100000485f168",
+          "FS:  00000000385653c0(0000) GS:ff110000f5488000(0000) knlGS:0000000000000000",
           "CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033",
-          "CR2: ffffffffa023a650 CR3: 0000000006090000 CR4: 0000000000751ef0",
+          "CR2: ffffffffa023a650 CR3: 000000000615e000 CR4: 0000000000751ef0",
           "PKRU: 55555554",
           "Call Trace:",
           "<TASK>",
@@ -125688,12 +125750,12 @@
           "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
           "RIP: 0033:0x42d90d",
           "Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48",
-          "RSP: 002b:00007ffeae714468 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
-          "RAX: fffffffffffffff4 RBX: 00000000000002fc RCX: 000000000042d90d",
+          "RSP: 002b:00007ffd779e9918 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
+          "RAX: fffffffffffffff4 RBX: 00000000000002f8 RCX: 000000000042d90d",
           "RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006",
-          "RBP: 00007ffeae714478 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
-          "R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffeae714630",
-          "R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffeae714470",
+          "RBP: 00007ffd779e9928 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
+          "R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffd779e9ae0",
+          "R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffd779e9920",
           "</TASK>",
           "Modules linked in: crc_t10dif zsmalloc configfs ip6_udp_tunnel udp_tunnel klg_modwatch(O) [last unloaded: null_blk]",
           "CR2: ffffffffa023a650",
@@ -125704,7 +125766,7 @@
     "confirm": []
   },
   "timing": {
-    "mapping_vm_s": 1058.5083529949188,
-    "confirm_vm_s": 132.05134272575378
+    "mapping_vm_s": 1022.469854593277,
+    "confirm_vm_s": 76.02681684494019
   }
 }

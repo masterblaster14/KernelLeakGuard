@@ -62,53 +62,7 @@
       }
     ]
   },
-  "candidates": [
-    {
-      "alloc": {
-        "col": 10,
-        "file": "linux-6.18.55/drivers/block/zram/zram_drv.c",
-        "line": 2518
-      },
-      "alloc_size": -1,
-      "allocator": "zcomp_create",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 2,
-        "file": "linux-6.18.55/drivers/block/zram/zram_drv.c",
-        "line": 2541
-      },
-      "exit_kind": "unknown",
-      "fix": {
-        "col": 4,
-        "exclusive": true,
-        "file": "linux-6.18.55/drivers/block/zram/zram_drv.c",
-        "line": 2521
-      },
-      "function": "disksize_store",
-      "id": "zram:disksize_store:2518:2541",
-      "module": "zram",
-      "path_lines": [
-        2518,
-        2521,
-        2537,
-        2540,
-        2542
-      ],
-      "release_sites": [],
-      "return_value": "?",
-      "triggers": [
-        {
-          "callee": "zcomp_create",
-          "file": "linux-6.18.55/drivers/block/zram/zram_drv.c",
-          "kind": "alloc",
-          "line": 2518
-        }
-      ],
-      "source_path": "linux-6.18.55/drivers/block/zram/zram_drv.c"
-    }
-  ],
+  "candidates": [],
   "module": "zram",
   "options": {
     "branch_correlation": true,
@@ -118,14 +72,10 @@
   },
   "stats": {
     "alloc_sites": 9,
-    "analysis_ms": 2.431967,
+    "analysis_ms": 2.436734,
     "budget_exhausted": 0,
-    "candidates": 1,
+    "candidates": 0,
     "functions": 106
   },
-  "tool": "klg-analyze",
-  "ir": {
-    "objects": 4,
-    "ir_failed": []
-  }
+  "tool": "klg-analyze"
 }

@@ -79,14 +79,10 @@
   },
   "stats": {
     "alloc_sites": 2,
-    "analysis_ms": 2.050065,
+    "analysis_ms": 2.260237,
     "budget_exhausted": 0,
     "candidates": 1,
     "functions": 75
   },
-  "tool": "klg-analyze",
-  "ir": {
-    "objects": 1,
-    "ir_failed": []
-  }
+  "tool": "klg-analyze"
 }

@@ -1,0 +1,10 @@
+{
+  "name": "brd_blk_alloc_disk",
+  "module_file": "drivers/block/brd.c",
+  "function": "brd_alloc",
+  "remove": "brd_free_device(brd);",
+  "occurrence": 1,
+  "bug": "On the blk_alloc_disk()/add_disk() failure path of brd_alloc() the brd_device obtained from brd_find_or_alloc_device() is released by brd_free_device(brd). Removing that call leaks the brd_device (and its xarray) when disk allocation fails during module initialisation.",
+  "reachable": "brd_init() calls brd_alloc() in a loop at module load, so failing blk_alloc_disk()/add_disk() with fail-nth reproduces the leak.",
+  "reference": "Models the class of early-exit leaks MLEE targets: a resource acquired by a helper and released on one error branch that a code change omits."
+}

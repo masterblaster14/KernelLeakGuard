@@ -30,15 +30,21 @@ REVIEWED = {
         "removed on the error path when it was newly created."),
     ("hfs", "hfs_correct_next_unused_CNID", 259): (
         "false positive",
-        "hfs_bnode_find() returns an ERR_PTR on failure; on the IS_ERR path nothing "
-        "was obtained, so there is nothing to release."),
+        "hfs_bnode_find() returns a reference-counted node released by hfs_bnode_put; on the "
+        "deeper -ENOENT exits the first node has already been put. The analyser does not model "
+        "the refcounted lookup."),
     ("hfs", "hfs_correct_next_unused_CNID", 272): (
-        "false positive", "same ERR_PTR pattern as the lookup at line 259."),
+        "false positive", "same refcounted-lookup pattern as the node obtained at line 259."),
     ("hfs", "hfs_brec_update_parent", 386): (
-        "false positive", "hfs_bnode_find() ERR_PTR result; nothing to release on that path."),
-    ("bonding", "alb_upper_dev_walk", 992): (
+        "false positive", "hfs_bnode_find() node is put on the error path via hfs_bnode_put."),
+    ("scsi_debug", "sdebug_add_host_helper", 8851): (
         "false positive",
-        "on the IS_ERR_OR_NULL path bond_verify_device_path() returned no object."),
+        "the sdebug_dev_info objects are freed in the clean: loop by list iteration; the "
+        "analyser does not track release through list_for_each_entry_safe."),
+    ("ntfs3", "indx_read", 1089): (
+        "needs review",
+        "kzalloc on an -EINVAL path; the surrounding cleanup is non-trivial and was not fully "
+        "traced by hand."),
 }
 
 # Allocators that return an ERR_PTR (or a reference-counted object) on failure:

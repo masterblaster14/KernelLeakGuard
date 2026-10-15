@@ -512,75 +512,6 @@
     },
     {
       "alloc": {
-        "col": 8,
-        "file": "linux-6.18.55/drivers/scsi/scsi_debug.c",
-        "line": 1158
-      },
-      "alloc_size": -1,
-      "allocator": "memdup_user_nul",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 3,
-        "file": "linux-6.18.55/drivers/scsi/scsi_debug.c",
-        "line": 1160
-      },
-      "exit_kind": "unknown",
-      "fix": {
-        "col": 10,
-        "exclusive": true,
-        "file": "linux-6.18.55/drivers/scsi/scsi_debug.c",
-        "line": 1160
-      },
-      "function": "sdebug_error_write",
-      "id": "scsi_debug:sdebug_error_write:1158:1160",
-      "module": "scsi_debug",
-      "path_lines": [
-        1154,
-        1160,
-        1214
-      ],
-      "release_sites": [
-        {
-          "col": 10,
-          "file": "linux-6.18.55/drivers/scsi/scsi_debug.c",
-          "line": 1163
-        },
-        {
-          "col": 3,
-          "file": "linux-6.18.55/drivers/scsi/scsi_debug.c",
-          "line": 1166
-        },
-        {
-          "col": 3,
-          "file": "linux-6.18.55/drivers/scsi/scsi_debug.c",
-          "line": 1172
-        },
-        {
-          "col": 2,
-          "file": "linux-6.18.55/drivers/scsi/scsi_debug.c",
-          "line": 1205
-        },
-        {
-          "col": 2,
-          "file": "linux-6.18.55/drivers/scsi/scsi_debug.c",
-          "line": 1211
-        }
-      ],
-      "return_value": "?",
-      "triggers": [
-        {
-          "callee": "memdup_user_nul",
-          "file": "linux-6.18.55/drivers/scsi/scsi_debug.c",
-          "kind": "alloc",
-          "line": 1158
-        }
-      ],
-      "source_path": "linux-6.18.55/drivers/scsi/scsi_debug.c"
-    },
-    {
-      "alloc": {
         "col": 18,
         "file": "linux-6.18.55/drivers/scsi/scsi_debug.c",
         "line": 8851
@@ -680,14 +611,10 @@
   },
   "stats": {
     "alloc_sites": 24,
-    "analysis_ms": 42.16146,
+    "analysis_ms": 49.693744,
     "budget_exhausted": 3,
-    "candidates": 10,
+    "candidates": 9,
     "functions": 273
   },
-  "tool": "klg-analyze",
-  "ir": {
-    "objects": 1,
-    "ir_failed": []
-  }
+  "tool": "klg-analyze"
 }

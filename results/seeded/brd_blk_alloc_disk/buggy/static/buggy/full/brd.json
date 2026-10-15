@@ -1,0 +1,80 @@
+{
+  "alloc_sites": {
+    "brd_alloc": [
+      {
+        "allocator": "brd_find_or_alloc_device",
+        "file": "brd.c",
+        "line": 317
+      }
+    ],
+    "brd_find_or_alloc_device": [
+      {
+        "allocator": "kzalloc",
+        "file": "brd.c",
+        "line": 276
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 8,
+        "file": "brd.c",
+        "line": 317
+      },
+      "alloc_size": -1,
+      "allocator": "brd_find_or_alloc_device",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 2,
+        "file": "brd.c",
+        "line": 351
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 9,
+        "exclusive": true,
+        "file": "brd.c",
+        "line": 330
+      },
+      "function": "brd_alloc",
+      "id": "brd:brd_alloc:317:351",
+      "module": "brd",
+      "path_lines": [
+        299,
+        321,
+        328,
+        330,
+        351,
+        352
+      ],
+      "release_sites": [],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "__blk_alloc_disk",
+          "file": "brd.c",
+          "kind": "call",
+          "line": 328
+        }
+      ]
+    }
+  ],
+  "module": "brd",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 2,
+    "analysis_ms": 1.214405,
+    "budget_exhausted": 0,
+    "candidates": 1,
+    "functions": 14
+  },
+  "tool": "klg-analyze"
+}

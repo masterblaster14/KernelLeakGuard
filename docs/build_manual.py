@@ -113,6 +113,8 @@ w.table(["Command", "What it does"], [
      "(compile, re-analyse, VM re-run); patches in results/fixes/patches"],
     ["python3 -m klg real [--only m1,m2]", "analyse the real Linux modules of "
      "vm/real_modules.fragment and verify their initialisation in the VM (results/real)"],
+    ["python3 -m klg seed [--only name]", "reintroduce a known leak into a real kernel module "
+     "(seeds/) and run detect -> confirm -> fix on it (results/seeded)"],
     [".venv/bin/python -m klg.figures", "regenerate the charts in docs/figures"],
     ["scripts/repeat_runs.sh N", "run the pipeline N times to check reproducibility"],
 ], "Command reference", widths=[6.5, 9.5])

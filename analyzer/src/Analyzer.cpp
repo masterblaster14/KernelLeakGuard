@@ -749,6 +749,26 @@ private:
     return KeyValue;
   }
 
+  /// True if (K, KeyValue) is the "IS_ERR(tracked) is true" branch: the tracked
+  /// pointer holds an ERR_PTR error code here, not a heap object, so there is
+  /// nothing to free (the same situation as a failed allocation). This removes
+  /// the dominant false-positive class on real kernel code, where lookup/
+  /// factory helpers return an ERR_PTR on failure.
+  bool errPtrTest(const CondKey &K, bool KeyValue) const {
+    if (K.B || !KeyValue)              // IS_ERR(x) is a 1-operand boolean test
+      return false;
+    const auto *CB = dyn_cast_or_null<CallBase>(K.A);
+    const Function *Callee = CB ? calledFunction(*CB) : nullptr;
+    if (!Callee || !Callee->getName().starts_with("IS_ERR") || CB->arg_size() != 1)
+      return false;                    // covers IS_ERR and IS_ERR_OR_NULL
+    const Value *Arg = CB->getArgOperand(0)->stripPointerCasts();
+    if (FT.isAlias(Arg))
+      return true;
+    if (const auto *LI = dyn_cast<LoadInst>(Arg))
+      return storedCall(LI->getPointerOperand()) == &Site;
+    return false;
+  }
+
   /// Find the call whose result the condition tests.
   const CallBase *controllingCall(const Value *V) const {
     for (unsigned Guard = 0; Guard < 16 && V; ++Guard) {
@@ -1007,6 +1027,8 @@ private:
         if (std::optional<bool> IsNull = nullTest(K, KeyValue))
           if (*IsNull && !Reallocated)
             continue; // the allocation itself failed: nothing to leak
+        if (errPtrTest(K, KeyValue) && !Reallocated)
+          continue; // tracked pointer is an ERR_PTR here: nothing to free
         const CallBase *Trig = errorTrigger(K, KeyValue);
         Decisions.push_back({K, KeyValue});
         if (Trig) {

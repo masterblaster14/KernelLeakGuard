@@ -34,101 +34,7 @@
       }
     ]
   },
-  "candidates": [
-    {
-      "alloc": {
-        "col": 10,
-        "file": "linux-6.18.55/drivers/input/misc/uinput.c",
-        "line": 999
-      },
-      "alloc_size": -1,
-      "allocator": "strndup_user",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 2,
-        "file": "linux-6.18.55/drivers/input/misc/uinput.c",
-        "line": 1106
-      },
-      "exit_kind": "unknown",
-      "fix": {
-        "col": 13,
-        "exclusive": true,
-        "file": "linux-6.18.55/drivers/input/misc/uinput.c",
-        "line": 1001
-      },
-      "function": "uinput_ioctl_handler",
-      "id": "uinput:uinput_ioctl_handler:999:1106",
-      "module": "uinput",
-      "path_lines": [
-        999,
-        1001,
-        1105,
-        1107
-      ],
-      "release_sites": [],
-      "return_value": "?",
-      "triggers": [
-        {
-          "callee": "strndup_user",
-          "file": "linux-6.18.55/drivers/input/misc/uinput.c",
-          "kind": "alloc",
-          "line": 999
-        }
-      ],
-      "source_path": "linux-6.18.55/drivers/input/misc/uinput.c"
-    },
-    {
-      "alloc": {
-        "col": 13,
-        "file": "linux-6.18.55/drivers/input/misc/uinput.c",
-        "line": 564
-      },
-      "alloc_size": -1,
-      "allocator": "memdup_user",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 3,
-        "file": "linux-6.18.55/drivers/input/misc/uinput.c",
-        "line": 566
-      },
-      "exit_kind": "unknown",
-      "fix": {
-        "col": 10,
-        "exclusive": true,
-        "file": "linux-6.18.55/drivers/input/misc/uinput.c",
-        "line": 566
-      },
-      "function": "uinput_setup_device_legacy",
-      "id": "uinput:uinput_setup_device_legacy:564:566",
-      "module": "uinput",
-      "path_lines": [
-        562,
-        566,
-        606
-      ],
-      "release_sites": [
-        {
-          "col": 2,
-          "file": "linux-6.18.55/drivers/input/misc/uinput.c",
-          "line": 604
-        }
-      ],
-      "return_value": "?",
-      "triggers": [
-        {
-          "callee": "memdup_user",
-          "file": "linux-6.18.55/drivers/input/misc/uinput.c",
-          "kind": "alloc",
-          "line": 564
-        }
-      ],
-      "source_path": "linux-6.18.55/drivers/input/misc/uinput.c"
-    }
-  ],
+  "candidates": [],
   "module": "uinput",
   "options": {
     "branch_correlation": true,
@@ -138,14 +44,10 @@
   },
   "stats": {
     "alloc_sites": 5,
-    "analysis_ms": 1.455034,
+    "analysis_ms": 2.226916,
     "budget_exhausted": 0,
-    "candidates": 2,
+    "candidates": 0,
     "functions": 38
   },
-  "tool": "klg-analyze",
-  "ir": {
-    "objects": 1,
-    "ir_failed": []
-  }
+  "tool": "klg-analyze"
 }

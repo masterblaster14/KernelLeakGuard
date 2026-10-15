@@ -1796,112 +1796,6 @@
     },
     {
       "alloc": {
-        "col": 6,
-        "file": "linux-6.18.55/fs/ntfs3/index.c",
-        "line": 1775
-      },
-      "alloc_size": -1,
-      "allocator": "indx_new",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 2,
-        "file": "linux-6.18.55/fs/ntfs3/index.c",
-        "line": 1846
-      },
-      "exit_kind": "unknown",
-      "fix": {
-        "col": 9,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/ntfs3/index.c",
-        "line": 1777
-      },
-      "function": "indx_insert_into_root",
-      "id": "ntfs3:indx_insert_into_root:1775:1846",
-      "module": "ntfs3",
-      "path_lines": [
-        1770,
-        1777,
-        1843,
-        1845,
-        1847
-      ],
-      "release_sites": [
-        {
-          "col": 3,
-          "file": "linux-6.18.55/fs/ntfs3/index.c",
-          "line": 1818
-        },
-        {
-          "col": 2,
-          "file": "linux-6.18.55/fs/ntfs3/index.c",
-          "line": 1841
-        }
-      ],
-      "return_value": "?",
-      "triggers": [
-        {
-          "callee": "indx_new",
-          "file": "linux-6.18.55/fs/ntfs3/index.c",
-          "kind": "alloc",
-          "line": 1775
-        }
-      ],
-      "source_path": "linux-6.18.55/fs/ntfs3/index.c"
-    },
-    {
-      "alloc": {
-        "col": 7,
-        "file": "linux-6.18.55/fs/ntfs3/index.c",
-        "line": 1940
-      },
-      "alloc_size": -1,
-      "allocator": "indx_new",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 2,
-        "file": "linux-6.18.55/fs/ntfs3/index.c",
-        "line": 2009
-      },
-      "exit_kind": "unknown",
-      "fix": {
-        "col": 9,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/ntfs3/index.c",
-        "line": 1942
-      },
-      "function": "indx_insert_into_buffer",
-      "id": "ntfs3:indx_insert_into_buffer:1940:2009",
-      "module": "ntfs3",
-      "path_lines": [
-        1940,
-        1942,
-        2006,
-        2010
-      ],
-      "release_sites": [
-        {
-          "col": 2,
-          "file": "linux-6.18.55/fs/ntfs3/index.c",
-          "line": 1978
-        }
-      ],
-      "return_value": "?",
-      "triggers": [
-        {
-          "callee": "indx_new",
-          "file": "linux-6.18.55/fs/ntfs3/index.c",
-          "kind": "alloc",
-          "line": 1940
-        }
-      ],
-      "source_path": "linux-6.18.55/fs/ntfs3/index.c"
-    },
-    {
-      "alloc": {
         "col": 10,
         "file": "linux-6.18.55/fs/ntfs3/super.c",
         "line": 122
@@ -2008,14 +1902,10 @@
   },
   "stats": {
     "alloc_sites": 105,
-    "analysis_ms": 449.401397,
+    "analysis_ms": 480.200121,
     "budget_exhausted": 9,
-    "candidates": 19,
+    "candidates": 17,
     "functions": 439
   },
-  "tool": "klg-analyze",
-  "ir": {
-    "objects": 18,
-    "ir_failed": []
-  }
+  "tool": "klg-analyze"
 }

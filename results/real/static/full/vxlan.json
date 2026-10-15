@@ -109,87 +109,6 @@
   "candidates": [
     {
       "alloc": {
-        "col": 8,
-        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_core.c",
-        "line": 3671
-      },
-      "alloc_size": -1,
-      "allocator": "vxlan_socket_create",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 3,
-        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_core.c",
-        "line": 3675
-      },
-      "exit_kind": "unknown",
-      "fix": null,
-      "function": "__vxlan_sock_add",
-      "id": "vxlan:__vxlan_sock_add:3671:3675",
-      "module": "vxlan",
-      "path_lines": [
-        3671,
-        3674,
-        3675,
-        3693
-      ],
-      "release_sites": [],
-      "return_value": "?",
-      "triggers": [],
-      "source_path": "linux-6.18.55/drivers/net/vxlan/vxlan_core.c"
-    },
-    {
-      "alloc": {
-        "col": 14,
-        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
-        "line": 1251
-      },
-      "alloc_size": -1,
-      "allocator": "vxlan_mdb_entry_get",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 3,
-        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
-        "line": 1253
-      },
-      "exit_kind": "unknown",
-      "fix": {
-        "col": 10,
-        "exclusive": true,
-        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
-        "line": 1253
-      },
-      "function": "__vxlan_mdb_add",
-      "id": "vxlan:__vxlan_mdb_add:1251:1253",
-      "module": "vxlan",
-      "path_lines": [
-        1247,
-        1253,
-        1266
-      ],
-      "release_sites": [
-        {
-          "col": 2,
-          "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
-          "line": 1264
-        }
-      ],
-      "return_value": "?",
-      "triggers": [
-        {
-          "callee": "vxlan_mdb_entry_get",
-          "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
-          "kind": "alloc",
-          "line": 1251
-        }
-      ],
-      "source_path": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c"
-    },
-    {
-      "alloc": {
         "col": 9,
         "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
         "line": 853
@@ -290,14 +209,10 @@
   },
   "stats": {
     "alloc_sites": 15,
-    "analysis_ms": 28.219961,
+    "analysis_ms": 34.677014,
     "budget_exhausted": 0,
-    "candidates": 4,
+    "candidates": 2,
     "functions": 227
   },
-  "tool": "klg-analyze",
-  "ir": {
-    "objects": 4,
-    "ir_failed": []
-  }
+  "tool": "klg-analyze"
 }

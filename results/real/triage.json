@@ -14,80 +14,10 @@
     "basis": "-"
   },
   {
-    "id": "bonding:bond_arp_send_all:3078:3097",
-    "module": "bonding",
-    "label": "likely false positive",
-    "note": "bond_verify_device_path() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "bonding:bond_ns_send_all:3261:3283",
-    "module": "bonding",
-    "label": "likely false positive",
-    "note": "bond_verify_device_path() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "bonding:bond_verify_device_path:3028:3031",
-    "module": "bonding",
-    "label": "likely false positive",
-    "note": "bond_verify_device_path() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "bonding:bond_verify_device_path:3028:3042",
-    "module": "bonding",
-    "label": "likely false positive",
-    "note": "bond_verify_device_path() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "bonding:bond_verify_device_path:3028:3039",
-    "module": "bonding",
-    "label": "likely false positive",
-    "note": "bond_verify_device_path() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "bonding:alb_upper_dev_walk:992:994",
-    "module": "bonding",
-    "label": "false positive",
-    "note": "on the IS_ERR_OR_NULL path bond_verify_device_path() returned no object.",
-    "basis": "reviewed in source"
-  },
-  {
-    "id": "brd:brd_alloc:317:319",
-    "module": "brd",
-    "label": "likely false positive",
-    "note": "brd_find_or_alloc_device() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "erofs:erofs_xattr_prefixes_init:506:525",
-    "module": "erofs",
-    "label": "likely false positive",
-    "note": "erofs_read_metadata() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "erofs:z_erofs_parse_cfgs:457:475",
-    "module": "erofs",
-    "label": "likely false positive",
-    "note": "erofs_read_metadata() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
     "id": "erofs:z_erofs_submit_queue:1663:1779",
     "module": "erofs",
     "label": "likely false positive",
     "note": "jobqueue_init() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "erofs:z_erofs_register_pcluster:760:762",
-    "module": "erofs",
-    "label": "likely false positive",
-    "note": "z_erofs_alloc_pcluster() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
     "basis": "pattern"
   },
   {
@@ -105,88 +35,11 @@
     "basis": "-"
   },
   {
-    "id": "hfs:hfs_bnode_unlink:287:317",
-    "module": "hfs",
-    "label": "likely false positive",
-    "note": "hfs_bnode_find() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "hfs:hfs_bnode_unlink:298:317",
-    "module": "hfs",
-    "label": "likely false positive",
-    "note": "hfs_bnode_find() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "hfs:hfs_brec_insert:78:80",
-    "module": "hfs",
-    "label": "likely false positive",
-    "note": "hfs_bnode_find() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "hfs:hfs_brec_insert:102:104",
-    "module": "hfs",
-    "label": "likely false positive",
-    "note": "hfs_bnode_split() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "hfs:hfs_btree_inc_height:486:488",
-    "module": "hfs",
-    "label": "likely false positive",
-    "note": "hfs_bnode_find() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "hfs:hfs_btree_inc_height:490:493",
-    "module": "hfs",
-    "label": "likely false positive",
-    "note": "hfs_bmap_alloc() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "hfs:hfs_brec_update_parent:386:388",
-    "module": "hfs",
-    "label": "false positive",
-    "note": "hfs_bnode_find() ERR_PTR result; nothing to release on that path.",
-    "basis": "reviewed in source"
-  },
-  {
     "id": "hfs:hfs_brec_update_parent:386:391",
     "module": "hfs",
     "label": "false positive",
-    "note": "hfs_bnode_find() ERR_PTR result; nothing to release on that path.",
+    "note": "hfs_bnode_find() node is put on the error path via hfs_bnode_put.",
     "basis": "reviewed in source"
-  },
-  {
-    "id": "hfs:hfs_brec_update_parent:414:416",
-    "module": "hfs",
-    "label": "likely false positive",
-    "note": "hfs_bnode_split() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "hfs:hfs_brec_remove:201:203",
-    "module": "hfs",
-    "label": "likely false positive",
-    "note": "hfs_bnode_find() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "hfs:hfs_btree_write:203:224",
-    "module": "hfs",
-    "label": "likely false positive",
-    "note": "hfs_bnode_find() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "hfs:hfs_bmap_free:370:418",
-    "module": "hfs",
-    "label": "likely false positive",
-    "note": "hfs_bnode_find() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
   },
   {
     "id": "hfs:hfs_bmap_free:387:418",
@@ -196,38 +49,31 @@
     "basis": "pattern"
   },
   {
-    "id": "hfs:hfs_correct_next_unused_CNID:259:263",
-    "module": "hfs",
-    "label": "false positive",
-    "note": "hfs_bnode_find() returns an ERR_PTR on failure; on the IS_ERR path nothing was obtained, so there is nothing to release.",
-    "basis": "reviewed in source"
-  },
-  {
     "id": "hfs:hfs_correct_next_unused_CNID:259:330",
     "module": "hfs",
     "label": "false positive",
-    "note": "hfs_bnode_find() returns an ERR_PTR on failure; on the IS_ERR path nothing was obtained, so there is nothing to release.",
+    "note": "hfs_bnode_find() returns a reference-counted node released by hfs_bnode_put; on the deeper -ENOENT exits the first node has already been put. The analyser does not model the refcounted lookup.",
     "basis": "reviewed in source"
   },
   {
     "id": "hfs:hfs_correct_next_unused_CNID:259:331",
     "module": "hfs",
     "label": "false positive",
-    "note": "hfs_bnode_find() returns an ERR_PTR on failure; on the IS_ERR path nothing was obtained, so there is nothing to release.",
+    "note": "hfs_bnode_find() returns a reference-counted node released by hfs_bnode_put; on the deeper -ENOENT exits the first node has already been put. The analyser does not model the refcounted lookup.",
     "basis": "reviewed in source"
   },
   {
     "id": "hfs:hfs_correct_next_unused_CNID:272:330",
     "module": "hfs",
     "label": "false positive",
-    "note": "same ERR_PTR pattern as the lookup at line 259.",
+    "note": "same refcounted-lookup pattern as the node obtained at line 259.",
     "basis": "reviewed in source"
   },
   {
     "id": "hfs:hfs_correct_next_unused_CNID:272:331",
     "module": "hfs",
     "label": "false positive",
-    "note": "same ERR_PTR pattern as the lookup at line 259.",
+    "note": "same refcounted-lookup pattern as the node obtained at line 259.",
     "basis": "reviewed in source"
   },
   {
@@ -294,25 +140,18 @@
     "basis": "pattern"
   },
   {
-    "id": "scsi_debug:sdebug_error_write:1158:1160",
-    "module": "scsi_debug",
-    "label": "likely false positive",
-    "note": "memdup_user_nul() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
     "id": "scsi_debug:sdebug_add_host_helper:8851:8888",
     "module": "scsi_debug",
-    "label": "likely false positive",
-    "note": "sdebug_device_create() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
+    "label": "false positive",
+    "note": "the sdebug_dev_info objects are freed in the clean: loop by list iteration; the analyser does not track release through list_for_each_entry_safe.",
+    "basis": "reviewed in source"
   },
   {
     "id": "scsi_debug:sdebug_add_host_helper:8851:8874",
     "module": "scsi_debug",
-    "label": "likely false positive",
-    "note": "sdebug_device_create() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
+    "label": "false positive",
+    "note": "the sdebug_dev_info objects are freed in the clean: loop by list iteration; the analyser does not track release through list_for_each_entry_safe.",
+    "basis": "reviewed in source"
   },
   {
     "id": "snd_aloop:loopback_open:1263:1350",
@@ -357,41 +196,6 @@
     "basis": "pattern"
   },
   {
-    "id": "tun:update_filter:832:834",
-    "module": "tun",
-    "label": "likely false positive",
-    "note": "memdup_user() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "uinput:uinput_ioctl_handler:999:1106",
-    "module": "uinput",
-    "label": "likely false positive",
-    "note": "strndup_user() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "uinput:uinput_setup_device_legacy:564:566",
-    "module": "uinput",
-    "label": "likely false positive",
-    "note": "memdup_user() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "vxlan:__vxlan_sock_add:3671:3675",
-    "module": "vxlan",
-    "label": "likely false positive",
-    "note": "vxlan_socket_create() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "vxlan:__vxlan_mdb_add:1251:1253",
-    "module": "vxlan",
-    "label": "likely false positive",
-    "note": "vxlan_mdb_entry_get() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
     "id": "vxlan:vxlan_mdb_remote_src_add:853:876",
     "module": "vxlan",
     "label": "false positive",
@@ -404,12 +208,5 @@
     "label": "false positive",
     "note": "the entry is linked into the remote's source list by the add helper and removed on the error path when it was newly created.",
     "basis": "reviewed in source"
-  },
-  {
-    "id": "zram:disksize_store:2518:2541",
-    "module": "zram",
-    "label": "likely false positive",
-    "note": "zcomp_create() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
   }
 ]

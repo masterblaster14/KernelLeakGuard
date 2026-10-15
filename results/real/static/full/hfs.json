@@ -233,348 +233,6 @@
   "candidates": [
     {
       "alloc": {
-        "col": 9,
-        "file": "linux-6.18.55/fs/hfs/bnode.c",
-        "line": 287
-      },
-      "alloc_size": -1,
-      "allocator": "hfs_bnode_find",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 1,
-        "file": "linux-6.18.55/fs/hfs/bnode.c",
-        "line": 317
-      },
-      "exit_kind": "void",
-      "fix": {
-        "col": 4,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/hfs/bnode.c",
-        "line": 289
-      },
-      "function": "hfs_bnode_unlink",
-      "id": "hfs:hfs_bnode_unlink:287:317",
-      "module": "hfs",
-      "path_lines": [
-        287,
-        289,
-        317
-      ],
-      "release_sites": [
-        {
-          "col": 3,
-          "file": "linux-6.18.55/fs/hfs/bnode.c",
-          "line": 293
-        }
-      ],
-      "return_value": "",
-      "triggers": [
-        {
-          "callee": "hfs_bnode_find",
-          "file": "linux-6.18.55/fs/hfs/bnode.c",
-          "kind": "alloc",
-          "line": 287
-        }
-      ],
-      "source_path": "linux-6.18.55/fs/hfs/bnode.c"
-    },
-    {
-      "alloc": {
-        "col": 9,
-        "file": "linux-6.18.55/fs/hfs/bnode.c",
-        "line": 298
-      },
-      "alloc_size": -1,
-      "allocator": "hfs_bnode_find",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 1,
-        "file": "linux-6.18.55/fs/hfs/bnode.c",
-        "line": 317
-      },
-      "exit_kind": "void",
-      "fix": {
-        "col": 4,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/hfs/bnode.c",
-        "line": 300
-      },
-      "function": "hfs_bnode_unlink",
-      "id": "hfs:hfs_bnode_unlink:298:317",
-      "module": "hfs",
-      "path_lines": [
-        298,
-        300,
-        317
-      ],
-      "release_sites": [
-        {
-          "col": 3,
-          "file": "linux-6.18.55/fs/hfs/bnode.c",
-          "line": 304
-        }
-      ],
-      "return_value": "",
-      "triggers": [
-        {
-          "callee": "hfs_bnode_find",
-          "file": "linux-6.18.55/fs/hfs/bnode.c",
-          "kind": "alloc",
-          "line": 298
-        }
-      ],
-      "source_path": "linux-6.18.55/fs/hfs/bnode.c"
-    },
-    {
-      "alloc": {
-        "col": 10,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 78
-      },
-      "alloc_size": -1,
-      "allocator": "hfs_bnode_find",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 4,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 80
-      },
-      "exit_kind": "unknown",
-      "fix": {
-        "col": 11,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 80
-      },
-      "function": "hfs_brec_insert",
-      "id": "hfs:hfs_brec_insert:78:80",
-      "module": "hfs",
-      "path_lines": [
-        78,
-        80,
-        175
-      ],
-      "release_sites": [],
-      "return_value": "?",
-      "triggers": [
-        {
-          "callee": "hfs_bnode_find",
-          "file": "linux-6.18.55/fs/hfs/brec.c",
-          "kind": "alloc",
-          "line": 78
-        }
-      ],
-      "source_path": "linux-6.18.55/fs/hfs/brec.c"
-    },
-    {
-      "alloc": {
-        "col": 14,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 102
-      },
-      "alloc_size": -1,
-      "allocator": "hfs_bnode_split",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 4,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 104
-      },
-      "exit_kind": "unknown",
-      "fix": {
-        "col": 11,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 104
-      },
-      "function": "hfs_brec_insert",
-      "id": "hfs:hfs_brec_insert:102:104",
-      "module": "hfs",
-      "path_lines": [
-        102,
-        104,
-        175
-      ],
-      "release_sites": [
-        {
-          "col": 3,
-          "file": "linux-6.18.55/fs/hfs/brec.c",
-          "line": 162
-        }
-      ],
-      "return_value": "?",
-      "triggers": [
-        {
-          "callee": "hfs_bnode_split",
-          "file": "linux-6.18.55/fs/hfs/brec.c",
-          "kind": "alloc",
-          "line": 102
-        }
-      ],
-      "source_path": "linux-6.18.55/fs/hfs/brec.c"
-    },
-    {
-      "alloc": {
-        "col": 10,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 486
-      },
-      "alloc_size": -1,
-      "allocator": "hfs_bnode_find",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 4,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 488
-      },
-      "exit_kind": "unknown",
-      "fix": {
-        "col": 11,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 488
-      },
-      "function": "hfs_btree_inc_height",
-      "id": "hfs:hfs_btree_inc_height:486:488",
-      "module": "hfs",
-      "path_lines": [
-        486,
-        488,
-        548
-      ],
-      "release_sites": [
-        {
-          "col": 3,
-          "file": "linux-6.18.55/fs/hfs/brec.c",
-          "line": 492
-        },
-        {
-          "col": 3,
-          "file": "linux-6.18.55/fs/hfs/brec.c",
-          "line": 542
-        }
-      ],
-      "return_value": "?",
-      "triggers": [
-        {
-          "callee": "hfs_bnode_find",
-          "file": "linux-6.18.55/fs/hfs/brec.c",
-          "kind": "alloc",
-          "line": 486
-        }
-      ],
-      "source_path": "linux-6.18.55/fs/hfs/brec.c"
-    },
-    {
-      "alloc": {
-        "col": 13,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 490
-      },
-      "alloc_size": -1,
-      "allocator": "hfs_bmap_alloc",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 3,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 493
-      },
-      "exit_kind": "unknown",
-      "fix": {
-        "col": 3,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 492
-      },
-      "function": "hfs_btree_inc_height",
-      "id": "hfs:hfs_btree_inc_height:490:493",
-      "module": "hfs",
-      "path_lines": [
-        490,
-        492,
-        548
-      ],
-      "release_sites": [
-        {
-          "col": 2,
-          "file": "linux-6.18.55/fs/hfs/brec.c",
-          "line": 544
-        }
-      ],
-      "return_value": "?",
-      "triggers": [
-        {
-          "callee": "hfs_bmap_alloc",
-          "file": "linux-6.18.55/fs/hfs/brec.c",
-          "kind": "alloc",
-          "line": 490
-        }
-      ],
-      "source_path": "linux-6.18.55/fs/hfs/brec.c"
-    },
-    {
-      "alloc": {
-        "col": 11,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 386
-      },
-      "alloc_size": -1,
-      "allocator": "hfs_bnode_find",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 3,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 388
-      },
-      "exit_kind": "unknown",
-      "fix": {
-        "col": 10,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 388
-      },
-      "function": "hfs_brec_update_parent",
-      "id": "hfs:hfs_brec_update_parent:386:388",
-      "module": "hfs",
-      "path_lines": [
-        386,
-        388,
-        475
-      ],
-      "release_sites": [
-        {
-          "col": 2,
-          "file": "linux-6.18.55/fs/hfs/brec.c",
-          "line": 441
-        }
-      ],
-      "return_value": "?",
-      "triggers": [
-        {
-          "callee": "hfs_bnode_find",
-          "file": "linux-6.18.55/fs/hfs/brec.c",
-          "kind": "alloc",
-          "line": 386
-        }
-      ],
-      "source_path": "linux-6.18.55/fs/hfs/brec.c"
-    },
-    {
-      "alloc": {
         "col": 11,
         "file": "linux-6.18.55/fs/hfs/brec.c",
         "line": 386
@@ -613,217 +271,6 @@
     },
     {
       "alloc": {
-        "col": 15,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 414
-      },
-      "alloc_size": -1,
-      "allocator": "hfs_bnode_split",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 5,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 416
-      },
-      "exit_kind": "unknown",
-      "fix": {
-        "col": 12,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 416
-      },
-      "function": "hfs_brec_update_parent",
-      "id": "hfs:hfs_brec_update_parent:414:416",
-      "module": "hfs",
-      "path_lines": [
-        412,
-        416,
-        475
-      ],
-      "release_sites": [
-        {
-          "col": 3,
-          "file": "linux-6.18.55/fs/hfs/brec.c",
-          "line": 459
-        }
-      ],
-      "return_value": "?",
-      "triggers": [
-        {
-          "callee": "hfs_bnode_split",
-          "file": "linux-6.18.55/fs/hfs/brec.c",
-          "kind": "alloc",
-          "line": 414
-        }
-      ],
-      "source_path": "linux-6.18.55/fs/hfs/brec.c"
-    },
-    {
-      "alloc": {
-        "col": 12,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 201
-      },
-      "alloc_size": -1,
-      "allocator": "hfs_bnode_find",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 4,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 203
-      },
-      "exit_kind": "unknown",
-      "fix": {
-        "col": 11,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/hfs/brec.c",
-        "line": 203
-      },
-      "function": "hfs_brec_remove",
-      "id": "hfs:hfs_brec_remove:201:203",
-      "module": "hfs",
-      "path_lines": [
-        201,
-        203,
-        248
-      ],
-      "release_sites": [
-        {
-          "col": 3,
-          "file": "linux-6.18.55/fs/hfs/brec.c",
-          "line": 204
-        }
-      ],
-      "return_value": "?",
-      "triggers": [
-        {
-          "callee": "hfs_bnode_find",
-          "file": "linux-6.18.55/fs/hfs/brec.c",
-          "kind": "alloc",
-          "line": 201
-        }
-      ],
-      "source_path": "linux-6.18.55/fs/hfs/brec.c"
-    },
-    {
-      "alloc": {
-        "col": 9,
-        "file": "linux-6.18.55/fs/hfs/btree.c",
-        "line": 203
-      },
-      "alloc_size": -1,
-      "allocator": "hfs_bnode_find",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 1,
-        "file": "linux-6.18.55/fs/hfs/btree.c",
-        "line": 224
-      },
-      "exit_kind": "void",
-      "fix": {
-        "col": 3,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/hfs/btree.c",
-        "line": 206
-      },
-      "function": "hfs_btree_write",
-      "id": "hfs:hfs_btree_write:203:224",
-      "module": "hfs",
-      "path_lines": [
-        203,
-        206,
-        224
-      ],
-      "release_sites": [
-        {
-          "col": 2,
-          "file": "linux-6.18.55/fs/hfs/btree.c",
-          "line": 223
-        }
-      ],
-      "return_value": "",
-      "triggers": [
-        {
-          "callee": "hfs_bnode_find",
-          "file": "linux-6.18.55/fs/hfs/btree.c",
-          "kind": "alloc",
-          "line": 203
-        }
-      ],
-      "source_path": "linux-6.18.55/fs/hfs/btree.c"
-    },
-    {
-      "alloc": {
-        "col": 9,
-        "file": "linux-6.18.55/fs/hfs/btree.c",
-        "line": 370
-      },
-      "alloc_size": -1,
-      "allocator": "hfs_bnode_find",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 1,
-        "file": "linux-6.18.55/fs/hfs/btree.c",
-        "line": 418
-      },
-      "exit_kind": "void",
-      "fix": {
-        "col": 3,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/hfs/btree.c",
-        "line": 372
-      },
-      "function": "hfs_bmap_free",
-      "id": "hfs:hfs_bmap_free:370:418",
-      "module": "hfs",
-      "path_lines": [
-        363,
-        372,
-        418
-      ],
-      "release_sites": [
-        {
-          "col": 4,
-          "file": "linux-6.18.55/fs/hfs/btree.c",
-          "line": 383
-        },
-        {
-          "col": 3,
-          "file": "linux-6.18.55/fs/hfs/btree.c",
-          "line": 386
-        },
-        {
-          "col": 3,
-          "file": "linux-6.18.55/fs/hfs/btree.c",
-          "line": 409
-        },
-        {
-          "col": 2,
-          "file": "linux-6.18.55/fs/hfs/btree.c",
-          "line": 415
-        }
-      ],
-      "return_value": "",
-      "triggers": [
-        {
-          "callee": "hfs_bnode_find",
-          "file": "linux-6.18.55/fs/hfs/btree.c",
-          "kind": "alloc",
-          "line": 370
-        }
-      ],
-      "source_path": "linux-6.18.55/fs/hfs/btree.c"
-    },
-    {
-      "alloc": {
         "col": 10,
         "file": "linux-6.18.55/fs/hfs/btree.c",
         "line": 387
@@ -839,18 +286,14 @@
         "line": 418
       },
       "exit_kind": "void",
-      "fix": {
-        "col": 4,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/hfs/btree.c",
-        "line": 389
-      },
+      "fix": null,
       "function": "hfs_bmap_free",
       "id": "hfs:hfs_bmap_free:387:418",
       "module": "hfs",
       "path_lines": [
         386,
-        389,
+        390,
+        397,
         418
       ],
       "release_sites": [
@@ -881,74 +324,8 @@
         }
       ],
       "return_value": "",
-      "triggers": [
-        {
-          "callee": "hfs_bnode_find",
-          "file": "linux-6.18.55/fs/hfs/btree.c",
-          "kind": "alloc",
-          "line": 387
-        }
-      ],
+      "triggers": [],
       "source_path": "linux-6.18.55/fs/hfs/btree.c"
-    },
-    {
-      "alloc": {
-        "col": 9,
-        "file": "linux-6.18.55/fs/hfs/catalog.c",
-        "line": 259
-      },
-      "alloc_size": -1,
-      "allocator": "hfs_bnode_find",
-      "approximate": false,
-      "category": "missing-release-on-error-path",
-      "confidence": "high",
-      "exit": {
-        "col": 3,
-        "file": "linux-6.18.55/fs/hfs/catalog.c",
-        "line": 263
-      },
-      "exit_kind": "error",
-      "fix": {
-        "col": 3,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/hfs/catalog.c",
-        "line": 261
-      },
-      "function": "hfs_correct_next_unused_CNID",
-      "id": "hfs:hfs_correct_next_unused_CNID:259:263",
-      "module": "hfs",
-      "path_lines": [
-        259,
-        261,
-        331
-      ],
-      "release_sites": [
-        {
-          "col": 5,
-          "file": "linux-6.18.55/fs/hfs/catalog.c",
-          "line": 314
-        },
-        {
-          "col": 5,
-          "file": "linux-6.18.55/fs/hfs/catalog.c",
-          "line": 320
-        },
-        {
-          "col": 3,
-          "file": "linux-6.18.55/fs/hfs/catalog.c",
-          "line": 326
-        }
-      ],
-      "return_value": "-ENOENT",
-      "triggers": [
-        {
-          "callee": "hfs_bnode_find",
-          "file": "linux-6.18.55/fs/hfs/catalog.c",
-          "kind": "alloc",
-          "line": 259
-        }
-      ],
-      "source_path": "linux-6.18.55/fs/hfs/catalog.c"
     },
     {
       "alloc": {
@@ -1117,9 +494,15 @@
       "module": "hfs",
       "path_lines": [
         272,
-        274,
+        275,
+        280,
+        282,
+        283,
+        292,
+        323,
         328,
         266,
+        274,
         330,
         331
       ],
@@ -1142,12 +525,6 @@
       ],
       "return_value": "-ENOENT",
       "triggers": [
-        {
-          "callee": "hfs_bnode_find",
-          "file": "linux-6.18.55/fs/hfs/catalog.c",
-          "kind": "alloc",
-          "line": 272
-        },
         {
           "callee": "hfs_bnode_find",
           "file": "linux-6.18.55/fs/hfs/catalog.c",
@@ -1185,9 +562,15 @@
       "module": "hfs",
       "path_lines": [
         272,
-        274,
+        275,
+        280,
+        282,
+        283,
+        292,
+        323,
         328,
         266,
+        274,
         331
       ],
       "release_sites": [
@@ -1214,12 +597,6 @@
           "file": "linux-6.18.55/fs/hfs/catalog.c",
           "kind": "alloc",
           "line": 272
-        },
-        {
-          "callee": "hfs_bnode_find",
-          "file": "linux-6.18.55/fs/hfs/catalog.c",
-          "kind": "alloc",
-          "line": 272
         }
       ],
       "source_path": "linux-6.18.55/fs/hfs/catalog.c"
@@ -1234,14 +611,10 @@
   },
   "stats": {
     "alloc_sites": 37,
-    "analysis_ms": 12.194071,
+    "analysis_ms": 12.036308,
     "budget_exhausted": 0,
-    "candidates": 18,
+    "candidates": 6,
     "functions": 135
   },
-  "tool": "klg-analyze",
-  "ir": {
-    "objects": 16,
-    "ir_failed": []
-  }
+  "tool": "klg-analyze"
 }

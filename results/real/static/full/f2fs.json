@@ -559,55 +559,6 @@
   "candidates": [
     {
       "alloc": {
-        "col": 9,
-        "file": "linux-6.18.55/fs/f2fs/file.c",
-        "line": 3825
-      },
-      "alloc_size": -1,
-      "allocator": "strndup_user",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 3,
-        "file": "linux-6.18.55/fs/f2fs/file.c",
-        "line": 3827
-      },
-      "exit_kind": "unknown",
-      "fix": {
-        "col": 10,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/f2fs/file.c",
-        "line": 3827
-      },
-      "function": "f2fs_ioc_setfslabel",
-      "id": "f2fs:f2fs_ioc_setfslabel:3825:3827",
-      "module": "f2fs",
-      "path_lines": [
-        3825,
-        3827,
-        3849
-      ],
-      "release_sites": [
-        {
-          "col": 2,
-          "file": "linux-6.18.55/fs/f2fs/file.c",
-          "line": 3847
-        }
-      ],
-      "return_value": "?",
-      "triggers": [
-        {
-          "callee": "strndup_user",
-          "file": "linux-6.18.55/fs/f2fs/file.c",
-          "kind": "alloc",
-          "line": 3825
-        }
-      ],
-      "source_path": "linux-6.18.55/fs/f2fs/file.c"
-    },
-    {
-      "alloc": {
         "col": 5,
         "file": "linux-6.18.55/fs/f2fs/super.c",
         "line": 2731
@@ -967,7 +918,7 @@
       },
       "alloc_size": -1,
       "allocator": "add_fsync_inode",
-      "approximate": true,
+      "approximate": false,
       "category": "never-released",
       "confidence": "medium",
       "exit": {
@@ -976,33 +927,18 @@
         "line": 493
       },
       "exit_kind": "unknown",
-      "fix": {
-        "col": 11,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/f2fs/recovery.c",
-        "line": 464
-      },
+      "fix": null,
       "function": "find_fsync_dnodes",
       "id": "f2fs:find_fsync_dnodes:461:493",
       "module": "f2fs",
       "path_lines": [
         461,
-        464,
-        470,
-        471,
-        472,
+        477,
         493
       ],
       "release_sites": [],
       "return_value": "?",
-      "triggers": [
-        {
-          "callee": "add_fsync_inode",
-          "file": "linux-6.18.55/fs/f2fs/recovery.c",
-          "kind": "alloc",
-          "line": 461
-        }
-      ],
+      "triggers": [],
       "source_path": "linux-6.18.55/fs/f2fs/recovery.c"
     },
     {
@@ -1013,7 +949,7 @@
       },
       "alloc_size": -1,
       "allocator": "add_fsync_inode",
-      "approximate": true,
+      "approximate": false,
       "category": "never-released",
       "confidence": "medium",
       "exit": {
@@ -1033,10 +969,7 @@
       "module": "f2fs",
       "path_lines": [
         461,
-        464,
-        470,
-        471,
-        472,
+        477,
         425,
         422,
         429,
@@ -1048,12 +981,6 @@
       "release_sites": [],
       "return_value": "?",
       "triggers": [
-        {
-          "callee": "add_fsync_inode",
-          "file": "linux-6.18.55/fs/f2fs/recovery.c",
-          "kind": "alloc",
-          "line": 461
-        },
         {
           "callee": "f2fs_is_valid_blkaddr",
           "file": "linux-6.18.55/fs/f2fs/recovery.c",
@@ -1085,7 +1012,7 @@
         "file": "linux-6.18.55/fs/f2fs/recovery.c",
         "line": 240
       },
-      "exit_kind": "unknown",
+      "exit_kind": "error",
       "fix": {
         "col": 2,
         "exclusive": true,
@@ -1097,19 +1024,21 @@
       "module": "f2fs",
       "path_lines": [
         177,
-        180,
+        184,
+        186,
+        189,
         232,
         235,
         240
       ],
       "release_sites": [],
-      "return_value": "?",
+      "return_value": "error from init_recovered_filename",
       "triggers": [
         {
-          "callee": "add_fsync_inode",
+          "callee": "init_recovered_filename",
           "file": "linux-6.18.55/fs/f2fs/recovery.c",
-          "kind": "alloc",
-          "line": 177
+          "kind": "call",
+          "line": 187
         },
         {
           "callee": "is_file",
@@ -1199,55 +1128,6 @@
         }
       ],
       "source_path": "linux-6.18.55/fs/f2fs/extent_cache.c"
-    },
-    {
-      "alloc": {
-        "col": 11,
-        "file": "linux-6.18.55/fs/f2fs/acl.c",
-        "line": 274
-      },
-      "alloc_size": -1,
-      "allocator": "f2fs_acl_to_disk",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 4,
-        "file": "linux-6.18.55/fs/f2fs/acl.c",
-        "line": 277
-      },
-      "exit_kind": "unknown",
-      "fix": {
-        "col": 4,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/f2fs/acl.c",
-        "line": 276
-      },
-      "function": "__f2fs_set_acl",
-      "id": "f2fs:__f2fs_set_acl:274:277",
-      "module": "f2fs",
-      "path_lines": [
-        274,
-        276,
-        289
-      ],
-      "release_sites": [
-        {
-          "col": 2,
-          "file": "linux-6.18.55/fs/f2fs/acl.c",
-          "line": 283
-        }
-      ],
-      "return_value": "?",
-      "triggers": [
-        {
-          "callee": "f2fs_acl_to_disk",
-          "file": "linux-6.18.55/fs/f2fs/acl.c",
-          "kind": "alloc",
-          "line": 274
-        }
-      ],
-      "source_path": "linux-6.18.55/fs/f2fs/acl.c"
     }
   ],
   "module": "f2fs",
@@ -1259,14 +1139,10 @@
   },
   "stats": {
     "alloc_sites": 85,
-    "analysis_ms": 179.650251,
-    "budget_exhausted": 2,
-    "candidates": 12,
+    "analysis_ms": 199.374322,
+    "budget_exhausted": 1,
+    "candidates": 10,
     "functions": 1012
   },
-  "tool": "klg-analyze",
-  "ir": {
-    "objects": 20,
-    "ir_failed": []
-  }
+  "tool": "klg-analyze"
 }

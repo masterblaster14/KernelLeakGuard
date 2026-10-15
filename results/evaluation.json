@@ -21,7 +21,7 @@
       "false_alarms": [
         "klg_s09_loop_cleanup:20"
       ],
-      "analysis_ms": 27.2,
+      "analysis_ms": 13.0,
       "warnings": 19
     },
     "static/no-escape": {

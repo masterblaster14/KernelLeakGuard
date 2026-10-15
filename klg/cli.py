@@ -97,6 +97,11 @@ def cmd_real(args):
              only=args.only.split(",") if args.only else None)
 
 
+def cmd_seed(args):
+    from . import seed
+    seed.run(only=args.only.split(",") if args.only else None, skip_vm=args.skip_vm)
+
+
 def cmd_all(args):
     cmd_build(args)
     args.all_variants = True
@@ -125,6 +130,10 @@ def main(argv=None):
     r.add_argument("--skip-vm", action="store_true")
     r.add_argument("--only", help="comma-separated module names (testing)")
     r.set_defaults(fn=cmd_real)
+    sd = sub.add_parser("seed", help="seed known leaks into real kernel modules and verify them")
+    sd.add_argument("--only", help="comma-separated seed names")
+    sd.add_argument("--skip-vm", action="store_true")
+    sd.set_defaults(fn=cmd_seed)
     sub.add_parser("show").set_defaults(fn=cmd_show)
     sub.add_parser("all").set_defaults(fn=cmd_all)
     args = p.parse_args(argv)

@@ -195,125 +195,6 @@
   "candidates": [
     {
       "alloc": {
-        "col": 15,
-        "file": "linux-6.18.55/fs/erofs/xattr.c",
-        "line": 506
-      },
-      "alloc_size": -1,
-      "allocator": "erofs_read_metadata",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 2,
-        "file": "linux-6.18.55/fs/erofs/xattr.c",
-        "line": 525
-      },
-      "exit_kind": "unknown",
-      "fix": {
-        "col": 10,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/erofs/xattr.c",
-        "line": 509
-      },
-      "function": "erofs_xattr_prefixes_init",
-      "id": "erofs:erofs_xattr_prefixes_init:506:525",
-      "module": "erofs",
-      "path_lines": [
-        506,
-        509,
-        519,
-        505,
-        521,
-        524,
-        525,
-        526
-      ],
-      "release_sites": [
-        {
-          "col": 4,
-          "file": "linux-6.18.55/fs/erofs/xattr.c",
-          "line": 513
-        }
-      ],
-      "return_value": "?",
-      "triggers": [
-        {
-          "callee": "erofs_read_metadata",
-          "file": "linux-6.18.55/fs/erofs/xattr.c",
-          "kind": "alloc",
-          "line": 506
-        },
-        {
-          "callee": "erofs_read_metadata",
-          "file": "linux-6.18.55/fs/erofs/xattr.c",
-          "kind": "alloc",
-          "line": 506
-        }
-      ],
-      "source_path": "linux-6.18.55/fs/erofs/xattr.c"
-    },
-    {
-      "alloc": {
-        "col": 10,
-        "file": "linux-6.18.55/fs/erofs/decompressor.c",
-        "line": 457
-      },
-      "alloc_size": -1,
-      "allocator": "erofs_read_metadata",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 2,
-        "file": "linux-6.18.55/fs/erofs/decompressor.c",
-        "line": 475
-      },
-      "exit_kind": "unknown",
-      "fix": {
-        "col": 10,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/erofs/decompressor.c",
-        "line": 459
-      },
-      "function": "z_erofs_parse_cfgs",
-      "id": "erofs:z_erofs_parse_cfgs:457:475",
-      "module": "erofs",
-      "path_lines": [
-        457,
-        459,
-        473,
-        450,
-        451,
-        474,
-        476
-      ],
-      "release_sites": [
-        {
-          "col": 3,
-          "file": "linux-6.18.55/fs/erofs/decompressor.c",
-          "line": 470
-        }
-      ],
-      "return_value": "?",
-      "triggers": [
-        {
-          "callee": "erofs_read_metadata",
-          "file": "linux-6.18.55/fs/erofs/decompressor.c",
-          "kind": "alloc",
-          "line": 457
-        },
-        {
-          "callee": "erofs_read_metadata",
-          "file": "linux-6.18.55/fs/erofs/decompressor.c",
-          "kind": "alloc",
-          "line": 457
-        }
-      ],
-      "source_path": "linux-6.18.55/fs/erofs/decompressor.c"
-    },
-    {
-      "alloc": {
         "col": 17,
         "file": "linux-6.18.55/fs/erofs/zdata.c",
         "line": 1663
@@ -419,55 +300,6 @@
     },
     {
       "alloc": {
-        "col": 8,
-        "file": "linux-6.18.55/fs/erofs/zdata.c",
-        "line": 760
-      },
-      "alloc_size": -1,
-      "allocator": "z_erofs_alloc_pcluster",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 3,
-        "file": "linux-6.18.55/fs/erofs/zdata.c",
-        "line": 762
-      },
-      "exit_kind": "unknown",
-      "fix": {
-        "col": 10,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/erofs/zdata.c",
-        "line": 762
-      },
-      "function": "z_erofs_register_pcluster",
-      "id": "erofs:z_erofs_register_pcluster:760:762",
-      "module": "erofs",
-      "path_lines": [
-        752,
-        762,
-        812
-      ],
-      "release_sites": [
-        {
-          "col": 2,
-          "file": "linux-6.18.55/fs/erofs/zdata.c",
-          "line": 810
-        }
-      ],
-      "return_value": "?",
-      "triggers": [
-        {
-          "callee": "z_erofs_alloc_pcluster",
-          "file": "linux-6.18.55/fs/erofs/zdata.c",
-          "kind": "alloc",
-          "line": 760
-        }
-      ],
-      "source_path": "linux-6.18.55/fs/erofs/zdata.c"
-    },
-    {
-      "alloc": {
         "col": 9,
         "file": "linux-6.18.55/fs/erofs/zdata.c",
         "line": 273
@@ -545,14 +377,10 @@
   },
   "stats": {
     "alloc_sites": 29,
-    "analysis_ms": 35.311189,
+    "analysis_ms": 36.806337,
     "budget_exhausted": 2,
-    "candidates": 6,
+    "candidates": 3,
     "functions": 191
   },
-  "tool": "klg-analyze",
-  "ir": {
-    "objects": 12,
-    "ir_failed": []
-  }
+  "tool": "klg-analyze"
 }

@@ -262,7 +262,24 @@ Benchmark: 32 modules, 17 leaking + 42 safe allocation sites.
 
 ---
 
-## 5a. FINAL STATUS (2026-10-16) — read first
+## 5. LATEST (2026-10-16, after 5a) — read first
+
+- Analyzer: IS_ERR()/ERR_PTR modelling (`errPtrTest` in analyzer/src/Analyzer.cpp).
+  Real-code warnings 115 -> 64; corpus unchanged (TP16 FN1 FP1); 27 tests pass.
+  After editing Analyzer.cpp from Windows, `touch src/Analyzer.cpp` before `make`.
+- Real re-run (15 modules, TCG): 64 warnings, 30 inconclusive, 0 confirmed,
+  6166 fault points; erofs sweep leak + null_blk crash still reproduced.
+  Triage: 12 false positive, 10 likely FP, 8 not reviewed.
+- New `python3 -m klg seed` (klg/seed.py, seeds/*.json): removes one release from
+  real kernel code, builds out-of-tree, compares with the unmodified baseline.
+  brd seed: detected + fix validated statically; VM confirmation obstructed
+  because brd init crashes under fault injection (reboot clears kmemleak).
+  scsi_debug seed dropped: sdbg_host escapes into a helper, so it is not flagged.
+- Report: 4.4 real code, 4.5 seeded leaks, 4.6 Analysis (37 pages); slide 15 updated.
+- Next if continuing: get one seeded leak CONFIRMED in the VM (needs KVM, or a
+  crash-robust module whose init allocation is not passed to a helper).
+
+## 5a. STATUS (2026-10-16)
 
 Done since the sections below were written:
 - **Real-kernel evaluation done** (`python3 -m klg real`): static analysis of all

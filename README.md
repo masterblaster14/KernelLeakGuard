@@ -82,6 +82,8 @@ python3 -m klg fix                       # fix patches for confirmed leaks, vali
                                          # (compile, re-analysis, VM re-run) → results/fixes/
 python3 -m klg real [--only a,b,c]       # real Linux modules (vm/real_modules.fragment):
                                          # static analysis + VM verification → results/real/
+python3 -m klg seed [--only name]        # reintroduce a known leak into a real module and
+                                         # detect → confirm → fix it → results/seeded/
 bash scripts/build_docs.sh               # tests, figures, report, slides, manual
 ```
 
