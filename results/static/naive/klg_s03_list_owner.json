@@ -1,0 +1,66 @@
+{
+  "alloc_sites": {
+    "item_add": [
+      {
+        "allocator": "kzalloc",
+        "file": "klg_s03_list_owner.c",
+        "line": 33
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 7,
+        "file": "klg_s03_list_owner.c",
+        "line": 33
+      },
+      "alloc_size": 24,
+      "allocator": "kzalloc",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 2,
+        "file": "klg_s03_list_owner.c",
+        "line": 48
+      },
+      "exit_kind": "normal",
+      "fix": null,
+      "function": "item_add",
+      "id": "klg_s03_list_owner:item_add:33:48",
+      "module": "klg_s03_list_owner",
+      "path_lines": [
+        33,
+        34,
+        36,
+        44,
+        49
+      ],
+      "release_sites": [
+        {
+          "col": 3,
+          "file": "klg_s03_list_owner.c",
+          "line": 40
+        }
+      ],
+      "return_value": "0",
+      "triggers": []
+    }
+  ],
+  "module": "klg_s03_list_owner",
+  "options": {
+    "branch_correlation": false,
+    "containers": false,
+    "escape": false,
+    "interprocedural": false
+  },
+  "stats": {
+    "alloc_sites": 1,
+    "analysis_ms": 0.60935899999999998,
+    "budget_exhausted": 0,
+    "candidates": 1,
+    "functions": 7
+  },
+  "tool": "klg-analyze"
+}

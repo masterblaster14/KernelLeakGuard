@@ -1,0 +1,104 @@
+{
+  "alloc_sites": {
+    "conn_open": [
+      {
+        "allocator": "kzalloc",
+        "file": "klg_s14_kref.c",
+        "line": 32
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 6,
+        "file": "klg_s14_kref.c",
+        "line": 32
+      },
+      "alloc_size": 8,
+      "allocator": "kzalloc",
+      "approximate": false,
+      "category": "never-released",
+      "confidence": "medium",
+      "exit": {
+        "col": 3,
+        "file": "klg_s14_kref.c",
+        "line": 41
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "klg_s14_kref.c",
+        "line": 40
+      },
+      "function": "conn_open",
+      "id": "klg_s14_kref:conn_open:32:41",
+      "module": "klg_s14_kref",
+      "path_lines": [
+        32,
+        33,
+        35,
+        40,
+        46
+      ],
+      "release_sites": [],
+      "return_value": "error from conn_handshake",
+      "triggers": [
+        {
+          "callee": "conn_handshake",
+          "file": "klg_s14_kref.c",
+          "kind": "call",
+          "line": 38
+        }
+      ]
+    },
+    {
+      "alloc": {
+        "col": 6,
+        "file": "klg_s14_kref.c",
+        "line": 32
+      },
+      "alloc_size": 8,
+      "allocator": "kzalloc",
+      "approximate": false,
+      "category": "never-released",
+      "confidence": "medium",
+      "exit": {
+        "col": 2,
+        "file": "klg_s14_kref.c",
+        "line": 45
+      },
+      "exit_kind": "normal",
+      "fix": null,
+      "function": "conn_open",
+      "id": "klg_s14_kref:conn_open:32:45",
+      "module": "klg_s14_kref",
+      "path_lines": [
+        32,
+        33,
+        35,
+        44,
+        46
+      ],
+      "release_sites": [],
+      "return_value": "0",
+      "triggers": []
+    }
+  ],
+  "module": "klg_s14_kref",
+  "options": {
+    "branch_correlation": false,
+    "containers": false,
+    "escape": false,
+    "interprocedural": false
+  },
+  "stats": {
+    "alloc_sites": 1,
+    "analysis_ms": 0.83796899999999996,
+    "budget_exhausted": 0,
+    "candidates": 2,
+    "functions": 8
+  },
+  "tool": "klg-analyze"
+}

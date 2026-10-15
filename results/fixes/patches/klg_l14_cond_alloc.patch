@@ -1,0 +1,10 @@
+--- a/corpus/klg_l14_cond_alloc.c
++++ b/corpus/klg_l14_cond_alloc.c
+@@ -35,6 +35,7 @@
+ 
+ 	ret = stats_calibrate(samples);
+ 	if (ret) {
++		kfree(hist);
+ 		kfree(samples);
+ 		return ret;		/* hist leaks here */
+ 	}

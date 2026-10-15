@@ -1,0 +1,80 @@
+# KernelLeakGuard guest kernel configuration fragment.
+# Merged on top of x86_64 defconfig + kvm_guest.config by vm/build_kernel.sh.
+
+# --- Loadable modules (the benchmark corpus is built out-of-tree) ---
+CONFIG_MODULES=y
+CONFIG_MODULE_UNLOAD=y
+CONFIG_MODULE_FORCE_UNLOAD=y
+CONFIG_MODULE_SIG=n
+CONFIG_MODVERSIONS=n
+
+# --- Kernel memory leak detector ---
+CONFIG_DEBUG_KERNEL=y
+CONFIG_DEBUG_FS=y
+CONFIG_DEBUG_FS_ALLOW_ALL=y
+CONFIG_DEBUG_KMEMLEAK=y
+CONFIG_DEBUG_KMEMLEAK_MEM_POOL_SIZE=16000
+CONFIG_DEBUG_KMEMLEAK_DEFAULT_OFF=n
+# Scans are triggered explicitly by the verifier so results are reproducible.
+CONFIG_DEBUG_KMEMLEAK_AUTO_SCAN=n
+
+# Allocation profiling duplicates every kmalloc() call site behind a runtime
+# check; it is unrelated to leak detection and only obscures the IR.
+CONFIG_MEM_ALLOC_PROFILING=n
+
+# --- Fault injection (all usable through /proc/thread-self/fail-nth) ---
+CONFIG_FAULT_INJECTION=y
+CONFIG_FAULT_INJECTION_DEBUG_FS=y
+CONFIG_FAULT_INJECTION_STACKTRACE_FILTER=y
+CONFIG_FAILSLAB=y
+CONFIG_FAIL_PAGE_ALLOC=n
+CONFIG_FAULT_INJECTION_USERCOPY=y
+CONFIG_FUNCTION_ERROR_INJECTION=y
+CONFIG_FAIL_FUNCTION=y
+CONFIG_KPROBES=y
+# fail_function must use ftrace-based kprobes: an int3 kprobe handler runs in
+# NMI-like context where per-task fail-nth is ignored (in_task() is false).
+CONFIG_FTRACE=y
+CONFIG_FUNCTION_TRACER=y
+CONFIG_DYNAMIC_FTRACE=y
+CONFIG_KPROBES_ON_FTRACE=y
+
+# --- Accurate stack traces / symbolisation ---
+CONFIG_KALLSYMS=y
+CONFIG_KALLSYMS_ALL=y
+CONFIG_STACKTRACE=y
+CONFIG_UNWINDER_ORC=y
+CONFIG_DEBUG_INFO_DWARF5=y
+CONFIG_DEBUG_INFO_BTF=n
+CONFIG_RANDOMIZE_BASE=n
+CONFIG_RANDOMIZE_MEMORY=n
+
+# Stale pointers left on kernel stacks make kmemleak treat a leaked object as
+# still referenced (false negative). Thread stacks come from the page
+# allocator, so stacks of exited tasks are never scanned, and the used part of
+# every kernel stack is erased on return to user space, so a pointer that
+# only lived in a finished syscall's stack frame cannot hide a leak.
+CONFIG_VMAP_STACK=n
+CONFIG_KSTACK_ERASE=y
+# Small frames (< 100 bytes) are not tracked by KSTACK_ERASE, and lowering the
+# threshold breaks the build (early-boot PI code gets instrumented), so the
+# guest additionally disables kmemleak's task-stack scanning (vm/init).
+
+# --- Host <-> guest file sharing (virtio 9p) ---
+CONFIG_NET_9P=y
+CONFIG_NET_9P_VIRTIO=y
+CONFIG_9P_FS=y
+CONFIG_9P_FS_POSIX_ACL=y
+CONFIG_VIRTIO=y
+CONFIG_VIRTIO_PCI=y
+CONFIG_PCI=y
+
+# --- Minimal userspace boot from initramfs ---
+CONFIG_BLK_DEV_INITRD=y
+CONFIG_DEVTMPFS=y
+CONFIG_DEVTMPFS_MOUNT=y
+CONFIG_PRINTK=y
+CONFIG_SERIAL_8250=y
+CONFIG_SERIAL_8250_CONSOLE=y
+CONFIG_LOG_BUF_SHIFT=21
+CONFIG_PRINTK_TIME=y

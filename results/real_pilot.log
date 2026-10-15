@@ -1,0 +1,1 @@
+[klg] real: 3 real modules (266 functions, 11 allocation sites): 0 static warnings; runtime: not run; 1144 fault points of module init exercised; 0 leak site(s) found by the sweep; 21 guest crash(es)/hang(s).

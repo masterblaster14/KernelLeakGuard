@@ -1,0 +1,84 @@
+{
+  "alloc_sites": {
+    "req_submit": [
+      {
+        "allocator": "kmem_cache_alloc",
+        "file": "klg_l11_kmem_cache.c",
+        "line": 22
+      },
+      {
+        "allocator": "kzalloc",
+        "file": "klg_l11_kmem_cache.c",
+        "line": 26
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 8,
+        "file": "klg_l11_kmem_cache.c",
+        "line": 22
+      },
+      "alloc_size": -1,
+      "allocator": "kmem_cache_alloc",
+      "approximate": false,
+      "category": "missing-release-on-error-path",
+      "confidence": "high",
+      "exit": {
+        "col": 3,
+        "file": "klg_l11_kmem_cache.c",
+        "line": 28
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "klg_l11_kmem_cache.c",
+        "line": 28
+      },
+      "function": "req_submit",
+      "id": "klg_l11_kmem_cache:req_submit:22:28",
+      "module": "klg_l11_kmem_cache",
+      "path_lines": [
+        22,
+        23,
+        26,
+        27,
+        28,
+        36
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "klg_l11_kmem_cache.c",
+          "line": 34
+        }
+      ],
+      "return_value": "-ENOMEM",
+      "triggers": [
+        {
+          "callee": "kzalloc",
+          "file": "klg_l11_kmem_cache.c",
+          "kind": "alloc",
+          "line": 26
+        }
+      ]
+    }
+  ],
+  "module": "klg_l11_kmem_cache",
+  "options": {
+    "branch_correlation": false,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 2,
+    "analysis_ms": 0.46510499999999999,
+    "budget_exhausted": 0,
+    "candidates": 1,
+    "functions": 6
+  },
+  "tool": "klg-analyze"
+}

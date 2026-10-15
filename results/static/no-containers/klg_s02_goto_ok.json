@@ -1,0 +1,37 @@
+{
+  "alloc_sites": {
+    "sensor_setup": [
+      {
+        "allocator": "kmalloc",
+        "file": "klg_s02_goto_ok.c",
+        "line": 26
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "klg_s02_goto_ok.c",
+        "line": 30
+      },
+      {
+        "allocator": "kasprintf",
+        "file": "klg_s02_goto_ok.c",
+        "line": 36
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "klg_s02_goto_ok",
+  "options": {
+    "branch_correlation": true,
+    "containers": false,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 3,
+    "analysis_ms": 0.51496699999999995,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 7
+  },
+  "tool": "klg-analyze"
+}

@@ -1,0 +1,104 @@
+{
+  "alloc_sites": {
+    "ledctl_init": [
+      {
+        "allocator": "kzalloc",
+        "file": "klg_l13_init_misc.c",
+        "line": 42
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 8,
+        "file": "klg_l13_init_misc.c",
+        "line": 42
+      },
+      "alloc_size": 20,
+      "allocator": "kzalloc",
+      "approximate": false,
+      "category": "never-released",
+      "confidence": "medium",
+      "exit": {
+        "col": 3,
+        "file": "klg_l13_init_misc.c",
+        "line": 49
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "klg_l13_init_misc.c",
+        "line": 49
+      },
+      "function": "ledctl_init",
+      "id": "klg_l13_init_misc:ledctl_init:42:49",
+      "module": "klg_l13_init_misc",
+      "path_lines": [
+        42,
+        43,
+        45,
+        49,
+        53
+      ],
+      "release_sites": [],
+      "return_value": "error from misc_register",
+      "triggers": [
+        {
+          "callee": "misc_register",
+          "file": "klg_l13_init_misc.c",
+          "kind": "call",
+          "line": 47
+        }
+      ]
+    },
+    {
+      "alloc": {
+        "col": 8,
+        "file": "klg_l13_init_misc.c",
+        "line": 42
+      },
+      "alloc_size": 20,
+      "allocator": "kzalloc",
+      "approximate": false,
+      "category": "never-released",
+      "confidence": "medium",
+      "exit": {
+        "col": 2,
+        "file": "klg_l13_init_misc.c",
+        "line": 52
+      },
+      "exit_kind": "normal",
+      "fix": null,
+      "function": "ledctl_init",
+      "id": "klg_l13_init_misc:ledctl_init:42:52",
+      "module": "klg_l13_init_misc",
+      "path_lines": [
+        42,
+        43,
+        45,
+        51,
+        53
+      ],
+      "release_sites": [],
+      "return_value": "0",
+      "triggers": []
+    }
+  ],
+  "module": "klg_l13_init_misc",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": false,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 1,
+    "analysis_ms": 1.1052770000000001,
+    "budget_exhausted": 0,
+    "candidates": 2,
+    "functions": 3
+  },
+  "tool": "klg-analyze"
+}

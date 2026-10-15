@@ -1,0 +1,27 @@
+{
+  "alloc_sites": {
+    "item_add": [
+      {
+        "allocator": "kzalloc",
+        "file": "klg_s03_list_owner.c",
+        "line": 33
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "klg_s03_list_owner",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 1,
+    "analysis_ms": 1.3741749999999999,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 7
+  },
+  "tool": "klg-analyze"
+}

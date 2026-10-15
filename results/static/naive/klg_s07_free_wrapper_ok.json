@@ -1,0 +1,111 @@
+{
+  "alloc_sites": {
+    "xfer_run": [
+      {
+        "allocator": "kzalloc",
+        "file": "klg_s07_free_wrapper_ok.c",
+        "line": 25
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "klg_s07_free_wrapper_ok.c",
+        "line": 29
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 6,
+        "file": "klg_s07_free_wrapper_ok.c",
+        "line": 25
+      },
+      "alloc_size": 16,
+      "allocator": "kzalloc",
+      "approximate": false,
+      "category": "never-released",
+      "confidence": "medium",
+      "exit": {
+        "col": 2,
+        "file": "klg_s07_free_wrapper_ok.c",
+        "line": 39
+      },
+      "exit_kind": "normal",
+      "fix": null,
+      "function": "xfer_run",
+      "id": "klg_s07_free_wrapper_ok:xfer_run:25:39",
+      "module": "klg_s07_free_wrapper_ok",
+      "path_lines": [
+        25,
+        26,
+        29,
+        30,
+        35,
+        40
+      ],
+      "release_sites": [],
+      "return_value": "0",
+      "triggers": []
+    },
+    {
+      "alloc": {
+        "col": 6,
+        "file": "klg_s07_free_wrapper_ok.c",
+        "line": 25
+      },
+      "alloc_size": 16,
+      "allocator": "kzalloc",
+      "approximate": false,
+      "category": "never-released",
+      "confidence": "medium",
+      "exit": {
+        "col": 3,
+        "file": "klg_s07_free_wrapper_ok.c",
+        "line": 32
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "klg_s07_free_wrapper_ok.c",
+        "line": 31
+      },
+      "function": "xfer_run",
+      "id": "klg_s07_free_wrapper_ok:xfer_run:25:32",
+      "module": "klg_s07_free_wrapper_ok",
+      "path_lines": [
+        25,
+        26,
+        29,
+        30,
+        31,
+        40
+      ],
+      "release_sites": [],
+      "return_value": "-ENOMEM",
+      "triggers": [
+        {
+          "callee": "kmalloc",
+          "file": "klg_s07_free_wrapper_ok.c",
+          "kind": "alloc",
+          "line": 29
+        }
+      ]
+    }
+  ],
+  "module": "klg_s07_free_wrapper_ok",
+  "options": {
+    "branch_correlation": false,
+    "containers": false,
+    "escape": false,
+    "interprocedural": false
+  },
+  "stats": {
+    "alloc_sites": 2,
+    "analysis_ms": 1.150504,
+    "budget_exhausted": 0,
+    "candidates": 2,
+    "functions": 7
+  },
+  "tool": "klg-analyze"
+}

@@ -1,0 +1,31 @@
+{
+  "alloc_sites": {
+    "veth_alloc_queues": [
+      {
+        "allocator": "kvmalloc_array_node",
+        "file": "linux-6.18.55/drivers/net/veth.c",
+        "line": 1448
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "veth",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 1,
+    "analysis_ms": 5.170387,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 76
+  },
+  "tool": "klg-analyze",
+  "ir": {
+    "objects": 1,
+    "ir_failed": []
+  }
+}

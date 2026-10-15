@@ -1,0 +1,209 @@
+{
+  "alloc_sites": {
+    "_ubh_bread_": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ufs/util.c",
+        "line": 30
+      }
+    ],
+    "free_full_branch": [
+      {
+        "allocator": "_ubh_bread_",
+        "file": "linux-6.18.55/fs/ufs/inode.c",
+        "line": 966
+      }
+    ],
+    "ufs_alloc_inode": [
+      {
+        "allocator": "kmem_cache_alloc_lru",
+        "file": "linux-6.18.55/fs/ufs/super.c",
+        "line": 1364
+      }
+    ],
+    "ufs_dir_open": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ufs/dir.c",
+        "line": 631
+      }
+    ],
+    "ufs_fill_super": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ufs/super.c",
+        "line": 747
+      },
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ufs/super.c",
+        "line": 772
+      }
+    ],
+    "ufs_init_fs_context": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ufs/super.c",
+        "line": 1442
+      }
+    ],
+    "ufs_read_cylinder_structures": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ufs/super.c",
+        "line": 469
+      },
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/fs/ufs/super.c",
+        "line": 486
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ufs/super.c",
+        "line": 506
+      }
+    ],
+    "ufs_truncate_blocks": [
+      {
+        "allocator": "_ubh_bread_",
+        "file": "linux-6.18.55/fs/ufs/inode.c",
+        "line": 1139
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 13,
+        "file": "linux-6.18.55/fs/ufs/inode.c",
+        "line": 1139
+      },
+      "alloc_size": -1,
+      "allocator": "_ubh_bread_",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/fs/ufs/inode.c",
+        "line": 1166
+      },
+      "exit_kind": "void",
+      "fix": {
+        "col": 25,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/ufs/inode.c",
+        "line": 1155
+      },
+      "function": "ufs_truncate_blocks",
+      "id": "ufs:ufs_truncate_blocks:1139:1166",
+      "module": "ufs",
+      "path_lines": [
+        1139,
+        1146,
+        1135,
+        1136,
+        1138,
+        1148,
+        1151,
+        1152,
+        1155,
+        1160,
+        1161,
+        1166
+      ],
+      "release_sites": [
+        {
+          "col": 4,
+          "file": "linux-6.18.55/fs/ufs/inode.c",
+          "line": 1149
+        }
+      ],
+      "return_value": "",
+      "triggers": [
+        {
+          "callee": "ufs_data_ptr_to_cpu",
+          "file": "linux-6.18.55/fs/ufs/inode.c",
+          "kind": "call",
+          "line": 1136
+        },
+        {
+          "callee": "ufs_data_ptr_to_cpu",
+          "file": "linux-6.18.55/fs/ufs/inode.c",
+          "kind": "call",
+          "line": 1153
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/ufs/inode.c"
+    },
+    {
+      "alloc": {
+        "col": 32,
+        "file": "linux-6.18.55/fs/ufs/inode.c",
+        "line": 966
+      },
+      "alloc_size": -1,
+      "allocator": "_ubh_bread_",
+      "approximate": false,
+      "category": "never-released",
+      "confidence": "medium",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/fs/ufs/inode.c",
+        "line": 993
+      },
+      "exit_kind": "void",
+      "fix": {
+        "col": 5,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/ufs/inode.c",
+        "line": 977
+      },
+      "function": "free_full_branch",
+      "id": "ufs:free_full_branch:966:993",
+      "module": "ufs",
+      "path_lines": [
+        964,
+        972,
+        973,
+        974,
+        977,
+        978,
+        979,
+        991,
+        993
+      ],
+      "release_sites": [],
+      "return_value": "",
+      "triggers": [
+        {
+          "callee": "ufs_data_ptr_to_cpu",
+          "file": "linux-6.18.55/fs/ufs/inode.c",
+          "kind": "call",
+          "line": 975
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/ufs/inode.c"
+    }
+  ],
+  "module": "ufs",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 11,
+    "analysis_ms": 15.267121,
+    "budget_exhausted": 0,
+    "candidates": 2,
+    "functions": 124
+  },
+  "tool": "klg-analyze",
+  "ir": {
+    "objects": 9,
+    "ir_failed": []
+  }
+}

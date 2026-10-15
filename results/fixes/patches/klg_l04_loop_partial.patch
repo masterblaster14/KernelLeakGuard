@@ -1,0 +1,15 @@
+--- a/corpus/klg_l04_loop_partial.c
++++ b/corpus/klg_l04_loop_partial.c
+@@ -17,8 +17,11 @@
+ 
+ 	for (i = 0; i < NR_DESC; i++) {
+ 		desc[i] = kmalloc(DESC_SIZE, GFP_KERNEL);	/* GT:LEAK */
+-		if (!desc[i])
++		if (!desc[i]) {
++			while (--i >= 0)
++				kfree(desc[i]);
+ 			return -ENOMEM;	/* earlier descriptors leak */
++		}
+ 	}
+ 
+ 	for (i = 0; i < NR_DESC; i++)

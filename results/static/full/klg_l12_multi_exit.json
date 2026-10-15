@@ -1,0 +1,106 @@
+{
+  "alloc_sites": {
+    "packet_prepare": [
+      {
+        "allocator": "kmalloc",
+        "file": "klg_l12_multi_exit.c",
+        "line": 14
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "klg_l12_multi_exit.c",
+        "line": 18
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "klg_l12_multi_exit.c",
+        "line": 24
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "klg_l12_multi_exit.c",
+        "line": 30
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 8,
+        "file": "klg_l12_multi_exit.c",
+        "line": 14
+      },
+      "alloc_size": 1500,
+      "allocator": "kmalloc",
+      "approximate": false,
+      "category": "missing-release-on-error-path",
+      "confidence": "high",
+      "exit": {
+        "col": 3,
+        "file": "klg_l12_multi_exit.c",
+        "line": 27
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "klg_l12_multi_exit.c",
+        "line": 26
+      },
+      "function": "packet_prepare",
+      "id": "klg_l12_multi_exit:packet_prepare:14:27",
+      "module": "klg_l12_multi_exit",
+      "path_lines": [
+        14,
+        15,
+        18,
+        19,
+        24,
+        25,
+        26,
+        47
+      ],
+      "release_sites": [
+        {
+          "col": 3,
+          "file": "klg_l12_multi_exit.c",
+          "line": 20
+        },
+        {
+          "col": 3,
+          "file": "klg_l12_multi_exit.c",
+          "line": 34
+        },
+        {
+          "col": 2,
+          "file": "klg_l12_multi_exit.c",
+          "line": 45
+        }
+      ],
+      "return_value": "-ENOMEM",
+      "triggers": [
+        {
+          "callee": "kmalloc",
+          "file": "klg_l12_multi_exit.c",
+          "kind": "alloc",
+          "line": 24
+        }
+      ]
+    }
+  ],
+  "module": "klg_l12_multi_exit",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 4,
+    "analysis_ms": 0.563805,
+    "budget_exhausted": 0,
+    "candidates": 1,
+    "functions": 6
+  },
+  "tool": "klg-analyze"
+}

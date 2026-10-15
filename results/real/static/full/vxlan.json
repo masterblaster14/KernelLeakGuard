@@ -1,0 +1,303 @@
+{
+  "alloc_sites": {
+    "__vxlan_mdb_add": [
+      {
+        "allocator": "vxlan_mdb_entry_get",
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
+        "line": 1251
+      }
+    ],
+    "__vxlan_sock_add": [
+      {
+        "allocator": "vxlan_socket_create",
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_core.c",
+        "line": 3671
+      }
+    ],
+    "vxlan_fdb_alloc": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_core.c",
+        "line": 781
+      }
+    ],
+    "vxlan_fdb_append": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_core.c",
+        "line": 583
+      }
+    ],
+    "vxlan_fdb_create": [
+      {
+        "allocator": "vxlan_fdb_alloc",
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_core.c",
+        "line": 876
+      }
+    ],
+    "vxlan_mdb_config_src_entry_init": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
+        "line": 442
+      }
+    ],
+    "vxlan_mdb_entry_get": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
+        "line": 1204
+      }
+    ],
+    "vxlan_mdb_remote_add": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
+        "line": 1156
+      }
+    ],
+    "vxlan_mdb_remote_rdst_init": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
+        "line": 709
+      }
+    ],
+    "vxlan_mdb_remote_src_add": [
+      {
+        "allocator": "vxlan_mdb_remote_src_entry_add",
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
+        "line": 853
+      }
+    ],
+    "vxlan_mdb_remote_src_entry_add": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
+        "line": 779
+      }
+    ],
+    "vxlan_socket_create": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_core.c",
+        "line": 3603
+      }
+    ],
+    "vxlan_vni_add": [
+      {
+        "allocator": "vxlan_vni_alloc",
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_vnifilter.c",
+        "line": 740
+      }
+    ],
+    "vxlan_vni_alloc": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_vnifilter.c",
+        "line": 698
+      }
+    ],
+    "vxlan_vnigroup_init": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_vnifilter.c",
+        "line": 925
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 8,
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_core.c",
+        "line": 3671
+      },
+      "alloc_size": -1,
+      "allocator": "vxlan_socket_create",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 3,
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_core.c",
+        "line": 3675
+      },
+      "exit_kind": "unknown",
+      "fix": null,
+      "function": "__vxlan_sock_add",
+      "id": "vxlan:__vxlan_sock_add:3671:3675",
+      "module": "vxlan",
+      "path_lines": [
+        3671,
+        3674,
+        3675,
+        3693
+      ],
+      "release_sites": [],
+      "return_value": "?",
+      "triggers": [],
+      "source_path": "linux-6.18.55/drivers/net/vxlan/vxlan_core.c"
+    },
+    {
+      "alloc": {
+        "col": 14,
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
+        "line": 1251
+      },
+      "alloc_size": -1,
+      "allocator": "vxlan_mdb_entry_get",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 3,
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
+        "line": 1253
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 10,
+        "exclusive": true,
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
+        "line": 1253
+      },
+      "function": "__vxlan_mdb_add",
+      "id": "vxlan:__vxlan_mdb_add:1251:1253",
+      "module": "vxlan",
+      "path_lines": [
+        1247,
+        1253,
+        1266
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
+          "line": 1264
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "vxlan_mdb_entry_get",
+          "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
+          "kind": "alloc",
+          "line": 1251
+        }
+      ],
+      "source_path": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c"
+    },
+    {
+      "alloc": {
+        "col": 9,
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
+        "line": 853
+      },
+      "alloc_size": -1,
+      "allocator": "vxlan_mdb_remote_src_entry_add",
+      "approximate": false,
+      "category": "missing-release-on-error-path",
+      "confidence": "high",
+      "exit": {
+        "col": 2,
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
+        "line": 876
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
+        "line": 864
+      },
+      "function": "vxlan_mdb_remote_src_add",
+      "id": "vxlan:vxlan_mdb_remote_src_add:853:876",
+      "module": "vxlan",
+      "path_lines": [
+        853,
+        856,
+        862,
+        864,
+        874,
+        876,
+        877
+      ],
+      "release_sites": [
+        {
+          "col": 3,
+          "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
+          "line": 875
+        }
+      ],
+      "return_value": "error from vxlan_mdb_remote_src_fwd_add",
+      "triggers": [
+        {
+          "callee": "vxlan_mdb_remote_src_fwd_add",
+          "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
+          "kind": "call",
+          "line": 862
+        }
+      ],
+      "source_path": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c"
+    },
+    {
+      "alloc": {
+        "col": 9,
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
+        "line": 853
+      },
+      "alloc_size": -1,
+      "allocator": "vxlan_mdb_remote_src_entry_add",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 2,
+        "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
+        "line": 871
+      },
+      "exit_kind": "normal",
+      "fix": null,
+      "function": "vxlan_mdb_remote_src_add",
+      "id": "vxlan:vxlan_mdb_remote_src_add:853:871",
+      "module": "vxlan",
+      "path_lines": [
+        853,
+        856,
+        862,
+        869,
+        877
+      ],
+      "release_sites": [
+        {
+          "col": 3,
+          "file": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c",
+          "line": 875
+        }
+      ],
+      "return_value": "0",
+      "triggers": [],
+      "source_path": "linux-6.18.55/drivers/net/vxlan/vxlan_mdb.c"
+    }
+  ],
+  "module": "vxlan",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 15,
+    "analysis_ms": 28.219961,
+    "budget_exhausted": 0,
+    "candidates": 4,
+    "functions": 227
+  },
+  "tool": "klg-analyze",
+  "ir": {
+    "objects": 4,
+    "ir_failed": []
+  }
+}

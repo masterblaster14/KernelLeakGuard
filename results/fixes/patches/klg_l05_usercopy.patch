@@ -1,0 +1,14 @@
+--- a/corpus/klg_l05_usercopy.c
++++ b/corpus/klg_l05_usercopy.c
+@@ -21,8 +21,10 @@
+ 	if (!kbuf)
+ 		return -ENOMEM;
+ 
+-	if (copy_from_user(kbuf, ubuf, len))
++	if (copy_from_user(kbuf, ubuf, len)) {
++		kfree(kbuf);
+ 		return -EFAULT;		/* kbuf leaks here */
++	}
+ 	kbuf[len] = '\0';
+ 
+ 	ret = kstrtoul(kbuf, 0, &cfg_value);

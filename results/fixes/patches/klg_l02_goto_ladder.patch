@@ -1,0 +1,10 @@
+--- a/corpus/klg_l02_goto_ladder.c
++++ b/corpus/klg_l02_goto_ladder.c
+@@ -38,6 +38,7 @@
+ 	name = kasprintf(GFP_KERNEL, "sensor%d", 0);	/* GT:SAFE */
+ 	if (!name) {
+ 		ret = -ENOMEM;
++		kfree(tx);
+ 		goto err_rx;		/* BUG: should be err_tx */
+ 	}
+ 

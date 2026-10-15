@@ -1,0 +1,14 @@
+--- a/corpus/klg_l11_kmem_cache.c
++++ b/corpus/klg_l11_kmem_cache.c
+@@ -24,8 +24,10 @@
+ 		return -ENOMEM;
+ 
+ 	payload = kzalloc(256, GFP_KERNEL);	/* GT:SAFE */
+-	if (!payload)
++	if (!payload) {
++		kmem_cache_free(req_cache, req);
+ 		return -ENOMEM;		/* req leaks here */
++	}
+ 
+ 	req->sector = 8;
+ 	req->len = 256;

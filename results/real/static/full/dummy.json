@@ -1,0 +1,23 @@
+{
+  "alloc_sites": {},
+  "candidates": [],
+  "module": "dummy",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 0,
+    "analysis_ms": 0.50176,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 10
+  },
+  "tool": "klg-analyze",
+  "ir": {
+    "objects": 1,
+    "ir_failed": []
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "alloc_sites": {
+    "fw_stage": [
+      {
+        "allocator": "vmalloc",
+        "file": "klg_l10_vmalloc.c",
+        "line": 22
+      },
+      {
+        "allocator": "kzalloc",
+        "file": "klg_l10_vmalloc.c",
+        "line": 26
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 7,
+        "file": "klg_l10_vmalloc.c",
+        "line": 22
+      },
+      "alloc_size": 65536,
+      "allocator": "vmalloc",
+      "approximate": false,
+      "category": "missing-release-on-error-path",
+      "confidence": "high",
+      "exit": {
+        "col": 3,
+        "file": "klg_l10_vmalloc.c",
+        "line": 28
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "klg_l10_vmalloc.c",
+        "line": 28
+      },
+      "function": "fw_stage",
+      "id": "klg_l10_vmalloc:fw_stage:22:28",
+      "module": "klg_l10_vmalloc",
+      "path_lines": [
+        22,
+        23,
+        26,
+        27,
+        28,
+        36
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "klg_l10_vmalloc.c",
+          "line": 34
+        }
+      ],
+      "return_value": "-ENOMEM",
+      "triggers": [
+        {
+          "callee": "kzalloc",
+          "file": "klg_l10_vmalloc.c",
+          "kind": "alloc",
+          "line": 26
+        }
+      ]
+    }
+  ],
+  "module": "klg_l10_vmalloc",
+  "options": {
+    "branch_correlation": false,
+    "containers": false,
+    "escape": false,
+    "interprocedural": false
+  },
+  "stats": {
+    "alloc_sites": 2,
+    "analysis_ms": 0.41866900000000001,
+    "budget_exhausted": 0,
+    "candidates": 1,
+    "functions": 6
+  },
+  "tool": "klg-analyze"
+}

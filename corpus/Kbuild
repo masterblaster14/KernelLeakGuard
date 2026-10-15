@@ -1,0 +1,7 @@
+# KernelLeakGuard benchmark corpus. Every .c file in this directory is a
+# standalone module (klg_lNN_* contain known leaks, klg_sNN_* are leak-free).
+klg-src := $(filter-out %.mod.c,$(notdir $(wildcard $(src)/klg_*.c)))
+obj-m += $(klg-src:.c=.o)
+
+# Keep full debug info for source-line correlation of runtime evidence.
+ccflags-y += -g -I$(src)

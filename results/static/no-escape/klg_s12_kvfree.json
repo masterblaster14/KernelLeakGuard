@@ -1,0 +1,37 @@
+{
+  "alloc_sites": {
+    "keyring_load": [
+      {
+        "allocator": "__kvmalloc_node",
+        "file": "klg_s12_kvfree.c",
+        "line": 17
+      },
+      {
+        "allocator": "vzalloc",
+        "file": "klg_s12_kvfree.c",
+        "line": 21
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "klg_s12_kvfree.c",
+        "line": 27
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "klg_s12_kvfree",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": false,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 3,
+    "analysis_ms": 0.44185999999999998,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 6
+  },
+  "tool": "klg-analyze"
+}

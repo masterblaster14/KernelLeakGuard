@@ -1,0 +1,84 @@
+{
+  "alloc_sites": {
+    "stats_setup": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "klg_l14_cond_alloc.c",
+        "line": 24
+      },
+      {
+        "allocator": "kzalloc",
+        "file": "klg_l14_cond_alloc.c",
+        "line": 29
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 10,
+        "file": "klg_l14_cond_alloc.c",
+        "line": 29
+      },
+      "alloc_size": 1024,
+      "allocator": "kzalloc",
+      "approximate": false,
+      "category": "missing-release-on-error-path",
+      "confidence": "high",
+      "exit": {
+        "col": 3,
+        "file": "klg_l14_cond_alloc.c",
+        "line": 39
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "klg_l14_cond_alloc.c",
+        "line": 38
+      },
+      "function": "stats_setup",
+      "id": "klg_l14_cond_alloc:stats_setup:29:39",
+      "module": "klg_l14_cond_alloc",
+      "path_lines": [
+        29,
+        30,
+        34,
+        36,
+        38,
+        45
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "klg_l14_cond_alloc.c",
+          "line": 42
+        }
+      ],
+      "return_value": "error from stats_calibrate",
+      "triggers": [
+        {
+          "callee": "stats_calibrate",
+          "file": "klg_l14_cond_alloc.c",
+          "kind": "call",
+          "line": 36
+        }
+      ]
+    }
+  ],
+  "module": "klg_l14_cond_alloc",
+  "options": {
+    "branch_correlation": true,
+    "containers": false,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 2,
+    "analysis_ms": 0.49465900000000002,
+    "budget_exhausted": 0,
+    "candidates": 1,
+    "functions": 7
+  },
+  "tool": "klg-analyze"
+}

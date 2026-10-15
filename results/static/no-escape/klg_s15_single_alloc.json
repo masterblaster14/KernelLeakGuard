@@ -1,0 +1,27 @@
+{
+  "alloc_sites": {
+    "scratch_use": [
+      {
+        "allocator": "kzalloc",
+        "file": "klg_s15_single_alloc.c",
+        "line": 14
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "klg_s15_single_alloc",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": false,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 1,
+    "analysis_ms": 0.38361800000000001,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 6
+  },
+  "tool": "klg-analyze"
+}

@@ -1,0 +1,84 @@
+{
+  "alloc_sites": {
+    "xfer_run": [
+      {
+        "allocator": "kzalloc",
+        "file": "klg_l07_wrapper_free.c",
+        "line": 27
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "klg_l07_wrapper_free.c",
+        "line": 31
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 6,
+        "file": "klg_l07_wrapper_free.c",
+        "line": 27
+      },
+      "alloc_size": 16,
+      "allocator": "kzalloc",
+      "approximate": false,
+      "category": "missing-release-on-error-path",
+      "confidence": "high",
+      "exit": {
+        "col": 3,
+        "file": "klg_l07_wrapper_free.c",
+        "line": 33
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "klg_l07_wrapper_free.c",
+        "line": 33
+      },
+      "function": "xfer_run",
+      "id": "klg_l07_wrapper_free:xfer_run:27:33",
+      "module": "klg_l07_wrapper_free",
+      "path_lines": [
+        27,
+        28,
+        31,
+        32,
+        33,
+        40
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "klg_l07_wrapper_free.c",
+          "line": 38
+        }
+      ],
+      "return_value": "-ENOMEM",
+      "triggers": [
+        {
+          "callee": "kmalloc",
+          "file": "klg_l07_wrapper_free.c",
+          "kind": "alloc",
+          "line": 31
+        }
+      ]
+    }
+  ],
+  "module": "klg_l07_wrapper_free",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": false,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 2,
+    "analysis_ms": 0.520922,
+    "budget_exhausted": 0,
+    "candidates": 1,
+    "functions": 7
+  },
+  "tool": "klg-analyze"
+}

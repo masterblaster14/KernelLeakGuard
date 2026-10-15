@@ -1,0 +1,14 @@
+--- a/corpus/klg_l06_wrapper_alloc.c
++++ b/corpus/klg_l06_wrapper_alloc.c
+@@ -39,8 +39,10 @@
+ 		return -ENOMEM;
+ 
+ 	tok = kmalloc(64, GFP_KERNEL);		/* GT:SAFE */
+-	if (!tok)
++	if (!tok) {
++		session_destroy(s);
+ 		return -ENOMEM;		/* s leaks here */
++	}
+ 
+ 	strscpy(tok, "token", 64);
+ 	strscpy(s->tag, tok, sizeof(s->tag));

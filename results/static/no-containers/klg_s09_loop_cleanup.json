@@ -1,0 +1,27 @@
+{
+  "alloc_sites": {
+    "ring_alloc": [
+      {
+        "allocator": "kmalloc",
+        "file": "klg_s09_loop_cleanup.c",
+        "line": 20
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "klg_s09_loop_cleanup",
+  "options": {
+    "branch_correlation": true,
+    "containers": false,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 1,
+    "analysis_ms": 0.47387000000000001,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 6
+  },
+  "tool": "klg-analyze"
+}

@@ -1,0 +1,40 @@
+test_findings_filters (test_dashboard.TestDashboard.test_findings_filters) ... 2026-10-15 18:55:47.409 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_pages_render (test_dashboard.TestDashboard.test_pages_render) ... 2026-10-15 18:55:48.669 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-15 18:55:48.774 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-15 18:55:48.876 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-15 18:55:48.981 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-15 18:55:49.130 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-15 18:55:49.286 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_run_button_starts_and_finishes (test_dashboard.TestDashboard.test_run_button_starts_and_finishes) ... 2026-10-15 18:55:49.381 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_alloc_size_reported (test_klg.TestAnalyzer.test_alloc_size_reported) ... ok
+test_branch_correlation (test_klg.TestAnalyzer.test_branch_correlation) ... ok
+test_detects_wrong_goto_label (test_klg.TestAnalyzer.test_detects_wrong_goto_label) ... ok
+test_error_propagation_exit (test_klg.TestAnalyzer.test_error_propagation_exit) ... ok
+test_fixed_version_is_clean (test_klg.TestAnalyzer.test_fixed_version_is_clean) ... ok
+test_interprocedural_wrapper (test_klg.TestAnalyzer.test_interprocedural_wrapper) ... ok
+test_local_struct_container (test_klg.TestAnalyzer.test_local_struct_container) ... ok
+test_loop_leak (test_klg.TestAnalyzer.test_loop_leak) ... ok
+test_managed_memory_ignored (test_klg.TestAnalyzer.test_managed_memory_ignored) ... ok
+test_ownership_transfer (test_klg.TestAnalyzer.test_ownership_transfer) ... ok
+test_agent_log (test_klg.TestEvidenceParsing.test_agent_log) ... ok
+test_crash_site_from_begin_marker (test_klg.TestEvidenceParsing.test_crash_site_from_begin_marker) ... ok
+test_kmemleak (test_klg.TestEvidenceParsing.test_kmemleak) ... ok
+test_size_compatible (test_klg.TestEvidenceParsing.test_size_compatible) ... ok
+test_symbol_map_resolves_unloaded_module (test_klg.TestEvidenceParsing.test_symbol_map_resolves_unloaded_module) ... ok
+test_corpus_annotations (test_klg.TestGroundTruth.test_corpus_annotations) ... ok
+test_init_mode_detection (test_klg.TestGroundTruth.test_init_mode_detection) ... ok
+test_exact_line_match (test_klg.TestPlanning.test_exact_line_match) ... ok
+test_function_fallback_needs_single_site (test_klg.TestPlanning.test_function_fallback_needs_single_site) ... ok
+test_schedule_isolates_init_tests (test_klg.TestPlanning.test_schedule_isolates_init_tests) ... ok
+test_silent_fault_fallback (test_klg.TestPlanning.test_silent_fault_fallback) ... ok
+test_fragment_mapping_complete (test_klg.TestRealModules.test_fragment_mapping_complete) ... ok
+test_load_order_dependencies_first (test_klg.TestRealModules.test_load_order_dependencies_first) ... ok
+test_modname (test_klg.TestRealModules.test_modname) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 3.727s
+
+OK

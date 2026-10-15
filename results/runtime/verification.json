@@ -1,0 +1,7956 @@
+{
+  "verdicts": [
+    {
+      "id": "klg_l01_two_alloc:initialize:14:19",
+      "module": "klg_l01_two_alloc",
+      "status": "confirmed",
+      "reason": "leak at klg_l01_two_alloc.c:14 after failing initialize+0x46/0xf0",
+      "tests": [
+        {
+          "test": "klg_l01_two_alloc__n3",
+          "fail_nth": 3,
+          "expected_frame": "initialize+0x46/0xf0",
+          "attempts": 4,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -12
+          ],
+          "leaks": [
+            {
+              "size": 128,
+              "locs": [
+                [
+                  "klg_l01_two_alloc.c",
+                  14
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "do_one_initcall+0x119/0x300",
+                "do_init_module+0x60/0x250",
+                "__se_sys_finit_module+0x27f/0x370",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+                "initialize+0x1f/0x0 [klg_l01_two_alloc]"
+              ]
+            },
+            {
+              "size": 128,
+              "locs": [
+                [
+                  "klg_l01_two_alloc.c",
+                  14
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "do_one_initcall+0x119/0x300",
+                "do_init_module+0x60/0x250",
+                "__se_sys_finit_module+0x27f/0x370",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+                "initialize+0x1f/0x0 [klg_l01_two_alloc]"
+              ]
+            },
+            {
+              "size": 128,
+              "locs": [
+                [
+                  "klg_l01_two_alloc.c",
+                  14
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "do_one_initcall+0x119/0x300",
+                "do_init_module+0x60/0x250",
+                "__se_sys_finit_module+0x27f/0x370",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+                "initialize+0x1f/0x0 [klg_l01_two_alloc]"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "klg_l02_goto_ladder:sensor_setup:32:54",
+      "module": "klg_l02_goto_ladder",
+      "status": "confirmed",
+      "reason": "leak at klg_l02_goto_ladder.c:32 after failing sensor_setup+0x5f/0xb0",
+      "tests": [
+        {
+          "test": "klg_l02_goto_ladder__n5",
+          "fail_nth": 5,
+          "expected_frame": "sensor_setup+0x5f/0xb0",
+          "attempts": 3,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -12
+          ],
+          "leaks": [
+            {
+              "size": 512,
+              "locs": [
+                [
+                  "klg_l02_goto_ladder.c",
+                  32
+                ],
+                [
+                  "klg_l02_goto_ladder.c",
+                  57
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "sensor_setup+0x3f/0xb0 [klg_l02_goto_ladder]",
+                "klg_trigger_write+0x12/0x30 [klg_l02_goto_ladder]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 512,
+              "locs": [
+                [
+                  "klg_l02_goto_ladder.c",
+                  32
+                ],
+                [
+                  "klg_l02_goto_ladder.c",
+                  57
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "sensor_setup+0x3f/0xb0 [klg_l02_goto_ladder]",
+                "klg_trigger_write+0x12/0x30 [klg_l02_goto_ladder]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 512,
+              "locs": [
+                [
+                  "klg_l02_goto_ladder.c",
+                  32
+                ],
+                [
+                  "klg_l02_goto_ladder.c",
+                  57
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "sensor_setup+0x3f/0xb0 [klg_l02_goto_ladder]",
+                "klg_trigger_write+0x12/0x30 [klg_l02_goto_ladder]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "klg_l03_reg_fail:channel_open:33:40",
+      "module": "klg_l03_reg_fail",
+      "status": "confirmed",
+      "reason": "leak at klg_l03_reg_fail.c:33 after failing channel_open+0x32/0x70",
+      "tests": [
+        {
+          "test": "klg_l03_reg_fail__n3",
+          "fail_nth": 3,
+          "expected_frame": "channel_open+0x32/0x70",
+          "attempts": 3,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -22
+          ],
+          "leaks": [
+            {
+              "size": 8,
+              "locs": [
+                [
+                  "klg_l03_reg_fail.c",
+                  33
+                ],
+                [
+                  "klg_l03_reg_fail.c",
+                  48
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "channel_open+0x1c/0x70 [klg_l03_reg_fail]",
+                "klg_trigger_write+0x12/0x30 [klg_l03_reg_fail]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 8,
+              "locs": [
+                [
+                  "klg_l03_reg_fail.c",
+                  33
+                ],
+                [
+                  "klg_l03_reg_fail.c",
+                  48
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "channel_open+0x1c/0x70 [klg_l03_reg_fail]",
+                "klg_trigger_write+0x12/0x30 [klg_l03_reg_fail]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 8,
+              "locs": [
+                [
+                  "klg_l03_reg_fail.c",
+                  33
+                ],
+                [
+                  "klg_l03_reg_fail.c",
+                  48
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "channel_open+0x1c/0x70 [klg_l03_reg_fail]",
+                "klg_trigger_write+0x12/0x30 [klg_l03_reg_fail]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "klg_l04_loop_partial:ring_alloc:19:28",
+      "module": "klg_l04_loop_partial",
+      "status": "inconclusive",
+      "reason": "no failing call controls the leaking path",
+      "tests": []
+    },
+    {
+      "id": "klg_l04_loop_partial:ring_alloc:19:21",
+      "module": "klg_l04_loop_partial",
+      "status": "confirmed",
+      "reason": "leak in ring_alloc() after failing ring_alloc+0x48/0x2d0; frame has no line info (merged by optimisation), function's only allocation site is line 19",
+      "tests": [
+        {
+          "test": "klg_l04_loop_partial__n1",
+          "fail_nth": 1,
+          "expected_frame": "ring_alloc+0x21/0x2d0",
+          "attempts": 3,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -12
+          ],
+          "leaks": []
+        },
+        {
+          "test": "klg_l04_loop_partial__n3",
+          "fail_nth": 3,
+          "expected_frame": "ring_alloc+0x48/0x2d0",
+          "attempts": 3,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -12
+          ],
+          "leaks": [
+            {
+              "size": 128,
+              "locs": [
+                [
+                  "klg_l04_loop_partial.c",
+                  31
+                ]
+              ],
+              "functions": [
+                "ring_alloc"
+              ],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "ring_alloc+0x21/0x2d0 [klg_l04_loop_partial]",
+                "klg_trigger_write+0x12/0x30 [klg_l04_loop_partial]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 128,
+              "locs": [
+                [
+                  "klg_l04_loop_partial.c",
+                  31
+                ]
+              ],
+              "functions": [
+                "ring_alloc"
+              ],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "ring_alloc+0x21/0x2d0 [klg_l04_loop_partial]",
+                "klg_trigger_write+0x12/0x30 [klg_l04_loop_partial]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 128,
+              "locs": [
+                [
+                  "klg_l04_loop_partial.c",
+                  31
+                ]
+              ],
+              "functions": [
+                "ring_alloc"
+              ],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "ring_alloc+0x21/0x2d0 [klg_l04_loop_partial]",
+                "klg_trigger_write+0x12/0x30 [klg_l04_loop_partial]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            }
+          ]
+        },
+        {
+          "test": "klg_l04_loop_partial__n5",
+          "fail_nth": 5,
+          "expected_frame": "ring_alloc+0x6a/0x2d0",
+          "attempts": 3,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -12
+          ],
+          "leaks": [
+            {
+              "size": 128,
+              "locs": [
+                [
+                  "klg_l04_loop_partial.c",
+                  31
+                ]
+              ],
+              "functions": [
+                "ring_alloc"
+              ],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "ring_alloc+0x21/0x2d0 [klg_l04_loop_partial]",
+                "klg_trigger_write+0x12/0x30 [klg_l04_loop_partial]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 128,
+              "locs": [
+                [
+                  "klg_l04_loop_partial.c",
+                  31
+                ]
+              ],
+              "functions": [
+                "ring_alloc"
+              ],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "ring_alloc+0x48/0x2d0 [klg_l04_loop_partial]",
+                "klg_trigger_write+0x12/0x30 [klg_l04_loop_partial]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 128,
+              "locs": [
+                [
+                  "klg_l04_loop_partial.c",
+                  31
+                ]
+              ],
+              "functions": [
+                "ring_alloc"
+              ],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "ring_alloc+0x21/0x2d0 [klg_l04_loop_partial]",
+                "klg_trigger_write+0x12/0x30 [klg_l04_loop_partial]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 128,
+              "locs": [
+                [
+                  "klg_l04_loop_partial.c",
+                  31
+                ]
+              ],
+              "functions": [
+                "ring_alloc"
+              ],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "ring_alloc+0x48/0x2d0 [klg_l04_loop_partial]",
+                "klg_trigger_write+0x12/0x30 [klg_l04_loop_partial]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 128,
+              "locs": [
+                [
+                  "klg_l04_loop_partial.c",
+                  31
+                ]
+              ],
+              "functions": [
+                "ring_alloc"
+              ],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "ring_alloc+0x21/0x2d0 [klg_l04_loop_partial]",
+                "klg_trigger_write+0x12/0x30 [klg_l04_loop_partial]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 128,
+              "locs": [
+                [
+                  "klg_l04_loop_partial.c",
+                  31
+                ]
+              ],
+              "functions": [
+                "ring_alloc"
+              ],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "ring_alloc+0x48/0x2d0 [klg_l04_loop_partial]",
+                "klg_trigger_write+0x12/0x30 [klg_l04_loop_partial]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "klg_l05_usercopy:cfg_store:20:25",
+      "module": "klg_l05_usercopy",
+      "status": "confirmed",
+      "reason": "leak at klg_l05_usercopy.c:20 after failing cfg_store+0x42/0x90",
+      "tests": [
+        {
+          "test": "klg_l05_usercopy__n3",
+          "fail_nth": 3,
+          "expected_frame": "cfg_store+0x42/0x90",
+          "attempts": 3,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -14
+          ],
+          "leaks": [
+            {
+              "size": 8,
+              "locs": [
+                [
+                  "klg_l05_usercopy.c",
+                  20
+                ],
+                [
+                  "klg_l05_usercopy.c",
+                  33
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_noprof+0x268/0x4d0",
+                "cfg_store+0x2c/0x90 [klg_l05_usercopy]",
+                "klg_trigger_write+0x18/0x30 [klg_l05_usercopy]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 8,
+              "locs": [
+                [
+                  "klg_l05_usercopy.c",
+                  20
+                ],
+                [
+                  "klg_l05_usercopy.c",
+                  33
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_noprof+0x268/0x4d0",
+                "cfg_store+0x2c/0x90 [klg_l05_usercopy]",
+                "klg_trigger_write+0x18/0x30 [klg_l05_usercopy]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 8,
+              "locs": [
+                [
+                  "klg_l05_usercopy.c",
+                  20
+                ],
+                [
+                  "klg_l05_usercopy.c",
+                  33
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_noprof+0x268/0x4d0",
+                "cfg_store+0x2c/0x90 [klg_l05_usercopy]",
+                "klg_trigger_write+0x18/0x30 [klg_l05_usercopy]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "klg_l06_wrapper_alloc:session_start:37:43",
+      "module": "klg_l06_wrapper_alloc",
+      "status": "confirmed",
+      "reason": "leak at klg_l06_wrapper_alloc.c:37 after failing session_start+0x31/0x80",
+      "tests": [
+        {
+          "test": "klg_l06_wrapper_alloc__n3",
+          "fail_nth": 3,
+          "expected_frame": "session_start+0x31/0x80",
+          "attempts": 3,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -12
+          ],
+          "leaks": [
+            {
+              "size": 32,
+              "locs": [
+                [
+                  "klg_l06_wrapper_alloc.c",
+                  20
+                ],
+                [
+                  "klg_l06_wrapper_alloc.c",
+                  37
+                ],
+                [
+                  "klg_l06_wrapper_alloc.c",
+                  52
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "session_create+0x1b/0x30 [klg_l06_wrapper_alloc]",
+                "session_start+0xe/0x80 [klg_l06_wrapper_alloc]",
+                "klg_trigger_write+0x12/0x30 [klg_l06_wrapper_alloc]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260"
+              ]
+            },
+            {
+              "size": 32,
+              "locs": [
+                [
+                  "klg_l06_wrapper_alloc.c",
+                  20
+                ],
+                [
+                  "klg_l06_wrapper_alloc.c",
+                  37
+                ],
+                [
+                  "klg_l06_wrapper_alloc.c",
+                  52
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "session_create+0x1b/0x30 [klg_l06_wrapper_alloc]",
+                "session_start+0xe/0x80 [klg_l06_wrapper_alloc]",
+                "klg_trigger_write+0x12/0x30 [klg_l06_wrapper_alloc]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260"
+              ]
+            },
+            {
+              "size": 32,
+              "locs": [
+                [
+                  "klg_l06_wrapper_alloc.c",
+                  20
+                ],
+                [
+                  "klg_l06_wrapper_alloc.c",
+                  37
+                ],
+                [
+                  "klg_l06_wrapper_alloc.c",
+                  52
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "session_create+0x1b/0x30 [klg_l06_wrapper_alloc]",
+                "session_start+0xe/0x80 [klg_l06_wrapper_alloc]",
+                "klg_trigger_write+0x12/0x30 [klg_l06_wrapper_alloc]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "klg_l07_wrapper_free:xfer_run:27:33",
+      "module": "klg_l07_wrapper_free",
+      "status": "confirmed",
+      "reason": "leak at klg_l07_wrapper_free.c:27 after failing xfer_run+0x43/0x90",
+      "tests": [
+        {
+          "test": "klg_l07_wrapper_free__n3",
+          "fail_nth": 3,
+          "expected_frame": "xfer_run+0x43/0x90",
+          "attempts": 3,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -12
+          ],
+          "leaks": [
+            {
+              "size": 16,
+              "locs": [
+                [
+                  "klg_l07_wrapper_free.c",
+                  27
+                ],
+                [
+                  "klg_l07_wrapper_free.c",
+                  42
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "xfer_run+0x20/0x90 [klg_l07_wrapper_free]",
+                "klg_trigger_write+0x12/0x30 [klg_l07_wrapper_free]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 16,
+              "locs": [
+                [
+                  "klg_l07_wrapper_free.c",
+                  27
+                ],
+                [
+                  "klg_l07_wrapper_free.c",
+                  42
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "xfer_run+0x20/0x90 [klg_l07_wrapper_free]",
+                "klg_trigger_write+0x12/0x30 [klg_l07_wrapper_free]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 16,
+              "locs": [
+                [
+                  "klg_l07_wrapper_free.c",
+                  27
+                ],
+                [
+                  "klg_l07_wrapper_free.c",
+                  42
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "xfer_run+0x20/0x90 [klg_l07_wrapper_free]",
+                "klg_trigger_write+0x12/0x30 [klg_l07_wrapper_free]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "klg_l08_kstrdup:profile_load:16:22",
+      "module": "klg_l08_kstrdup",
+      "status": "confirmed",
+      "reason": "leak at klg_l08_kstrdup.c:16 after failing profile_load+0x3b/0x60",
+      "tests": [
+        {
+          "test": "klg_l08_kstrdup__n3",
+          "fail_nth": 3,
+          "expected_frame": "profile_load+0x3b/0x60",
+          "attempts": 3,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -12
+          ],
+          "leaks": [
+            {
+              "size": 16,
+              "locs": [
+                [
+                  "klg_l08_kstrdup.c",
+                  16
+                ],
+                [
+                  "klg_l08_kstrdup.c",
+                  30
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_node_track_caller_noprof+0x2cf/0x4d0",
+                "kstrdup+0x34/0x70",
+                "profile_load+0x18/0x60 [klg_l08_kstrdup]",
+                "klg_trigger_write+0x12/0x30 [klg_l08_kstrdup]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260"
+              ]
+            },
+            {
+              "size": 16,
+              "locs": [
+                [
+                  "klg_l08_kstrdup.c",
+                  16
+                ],
+                [
+                  "klg_l08_kstrdup.c",
+                  30
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_node_track_caller_noprof+0x2cf/0x4d0",
+                "kstrdup+0x34/0x70",
+                "profile_load+0x18/0x60 [klg_l08_kstrdup]",
+                "klg_trigger_write+0x12/0x30 [klg_l08_kstrdup]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260"
+              ]
+            },
+            {
+              "size": 16,
+              "locs": [
+                [
+                  "klg_l08_kstrdup.c",
+                  16
+                ],
+                [
+                  "klg_l08_kstrdup.c",
+                  30
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_node_track_caller_noprof+0x2cf/0x4d0",
+                "kstrdup+0x34/0x70",
+                "profile_load+0x18/0x60 [klg_l08_kstrdup]",
+                "klg_trigger_write+0x12/0x30 [klg_l08_kstrdup]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "klg_l09_kcalloc:table_build:17:34",
+      "module": "klg_l09_kcalloc",
+      "status": "confirmed",
+      "reason": "leak at klg_l09_kcalloc.c:17 after failing table_build+0x44/0xc0",
+      "tests": [
+        {
+          "test": "klg_l09_kcalloc__n3",
+          "fail_nth": 3,
+          "expected_frame": "table_build+0x44/0xc0",
+          "attempts": 3,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -12
+          ],
+          "leaks": [
+            {
+              "size": 128,
+              "locs": [
+                [
+                  "klg_l09_kcalloc.c",
+                  17
+                ],
+                [
+                  "klg_l09_kcalloc.c",
+                  37
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "table_build+0x1d/0xc0 [klg_l09_kcalloc]",
+                "klg_trigger_write+0x12/0x30 [klg_l09_kcalloc]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 128,
+              "locs": [
+                [
+                  "klg_l09_kcalloc.c",
+                  17
+                ],
+                [
+                  "klg_l09_kcalloc.c",
+                  37
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "table_build+0x1d/0xc0 [klg_l09_kcalloc]",
+                "klg_trigger_write+0x12/0x30 [klg_l09_kcalloc]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 128,
+              "locs": [
+                [
+                  "klg_l09_kcalloc.c",
+                  17
+                ],
+                [
+                  "klg_l09_kcalloc.c",
+                  37
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "table_build+0x1d/0xc0 [klg_l09_kcalloc]",
+                "klg_trigger_write+0x12/0x30 [klg_l09_kcalloc]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "klg_l10_vmalloc:fw_stage:22:28",
+      "module": "klg_l10_vmalloc",
+      "status": "not-reproduced",
+      "reason": "predicted failure injected, no object left unreferenced",
+      "tests": [
+        {
+          "test": "klg_l10_vmalloc__n9",
+          "fail_nth": 9,
+          "expected_frame": "fw_stage+0x37/0x80",
+          "attempts": 3,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -12
+          ],
+          "leaks": []
+        }
+      ]
+    },
+    {
+      "id": "klg_l11_kmem_cache:req_submit:22:28",
+      "module": "klg_l11_kmem_cache",
+      "status": "confirmed",
+      "reason": "leak at klg_l11_kmem_cache.c:22 after failing req_submit+0x3d/0x90",
+      "tests": [
+        {
+          "test": "klg_l11_kmem_cache__n3",
+          "fail_nth": 3,
+          "expected_frame": "req_submit+0x3d/0x90",
+          "attempts": 3,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -12
+          ],
+          "leaks": [
+            {
+              "size": 16,
+              "locs": [
+                [
+                  "klg_l11_kmem_cache.c",
+                  22
+                ],
+                [
+                  "klg_l11_kmem_cache.c",
+                  38
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "kmem_cache_alloc_noprof+0x1ac/0x400",
+                "req_submit+0x1a/0x90 [klg_l11_kmem_cache]",
+                "klg_trigger_write+0x12/0x30 [klg_l11_kmem_cache]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 16,
+              "locs": [
+                [
+                  "klg_l11_kmem_cache.c",
+                  22
+                ],
+                [
+                  "klg_l11_kmem_cache.c",
+                  38
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "kmem_cache_alloc_noprof+0x1ac/0x400",
+                "req_submit+0x1a/0x90 [klg_l11_kmem_cache]",
+                "klg_trigger_write+0x12/0x30 [klg_l11_kmem_cache]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 16,
+              "locs": [
+                [
+                  "klg_l11_kmem_cache.c",
+                  22
+                ],
+                [
+                  "klg_l11_kmem_cache.c",
+                  38
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "kmem_cache_alloc_noprof+0x1ac/0x400",
+                "req_submit+0x1a/0x90 [klg_l11_kmem_cache]",
+                "klg_trigger_write+0x12/0x30 [klg_l11_kmem_cache]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "klg_l12_multi_exit:packet_prepare:14:27",
+      "module": "klg_l12_multi_exit",
+      "status": "confirmed",
+      "reason": "leak at klg_l12_multi_exit.c:14 after failing packet_prepare+0x6c/0x160",
+      "tests": [
+        {
+          "test": "klg_l12_multi_exit__n5",
+          "fail_nth": 5,
+          "expected_frame": "packet_prepare+0x6c/0x160",
+          "attempts": 3,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -12
+          ],
+          "leaks": [
+            {
+              "size": 2048,
+              "locs": [
+                [
+                  "klg_l12_multi_exit.c",
+                  14
+                ],
+                [
+                  "klg_l12_multi_exit.c",
+                  49
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "packet_prepare+0x23/0x160 [klg_l12_multi_exit]",
+                "klg_trigger_write+0x12/0x30 [klg_l12_multi_exit]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 2048,
+              "locs": [
+                [
+                  "klg_l12_multi_exit.c",
+                  14
+                ],
+                [
+                  "klg_l12_multi_exit.c",
+                  49
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "packet_prepare+0x23/0x160 [klg_l12_multi_exit]",
+                "klg_trigger_write+0x12/0x30 [klg_l12_multi_exit]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 2048,
+              "locs": [
+                [
+                  "klg_l12_multi_exit.c",
+                  14
+                ],
+                [
+                  "klg_l12_multi_exit.c",
+                  49
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "packet_prepare+0x23/0x160 [klg_l12_multi_exit]",
+                "klg_trigger_write+0x12/0x30 [klg_l12_multi_exit]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "klg_l13_init_misc:ledctl_init:42:49",
+      "module": "klg_l13_init_misc",
+      "status": "confirmed",
+      "reason": "leak at klg_l13_init_misc.c:42 after failing init_module+0x3c/0xff0",
+      "tests": [
+        {
+          "test": "klg_l13_init_misc__n3",
+          "fail_nth": 3,
+          "expected_frame": "init_module+0x3c/0xff0",
+          "attempts": 4,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -12
+          ],
+          "leaks": [
+            {
+              "size": 32,
+              "locs": [
+                [
+                  "klg_l13_init_misc.c",
+                  42
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "do_one_initcall+0x119/0x300",
+                "do_init_module+0x60/0x250",
+                "__se_sys_finit_module+0x27f/0x370",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+                "init_module+0x20/0x0 [klg_l13_init_misc]"
+              ]
+            },
+            {
+              "size": 32,
+              "locs": [
+                [
+                  "klg_l13_init_misc.c",
+                  42
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "do_one_initcall+0x119/0x300",
+                "do_init_module+0x60/0x250",
+                "__se_sys_finit_module+0x27f/0x370",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+                "init_module+0x20/0x0 [klg_l13_init_misc]"
+              ]
+            },
+            {
+              "size": 32,
+              "locs": [
+                [
+                  "klg_l13_init_misc.c",
+                  42
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "do_one_initcall+0x119/0x300",
+                "do_init_module+0x60/0x250",
+                "__se_sys_finit_module+0x27f/0x370",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+                "init_module+0x20/0x0 [klg_l13_init_misc]"
+              ]
+            }
+          ]
+        },
+        {
+          "test": "klg_l13_init_misc__n5",
+          "fail_nth": 5,
+          "expected_frame": "init_module+0x3c/0xff0",
+          "attempts": 4,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -12
+          ],
+          "leaks": [
+            {
+              "size": 32,
+              "locs": [
+                [
+                  "klg_l13_init_misc.c",
+                  42
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "do_one_initcall+0x119/0x300",
+                "do_init_module+0x60/0x250",
+                "__se_sys_finit_module+0x27f/0x370",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+                "init_module+0x20/0x0 [klg_l13_init_misc]"
+              ]
+            },
+            {
+              "size": 32,
+              "locs": [
+                [
+                  "klg_l13_init_misc.c",
+                  42
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "do_one_initcall+0x119/0x300",
+                "do_init_module+0x60/0x250",
+                "__se_sys_finit_module+0x27f/0x370",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+                "init_module+0x20/0x0 [klg_l13_init_misc]"
+              ]
+            },
+            {
+              "size": 32,
+              "locs": [
+                [
+                  "klg_l13_init_misc.c",
+                  42
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "do_one_initcall+0x119/0x300",
+                "do_init_module+0x60/0x250",
+                "__se_sys_finit_module+0x27f/0x370",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+                "init_module+0x20/0x0 [klg_l13_init_misc]"
+              ]
+            }
+          ]
+        },
+        {
+          "test": "klg_l13_init_misc__n7",
+          "fail_nth": 7,
+          "expected_frame": "init_module+0x3c/0xff0",
+          "attempts": 4,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -12
+          ],
+          "leaks": [
+            {
+              "size": 32,
+              "locs": [
+                [
+                  "klg_l13_init_misc.c",
+                  42
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "do_one_initcall+0x119/0x300",
+                "do_init_module+0x60/0x250",
+                "__se_sys_finit_module+0x27f/0x370",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+                "init_module+0x20/0x0 [klg_l13_init_misc]"
+              ]
+            },
+            {
+              "size": 32,
+              "locs": [
+                [
+                  "klg_l13_init_misc.c",
+                  42
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "do_one_initcall+0x119/0x300",
+                "do_init_module+0x60/0x250",
+                "__se_sys_finit_module+0x27f/0x370",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+                "init_module+0x20/0x0 [klg_l13_init_misc]"
+              ]
+            },
+            {
+              "size": 32,
+              "locs": [
+                [
+                  "klg_l13_init_misc.c",
+                  42
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "do_one_initcall+0x119/0x300",
+                "do_init_module+0x60/0x250",
+                "__se_sys_finit_module+0x27f/0x370",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+                "init_module+0x20/0x0 [klg_l13_init_misc]"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "klg_l14_cond_alloc:stats_setup:29:39",
+      "module": "klg_l14_cond_alloc",
+      "status": "confirmed",
+      "reason": "leak at klg_l14_cond_alloc.c:29 after failing stats_setup+0x4d/0x80",
+      "tests": [
+        {
+          "test": "klg_l14_cond_alloc__n5",
+          "fail_nth": 5,
+          "expected_frame": "stats_setup+0x4d/0x80",
+          "attempts": 3,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -22
+          ],
+          "leaks": [
+            {
+              "size": 1024,
+              "locs": [
+                [
+                  "klg_l14_cond_alloc.c",
+                  29
+                ],
+                [
+                  "klg_l14_cond_alloc.c",
+                  47
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "stats_setup+0x3d/0x80 [klg_l14_cond_alloc]",
+                "klg_trigger_write+0x12/0x30 [klg_l14_cond_alloc]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 1024,
+              "locs": [
+                [
+                  "klg_l14_cond_alloc.c",
+                  29
+                ],
+                [
+                  "klg_l14_cond_alloc.c",
+                  47
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "stats_setup+0x3d/0x80 [klg_l14_cond_alloc]",
+                "klg_trigger_write+0x12/0x30 [klg_l14_cond_alloc]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 1024,
+              "locs": [
+                [
+                  "klg_l14_cond_alloc.c",
+                  29
+                ],
+                [
+                  "klg_l14_cond_alloc.c",
+                  47
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "stats_setup+0x3d/0x80 [klg_l14_cond_alloc]",
+                "klg_trigger_write+0x12/0x30 [klg_l14_cond_alloc]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "klg_l15_ida:widget_add:21:27",
+      "module": "klg_l15_ida",
+      "status": "inconclusive",
+      "reason": "no fault point reaches the failing call (klg_l15_ida.c:25)",
+      "tests": []
+    },
+    {
+      "id": "klg_l17_local_struct:transform_run:21:27",
+      "module": "klg_l17_local_struct",
+      "status": "confirmed",
+      "reason": "leak at klg_l17_local_struct.c:21 after failing transform_run+0x42/0x90",
+      "tests": [
+        {
+          "test": "klg_l17_local_struct__n3",
+          "fail_nth": 3,
+          "expected_frame": "transform_run+0x42/0x90",
+          "attempts": 3,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -12
+          ],
+          "leaks": [
+            {
+              "size": 256,
+              "locs": [
+                [
+                  "klg_l17_local_struct.c",
+                  21
+                ],
+                [
+                  "klg_l17_local_struct.c",
+                  36
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "transform_run+0x1f/0x90 [klg_l17_local_struct]",
+                "klg_trigger_write+0x12/0x30 [klg_l17_local_struct]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 256,
+              "locs": [
+                [
+                  "klg_l17_local_struct.c",
+                  21
+                ],
+                [
+                  "klg_l17_local_struct.c",
+                  36
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "transform_run+0x1f/0x90 [klg_l17_local_struct]",
+                "klg_trigger_write+0x12/0x30 [klg_l17_local_struct]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            },
+            {
+              "size": 256,
+              "locs": [
+                [
+                  "klg_l17_local_struct.c",
+                  21
+                ],
+                [
+                  "klg_l17_local_struct.c",
+                  36
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "__kmalloc_cache_noprof+0x1b5/0x420",
+                "transform_run+0x1f/0x90 [klg_l17_local_struct]",
+                "klg_trigger_write+0x12/0x30 [klg_l17_local_struct]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100",
+                "do_syscall_64+0xc8/0x260",
+                "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "klg_s09_loop_cleanup:ring_alloc:20:29",
+      "module": "klg_s09_loop_cleanup",
+      "status": "inconclusive",
+      "reason": "no failing call controls the leaking path",
+      "tests": []
+    },
+    {
+      "id": "klg_s09_loop_cleanup:ring_alloc:20:34",
+      "module": "klg_s09_loop_cleanup",
+      "status": "not-reproduced",
+      "reason": "predicted failure injected, no object left unreferenced",
+      "tests": [
+        {
+          "test": "klg_s09_loop_cleanup__n1",
+          "fail_nth": 1,
+          "expected_frame": "ring_alloc+0x3b/0x350",
+          "attempts": 3,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -12
+          ],
+          "leaks": []
+        },
+        {
+          "test": "klg_s09_loop_cleanup__n3",
+          "fail_nth": 3,
+          "expected_frame": "ring_alloc+0x79/0x350",
+          "attempts": 3,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -12
+          ],
+          "leaks": []
+        },
+        {
+          "test": "klg_s09_loop_cleanup__n5",
+          "fail_nth": 5,
+          "expected_frame": "ring_alloc+0xa0/0x350",
+          "attempts": 3,
+          "fault_hits": 3,
+          "missed": false,
+          "returns": [
+            -12
+          ],
+          "leaks": []
+        }
+      ]
+    }
+  ],
+  "fault_points": {
+    "klg_l01_two_alloc": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_l01_two_alloc.c",
+            14
+          ],
+          [
+            "klg_l01_two_alloc.c",
+            14
+          ],
+          [
+            "klg_l01_two_alloc.c",
+            14
+          ]
+        ],
+        "frames": [
+          "initialize+0x1f/0xf0",
+          "initialize+0x1f/0xf0",
+          "initialize+0x1f/0xf0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_l01_two_alloc.c",
+            17
+          ],
+          [
+            "klg_l01_two_alloc.c",
+            17
+          ],
+          [
+            "klg_l01_two_alloc.c",
+            17
+          ]
+        ],
+        "frames": [
+          "initialize+0x46/0xf0",
+          "initialize+0x46/0xf0",
+          "initialize+0x46/0xf0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_l02_goto_ladder": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_l02_goto_ladder.c",
+            28
+          ],
+          [
+            "klg_l02_goto_ladder.c",
+            57
+          ],
+          [
+            "klg_l02_goto_ladder.c",
+            28
+          ],
+          [
+            "klg_l02_goto_ladder.c",
+            28
+          ],
+          [
+            "klg_l02_goto_ladder.c",
+            57
+          ]
+        ],
+        "frames": [
+          "sensor_setup+0x21/0xb0",
+          "klg_trigger_write+0x12/0x30",
+          "sensor_setup+0x21/0xb0",
+          "sensor_setup+0x21/0xb0",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_l02_goto_ladder.c",
+            32
+          ],
+          [
+            "klg_l02_goto_ladder.c",
+            57
+          ],
+          [
+            "klg_l02_goto_ladder.c",
+            32
+          ],
+          [
+            "klg_l02_goto_ladder.c",
+            32
+          ],
+          [
+            "klg_l02_goto_ladder.c",
+            57
+          ]
+        ],
+        "frames": [
+          "sensor_setup+0x3f/0xb0",
+          "klg_trigger_write+0x12/0x30",
+          "sensor_setup+0x3f/0xb0",
+          "sensor_setup+0x3f/0xb0",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 5,
+        "locs": [
+          [
+            "klg_l02_goto_ladder.c",
+            38
+          ],
+          [
+            "klg_l02_goto_ladder.c",
+            57
+          ],
+          [
+            "klg_l02_goto_ladder.c",
+            38
+          ],
+          [
+            "klg_l02_goto_ladder.c",
+            57
+          ]
+        ],
+        "frames": [
+          "sensor_setup+0x5f/0xb0",
+          "klg_trigger_write+0x12/0x30",
+          "sensor_setup+0x5f/0xb0",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 6,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_l03_reg_fail": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_l03_reg_fail.c",
+            33
+          ],
+          [
+            "klg_l03_reg_fail.c",
+            48
+          ],
+          [
+            "klg_l03_reg_fail.c",
+            33
+          ],
+          [
+            "klg_l03_reg_fail.c",
+            33
+          ],
+          [
+            "klg_l03_reg_fail.c",
+            48
+          ]
+        ],
+        "frames": [
+          "channel_open+0x1c/0x70",
+          "klg_trigger_write+0x12/0x30",
+          "channel_open+0x1c/0x70",
+          "channel_open+0x1c/0x70",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_l03_reg_fail.c",
+            18
+          ],
+          [
+            "klg_l03_reg_fail.c",
+            38
+          ],
+          [
+            "klg_l03_reg_fail.c",
+            48
+          ],
+          [
+            "klg_l03_reg_fail.c",
+            18
+          ],
+          [
+            "klg_l03_reg_fail.c",
+            18
+          ],
+          [
+            "klg_l03_reg_fail.c",
+            18
+          ],
+          [
+            "klg_l03_reg_fail.c",
+            18
+          ],
+          [
+            "klg_l03_reg_fail.c",
+            38
+          ],
+          [
+            "klg_l03_reg_fail.c",
+            48
+          ]
+        ],
+        "frames": [
+          "hw_register_channel+0x9/0x20",
+          "channel_open+0x32/0x70",
+          "klg_trigger_write+0x12/0x30",
+          "hw_register_channel+0x4/0x20",
+          "hw_register_channel+0x9/0x20",
+          "hw_register_channel+0x5/0x20",
+          "hw_register_channel+0x9/0x20",
+          "channel_open+0x32/0x70",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 22,
+        "traced": true,
+        "unresolved": {}
+      }
+    ],
+    "klg_l04_loop_partial": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_l04_loop_partial.c",
+            31
+          ],
+          [
+            "klg_l04_loop_partial.c",
+            31
+          ]
+        ],
+        "frames": [
+          "klg_trigger_write+0x12/0x30",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "ring_alloc": "ring_alloc+0x21/0x2d0"
+        }
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_l04_loop_partial.c",
+            31
+          ],
+          [
+            "klg_l04_loop_partial.c",
+            31
+          ]
+        ],
+        "frames": [
+          "klg_trigger_write+0x12/0x30",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "ring_alloc": "ring_alloc+0x48/0x2d0"
+        }
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 5,
+        "locs": [
+          [
+            "klg_l04_loop_partial.c",
+            31
+          ],
+          [
+            "klg_l04_loop_partial.c",
+            31
+          ]
+        ],
+        "frames": [
+          "klg_trigger_write+0x12/0x30",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "ring_alloc": "ring_alloc+0x6a/0x2d0"
+        }
+      },
+      {
+        "n": 6,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 7,
+        "locs": [
+          [
+            "klg_l04_loop_partial.c",
+            31
+          ],
+          [
+            "klg_l04_loop_partial.c",
+            31
+          ]
+        ],
+        "frames": [
+          "klg_trigger_write+0x12/0x30",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "ring_alloc": "ring_alloc+0x8c/0x2d0"
+        }
+      },
+      {
+        "n": 8,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_l05_usercopy": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_l05_usercopy.c",
+            20
+          ],
+          [
+            "klg_l05_usercopy.c",
+            33
+          ],
+          [
+            "klg_l05_usercopy.c",
+            20
+          ],
+          [
+            "klg_l05_usercopy.c",
+            20
+          ],
+          [
+            "klg_l05_usercopy.c",
+            33
+          ]
+        ],
+        "frames": [
+          "cfg_store+0x2c/0x90",
+          "klg_trigger_write+0x18/0x30",
+          "cfg_store+0x2c/0x90",
+          "cfg_store+0x2c/0x90",
+          "klg_trigger_write+0x18/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_l05_usercopy.c",
+            24
+          ],
+          [
+            "klg_l05_usercopy.c",
+            33
+          ],
+          [
+            "klg_l05_usercopy.c",
+            24
+          ],
+          [
+            "klg_l05_usercopy.c",
+            33
+          ]
+        ],
+        "frames": [
+          "cfg_store+0x42/0x90",
+          "klg_trigger_write+0x18/0x30",
+          "cfg_store+0x42/0x90",
+          "klg_trigger_write+0x18/0x30"
+        ],
+        "ret": -1,
+        "errno": 14,
+        "traced": true,
+        "unresolved": {}
+      }
+    ],
+    "klg_l06_wrapper_alloc": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_l06_wrapper_alloc.c",
+            20
+          ],
+          [
+            "klg_l06_wrapper_alloc.c",
+            37
+          ],
+          [
+            "klg_l06_wrapper_alloc.c",
+            52
+          ],
+          [
+            "klg_l06_wrapper_alloc.c",
+            20
+          ],
+          [
+            "klg_l06_wrapper_alloc.c",
+            20
+          ],
+          [
+            "klg_l06_wrapper_alloc.c",
+            37
+          ],
+          [
+            "klg_l06_wrapper_alloc.c",
+            52
+          ]
+        ],
+        "frames": [
+          "session_create+0x1b/0x30",
+          "session_start+0xe/0x80",
+          "klg_trigger_write+0x12/0x30",
+          "session_create+0x1b/0x30",
+          "session_create+0x1b/0x30",
+          "session_start+0xe/0x80",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_l06_wrapper_alloc.c",
+            41
+          ],
+          [
+            "klg_l06_wrapper_alloc.c",
+            52
+          ],
+          [
+            "klg_l06_wrapper_alloc.c",
+            41
+          ],
+          [
+            "klg_l06_wrapper_alloc.c",
+            41
+          ],
+          [
+            "klg_l06_wrapper_alloc.c",
+            52
+          ]
+        ],
+        "frames": [
+          "session_start+0x31/0x80",
+          "klg_trigger_write+0x12/0x30",
+          "session_start+0x31/0x80",
+          "session_start+0x31/0x80",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_l07_wrapper_free": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_l07_wrapper_free.c",
+            27
+          ],
+          [
+            "klg_l07_wrapper_free.c",
+            42
+          ],
+          [
+            "klg_l07_wrapper_free.c",
+            27
+          ],
+          [
+            "klg_l07_wrapper_free.c",
+            27
+          ],
+          [
+            "klg_l07_wrapper_free.c",
+            42
+          ]
+        ],
+        "frames": [
+          "xfer_run+0x20/0x90",
+          "klg_trigger_write+0x12/0x30",
+          "xfer_run+0x20/0x90",
+          "xfer_run+0x20/0x90",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_l07_wrapper_free.c",
+            31
+          ],
+          [
+            "klg_l07_wrapper_free.c",
+            42
+          ],
+          [
+            "klg_l07_wrapper_free.c",
+            31
+          ],
+          [
+            "klg_l07_wrapper_free.c",
+            31
+          ],
+          [
+            "klg_l07_wrapper_free.c",
+            42
+          ]
+        ],
+        "frames": [
+          "xfer_run+0x43/0x90",
+          "klg_trigger_write+0x12/0x30",
+          "xfer_run+0x43/0x90",
+          "xfer_run+0x43/0x90",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_l08_kstrdup": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_l08_kstrdup.c",
+            16
+          ],
+          [
+            "klg_l08_kstrdup.c",
+            30
+          ],
+          [
+            "klg_l08_kstrdup.c",
+            16
+          ],
+          [
+            "klg_l08_kstrdup.c",
+            16
+          ],
+          [
+            "klg_l08_kstrdup.c",
+            30
+          ]
+        ],
+        "frames": [
+          "profile_load+0x18/0x60",
+          "klg_trigger_write+0x12/0x30",
+          "profile_load+0x18/0x60",
+          "profile_load+0x18/0x60",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_l08_kstrdup.c",
+            20
+          ],
+          [
+            "klg_l08_kstrdup.c",
+            30
+          ],
+          [
+            "klg_l08_kstrdup.c",
+            20
+          ],
+          [
+            "klg_l08_kstrdup.c",
+            20
+          ],
+          [
+            "klg_l08_kstrdup.c",
+            30
+          ]
+        ],
+        "frames": [
+          "profile_load+0x3b/0x60",
+          "klg_trigger_write+0x12/0x30",
+          "profile_load+0x3b/0x60",
+          "profile_load+0x3b/0x60",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_l09_kcalloc": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_l09_kcalloc.c",
+            17
+          ],
+          [
+            "klg_l09_kcalloc.c",
+            37
+          ],
+          [
+            "klg_l09_kcalloc.c",
+            17
+          ],
+          [
+            "klg_l09_kcalloc.c",
+            17
+          ],
+          [
+            "klg_l09_kcalloc.c",
+            37
+          ]
+        ],
+        "frames": [
+          "table_build+0x1d/0xc0",
+          "klg_trigger_write+0x12/0x30",
+          "table_build+0x1d/0xc0",
+          "table_build+0x1d/0xc0",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_l09_kcalloc.c",
+            21
+          ],
+          [
+            "klg_l09_kcalloc.c",
+            37
+          ],
+          [
+            "klg_l09_kcalloc.c",
+            21
+          ],
+          [
+            "klg_l09_kcalloc.c",
+            21
+          ],
+          [
+            "klg_l09_kcalloc.c",
+            37
+          ]
+        ],
+        "frames": [
+          "table_build+0x44/0xc0",
+          "klg_trigger_write+0x12/0x30",
+          "table_build+0x44/0xc0",
+          "table_build+0x44/0xc0",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_l10_vmalloc": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_l10_vmalloc.c",
+            22
+          ],
+          [
+            "klg_l10_vmalloc.c",
+            38
+          ],
+          [
+            "klg_l10_vmalloc.c",
+            22
+          ],
+          [
+            "klg_l10_vmalloc.c",
+            22
+          ],
+          [
+            "klg_l10_vmalloc.c",
+            22
+          ],
+          [
+            "klg_l10_vmalloc.c",
+            38
+          ]
+        ],
+        "frames": [
+          "fw_stage+0x14/0x80",
+          "klg_trigger_write+0x12/0x30",
+          "fw_stage+0x14/0x80",
+          "fw_stage+0x14/0x80",
+          "fw_stage+0x14/0x80",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_l10_vmalloc.c",
+            22
+          ],
+          [
+            "klg_l10_vmalloc.c",
+            38
+          ],
+          [
+            "klg_l10_vmalloc.c",
+            22
+          ],
+          [
+            "klg_l10_vmalloc.c",
+            22
+          ],
+          [
+            "klg_l10_vmalloc.c",
+            22
+          ],
+          [
+            "klg_l10_vmalloc.c",
+            38
+          ]
+        ],
+        "frames": [
+          "fw_stage+0x14/0x80",
+          "klg_trigger_write+0x12/0x30",
+          "fw_stage+0x14/0x80",
+          "fw_stage+0x14/0x80",
+          "fw_stage+0x14/0x80",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 5,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 6,
+        "locs": [
+          [
+            "klg_l10_vmalloc.c",
+            22
+          ],
+          [
+            "klg_l10_vmalloc.c",
+            38
+          ],
+          [
+            "klg_l10_vmalloc.c",
+            22
+          ],
+          [
+            "klg_l10_vmalloc.c",
+            22
+          ],
+          [
+            "klg_l10_vmalloc.c",
+            38
+          ]
+        ],
+        "frames": [
+          "fw_stage+0x14/0x80",
+          "klg_trigger_write+0x12/0x30",
+          "fw_stage+0x14/0x80",
+          "fw_stage+0x14/0x80",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 7,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 8,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 9,
+        "locs": [
+          [
+            "klg_l10_vmalloc.c",
+            26
+          ],
+          [
+            "klg_l10_vmalloc.c",
+            38
+          ],
+          [
+            "klg_l10_vmalloc.c",
+            26
+          ],
+          [
+            "klg_l10_vmalloc.c",
+            26
+          ],
+          [
+            "klg_l10_vmalloc.c",
+            38
+          ]
+        ],
+        "frames": [
+          "fw_stage+0x37/0x80",
+          "klg_trigger_write+0x12/0x30",
+          "fw_stage+0x37/0x80",
+          "fw_stage+0x37/0x80",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 10,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_l11_kmem_cache": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_l11_kmem_cache.c",
+            22
+          ],
+          [
+            "klg_l11_kmem_cache.c",
+            38
+          ],
+          [
+            "klg_l11_kmem_cache.c",
+            22
+          ],
+          [
+            "klg_l11_kmem_cache.c",
+            22
+          ],
+          [
+            "klg_l11_kmem_cache.c",
+            38
+          ]
+        ],
+        "frames": [
+          "req_submit+0x1a/0x90",
+          "klg_trigger_write+0x12/0x30",
+          "req_submit+0x1a/0x90",
+          "req_submit+0x1a/0x90",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_l11_kmem_cache.c",
+            26
+          ],
+          [
+            "klg_l11_kmem_cache.c",
+            38
+          ],
+          [
+            "klg_l11_kmem_cache.c",
+            26
+          ],
+          [
+            "klg_l11_kmem_cache.c",
+            26
+          ],
+          [
+            "klg_l11_kmem_cache.c",
+            38
+          ]
+        ],
+        "frames": [
+          "req_submit+0x3d/0x90",
+          "klg_trigger_write+0x12/0x30",
+          "req_submit+0x3d/0x90",
+          "req_submit+0x3d/0x90",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_l12_multi_exit": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_l12_multi_exit.c",
+            14
+          ],
+          [
+            "klg_l12_multi_exit.c",
+            49
+          ],
+          [
+            "klg_l12_multi_exit.c",
+            14
+          ],
+          [
+            "klg_l12_multi_exit.c",
+            14
+          ],
+          [
+            "klg_l12_multi_exit.c",
+            49
+          ]
+        ],
+        "frames": [
+          "packet_prepare+0x23/0x160",
+          "klg_trigger_write+0x12/0x30",
+          "packet_prepare+0x23/0x160",
+          "packet_prepare+0x23/0x160",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_l12_multi_exit.c",
+            18
+          ],
+          [
+            "klg_l12_multi_exit.c",
+            49
+          ],
+          [
+            "klg_l12_multi_exit.c",
+            18
+          ],
+          [
+            "klg_l12_multi_exit.c",
+            18
+          ],
+          [
+            "klg_l12_multi_exit.c",
+            49
+          ]
+        ],
+        "frames": [
+          "packet_prepare+0x45/0x160",
+          "klg_trigger_write+0x12/0x30",
+          "packet_prepare+0x45/0x160",
+          "packet_prepare+0x45/0x160",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 5,
+        "locs": [
+          [
+            "klg_l12_multi_exit.c",
+            24
+          ],
+          [
+            "klg_l12_multi_exit.c",
+            49
+          ],
+          [
+            "klg_l12_multi_exit.c",
+            24
+          ],
+          [
+            "klg_l12_multi_exit.c",
+            24
+          ],
+          [
+            "klg_l12_multi_exit.c",
+            49
+          ]
+        ],
+        "frames": [
+          "packet_prepare+0x6c/0x160",
+          "klg_trigger_write+0x12/0x30",
+          "packet_prepare+0x6c/0x160",
+          "packet_prepare+0x6c/0x160",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 6,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 7,
+        "locs": [
+          [
+            "klg_l12_multi_exit.c",
+            30
+          ],
+          [
+            "klg_l12_multi_exit.c",
+            49
+          ],
+          [
+            "klg_l12_multi_exit.c",
+            30
+          ],
+          [
+            "klg_l12_multi_exit.c",
+            30
+          ],
+          [
+            "klg_l12_multi_exit.c",
+            49
+          ]
+        ],
+        "frames": [
+          "packet_prepare+0x8e/0x160",
+          "klg_trigger_write+0x12/0x30",
+          "packet_prepare+0x8e/0x160",
+          "packet_prepare+0x8e/0x160",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 8,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_l13_init_misc": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            42
+          ],
+          [
+            "klg_l13_init_misc.c",
+            42
+          ],
+          [
+            "klg_l13_init_misc.c",
+            42
+          ]
+        ],
+        "frames": [
+          "init_module+0x20/0xff0",
+          "init_module+0x20/0xff0",
+          "init_module+0x20/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            47
+          ],
+          [
+            "klg_l13_init_misc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "init_module+0x3c/0xff0",
+          "init_module+0x3c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 5,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            47
+          ],
+          [
+            "klg_l13_init_misc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "init_module+0x3c/0xff0",
+          "init_module+0x3c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 6,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 7,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            47
+          ],
+          [
+            "klg_l13_init_misc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "init_module+0x3c/0xff0",
+          "init_module+0x3c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 8,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 9,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            47
+          ],
+          [
+            "klg_l13_init_misc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "init_module+0x3c/0xff0",
+          "init_module+0x3c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 10,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 11,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            47
+          ],
+          [
+            "klg_l13_init_misc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "init_module+0x3c/0xff0",
+          "init_module+0x3c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 12,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 13,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            47
+          ],
+          [
+            "klg_l13_init_misc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "init_module+0x3c/0xff0",
+          "init_module+0x3c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 14,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 15,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            47
+          ],
+          [
+            "klg_l13_init_misc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "init_module+0x3c/0xff0",
+          "init_module+0x3c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 16,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 17,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            47
+          ],
+          [
+            "klg_l13_init_misc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "init_module+0x3c/0xff0",
+          "init_module+0x3c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 18,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 19,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            47
+          ],
+          [
+            "klg_l13_init_misc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "init_module+0x3c/0xff0",
+          "init_module+0x3c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 20,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 21,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            47
+          ],
+          [
+            "klg_l13_init_misc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "init_module+0x3c/0xff0",
+          "init_module+0x3c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 22,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 23,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            47
+          ],
+          [
+            "klg_l13_init_misc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "init_module+0x3c/0xff0",
+          "init_module+0x3c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 24,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 25,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            47
+          ],
+          [
+            "klg_l13_init_misc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "init_module+0x3c/0xff0",
+          "init_module+0x3c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 26,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 27,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            47
+          ],
+          [
+            "klg_l13_init_misc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "init_module+0x3c/0xff0",
+          "init_module+0x3c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 28,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 29,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            47
+          ],
+          [
+            "klg_l13_init_misc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "init_module+0x3c/0xff0",
+          "init_module+0x3c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 30,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 31,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            47
+          ],
+          [
+            "klg_l13_init_misc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "init_module+0x3c/0xff0",
+          "init_module+0x3c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 32,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 33,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            47
+          ],
+          [
+            "klg_l13_init_misc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "init_module+0x3c/0xff0",
+          "init_module+0x3c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 34,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 35,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            47
+          ],
+          [
+            "klg_l13_init_misc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "init_module+0x3c/0xff0",
+          "init_module+0x3c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 36,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 37,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            47
+          ],
+          [
+            "klg_l13_init_misc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "init_module+0x3c/0xff0",
+          "init_module+0x3c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 38,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 39,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            47
+          ],
+          [
+            "klg_l13_init_misc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "init_module+0x3c/0xff0",
+          "init_module+0x3c/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 40,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 41,
+        "locs": [
+          [
+            "klg_l13_init_misc.c",
+            47
+          ],
+          [
+            "klg_l13_init_misc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "init_module+0x3c/0xff0",
+          "init_module+0x3c/0xff0"
+        ],
+        "ret": 0,
+        "errno": 0,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 42,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_l14_cond_alloc": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_l14_cond_alloc.c",
+            24
+          ],
+          [
+            "klg_l14_cond_alloc.c",
+            47
+          ],
+          [
+            "klg_l14_cond_alloc.c",
+            24
+          ],
+          [
+            "klg_l14_cond_alloc.c",
+            24
+          ],
+          [
+            "klg_l14_cond_alloc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "stats_setup+0x1f/0x80",
+          "klg_trigger_write+0x12/0x30",
+          "stats_setup+0x1f/0x80",
+          "stats_setup+0x1f/0x80",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_l14_cond_alloc.c",
+            29
+          ],
+          [
+            "klg_l14_cond_alloc.c",
+            47
+          ],
+          [
+            "klg_l14_cond_alloc.c",
+            29
+          ],
+          [
+            "klg_l14_cond_alloc.c",
+            29
+          ],
+          [
+            "klg_l14_cond_alloc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "stats_setup+0x3d/0x80",
+          "klg_trigger_write+0x12/0x30",
+          "stats_setup+0x3d/0x80",
+          "stats_setup+0x3d/0x80",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 5,
+        "locs": [
+          [
+            "klg_l14_cond_alloc.c",
+            14
+          ],
+          [
+            "klg_l14_cond_alloc.c",
+            36
+          ],
+          [
+            "klg_l14_cond_alloc.c",
+            47
+          ],
+          [
+            "klg_l14_cond_alloc.c",
+            14
+          ],
+          [
+            "klg_l14_cond_alloc.c",
+            14
+          ],
+          [
+            "klg_l14_cond_alloc.c",
+            14
+          ],
+          [
+            "klg_l14_cond_alloc.c",
+            14
+          ],
+          [
+            "klg_l14_cond_alloc.c",
+            36
+          ],
+          [
+            "klg_l14_cond_alloc.c",
+            47
+          ]
+        ],
+        "frames": [
+          "stats_calibrate+0x9/0x20",
+          "stats_setup+0x4d/0x80",
+          "klg_trigger_write+0x12/0x30",
+          "stats_calibrate+0x4/0x20",
+          "stats_calibrate+0x9/0x20",
+          "stats_calibrate+0x5/0x20",
+          "stats_calibrate+0x9/0x20",
+          "stats_setup+0x4d/0x80",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 22,
+        "traced": true,
+        "unresolved": {}
+      }
+    ],
+    "klg_l15_ida": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_l15_ida.c",
+            21
+          ],
+          [
+            "klg_l15_ida.c",
+            36
+          ],
+          [
+            "klg_l15_ida.c",
+            21
+          ],
+          [
+            "klg_l15_ida.c",
+            21
+          ],
+          [
+            "klg_l15_ida.c",
+            36
+          ]
+        ],
+        "frames": [
+          "widget_add+0x1f/0xa0",
+          "klg_trigger_write+0x12/0x30",
+          "widget_add+0x1f/0xa0",
+          "widget_add+0x1f/0xa0",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_l16_nested_owner": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_l16_nested_owner.c",
+            28
+          ],
+          [
+            "klg_l16_nested_owner.c",
+            50
+          ],
+          [
+            "klg_l16_nested_owner.c",
+            28
+          ],
+          [
+            "klg_l16_nested_owner.c",
+            28
+          ],
+          [
+            "klg_l16_nested_owner.c",
+            50
+          ]
+        ],
+        "frames": [
+          "bind_start+0x1f/0x90",
+          "klg_trigger_write+0x12/0x30",
+          "bind_start+0x1f/0x90",
+          "bind_start+0x1f/0x90",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_l16_nested_owner.c",
+            32
+          ],
+          [
+            "klg_l16_nested_owner.c",
+            50
+          ],
+          [
+            "klg_l16_nested_owner.c",
+            32
+          ],
+          [
+            "klg_l16_nested_owner.c",
+            32
+          ],
+          [
+            "klg_l16_nested_owner.c",
+            50
+          ]
+        ],
+        "frames": [
+          "bind_start+0x3d/0x90",
+          "klg_trigger_write+0x12/0x30",
+          "bind_start+0x3d/0x90",
+          "bind_start+0x3d/0x90",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 5,
+        "locs": [
+          [
+            "klg_l16_nested_owner.c",
+            18
+          ],
+          [
+            "klg_l16_nested_owner.c",
+            39
+          ],
+          [
+            "klg_l16_nested_owner.c",
+            50
+          ],
+          [
+            "klg_l16_nested_owner.c",
+            18
+          ],
+          [
+            "klg_l16_nested_owner.c",
+            18
+          ],
+          [
+            "klg_l16_nested_owner.c",
+            18
+          ],
+          [
+            "klg_l16_nested_owner.c",
+            18
+          ],
+          [
+            "klg_l16_nested_owner.c",
+            39
+          ],
+          [
+            "klg_l16_nested_owner.c",
+            50
+          ]
+        ],
+        "frames": [
+          "ctx_bind+0x9/0x20",
+          "bind_start+0x57/0x90",
+          "klg_trigger_write+0x12/0x30",
+          "ctx_bind+0x4/0x20",
+          "ctx_bind+0x9/0x20",
+          "ctx_bind+0x5/0x20",
+          "ctx_bind+0x9/0x20",
+          "bind_start+0x57/0x90",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 22,
+        "traced": true,
+        "unresolved": {}
+      }
+    ],
+    "klg_l17_local_struct": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_l17_local_struct.c",
+            21
+          ],
+          [
+            "klg_l17_local_struct.c",
+            36
+          ],
+          [
+            "klg_l17_local_struct.c",
+            21
+          ],
+          [
+            "klg_l17_local_struct.c",
+            21
+          ],
+          [
+            "klg_l17_local_struct.c",
+            36
+          ]
+        ],
+        "frames": [
+          "transform_run+0x1f/0x90",
+          "klg_trigger_write+0x12/0x30",
+          "transform_run+0x1f/0x90",
+          "transform_run+0x1f/0x90",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_l17_local_struct.c",
+            25
+          ],
+          [
+            "klg_l17_local_struct.c",
+            36
+          ],
+          [
+            "klg_l17_local_struct.c",
+            25
+          ],
+          [
+            "klg_l17_local_struct.c",
+            25
+          ],
+          [
+            "klg_l17_local_struct.c",
+            36
+          ]
+        ],
+        "frames": [
+          "transform_run+0x42/0x90",
+          "klg_trigger_write+0x12/0x30",
+          "transform_run+0x42/0x90",
+          "transform_run+0x42/0x90",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_s01_two_alloc_ok": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_s01_two_alloc_ok.c",
+            13
+          ],
+          [
+            "klg_s01_two_alloc_ok.c",
+            13
+          ],
+          [
+            "klg_s01_two_alloc_ok.c",
+            13
+          ]
+        ],
+        "frames": [
+          "initialize+0x1f/0xf0",
+          "initialize+0x1f/0xf0",
+          "initialize+0x1f/0xf0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_s01_two_alloc_ok.c",
+            16
+          ],
+          [
+            "klg_s01_two_alloc_ok.c",
+            16
+          ],
+          [
+            "klg_s01_two_alloc_ok.c",
+            16
+          ]
+        ],
+        "frames": [
+          "initialize+0x41/0xf0",
+          "initialize+0x41/0xf0",
+          "initialize+0x41/0xf0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_s02_goto_ok": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_s02_goto_ok.c",
+            26
+          ],
+          [
+            "klg_s02_goto_ok.c",
+            51
+          ],
+          [
+            "klg_s02_goto_ok.c",
+            26
+          ],
+          [
+            "klg_s02_goto_ok.c",
+            26
+          ],
+          [
+            "klg_s02_goto_ok.c",
+            51
+          ]
+        ],
+        "frames": [
+          "sensor_setup+0x21/0xb0",
+          "klg_trigger_write+0x12/0x30",
+          "sensor_setup+0x21/0xb0",
+          "sensor_setup+0x21/0xb0",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_s02_goto_ok.c",
+            30
+          ],
+          [
+            "klg_s02_goto_ok.c",
+            51
+          ],
+          [
+            "klg_s02_goto_ok.c",
+            30
+          ],
+          [
+            "klg_s02_goto_ok.c",
+            30
+          ],
+          [
+            "klg_s02_goto_ok.c",
+            51
+          ]
+        ],
+        "frames": [
+          "sensor_setup+0x3f/0xb0",
+          "klg_trigger_write+0x12/0x30",
+          "sensor_setup+0x3f/0xb0",
+          "sensor_setup+0x3f/0xb0",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 5,
+        "locs": [
+          [
+            "klg_s02_goto_ok.c",
+            36
+          ],
+          [
+            "klg_s02_goto_ok.c",
+            51
+          ],
+          [
+            "klg_s02_goto_ok.c",
+            36
+          ],
+          [
+            "klg_s02_goto_ok.c",
+            51
+          ]
+        ],
+        "frames": [
+          "sensor_setup+0x5c/0xb0",
+          "klg_trigger_write+0x12/0x30",
+          "sensor_setup+0x5c/0xb0",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 6,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_s03_list_owner": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_s03_list_owner.c",
+            33
+          ],
+          [
+            "klg_s03_list_owner.c",
+            51
+          ],
+          [
+            "klg_s03_list_owner.c",
+            33
+          ],
+          [
+            "klg_s03_list_owner.c",
+            33
+          ],
+          [
+            "klg_s03_list_owner.c",
+            51
+          ]
+        ],
+        "frames": [
+          "item_add+0x1c/0xa0",
+          "klg_trigger_write+0x12/0x30",
+          "item_add+0x1c/0xa0",
+          "item_add+0x1c/0xa0",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_s03_list_owner.c",
+            23
+          ],
+          [
+            "klg_s03_list_owner.c",
+            38
+          ],
+          [
+            "klg_s03_list_owner.c",
+            51
+          ],
+          [
+            "klg_s03_list_owner.c",
+            23
+          ],
+          [
+            "klg_s03_list_owner.c",
+            23
+          ],
+          [
+            "klg_s03_list_owner.c",
+            23
+          ],
+          [
+            "klg_s03_list_owner.c",
+            23
+          ],
+          [
+            "klg_s03_list_owner.c",
+            38
+          ],
+          [
+            "klg_s03_list_owner.c",
+            51
+          ]
+        ],
+        "frames": [
+          "item_validate+0x9/0x20",
+          "item_add+0x33/0xa0",
+          "klg_trigger_write+0x12/0x30",
+          "item_validate+0x4/0x20",
+          "item_validate+0x9/0x20",
+          "item_validate+0x5/0x20",
+          "item_validate+0x9/0x20",
+          "item_add+0x33/0xa0",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 22,
+        "traced": true,
+        "unresolved": {}
+      }
+    ],
+    "klg_s04_param_owner": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_s04_param_owner.c",
+            29
+          ],
+          [
+            "klg_s04_param_owner.c",
+            43
+          ],
+          [
+            "klg_s04_param_owner.c",
+            56
+          ],
+          [
+            "klg_s04_param_owner.c",
+            29
+          ],
+          [
+            "klg_s04_param_owner.c",
+            29
+          ],
+          [
+            "klg_s04_param_owner.c",
+            43
+          ],
+          [
+            "klg_s04_param_owner.c",
+            56
+          ]
+        ],
+        "frames": [
+          "attach_buffer+0x1b/0x50",
+          "port_open+0xb/0x50",
+          "klg_trigger_write+0x12/0x30",
+          "attach_buffer+0x1b/0x50",
+          "attach_buffer+0x1b/0x50",
+          "port_open+0xb/0x50",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_s04_param_owner.c",
+            20
+          ],
+          [
+            "klg_s04_param_owner.c",
+            43
+          ],
+          [
+            "klg_s04_param_owner.c",
+            56
+          ],
+          [
+            "klg_s04_param_owner.c",
+            20
+          ],
+          [
+            "klg_s04_param_owner.c",
+            20
+          ],
+          [
+            "klg_s04_param_owner.c",
+            20
+          ],
+          [
+            "klg_s04_param_owner.c",
+            20
+          ],
+          [
+            "klg_s04_param_owner.c",
+            43
+          ],
+          [
+            "klg_s04_param_owner.c",
+            56
+          ]
+        ],
+        "frames": [
+          "port_check+0x9/0x30",
+          "port_open+0xb/0x50",
+          "klg_trigger_write+0x12/0x30",
+          "port_check+0x4/0x30",
+          "port_check+0x9/0x30",
+          "port_check+0x5/0x30",
+          "port_check+0x9/0x30",
+          "port_open+0xb/0x50",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 22,
+        "traced": true,
+        "unresolved": {}
+      }
+    ],
+    "klg_s05_factory": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_s05_factory.c",
+            19
+          ],
+          [
+            "klg_s05_factory.c",
+            35
+          ],
+          [
+            "klg_s05_factory.c",
+            19
+          ],
+          [
+            "klg_s05_factory.c",
+            35
+          ]
+        ],
+        "frames": [
+          "label_use+0xe/0x70",
+          "klg_trigger_write+0x12/0x30",
+          "label_use+0xe/0x70",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_s05_factory.c",
+            23
+          ],
+          [
+            "klg_s05_factory.c",
+            35
+          ],
+          [
+            "klg_s05_factory.c",
+            23
+          ],
+          [
+            "klg_s05_factory.c",
+            23
+          ],
+          [
+            "klg_s05_factory.c",
+            35
+          ]
+        ],
+        "frames": [
+          "label_use+0x2c/0x70",
+          "klg_trigger_write+0x12/0x30",
+          "label_use+0x2c/0x70",
+          "label_use+0x2c/0x70",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_s06_devm": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            44
+          ],
+          [
+            "klg_s06_devm.c",
+            44
+          ]
+        ],
+        "frames": [
+          "init_module+0x2e/0xff0",
+          "init_module+0x2e/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            44
+          ],
+          [
+            "klg_s06_devm.c",
+            44
+          ]
+        ],
+        "frames": [
+          "init_module+0x2e/0xff0",
+          "init_module+0x2e/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 5,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            44
+          ],
+          [
+            "klg_s06_devm.c",
+            44
+          ],
+          [
+            "klg_s06_devm.c",
+            44
+          ]
+        ],
+        "frames": [
+          "init_module+0x2e/0xff0",
+          "init_module+0x2e/0xff0",
+          "init_module+0x2e/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 6,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 7,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            44
+          ],
+          [
+            "klg_s06_devm.c",
+            44
+          ],
+          [
+            "klg_s06_devm.c",
+            44
+          ]
+        ],
+        "frames": [
+          "init_module+0x2e/0xff0",
+          "init_module+0x2e/0xff0",
+          "init_module+0x2e/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 8,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 9,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            44
+          ],
+          [
+            "klg_s06_devm.c",
+            44
+          ]
+        ],
+        "frames": [
+          "init_module+0x2e/0xff0",
+          "init_module+0x2e/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 10,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 11,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            44
+          ],
+          [
+            "klg_s06_devm.c",
+            44
+          ]
+        ],
+        "frames": [
+          "init_module+0x2e/0xff0",
+          "init_module+0x2e/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 12,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 13,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            44
+          ],
+          [
+            "klg_s06_devm.c",
+            44
+          ]
+        ],
+        "frames": [
+          "init_module+0x2e/0xff0",
+          "init_module+0x2e/0xff0"
+        ],
+        "ret": -1,
+        "errno": 22,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 14,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 15,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            44
+          ],
+          [
+            "klg_s06_devm.c",
+            44
+          ]
+        ],
+        "frames": [
+          "init_module+0x2e/0xff0",
+          "init_module+0x2e/0xff0"
+        ],
+        "ret": -1,
+        "errno": 22,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 16,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 17,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            44
+          ],
+          [
+            "klg_s06_devm.c",
+            44
+          ]
+        ],
+        "frames": [
+          "init_module+0x2e/0xff0",
+          "init_module+0x2e/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 18,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 19,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            44
+          ],
+          [
+            "klg_s06_devm.c",
+            44
+          ]
+        ],
+        "frames": [
+          "init_module+0x2e/0xff0",
+          "init_module+0x2e/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 20,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 21,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            44
+          ],
+          [
+            "klg_s06_devm.c",
+            44
+          ]
+        ],
+        "frames": [
+          "init_module+0x2e/0xff0",
+          "init_module+0x2e/0xff0"
+        ],
+        "ret": 0,
+        "errno": 0,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 22,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 23,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            44
+          ],
+          [
+            "klg_s06_devm.c",
+            44
+          ]
+        ],
+        "frames": [
+          "init_module+0x2e/0xff0",
+          "init_module+0x2e/0xff0"
+        ],
+        "ret": 0,
+        "errno": 0,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 24,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 25,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            44
+          ],
+          [
+            "klg_s06_devm.c",
+            44
+          ]
+        ],
+        "frames": [
+          "init_module+0x2e/0xff0",
+          "init_module+0x2e/0xff0"
+        ],
+        "ret": 0,
+        "errno": 0,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 26,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 27,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            44
+          ],
+          [
+            "klg_s06_devm.c",
+            44
+          ]
+        ],
+        "frames": [
+          "init_module+0x2e/0xff0",
+          "init_module+0x2e/0xff0"
+        ],
+        "ret": 0,
+        "errno": 0,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 28,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 29,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            44
+          ],
+          [
+            "klg_s06_devm.c",
+            44
+          ]
+        ],
+        "frames": [
+          "init_module+0x2e/0xff0",
+          "init_module+0x2e/0xff0"
+        ],
+        "ret": 0,
+        "errno": 0,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 30,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 31,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            44
+          ],
+          [
+            "klg_s06_devm.c",
+            44
+          ]
+        ],
+        "frames": [
+          "init_module+0x2e/0xff0",
+          "init_module+0x2e/0xff0"
+        ],
+        "ret": 0,
+        "errno": 0,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 32,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 33,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": -1,
+        "errno": 22,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 34,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 35,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 36,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 37,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 38,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 39,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 40,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 41,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 42,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 43,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 44,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 45,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 46,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 47,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 48,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 49,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 50,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 51,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 52,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 53,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 54,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 55,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 56,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 57,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 58,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 59,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 60,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 61,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 62,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 63,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 64,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 65,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 66,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 67,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": 0,
+        "errno": 0,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 68,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 69,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": 0,
+        "errno": 0,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 70,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 71,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": 0,
+        "errno": 0,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 72,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 73,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": 0,
+        "errno": 0,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 74,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 75,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": 0,
+        "errno": 0,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 76,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 77,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            21
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            21
+          ],
+          [
+            "klg_s06_devm.c",
+            21
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "demo_probe+0x28/0x70",
+          "init_module+0x77/0xff0",
+          "demo_probe+0x28/0x70",
+          "demo_probe+0x28/0x70",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": 0,
+        "errno": 0,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 78,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 79,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            21
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            21
+          ],
+          [
+            "klg_s06_devm.c",
+            21
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "demo_probe+0x28/0x70",
+          "init_module+0x77/0xff0",
+          "demo_probe+0x28/0x70",
+          "demo_probe+0x28/0x70",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": 0,
+        "errno": 0,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 80,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 81,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": 0,
+        "errno": 0,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 82,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 83,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": 0,
+        "errno": 0,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 84,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 85,
+        "locs": [
+          [
+            "klg_s06_devm.c",
+            48
+          ],
+          [
+            "klg_s06_devm.c",
+            48
+          ]
+        ],
+        "frames": [
+          "init_module+0x77/0xff0",
+          "init_module+0x77/0xff0"
+        ],
+        "ret": 0,
+        "errno": 0,
+        "traced": true,
+        "unresolved": {
+          "__pfx_init_module": "__pfx_init_module+0x10/0x10"
+        }
+      },
+      {
+        "n": 86,
+        "locs": [],
+        "frames": [],
+        "ret": 0,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_s07_free_wrapper_ok": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_s07_free_wrapper_ok.c",
+            25
+          ],
+          [
+            "klg_s07_free_wrapper_ok.c",
+            42
+          ],
+          [
+            "klg_s07_free_wrapper_ok.c",
+            25
+          ],
+          [
+            "klg_s07_free_wrapper_ok.c",
+            25
+          ],
+          [
+            "klg_s07_free_wrapper_ok.c",
+            42
+          ]
+        ],
+        "frames": [
+          "xfer_run+0x1f/0x90",
+          "klg_trigger_write+0x12/0x30",
+          "xfer_run+0x1f/0x90",
+          "xfer_run+0x1f/0x90",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_s07_free_wrapper_ok.c",
+            29
+          ],
+          [
+            "klg_s07_free_wrapper_ok.c",
+            42
+          ],
+          [
+            "klg_s07_free_wrapper_ok.c",
+            29
+          ],
+          [
+            "klg_s07_free_wrapper_ok.c",
+            29
+          ],
+          [
+            "klg_s07_free_wrapper_ok.c",
+            42
+          ]
+        ],
+        "frames": [
+          "xfer_run+0x3d/0x90",
+          "klg_trigger_write+0x12/0x30",
+          "xfer_run+0x3d/0x90",
+          "xfer_run+0x3d/0x90",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_s08_local_struct_ok": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_s08_local_struct_ok.c",
+            20
+          ],
+          [
+            "klg_s08_local_struct_ok.c",
+            37
+          ],
+          [
+            "klg_s08_local_struct_ok.c",
+            20
+          ],
+          [
+            "klg_s08_local_struct_ok.c",
+            20
+          ],
+          [
+            "klg_s08_local_struct_ok.c",
+            37
+          ]
+        ],
+        "frames": [
+          "transform_run+0x1f/0xa0",
+          "klg_trigger_write+0x12/0x30",
+          "transform_run+0x1f/0xa0",
+          "transform_run+0x1f/0xa0",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_s08_local_struct_ok.c",
+            24
+          ],
+          [
+            "klg_s08_local_struct_ok.c",
+            37
+          ],
+          [
+            "klg_s08_local_struct_ok.c",
+            24
+          ],
+          [
+            "klg_s08_local_struct_ok.c",
+            24
+          ],
+          [
+            "klg_s08_local_struct_ok.c",
+            37
+          ]
+        ],
+        "frames": [
+          "transform_run+0x3d/0xa0",
+          "klg_trigger_write+0x12/0x30",
+          "transform_run+0x3d/0xa0",
+          "transform_run+0x3d/0xa0",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_s09_loop_cleanup": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_s09_loop_cleanup.c",
+            37
+          ],
+          [
+            "klg_s09_loop_cleanup.c",
+            37
+          ]
+        ],
+        "frames": [
+          "klg_trigger_write+0x12/0x30",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "ring_alloc": "ring_alloc+0x3b/0x350"
+        }
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_s09_loop_cleanup.c",
+            37
+          ],
+          [
+            "klg_s09_loop_cleanup.c",
+            37
+          ]
+        ],
+        "frames": [
+          "klg_trigger_write+0x12/0x30",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "ring_alloc": "ring_alloc+0x79/0x350"
+        }
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 5,
+        "locs": [
+          [
+            "klg_s09_loop_cleanup.c",
+            37
+          ],
+          [
+            "klg_s09_loop_cleanup.c",
+            37
+          ]
+        ],
+        "frames": [
+          "klg_trigger_write+0x12/0x30",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "ring_alloc": "ring_alloc+0xa0/0x350"
+        }
+      },
+      {
+        "n": 6,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 7,
+        "locs": [
+          [
+            "klg_s09_loop_cleanup.c",
+            37
+          ],
+          [
+            "klg_s09_loop_cleanup.c",
+            37
+          ]
+        ],
+        "frames": [
+          "klg_trigger_write+0x12/0x30",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {
+          "ring_alloc": "ring_alloc+0xc7/0x350"
+        }
+      },
+      {
+        "n": 8,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_s10_correlated": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_s10_correlated.c",
+            19
+          ],
+          [
+            "klg_s10_correlated.c",
+            32
+          ],
+          [
+            "klg_s10_correlated.c",
+            19
+          ],
+          [
+            "klg_s10_correlated.c",
+            19
+          ],
+          [
+            "klg_s10_correlated.c",
+            32
+          ]
+        ],
+        "frames": [
+          "trace_dump+0x1c/0x60",
+          "klg_trigger_write+0x12/0x30",
+          "trace_dump+0x1c/0x60",
+          "trace_dump+0x1c/0x60",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_s11_register_owner": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_s11_register_owner.c",
+            36
+          ],
+          [
+            "klg_s11_register_owner.c",
+            50
+          ],
+          [
+            "klg_s11_register_owner.c",
+            36
+          ],
+          [
+            "klg_s11_register_owner.c",
+            36
+          ],
+          [
+            "klg_s11_register_owner.c",
+            50
+          ]
+        ],
+        "frames": [
+          "entry_add+0x1b/0x60",
+          "klg_trigger_write+0x12/0x30",
+          "entry_add+0x1b/0x60",
+          "entry_add+0x1b/0x60",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_s11_register_owner.c",
+            26
+          ],
+          [
+            "klg_s11_register_owner.c",
+            42
+          ],
+          [
+            "klg_s11_register_owner.c",
+            50
+          ],
+          [
+            "klg_s11_register_owner.c",
+            26
+          ],
+          [
+            "klg_s11_register_owner.c",
+            26
+          ],
+          [
+            "klg_s11_register_owner.c",
+            26
+          ],
+          [
+            "klg_s11_register_owner.c",
+            26
+          ],
+          [
+            "klg_s11_register_owner.c",
+            42
+          ],
+          [
+            "klg_s11_register_owner.c",
+            50
+          ]
+        ],
+        "frames": [
+          "table_resize+0x9/0x30",
+          "entry_add+0x34/0x60",
+          "klg_trigger_write+0x12/0x30",
+          "table_resize+0x4/0x30",
+          "table_resize+0x9/0x30",
+          "table_resize+0x5/0x30",
+          "table_resize+0x9/0x30",
+          "entry_add+0x34/0x60",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 22,
+        "traced": true,
+        "unresolved": {}
+      }
+    ],
+    "klg_s12_kvfree": [
+      {
+        "n": 1,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [
+          [
+            "klg_s12_kvfree.c",
+            21
+          ],
+          [
+            "klg_s12_kvfree.c",
+            42
+          ],
+          [
+            "klg_s12_kvfree.c",
+            21
+          ],
+          [
+            "klg_s12_kvfree.c",
+            21
+          ],
+          [
+            "klg_s12_kvfree.c",
+            21
+          ],
+          [
+            "klg_s12_kvfree.c",
+            42
+          ]
+        ],
+        "frames": [
+          "keyring_load+0x36/0xe0",
+          "klg_trigger_write+0x12/0x30",
+          "keyring_load+0x36/0xe0",
+          "keyring_load+0x36/0xe0",
+          "keyring_load+0x36/0xe0",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 4,
+        "locs": [
+          [
+            "klg_s12_kvfree.c",
+            21
+          ],
+          [
+            "klg_s12_kvfree.c",
+            42
+          ],
+          [
+            "klg_s12_kvfree.c",
+            21
+          ],
+          [
+            "klg_s12_kvfree.c",
+            21
+          ],
+          [
+            "klg_s12_kvfree.c",
+            21
+          ],
+          [
+            "klg_s12_kvfree.c",
+            42
+          ]
+        ],
+        "frames": [
+          "keyring_load+0x36/0xe0",
+          "klg_trigger_write+0x12/0x30",
+          "keyring_load+0x36/0xe0",
+          "keyring_load+0x36/0xe0",
+          "keyring_load+0x36/0xe0",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 5,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 6,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 7,
+        "locs": [
+          [
+            "klg_s12_kvfree.c",
+            21
+          ],
+          [
+            "klg_s12_kvfree.c",
+            42
+          ],
+          [
+            "klg_s12_kvfree.c",
+            21
+          ],
+          [
+            "klg_s12_kvfree.c",
+            21
+          ],
+          [
+            "klg_s12_kvfree.c",
+            42
+          ]
+        ],
+        "frames": [
+          "keyring_load+0x36/0xe0",
+          "klg_trigger_write+0x12/0x30",
+          "keyring_load+0x36/0xe0",
+          "keyring_load+0x36/0xe0",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 8,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 9,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 10,
+        "locs": [
+          [
+            "klg_s12_kvfree.c",
+            27
+          ],
+          [
+            "klg_s12_kvfree.c",
+            42
+          ],
+          [
+            "klg_s12_kvfree.c",
+            27
+          ],
+          [
+            "klg_s12_kvfree.c",
+            27
+          ],
+          [
+            "klg_s12_kvfree.c",
+            42
+          ]
+        ],
+        "frames": [
+          "keyring_load+0x54/0xe0",
+          "klg_trigger_write+0x12/0x30",
+          "keyring_load+0x54/0xe0",
+          "keyring_load+0x54/0xe0",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 11,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ],
+    "klg_s13_rcu_free": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_s13_rcu_free.c",
+            34
+          ],
+          [
+            "klg_s13_rcu_free.c",
+            57
+          ],
+          [
+            "klg_s13_rcu_free.c",
+            34
+          ],
+          [
+            "klg_s13_rcu_free.c",
+            34
+          ],
+          [
+            "klg_s13_rcu_free.c",
+            57
+          ]
+        ],
+        "frames": [
+          "route_add+0x20/0xa0",
+          "klg_trigger_write+0x12/0x30",
+          "route_add+0x20/0xa0",
+          "route_add+0x20/0xa0",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_s13_rcu_free.c",
+            39
+          ],
+          [
+            "klg_s13_rcu_free.c",
+            57
+          ],
+          [
+            "klg_s13_rcu_free.c",
+            39
+          ],
+          [
+            "klg_s13_rcu_free.c",
+            39
+          ],
+          [
+            "klg_s13_rcu_free.c",
+            57
+          ]
+        ],
+        "frames": [
+          "route_add+0x4a/0xa0",
+          "klg_trigger_write+0x12/0x30",
+          "route_add+0x4a/0xa0",
+          "route_add+0x4a/0xa0",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 4,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 5,
+        "locs": [
+          [
+            "klg_s13_rcu_free.c",
+            19
+          ],
+          [
+            "klg_s13_rcu_free.c",
+            45
+          ],
+          [
+            "klg_s13_rcu_free.c",
+            57
+          ],
+          [
+            "klg_s13_rcu_free.c",
+            19
+          ],
+          [
+            "klg_s13_rcu_free.c",
+            19
+          ],
+          [
+            "klg_s13_rcu_free.c",
+            19
+          ],
+          [
+            "klg_s13_rcu_free.c",
+            19
+          ],
+          [
+            "klg_s13_rcu_free.c",
+            45
+          ],
+          [
+            "klg_s13_rcu_free.c",
+            57
+          ]
+        ],
+        "frames": [
+          "route_check+0x9/0x20",
+          "route_add+0x5a/0xa0",
+          "klg_trigger_write+0x12/0x30",
+          "route_check+0x4/0x20",
+          "route_check+0x9/0x20",
+          "route_check+0x5/0x20",
+          "route_check+0x9/0x20",
+          "route_add+0x5a/0xa0",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 22,
+        "traced": true,
+        "unresolved": {}
+      }
+    ],
+    "klg_s14_kref": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_s14_kref.c",
+            32
+          ],
+          [
+            "klg_s14_kref.c",
+            48
+          ],
+          [
+            "klg_s14_kref.c",
+            32
+          ],
+          [
+            "klg_s14_kref.c",
+            32
+          ],
+          [
+            "klg_s14_kref.c",
+            48
+          ]
+        ],
+        "frames": [
+          "conn_open+0x1c/0x80",
+          "klg_trigger_write+0x12/0x30",
+          "conn_open+0x1c/0x80",
+          "conn_open+0x1c/0x80",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      },
+      {
+        "n": 3,
+        "locs": [
+          [
+            "klg_s14_kref.c",
+            22
+          ],
+          [
+            "klg_s14_kref.c",
+            38
+          ],
+          [
+            "klg_s14_kref.c",
+            48
+          ],
+          [
+            "klg_s14_kref.c",
+            22
+          ],
+          [
+            "klg_s14_kref.c",
+            22
+          ],
+          [
+            "klg_s14_kref.c",
+            22
+          ],
+          [
+            "klg_s14_kref.c",
+            22
+          ],
+          [
+            "klg_s14_kref.c",
+            38
+          ],
+          [
+            "klg_s14_kref.c",
+            48
+          ]
+        ],
+        "frames": [
+          "conn_handshake+0x9/0x20",
+          "conn_open+0x39/0x80",
+          "klg_trigger_write+0x12/0x30",
+          "conn_handshake+0x4/0x20",
+          "conn_handshake+0x9/0x20",
+          "conn_handshake+0x5/0x20",
+          "conn_handshake+0x9/0x20",
+          "conn_open+0x39/0x80",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 22,
+        "traced": true,
+        "unresolved": {}
+      }
+    ],
+    "klg_s15_single_alloc": [
+      {
+        "n": 1,
+        "locs": [
+          [
+            "klg_s15_single_alloc.c",
+            14
+          ],
+          [
+            "klg_s15_single_alloc.c",
+            23
+          ],
+          [
+            "klg_s15_single_alloc.c",
+            14
+          ],
+          [
+            "klg_s15_single_alloc.c",
+            14
+          ],
+          [
+            "klg_s15_single_alloc.c",
+            23
+          ]
+        ],
+        "frames": [
+          "scratch_use+0x1c/0x60",
+          "klg_trigger_write+0x12/0x30",
+          "scratch_use+0x1c/0x60",
+          "scratch_use+0x1c/0x60",
+          "klg_trigger_write+0x12/0x30"
+        ],
+        "ret": -1,
+        "errno": 12,
+        "traced": true,
+        "unresolved": {}
+      },
+      {
+        "n": 2,
+        "locs": [],
+        "frames": [],
+        "ret": 1,
+        "errno": 0,
+        "traced": false,
+        "unresolved": {}
+      }
+    ]
+  },
+  "rounds": [
+    [
+      "klg_l01_two_alloc__control"
+    ],
+    [
+      "klg_l01_two_alloc__n3"
+    ],
+    [
+      "klg_l13_init_misc__control"
+    ],
+    [
+      "klg_l13_init_misc__n3"
+    ],
+    [
+      "klg_l13_init_misc__n5"
+    ],
+    [
+      "klg_l13_init_misc__n7"
+    ],
+    [
+      "klg_l02_goto_ladder__control",
+      "klg_l03_reg_fail__control",
+      "klg_l04_loop_partial__control",
+      "klg_l05_usercopy__control",
+      "klg_l06_wrapper_alloc__control",
+      "klg_l07_wrapper_free__control",
+      "klg_l08_kstrdup__control",
+      "klg_l09_kcalloc__control",
+      "klg_l10_vmalloc__control",
+      "klg_l11_kmem_cache__control",
+      "klg_l12_multi_exit__control",
+      "klg_l14_cond_alloc__control",
+      "klg_l15_ida__control",
+      "klg_l17_local_struct__control",
+      "klg_s09_loop_cleanup__control"
+    ],
+    [
+      "klg_l02_goto_ladder__n5",
+      "klg_l03_reg_fail__n3",
+      "klg_l04_loop_partial__n1",
+      "klg_l05_usercopy__n3",
+      "klg_l06_wrapper_alloc__n3",
+      "klg_l07_wrapper_free__n3",
+      "klg_l08_kstrdup__n3",
+      "klg_l09_kcalloc__n3",
+      "klg_l10_vmalloc__n9",
+      "klg_l11_kmem_cache__n3",
+      "klg_l12_multi_exit__n5",
+      "klg_l14_cond_alloc__n5",
+      "klg_l17_local_struct__n3",
+      "klg_s09_loop_cleanup__n1"
+    ],
+    [
+      "klg_l04_loop_partial__n3",
+      "klg_s09_loop_cleanup__n3"
+    ],
+    [
+      "klg_l04_loop_partial__n5",
+      "klg_s09_loop_cleanup__n5"
+    ]
+  ],
+  "sweep_leaks": [
+    {
+      "module": "klg_l01_two_alloc",
+      "file": "klg_l01_two_alloc.c",
+      "line": 14,
+      "objects": 1,
+      "size": 128,
+      "backtrace": [
+        "__kmalloc_cache_noprof+0x1b5/0x420",
+        "do_one_initcall+0x119/0x300",
+        "do_init_module+0x60/0x250",
+        "__se_sys_finit_module+0x27f/0x370",
+        "do_syscall_64+0xc8/0x260",
+        "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+        "initialize+0x1f/0x0 [klg_l01_two_alloc]"
+      ]
+    },
+    {
+      "module": "klg_l02_goto_ladder",
+      "file": "klg_l02_goto_ladder.c",
+      "line": 32,
+      "objects": 1,
+      "size": 512,
+      "backtrace": [
+        "__kmalloc_cache_noprof+0x1b5/0x420",
+        "sensor_setup+0x3f/0xb0 [klg_l02_goto_ladder]",
+        "klg_trigger_write+0x12/0x30 [klg_l02_goto_ladder]",
+        "full_proxy_write+0x5c/0xb0",
+        "vfs_write+0x136/0x450",
+        "ksys_write+0x79/0x100",
+        "do_syscall_64+0xc8/0x260",
+        "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+      ]
+    },
+    {
+      "module": "klg_l03_reg_fail",
+      "file": "klg_l03_reg_fail.c",
+      "line": 33,
+      "objects": 1,
+      "size": 8,
+      "backtrace": [
+        "__kmalloc_cache_noprof+0x1b5/0x420",
+        "channel_open+0x1c/0x70 [klg_l03_reg_fail]",
+        "klg_trigger_write+0x12/0x30 [klg_l03_reg_fail]",
+        "full_proxy_write+0x5c/0xb0",
+        "vfs_write+0x136/0x450",
+        "ksys_write+0x79/0x100",
+        "do_syscall_64+0xc8/0x260",
+        "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+      ]
+    },
+    {
+      "module": "klg_l04_loop_partial",
+      "file": "klg_l04_loop_partial.c",
+      "line": 19,
+      "objects": 6,
+      "size": 128,
+      "backtrace": [
+        "__kmalloc_cache_noprof+0x1b5/0x420",
+        "ring_alloc+0x21/0x2d0 [klg_l04_loop_partial]",
+        "klg_trigger_write+0x12/0x30 [klg_l04_loop_partial]",
+        "full_proxy_write+0x5c/0xb0",
+        "vfs_write+0x136/0x450",
+        "ksys_write+0x79/0x100",
+        "do_syscall_64+0xc8/0x260",
+        "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+      ]
+    },
+    {
+      "module": "klg_l05_usercopy",
+      "file": "klg_l05_usercopy.c",
+      "line": 20,
+      "objects": 1,
+      "size": 8,
+      "backtrace": [
+        "__kmalloc_noprof+0x268/0x4d0",
+        "cfg_store+0x2c/0x90 [klg_l05_usercopy]",
+        "klg_trigger_write+0x18/0x30 [klg_l05_usercopy]",
+        "full_proxy_write+0x5c/0xb0",
+        "vfs_write+0x136/0x450",
+        "ksys_write+0x79/0x100",
+        "do_syscall_64+0xc8/0x260",
+        "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+      ]
+    },
+    {
+      "module": "klg_l06_wrapper_alloc",
+      "file": "klg_l06_wrapper_alloc.c",
+      "line": 37,
+      "objects": 1,
+      "size": 32,
+      "backtrace": [
+        "__kmalloc_cache_noprof+0x1b5/0x420",
+        "session_create+0x1b/0x30 [klg_l06_wrapper_alloc]",
+        "session_start+0xe/0x80 [klg_l06_wrapper_alloc]",
+        "klg_trigger_write+0x12/0x30 [klg_l06_wrapper_alloc]",
+        "full_proxy_write+0x5c/0xb0",
+        "vfs_write+0x136/0x450",
+        "ksys_write+0x79/0x100",
+        "do_syscall_64+0xc8/0x260",
+        "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+      ]
+    },
+    {
+      "module": "klg_l07_wrapper_free",
+      "file": "klg_l07_wrapper_free.c",
+      "line": 27,
+      "objects": 1,
+      "size": 16,
+      "backtrace": [
+        "__kmalloc_cache_noprof+0x1b5/0x420",
+        "xfer_run+0x20/0x90 [klg_l07_wrapper_free]",
+        "klg_trigger_write+0x12/0x30 [klg_l07_wrapper_free]",
+        "full_proxy_write+0x5c/0xb0",
+        "vfs_write+0x136/0x450",
+        "ksys_write+0x79/0x100",
+        "do_syscall_64+0xc8/0x260",
+        "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+      ]
+    },
+    {
+      "module": "klg_l08_kstrdup",
+      "file": "klg_l08_kstrdup.c",
+      "line": 16,
+      "objects": 1,
+      "size": 16,
+      "backtrace": [
+        "__kmalloc_node_track_caller_noprof+0x2cf/0x4d0",
+        "kstrdup+0x34/0x70",
+        "profile_load+0x18/0x60 [klg_l08_kstrdup]",
+        "klg_trigger_write+0x12/0x30 [klg_l08_kstrdup]",
+        "full_proxy_write+0x5c/0xb0",
+        "vfs_write+0x136/0x450",
+        "ksys_write+0x79/0x100",
+        "do_syscall_64+0xc8/0x260",
+        "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+      ]
+    },
+    {
+      "module": "klg_l09_kcalloc",
+      "file": "klg_l09_kcalloc.c",
+      "line": 17,
+      "objects": 1,
+      "size": 128,
+      "backtrace": [
+        "__kmalloc_cache_noprof+0x1b5/0x420",
+        "table_build+0x1d/0xc0 [klg_l09_kcalloc]",
+        "klg_trigger_write+0x12/0x30 [klg_l09_kcalloc]",
+        "full_proxy_write+0x5c/0xb0",
+        "vfs_write+0x136/0x450",
+        "ksys_write+0x79/0x100",
+        "do_syscall_64+0xc8/0x260",
+        "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+      ]
+    },
+    {
+      "module": "klg_l10_vmalloc",
+      "file": "klg_l10_vmalloc.c",
+      "line": 22,
+      "objects": 1,
+      "size": 65536,
+      "backtrace": [
+        "kmemleak_vmalloc+0x2d/0xc0",
+        "__vmalloc_node_range_noprof+0x6c8/0x710",
+        "vmalloc_noprof+0x58/0x70",
+        "fw_stage+0x14/0x80 [klg_l10_vmalloc]",
+        "klg_trigger_write+0x12/0x30 [klg_l10_vmalloc]",
+        "full_proxy_write+0x5c/0xb0",
+        "vfs_write+0x136/0x450",
+        "ksys_write+0x79/0x100",
+        "do_syscall_64+0xc8/0x260",
+        "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+      ]
+    },
+    {
+      "module": "klg_l11_kmem_cache",
+      "file": "klg_l11_kmem_cache.c",
+      "line": 22,
+      "objects": 1,
+      "size": 16,
+      "backtrace": [
+        "kmem_cache_alloc_noprof+0x1ac/0x400",
+        "req_submit+0x1a/0x90 [klg_l11_kmem_cache]",
+        "klg_trigger_write+0x12/0x30 [klg_l11_kmem_cache]",
+        "full_proxy_write+0x5c/0xb0",
+        "vfs_write+0x136/0x450",
+        "ksys_write+0x79/0x100",
+        "do_syscall_64+0xc8/0x260",
+        "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+      ]
+    },
+    {
+      "module": "klg_l12_multi_exit",
+      "file": "klg_l12_multi_exit.c",
+      "line": 14,
+      "objects": 1,
+      "size": 2048,
+      "backtrace": [
+        "__kmalloc_cache_noprof+0x1b5/0x420",
+        "packet_prepare+0x23/0x160 [klg_l12_multi_exit]",
+        "klg_trigger_write+0x12/0x30 [klg_l12_multi_exit]",
+        "full_proxy_write+0x5c/0xb0",
+        "vfs_write+0x136/0x450",
+        "ksys_write+0x79/0x100",
+        "do_syscall_64+0xc8/0x260",
+        "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+      ]
+    },
+    {
+      "module": "klg_l13_init_misc",
+      "file": "klg_l13_init_misc.c",
+      "line": 42,
+      "objects": 6,
+      "size": 32,
+      "backtrace": [
+        "__kmalloc_cache_noprof+0x1b5/0x420",
+        "do_one_initcall+0x119/0x300",
+        "do_init_module+0x60/0x250",
+        "__se_sys_finit_module+0x27f/0x370",
+        "do_syscall_64+0xc8/0x260",
+        "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+        "init_module+0x20/0x0 [klg_l13_init_misc]"
+      ]
+    },
+    {
+      "module": "klg_l14_cond_alloc",
+      "file": "klg_l14_cond_alloc.c",
+      "line": 29,
+      "objects": 1,
+      "size": 1024,
+      "backtrace": [
+        "__kmalloc_cache_noprof+0x1b5/0x420",
+        "stats_setup+0x3d/0x80 [klg_l14_cond_alloc]",
+        "klg_trigger_write+0x12/0x30 [klg_l14_cond_alloc]",
+        "full_proxy_write+0x5c/0xb0",
+        "vfs_write+0x136/0x450",
+        "ksys_write+0x79/0x100",
+        "do_syscall_64+0xc8/0x260",
+        "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+      ]
+    },
+    {
+      "module": "klg_l16_nested_owner",
+      "file": "klg_l16_nested_owner.c",
+      "line": 32,
+      "objects": 1,
+      "size": 512,
+      "backtrace": [
+        "__kmalloc_cache_noprof+0x1b5/0x420",
+        "bind_start+0x3d/0x90 [klg_l16_nested_owner]",
+        "klg_trigger_write+0x12/0x30 [klg_l16_nested_owner]",
+        "full_proxy_write+0x5c/0xb0",
+        "vfs_write+0x136/0x450",
+        "ksys_write+0x79/0x100",
+        "do_syscall_64+0xc8/0x260",
+        "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+      ]
+    },
+    {
+      "module": "klg_l17_local_struct",
+      "file": "klg_l17_local_struct.c",
+      "line": 21,
+      "objects": 1,
+      "size": 256,
+      "backtrace": [
+        "__kmalloc_cache_noprof+0x1b5/0x420",
+        "transform_run+0x1f/0x90 [klg_l17_local_struct]",
+        "klg_trigger_write+0x12/0x30 [klg_l17_local_struct]",
+        "full_proxy_write+0x5c/0xb0",
+        "vfs_write+0x136/0x450",
+        "ksys_write+0x79/0x100",
+        "do_syscall_64+0xc8/0x260",
+        "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+      ]
+    }
+  ],
+  "hybrid_executions": 425,
+  "mapping_executions": 304,
+  "confirm_executions": 121,
+  "kmemleak_rounds": 10,
+  "crashes": {
+    "mapping": [],
+    "confirm": [],
+    "baseline": []
+  },
+  "timing": {
+    "sweep_vm_s": 80.03159952163696,
+    "mapping_vm_s": 50.01780152320862,
+    "confirm_vm_s": 78.02275729179382
+  },
+  "baselines": {
+    "exhaustive": {
+      "sites": [
+        {
+          "module": "klg_l01_two_alloc",
+          "file": "klg_l01_two_alloc.c",
+          "line": 14,
+          "objects": 1,
+          "size": 128,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "do_one_initcall+0x119/0x300",
+            "do_init_module+0x60/0x250",
+            "__se_sys_finit_module+0x27f/0x370",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+            "initialize+0x1f/0x0 [klg_l01_two_alloc]"
+          ]
+        },
+        {
+          "module": "klg_l02_goto_ladder",
+          "file": "klg_l02_goto_ladder.c",
+          "line": 32,
+          "objects": 1,
+          "size": 512,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "sensor_setup+0x3f/0xb0 [klg_l02_goto_ladder]",
+            "klg_trigger_write+0x12/0x30 [klg_l02_goto_ladder]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l03_reg_fail",
+          "file": "klg_l03_reg_fail.c",
+          "line": 33,
+          "objects": 1,
+          "size": 8,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "channel_open+0x1c/0x70 [klg_l03_reg_fail]",
+            "klg_trigger_write+0x12/0x30 [klg_l03_reg_fail]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l04_loop_partial",
+          "file": "klg_l04_loop_partial.c",
+          "line": 19,
+          "objects": 6,
+          "size": 128,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "ring_alloc+0x21/0x2d0 [klg_l04_loop_partial]",
+            "klg_trigger_write+0x12/0x30 [klg_l04_loop_partial]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l05_usercopy",
+          "file": "klg_l05_usercopy.c",
+          "line": 20,
+          "objects": 1,
+          "size": 8,
+          "backtrace": [
+            "__kmalloc_noprof+0x268/0x4d0",
+            "cfg_store+0x2c/0x90 [klg_l05_usercopy]",
+            "klg_trigger_write+0x18/0x30 [klg_l05_usercopy]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l06_wrapper_alloc",
+          "file": "klg_l06_wrapper_alloc.c",
+          "line": 37,
+          "objects": 1,
+          "size": 32,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "session_create+0x1b/0x30 [klg_l06_wrapper_alloc]",
+            "session_start+0xe/0x80 [klg_l06_wrapper_alloc]",
+            "klg_trigger_write+0x12/0x30 [klg_l06_wrapper_alloc]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l07_wrapper_free",
+          "file": "klg_l07_wrapper_free.c",
+          "line": 27,
+          "objects": 1,
+          "size": 16,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "xfer_run+0x20/0x90 [klg_l07_wrapper_free]",
+            "klg_trigger_write+0x12/0x30 [klg_l07_wrapper_free]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l08_kstrdup",
+          "file": "klg_l08_kstrdup.c",
+          "line": 16,
+          "objects": 1,
+          "size": 16,
+          "backtrace": [
+            "__kmalloc_node_track_caller_noprof+0x2cf/0x4d0",
+            "kstrdup+0x34/0x70",
+            "profile_load+0x18/0x60 [klg_l08_kstrdup]",
+            "klg_trigger_write+0x12/0x30 [klg_l08_kstrdup]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l09_kcalloc",
+          "file": "klg_l09_kcalloc.c",
+          "line": 17,
+          "objects": 1,
+          "size": 128,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "table_build+0x1d/0xc0 [klg_l09_kcalloc]",
+            "klg_trigger_write+0x12/0x30 [klg_l09_kcalloc]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l11_kmem_cache",
+          "file": "klg_l11_kmem_cache.c",
+          "line": 22,
+          "objects": 1,
+          "size": 16,
+          "backtrace": [
+            "kmem_cache_alloc_noprof+0x1ac/0x400",
+            "req_submit+0x1a/0x90 [klg_l11_kmem_cache]",
+            "klg_trigger_write+0x12/0x30 [klg_l11_kmem_cache]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l12_multi_exit",
+          "file": "klg_l12_multi_exit.c",
+          "line": 14,
+          "objects": 1,
+          "size": 2048,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "packet_prepare+0x23/0x160 [klg_l12_multi_exit]",
+            "klg_trigger_write+0x12/0x30 [klg_l12_multi_exit]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l13_init_misc",
+          "file": "klg_l13_init_misc.c",
+          "line": 42,
+          "objects": 13,
+          "size": 32,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "do_one_initcall+0x119/0x300",
+            "do_init_module+0x60/0x250",
+            "__se_sys_finit_module+0x27f/0x370",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+            "init_module+0x20/0x0 [klg_l13_init_misc]"
+          ]
+        },
+        {
+          "module": "klg_l14_cond_alloc",
+          "file": "klg_l14_cond_alloc.c",
+          "line": 29,
+          "objects": 1,
+          "size": 1024,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "stats_setup+0x3d/0x80 [klg_l14_cond_alloc]",
+            "klg_trigger_write+0x12/0x30 [klg_l14_cond_alloc]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l16_nested_owner",
+          "file": "klg_l16_nested_owner.c",
+          "line": 32,
+          "objects": 1,
+          "size": 512,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "bind_start+0x3d/0x90 [klg_l16_nested_owner]",
+            "klg_trigger_write+0x12/0x30 [klg_l16_nested_owner]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l17_local_struct",
+          "file": "klg_l17_local_struct.c",
+          "line": 21,
+          "objects": 1,
+          "size": 256,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "transform_run+0x1f/0x90 [klg_l17_local_struct]",
+            "klg_trigger_write+0x12/0x30 [klg_l17_local_struct]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        }
+      ],
+      "executions": 1261
+    },
+    "random": {
+      "sites": [
+        {
+          "module": "klg_l02_goto_ladder",
+          "file": "klg_l02_goto_ladder.c",
+          "line": 32,
+          "objects": 6,
+          "size": 512,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "sensor_setup+0x3f/0xb0 [klg_l02_goto_ladder]",
+            "klg_trigger_write+0x12/0x30 [klg_l02_goto_ladder]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l03_reg_fail",
+          "file": "klg_l03_reg_fail.c",
+          "line": 33,
+          "objects": 4,
+          "size": 8,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "channel_open+0x1c/0x70 [klg_l03_reg_fail]",
+            "klg_trigger_write+0x12/0x30 [klg_l03_reg_fail]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l04_loop_partial",
+          "file": "klg_l04_loop_partial.c",
+          "line": 19,
+          "objects": 19,
+          "size": 128,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "ring_alloc+0x21/0x2d0 [klg_l04_loop_partial]",
+            "klg_trigger_write+0x12/0x30 [klg_l04_loop_partial]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l05_usercopy",
+          "file": "klg_l05_usercopy.c",
+          "line": 20,
+          "objects": 3,
+          "size": 8,
+          "backtrace": [
+            "__kmalloc_noprof+0x268/0x4d0",
+            "cfg_store+0x2c/0x90 [klg_l05_usercopy]",
+            "klg_trigger_write+0x18/0x30 [klg_l05_usercopy]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l06_wrapper_alloc",
+          "file": "klg_l06_wrapper_alloc.c",
+          "line": 37,
+          "objects": 3,
+          "size": 32,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "session_create+0x1b/0x30 [klg_l06_wrapper_alloc]",
+            "session_start+0xe/0x80 [klg_l06_wrapper_alloc]",
+            "klg_trigger_write+0x12/0x30 [klg_l06_wrapper_alloc]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l07_wrapper_free",
+          "file": "klg_l07_wrapper_free.c",
+          "line": 27,
+          "objects": 6,
+          "size": 16,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "xfer_run+0x20/0x90 [klg_l07_wrapper_free]",
+            "klg_trigger_write+0x12/0x30 [klg_l07_wrapper_free]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l08_kstrdup",
+          "file": "klg_l08_kstrdup.c",
+          "line": 16,
+          "objects": 3,
+          "size": 16,
+          "backtrace": [
+            "__kmalloc_node_track_caller_noprof+0x2cf/0x4d0",
+            "kstrdup+0x34/0x70",
+            "profile_load+0x18/0x60 [klg_l08_kstrdup]",
+            "klg_trigger_write+0x12/0x30 [klg_l08_kstrdup]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l09_kcalloc",
+          "file": "klg_l09_kcalloc.c",
+          "line": 17,
+          "objects": 9,
+          "size": 128,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "table_build+0x1d/0xc0 [klg_l09_kcalloc]",
+            "klg_trigger_write+0x12/0x30 [klg_l09_kcalloc]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l10_vmalloc",
+          "file": "klg_l10_vmalloc.c",
+          "line": 22,
+          "objects": 1,
+          "size": 65536,
+          "backtrace": [
+            "kmemleak_vmalloc+0x2d/0xc0",
+            "__vmalloc_node_range_noprof+0x6c8/0x710",
+            "vmalloc_noprof+0x58/0x70",
+            "fw_stage+0x14/0x80 [klg_l10_vmalloc]",
+            "klg_trigger_write+0x12/0x30 [klg_l10_vmalloc]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l11_kmem_cache",
+          "file": "klg_l11_kmem_cache.c",
+          "line": 22,
+          "objects": 4,
+          "size": 16,
+          "backtrace": [
+            "kmem_cache_alloc_noprof+0x1ac/0x400",
+            "req_submit+0x1a/0x90 [klg_l11_kmem_cache]",
+            "klg_trigger_write+0x12/0x30 [klg_l11_kmem_cache]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l12_multi_exit",
+          "file": "klg_l12_multi_exit.c",
+          "line": 14,
+          "objects": 4,
+          "size": 2048,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "packet_prepare+0x23/0x160 [klg_l12_multi_exit]",
+            "klg_trigger_write+0x12/0x30 [klg_l12_multi_exit]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l16_nested_owner",
+          "file": "klg_l16_nested_owner.c",
+          "line": 32,
+          "objects": 9,
+          "size": 512,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "bind_start+0x3d/0x90 [klg_l16_nested_owner]",
+            "klg_trigger_write+0x12/0x30 [klg_l16_nested_owner]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        },
+        {
+          "module": "klg_l17_local_struct",
+          "file": "klg_l17_local_struct.c",
+          "line": 21,
+          "objects": 6,
+          "size": 256,
+          "backtrace": [
+            "__kmalloc_cache_noprof+0x1b5/0x420",
+            "transform_run+0x1f/0x90 [klg_l17_local_struct]",
+            "klg_trigger_write+0x12/0x30 [klg_l17_local_struct]",
+            "full_proxy_write+0x5c/0xb0",
+            "vfs_write+0x136/0x450",
+            "ksys_write+0x79/0x100",
+            "do_syscall_64+0xc8/0x260",
+            "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+          ]
+        }
+      ],
+      "executions": 1600,
+      "probability": 10,
+      "budget_per_module": 50
+    }
+  }
+}

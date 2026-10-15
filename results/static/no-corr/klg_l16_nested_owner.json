@@ -1,0 +1,32 @@
+{
+  "alloc_sites": {
+    "bind_start": [
+      {
+        "allocator": "kzalloc",
+        "file": "klg_l16_nested_owner.c",
+        "line": 28
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "klg_l16_nested_owner.c",
+        "line": 32
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "klg_l16_nested_owner",
+  "options": {
+    "branch_correlation": false,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 2,
+    "analysis_ms": 0.417964,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 7
+  },
+  "tool": "klg-analyze"
+}

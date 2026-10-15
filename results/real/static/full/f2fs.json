@@ -1,0 +1,1272 @@
+{
+  "alloc_sites": {
+    "__add_ino_entry": [
+      {
+        "allocator": "f2fs_kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/f2fs/checkpoint.c",
+        "line": 517
+      }
+    ],
+    "__alloc_nat_entry": [
+      {
+        "allocator": "f2fs_kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/f2fs/node.c",
+        "line": 177
+      }
+    ],
+    "__attach_extent_node": [
+      {
+        "allocator": "f2fs_kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/f2fs/extent_cache.c",
+        "line": 298
+      }
+    ],
+    "__create_discard_cmd": [
+      {
+        "allocator": "f2fs_kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 984
+      }
+    ],
+    "__create_victim_entry": [
+      {
+        "allocator": "f2fs_kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/f2fs/gc.c",
+        "line": 471
+      }
+    ],
+    "__exchange_data_block": [
+      {
+        "allocator": "f2fs_kvzalloc",
+        "file": "linux-6.18.55/fs/f2fs/file.c",
+        "line": 1572
+      },
+      {
+        "allocator": "f2fs_kvzalloc",
+        "file": "linux-6.18.55/fs/f2fs/file.c",
+        "line": 1578
+      }
+    ],
+    "__f2fs_commit_atomic_write": [
+      {
+        "allocator": "f2fs_kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 352
+      }
+    ],
+    "__f2fs_get_acl": [
+      {
+        "allocator": "f2fs_kmalloc",
+        "file": "linux-6.18.55/fs/f2fs/acl.c",
+        "line": 195
+      }
+    ],
+    "__f2fs_remount": [
+      {
+        "allocator": "kstrdup",
+        "file": "linux-6.18.55/fs/f2fs/super.c",
+        "line": 2731
+      }
+    ],
+    "__f2fs_set_acl": [
+      {
+        "allocator": "f2fs_acl_to_disk",
+        "file": "linux-6.18.55/fs/f2fs/acl.c",
+        "line": 274
+      }
+    ],
+    "__get_nat_bitmaps": [
+      {
+        "allocator": "f2fs_kvzalloc",
+        "file": "linux-6.18.55/fs/f2fs/node.c",
+        "line": 3250
+      }
+    ],
+    "__grab_extent_tree": [
+      {
+        "allocator": "f2fs_kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/f2fs/extent_cache.c",
+        "line": 357
+      }
+    ],
+    "__grab_nat_entry_set": [
+      {
+        "allocator": "f2fs_kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/f2fs/node.c",
+        "line": 260
+      }
+    ],
+    "__insert_discard_cmd": [
+      {
+        "allocator": "__create_discard_cmd",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 1439
+      }
+    ],
+    "__insert_extent_tree": [
+      {
+        "allocator": "__attach_extent_node",
+        "file": "linux-6.18.55/fs/f2fs/extent_cache.c",
+        "line": 618
+      }
+    ],
+    "__insert_victim_entry": [
+      {
+        "allocator": "__create_victim_entry",
+        "file": "linux-6.18.55/fs/f2fs/gc.c",
+        "line": 505
+      }
+    ],
+    "__set_nat_cache_dirty": [
+      {
+        "allocator": "__grab_nat_entry_set",
+        "file": "linux-6.18.55/fs/f2fs/node.c",
+        "line": 279
+      }
+    ],
+    "__update_extent_tree_range": [
+      {
+        "allocator": "__insert_extent_tree",
+        "file": "linux-6.18.55/fs/f2fs/extent_cache.c",
+        "line": 742
+      }
+    ],
+    "add_bio_entry": [
+      {
+        "allocator": "f2fs_kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/f2fs/data.c",
+        "line": 776
+      }
+    ],
+    "add_discard_addrs": [
+      {
+        "allocator": "f2fs_kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 2145
+      }
+    ],
+    "add_free_nid": [
+      {
+        "allocator": "f2fs_kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/f2fs/node.c",
+        "line": 2413
+      }
+    ],
+    "add_fsync_inode": [
+      {
+        "allocator": "f2fs_kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/f2fs/recovery.c",
+        "line": 95
+      }
+    ],
+    "add_gc_inode": [
+      {
+        "allocator": "f2fs_kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/f2fs/gc.c",
+        "line": 989
+      }
+    ],
+    "add_sit_entry": [
+      {
+        "allocator": "grab_sit_entry_set",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 4636
+      }
+    ],
+    "build_curseg": [
+      {
+        "allocator": "f2fs_kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 4937
+      },
+      {
+        "allocator": "f2fs_kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 4946
+      },
+      {
+        "allocator": "f2fs_kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 4951
+      }
+    ],
+    "build_dirty_segmap": [
+      {
+        "allocator": "f2fs_kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 5208
+      },
+      {
+        "allocator": "f2fs_kvzalloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 5219
+      },
+      {
+        "allocator": "f2fs_kvzalloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 5227
+      }
+    ],
+    "build_free_segmap": [
+      {
+        "allocator": "f2fs_kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 4904
+      },
+      {
+        "allocator": "f2fs_kvmalloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 4911
+      },
+      {
+        "allocator": "f2fs_kvmalloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 4916
+      }
+    ],
+    "build_sit_info": [
+      {
+        "allocator": "f2fs_kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 4811
+      },
+      {
+        "allocator": "f2fs_kvzalloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 4818
+      },
+      {
+        "allocator": "f2fs_kvzalloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 4825
+      },
+      {
+        "allocator": "f2fs_kvzalloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 4831
+      },
+      {
+        "allocator": "f2fs_kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 4850
+      },
+      {
+        "allocator": "f2fs_kvzalloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 4856
+      },
+      {
+        "allocator": "kmemdup",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 4870
+      }
+    ],
+    "cache_nat_entry": [
+      {
+        "allocator": "__alloc_nat_entry",
+        "file": "linux-6.18.55/fs/f2fs/node.c",
+        "line": 452
+      }
+    ],
+    "create_discard_cmd_control": [
+      {
+        "allocator": "f2fs_kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 2334
+      }
+    ],
+    "donation_list_seq_show": [
+      {
+        "allocator": "f2fs_getname",
+        "file": "linux-6.18.55/fs/f2fs/sysfs.c",
+        "line": 1859
+      }
+    ],
+    "f2fs_acl_clone": [
+      {
+        "allocator": "kmemdup",
+        "file": "linux-6.18.55/fs/f2fs/acl.c",
+        "line": 312
+      }
+    ],
+    "f2fs_acl_create": [
+      {
+        "allocator": "f2fs_acl_clone",
+        "file": "linux-6.18.55/fs/f2fs/acl.c",
+        "line": 396
+      }
+    ],
+    "f2fs_acl_to_disk": [
+      {
+        "allocator": "f2fs_kmalloc",
+        "file": "linux-6.18.55/fs/f2fs/acl.c",
+        "line": 134
+      }
+    ],
+    "f2fs_add_fsync_node_entry": [
+      {
+        "allocator": "f2fs_kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/f2fs/node.c",
+        "line": 348
+      }
+    ],
+    "f2fs_alloc_inode": [
+      {
+        "allocator": "kmem_cache_alloc_lru",
+        "file": "linux-6.18.55/fs/f2fs/super.c",
+        "line": 1757
+      }
+    ],
+    "f2fs_apply_quota_options": [
+      {
+        "allocator": "kstrdup",
+        "file": "linux-6.18.55/fs/f2fs/super.c",
+        "line": 1580
+      }
+    ],
+    "f2fs_build_node_manager": [
+      {
+        "allocator": "f2fs_kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/node.c",
+        "line": 3414
+      }
+    ],
+    "f2fs_build_segment_manager": [
+      {
+        "allocator": "f2fs_kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 5689
+      }
+    ],
+    "f2fs_build_stats": [
+      {
+        "allocator": "f2fs_kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/debug.c",
+        "line": 765
+      },
+      {
+        "allocator": "f2fs_kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/debug.c",
+        "line": 769
+      }
+    ],
+    "f2fs_create_flush_cmd_control": [
+      {
+        "allocator": "f2fs_kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 701
+      }
+    ],
+    "f2fs_fill_super": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/super.c",
+        "line": 4885
+      }
+    ],
+    "f2fs_get_valid_checkpoint": [
+      {
+        "allocator": "f2fs_kvzalloc",
+        "file": "linux-6.18.55/fs/f2fs/checkpoint.c",
+        "line": 943
+      }
+    ],
+    "f2fs_init_fs_context": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/super.c",
+        "line": 5467
+      }
+    ],
+    "f2fs_init_iostat": [
+      {
+        "allocator": "f2fs_kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/iostat.c",
+        "line": 304
+      }
+    ],
+    "f2fs_init_read_extent_tree": [
+      {
+        "allocator": "__grab_extent_tree",
+        "file": "linux-6.18.55/fs/f2fs/extent_cache.c",
+        "line": 430
+      },
+      {
+        "allocator": "__attach_extent_node",
+        "file": "linux-6.18.55/fs/f2fs/extent_cache.c",
+        "line": 443
+      }
+    ],
+    "f2fs_init_write_merge_io": [
+      {
+        "allocator": "f2fs_kmalloc",
+        "file": "linux-6.18.55/fs/f2fs/data.c",
+        "line": 605
+      }
+    ],
+    "f2fs_ioc_getfslabel": [
+      {
+        "allocator": "f2fs_kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/file.c",
+        "line": 3797
+      }
+    ],
+    "f2fs_ioc_setfslabel": [
+      {
+        "allocator": "strndup_user",
+        "file": "linux-6.18.55/fs/f2fs/file.c",
+        "line": 3825
+      }
+    ],
+    "f2fs_move_rehashed_dirents": [
+      {
+        "allocator": "f2fs_kmalloc",
+        "file": "linux-6.18.55/fs/f2fs/inline.c",
+        "line": 549
+      }
+    ],
+    "f2fs_note_qf_name": [
+      {
+        "allocator": "kmemdup_nul",
+        "file": "linux-6.18.55/fs/f2fs/super.c",
+        "line": 543
+      }
+    ],
+    "f2fs_scan_devices": [
+      {
+        "allocator": "f2fs_kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/super.c",
+        "line": 4712
+      }
+    ],
+    "f2fs_trace_rw_file_path": [
+      {
+        "allocator": "f2fs_getname",
+        "file": "linux-6.18.55/fs/f2fs/file.c",
+        "line": 4932
+      }
+    ],
+    "find_fsync_dnodes": [
+      {
+        "allocator": "add_fsync_inode",
+        "file": "linux-6.18.55/fs/f2fs/recovery.c",
+        "line": 461
+      }
+    ],
+    "grab_sit_entry_set": [
+      {
+        "allocator": "f2fs_kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 4592
+      }
+    ],
+    "init_free_nid_cache": [
+      {
+        "allocator": "f2fs_kvzalloc",
+        "file": "linux-6.18.55/fs/f2fs/node.c",
+        "line": 3383
+      },
+      {
+        "allocator": "f2fs_kvzalloc",
+        "file": "linux-6.18.55/fs/f2fs/node.c",
+        "line": 3390
+      },
+      {
+        "allocator": "f2fs_kvzalloc",
+        "file": "linux-6.18.55/fs/f2fs/node.c",
+        "line": 3396
+      },
+      {
+        "allocator": "f2fs_kvzalloc",
+        "file": "linux-6.18.55/fs/f2fs/node.c",
+        "line": 3402
+      }
+    ],
+    "init_node_manager": [
+      {
+        "allocator": "kmemdup",
+        "file": "linux-6.18.55/fs/f2fs/node.c",
+        "line": 3355
+      }
+    ],
+    "init_victim_secmap": [
+      {
+        "allocator": "f2fs_kvzalloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 5189
+      },
+      {
+        "allocator": "f2fs_kvzalloc",
+        "file": "linux-6.18.55/fs/f2fs/segment.c",
+        "line": 5193
+      }
+    ],
+    "lookup_all_xattrs": [
+      {
+        "allocator": "xattr_alloc",
+        "file": "linux-6.18.55/fs/f2fs/xattr.c",
+        "line": 334
+      }
+    ],
+    "read_all_xattrs": [
+      {
+        "allocator": "f2fs_kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/xattr.c",
+        "line": 399
+      }
+    ],
+    "read_raw_super_block": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/super.c",
+        "line": 4448
+      }
+    ],
+    "recover_dentry": [
+      {
+        "allocator": "add_fsync_inode",
+        "file": "linux-6.18.55/fs/f2fs/recovery.c",
+        "line": 177
+      }
+    ],
+    "remove_nats_in_journal": [
+      {
+        "allocator": "__alloc_nat_entry",
+        "file": "linux-6.18.55/fs/f2fs/node.c",
+        "line": 3027
+      }
+    ],
+    "set_node_addr": [
+      {
+        "allocator": "__alloc_nat_entry",
+        "file": "linux-6.18.55/fs/f2fs/node.c",
+        "line": 475
+      }
+    ],
+    "xattr_alloc": [
+      {
+        "allocator": "f2fs_kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/f2fs/xattr.c",
+        "line": 31
+      },
+      {
+        "allocator": "f2fs_kzalloc",
+        "file": "linux-6.18.55/fs/f2fs/xattr.c",
+        "line": 35
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 9,
+        "file": "linux-6.18.55/fs/f2fs/file.c",
+        "line": 3825
+      },
+      "alloc_size": -1,
+      "allocator": "strndup_user",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 3,
+        "file": "linux-6.18.55/fs/f2fs/file.c",
+        "line": 3827
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 10,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/f2fs/file.c",
+        "line": 3827
+      },
+      "function": "f2fs_ioc_setfslabel",
+      "id": "f2fs:f2fs_ioc_setfslabel:3825:3827",
+      "module": "f2fs",
+      "path_lines": [
+        3825,
+        3827,
+        3849
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/fs/f2fs/file.c",
+          "line": 3847
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "strndup_user",
+          "file": "linux-6.18.55/fs/f2fs/file.c",
+          "kind": "alloc",
+          "line": 3825
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/f2fs/file.c"
+    },
+    {
+      "alloc": {
+        "col": 5,
+        "file": "linux-6.18.55/fs/f2fs/super.c",
+        "line": 2731
+      },
+      "alloc_size": -1,
+      "allocator": "kstrdup",
+      "approximate": true,
+      "category": "missing-release-on-error-path",
+      "confidence": "high",
+      "exit": {
+        "col": 2,
+        "file": "linux-6.18.55/fs/f2fs/super.c",
+        "line": 2995
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/f2fs/super.c",
+        "line": 2757
+      },
+      "function": "__f2fs_remount",
+      "id": "f2fs:__f2fs_remount:2731:2995",
+      "module": "f2fs",
+      "path_lines": [
+        2731,
+        2738,
+        2741,
+        2728,
+        2729,
+        2745,
+        2753,
+        2757,
+        2985,
+        2986,
+        2991,
+        2996
+      ],
+      "release_sites": [
+        {
+          "col": 6,
+          "file": "linux-6.18.55/fs/f2fs/super.c",
+          "line": 2735
+        },
+        {
+          "col": 3,
+          "file": "linux-6.18.55/fs/f2fs/super.c",
+          "line": 2942
+        }
+      ],
+      "return_value": "error from f2fs_check_opt_consistency",
+      "triggers": [
+        {
+          "callee": "f2fs_check_opt_consistency",
+          "file": "linux-6.18.55/fs/f2fs/super.c",
+          "kind": "call",
+          "line": 2755
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/f2fs/super.c"
+    },
+    {
+      "alloc": {
+        "col": 5,
+        "file": "linux-6.18.55/fs/f2fs/super.c",
+        "line": 2731
+      },
+      "alloc_size": -1,
+      "allocator": "kstrdup",
+      "approximate": true,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 2,
+        "file": "linux-6.18.55/fs/f2fs/super.c",
+        "line": 2952
+      },
+      "exit_kind": "normal",
+      "fix": {
+        "col": 28,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/f2fs/super.c",
+        "line": 2772
+      },
+      "function": "__f2fs_remount",
+      "id": "f2fs:__f2fs_remount:2731:2952",
+      "module": "f2fs",
+      "path_lines": [
+        2731,
+        2738,
+        2741,
+        2728,
+        2729,
+        2745,
+        2753,
+        2759,
+        2766,
+        2772,
+        2773,
+        2941,
+        2945,
+        2996
+      ],
+      "release_sites": [
+        {
+          "col": 6,
+          "file": "linux-6.18.55/fs/f2fs/super.c",
+          "line": 2735
+        },
+        {
+          "col": 3,
+          "file": "linux-6.18.55/fs/f2fs/super.c",
+          "line": 2942
+        }
+      ],
+      "return_value": "0",
+      "triggers": [
+        {
+          "callee": "f2fs_readonly",
+          "file": "linux-6.18.55/fs/f2fs/super.c",
+          "kind": "call",
+          "line": 2772
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/f2fs/super.c"
+    },
+    {
+      "alloc": {
+        "col": 10,
+        "file": "linux-6.18.55/fs/f2fs/super.c",
+        "line": 4448
+      },
+      "alloc_size": 3072,
+      "allocator": "kzalloc",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 2,
+        "file": "linux-6.18.55/fs/f2fs/super.c",
+        "line": 4487
+      },
+      "exit_kind": "normal",
+      "fix": {
+        "col": 4,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/f2fs/super.c",
+        "line": 4455
+      },
+      "function": "read_raw_super_block",
+      "id": "f2fs:read_raw_super_block:4448:4487",
+      "module": "f2fs",
+      "path_lines": [
+        4448,
+        4449,
+        4452,
+        4453,
+        4455,
+        4482,
+        4487,
+        4488
+      ],
+      "release_sites": [
+        {
+          "col": 3,
+          "file": "linux-6.18.55/fs/f2fs/super.c",
+          "line": 4483
+        }
+      ],
+      "return_value": "0",
+      "triggers": [
+        {
+          "callee": "read_mapping_folio",
+          "file": "linux-6.18.55/fs/f2fs/super.c",
+          "kind": "call",
+          "line": 4453
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/f2fs/super.c"
+    },
+    {
+      "alloc": {
+        "col": 9,
+        "file": "linux-6.18.55/fs/f2fs/checkpoint.c",
+        "line": 517
+      },
+      "alloc_size": -1,
+      "allocator": "f2fs_kmem_cache_alloc",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 10,
+        "file": "linux-6.18.55/fs/f2fs/checkpoint.c",
+        "line": 549
+      },
+      "exit_kind": "void",
+      "fix": {
+        "col": 2,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/f2fs/checkpoint.c",
+        "line": 521
+      },
+      "function": "__add_ino_entry",
+      "id": "f2fs:__add_ino_entry:517:549",
+      "module": "f2fs",
+      "path_lines": [
+        517,
+        520,
+        521,
+        523,
+        543,
+        544,
+        546,
+        549,
+        551
+      ],
+      "release_sites": [
+        {
+          "col": 3,
+          "file": "linux-6.18.55/fs/f2fs/checkpoint.c",
+          "line": 550
+        }
+      ],
+      "return_value": "",
+      "triggers": [
+        {
+          "callee": "radix_tree_preload",
+          "file": "linux-6.18.55/fs/f2fs/checkpoint.c",
+          "kind": "call",
+          "line": 520
+        },
+        {
+          "callee": "radix_tree_preload",
+          "file": "linux-6.18.55/fs/f2fs/checkpoint.c",
+          "kind": "call",
+          "line": 520
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/f2fs/checkpoint.c"
+    },
+    {
+      "alloc": {
+        "col": 8,
+        "file": "linux-6.18.55/fs/f2fs/node.c",
+        "line": 452
+      },
+      "alloc_size": -1,
+      "allocator": "__alloc_nat_entry",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/fs/f2fs/node.c",
+        "line": 468
+      },
+      "exit_kind": "void",
+      "fix": null,
+      "function": "cache_nat_entry",
+      "id": "f2fs:cache_nat_entry:452:468",
+      "module": "f2fs",
+      "path_lines": [
+        452,
+        456,
+        461,
+        465,
+        468
+      ],
+      "release_sites": [
+        {
+          "col": 3,
+          "file": "linux-6.18.55/fs/f2fs/node.c",
+          "line": 467
+        }
+      ],
+      "return_value": "",
+      "triggers": [],
+      "source_path": "linux-6.18.55/fs/f2fs/node.c"
+    },
+    {
+      "alloc": {
+        "col": 6,
+        "file": "linux-6.18.55/fs/f2fs/node.c",
+        "line": 2413
+      },
+      "alloc_size": -1,
+      "allocator": "f2fs_kmem_cache_alloc",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 2,
+        "file": "linux-6.18.55/fs/f2fs/node.c",
+        "line": 2471
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 5,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/f2fs/node.c",
+        "line": 2448
+      },
+      "function": "add_free_nid",
+      "id": "f2fs:add_free_nid:2413:2471",
+      "module": "f2fs",
+      "path_lines": [
+        2413,
+        2418,
+        2422,
+        2446,
+        2447,
+        2448,
+        2449,
+        2461,
+        2462,
+        2465,
+        2466,
+        2471,
+        2472
+      ],
+      "release_sites": [
+        {
+          "col": 3,
+          "file": "linux-6.18.55/fs/f2fs/node.c",
+          "line": 2470
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "radix_tree_preload",
+          "file": "linux-6.18.55/fs/f2fs/node.c",
+          "kind": "call",
+          "line": 2417
+        },
+        {
+          "callee": "radix_tree_preload",
+          "file": "linux-6.18.55/fs/f2fs/node.c",
+          "kind": "call",
+          "line": 2417
+        },
+        {
+          "callee": "get_nat_flag",
+          "file": "linux-6.18.55/fs/f2fs/node.c",
+          "kind": "call",
+          "line": 2447
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/f2fs/node.c"
+    },
+    {
+      "alloc": {
+        "col": 12,
+        "file": "linux-6.18.55/fs/f2fs/recovery.c",
+        "line": 461
+      },
+      "alloc_size": -1,
+      "allocator": "add_fsync_inode",
+      "approximate": true,
+      "category": "never-released",
+      "confidence": "medium",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/fs/f2fs/recovery.c",
+        "line": 493
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 11,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/f2fs/recovery.c",
+        "line": 464
+      },
+      "function": "find_fsync_dnodes",
+      "id": "f2fs:find_fsync_dnodes:461:493",
+      "module": "f2fs",
+      "path_lines": [
+        461,
+        464,
+        470,
+        471,
+        472,
+        493
+      ],
+      "release_sites": [],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "add_fsync_inode",
+          "file": "linux-6.18.55/fs/f2fs/recovery.c",
+          "kind": "alloc",
+          "line": 461
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/f2fs/recovery.c"
+    },
+    {
+      "alloc": {
+        "col": 12,
+        "file": "linux-6.18.55/fs/f2fs/recovery.c",
+        "line": 461
+      },
+      "alloc_size": -1,
+      "allocator": "add_fsync_inode",
+      "approximate": true,
+      "category": "never-released",
+      "confidence": "medium",
+      "exit": {
+        "col": 2,
+        "file": "linux-6.18.55/fs/f2fs/recovery.c",
+        "line": 492
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 10,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/f2fs/recovery.c",
+        "line": 434
+      },
+      "function": "find_fsync_dnodes",
+      "id": "f2fs:find_fsync_dnodes:461:492",
+      "module": "f2fs",
+      "path_lines": [
+        461,
+        464,
+        470,
+        471,
+        472,
+        425,
+        422,
+        429,
+        432,
+        434,
+        492,
+        493
+      ],
+      "release_sites": [],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "add_fsync_inode",
+          "file": "linux-6.18.55/fs/f2fs/recovery.c",
+          "kind": "alloc",
+          "line": 461
+        },
+        {
+          "callee": "f2fs_is_valid_blkaddr",
+          "file": "linux-6.18.55/fs/f2fs/recovery.c",
+          "kind": "call",
+          "line": 429
+        },
+        {
+          "callee": "f2fs_get_tmp_folio",
+          "file": "linux-6.18.55/fs/f2fs/recovery.c",
+          "kind": "call",
+          "line": 432
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/f2fs/recovery.c"
+    },
+    {
+      "alloc": {
+        "col": 11,
+        "file": "linux-6.18.55/fs/f2fs/recovery.c",
+        "line": 177
+      },
+      "alloc_size": -1,
+      "allocator": "add_fsync_inode",
+      "approximate": false,
+      "category": "never-released",
+      "confidence": "medium",
+      "exit": {
+        "col": 2,
+        "file": "linux-6.18.55/fs/f2fs/recovery.c",
+        "line": 240
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 2,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/f2fs/recovery.c",
+        "line": 235
+      },
+      "function": "recover_dentry",
+      "id": "f2fs:recover_dentry:177:240",
+      "module": "f2fs",
+      "path_lines": [
+        177,
+        180,
+        232,
+        235,
+        240
+      ],
+      "release_sites": [],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "add_fsync_inode",
+          "file": "linux-6.18.55/fs/f2fs/recovery.c",
+          "kind": "alloc",
+          "line": 177
+        },
+        {
+          "callee": "is_file",
+          "file": "linux-6.18.55/fs/f2fs/recovery.c",
+          "kind": "call",
+          "line": 232
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/f2fs/recovery.c"
+    },
+    {
+      "alloc": {
+        "col": 11,
+        "file": "linux-6.18.55/fs/f2fs/extent_cache.c",
+        "line": 742
+      },
+      "alloc_size": -1,
+      "allocator": "__insert_extent_tree",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/fs/f2fs/extent_cache.c",
+        "line": 825
+      },
+      "exit_kind": "void",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/f2fs/extent_cache.c",
+        "line": 821
+      },
+      "function": "__update_extent_tree_range",
+      "id": "f2fs:__update_extent_tree_range:742:825",
+      "module": "f2fs",
+      "path_lines": [
+        738,
+        753,
+        756,
+        763,
+        764,
+        773,
+        774,
+        777,
+        715,
+        719,
+        723,
+        725,
+        727,
+        732,
+        736,
+        780,
+        781,
+        809,
+        810,
+        818,
+        821,
+        823,
+        824,
+        825
+      ],
+      "release_sites": [
+        {
+          "col": 4,
+          "file": "linux-6.18.55/fs/f2fs/extent_cache.c",
+          "line": 766
+        },
+        {
+          "col": 8,
+          "file": "linux-6.18.55/fs/f2fs/extent_cache.c",
+          "line": 789
+        },
+        {
+          "col": 7,
+          "file": "linux-6.18.55/fs/f2fs/extent_cache.c",
+          "line": 814
+        }
+      ],
+      "return_value": "",
+      "triggers": [
+        {
+          "callee": "is_inode_flag_set",
+          "file": "linux-6.18.55/fs/f2fs/extent_cache.c",
+          "kind": "call",
+          "line": 820
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/f2fs/extent_cache.c"
+    },
+    {
+      "alloc": {
+        "col": 11,
+        "file": "linux-6.18.55/fs/f2fs/acl.c",
+        "line": 274
+      },
+      "alloc_size": -1,
+      "allocator": "f2fs_acl_to_disk",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 4,
+        "file": "linux-6.18.55/fs/f2fs/acl.c",
+        "line": 277
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 4,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/f2fs/acl.c",
+        "line": 276
+      },
+      "function": "__f2fs_set_acl",
+      "id": "f2fs:__f2fs_set_acl:274:277",
+      "module": "f2fs",
+      "path_lines": [
+        274,
+        276,
+        289
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/fs/f2fs/acl.c",
+          "line": 283
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "f2fs_acl_to_disk",
+          "file": "linux-6.18.55/fs/f2fs/acl.c",
+          "kind": "alloc",
+          "line": 274
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/f2fs/acl.c"
+    }
+  ],
+  "module": "f2fs",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 85,
+    "analysis_ms": 179.650251,
+    "budget_exhausted": 2,
+    "candidates": 12,
+    "functions": 1012
+  },
+  "tool": "klg-analyze",
+  "ir": {
+    "objects": 20,
+    "ir_failed": []
+  }
+}

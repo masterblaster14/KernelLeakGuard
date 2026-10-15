@@ -1,0 +1,558 @@
+{
+  "alloc_sites": {
+    "erofs_alloc_inode": [
+      {
+        "allocator": "kmem_cache_alloc_lru",
+        "file": "linux-6.18.55/fs/erofs/super.c",
+        "line": 69
+      }
+    ],
+    "erofs_fc_parse_param": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/erofs/super.c",
+        "line": 498
+      },
+      {
+        "allocator": "kstrdup",
+        "file": "linux-6.18.55/fs/erofs/super.c",
+        "line": 501
+      }
+    ],
+    "erofs_fileio_bio_alloc": [
+      {
+        "allocator": "erofs_fileio_rq_alloc",
+        "file": "linux-6.18.55/fs/erofs/fileio.c",
+        "line": 83
+      }
+    ],
+    "erofs_fileio_rq_alloc": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/erofs/fileio.c",
+        "line": 71
+      }
+    ],
+    "erofs_fileio_scan_folio": [
+      {
+        "allocator": "erofs_fileio_rq_alloc",
+        "file": "linux-6.18.55/fs/erofs/fileio.c",
+        "line": 143
+      }
+    ],
+    "erofs_fill_symlink": [
+      {
+        "allocator": "kmemdup_nul",
+        "file": "linux-6.18.55/fs/erofs/inode.c",
+        "line": 24
+      }
+    ],
+    "erofs_get_acl": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/erofs/xattr.c",
+        "line": 551
+      }
+    ],
+    "erofs_init_device": [
+      {
+        "allocator": "kmemdup_nul",
+        "file": "linux-6.18.55/fs/erofs/super.c",
+        "line": 154
+      }
+    ],
+    "erofs_init_fs_context": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/erofs/super.c",
+        "line": 884
+      },
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/erofs/super.c",
+        "line": 888
+      }
+    ],
+    "erofs_init_inode_xattrs": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/fs/erofs/xattr.c",
+        "line": 95
+      }
+    ],
+    "erofs_read_metadata": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/erofs/super.c",
+        "line": 104
+      }
+    ],
+    "erofs_read_superblock": [
+      {
+        "allocator": "kstrndup",
+        "file": "linux-6.18.55/fs/erofs/super.c",
+        "line": 352
+      }
+    ],
+    "erofs_scan_devices": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/erofs/super.c",
+        "line": 244
+      }
+    ],
+    "erofs_xattr_prefixes_init": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/fs/erofs/xattr.c",
+        "line": 490
+      },
+      {
+        "allocator": "erofs_read_metadata",
+        "file": "linux-6.18.55/fs/erofs/xattr.c",
+        "line": 506
+      }
+    ],
+    "jobqueue_init": [
+      {
+        "allocator": "__kvmalloc_node",
+        "file": "linux-6.18.55/fs/erofs/zdata.c",
+        "line": 1580
+      }
+    ],
+    "z_erofs_alloc_pcluster": [
+      {
+        "allocator": "kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/erofs/zdata.c",
+        "line": 273
+      }
+    ],
+    "z_erofs_decompress_pcluster": [
+      {
+        "allocator": "kvmalloc_array_node",
+        "file": "linux-6.18.55/fs/erofs/zdata.c",
+        "line": 1293
+      },
+      {
+        "allocator": "kvmalloc_array_node",
+        "file": "linux-6.18.55/fs/erofs/zdata.c",
+        "line": 1297
+      }
+    ],
+    "z_erofs_do_decompressed_bvec": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/erofs/zdata.c",
+        "line": 1156
+      }
+    ],
+    "z_erofs_gbuf_growsize": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/fs/erofs/zutil.c",
+        "line": 84
+      }
+    ],
+    "z_erofs_gbuf_init": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/fs/erofs/zutil.c",
+        "line": 136
+      },
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/fs/erofs/zutil.c",
+        "line": 143
+      }
+    ],
+    "z_erofs_parse_cfgs": [
+      {
+        "allocator": "erofs_read_metadata",
+        "file": "linux-6.18.55/fs/erofs/decompressor.c",
+        "line": 457
+      }
+    ],
+    "z_erofs_register_pcluster": [
+      {
+        "allocator": "z_erofs_alloc_pcluster",
+        "file": "linux-6.18.55/fs/erofs/zdata.c",
+        "line": 760
+      }
+    ],
+    "z_erofs_submit_queue": [
+      {
+        "allocator": "jobqueue_init",
+        "file": "linux-6.18.55/fs/erofs/zdata.c",
+        "line": 1663
+      },
+      {
+        "allocator": "jobqueue_init",
+        "file": "linux-6.18.55/fs/erofs/zdata.c",
+        "line": 1664
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 15,
+        "file": "linux-6.18.55/fs/erofs/xattr.c",
+        "line": 506
+      },
+      "alloc_size": -1,
+      "allocator": "erofs_read_metadata",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 2,
+        "file": "linux-6.18.55/fs/erofs/xattr.c",
+        "line": 525
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 10,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/erofs/xattr.c",
+        "line": 509
+      },
+      "function": "erofs_xattr_prefixes_init",
+      "id": "erofs:erofs_xattr_prefixes_init:506:525",
+      "module": "erofs",
+      "path_lines": [
+        506,
+        509,
+        519,
+        505,
+        521,
+        524,
+        525,
+        526
+      ],
+      "release_sites": [
+        {
+          "col": 4,
+          "file": "linux-6.18.55/fs/erofs/xattr.c",
+          "line": 513
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "erofs_read_metadata",
+          "file": "linux-6.18.55/fs/erofs/xattr.c",
+          "kind": "alloc",
+          "line": 506
+        },
+        {
+          "callee": "erofs_read_metadata",
+          "file": "linux-6.18.55/fs/erofs/xattr.c",
+          "kind": "alloc",
+          "line": 506
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/erofs/xattr.c"
+    },
+    {
+      "alloc": {
+        "col": 10,
+        "file": "linux-6.18.55/fs/erofs/decompressor.c",
+        "line": 457
+      },
+      "alloc_size": -1,
+      "allocator": "erofs_read_metadata",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 2,
+        "file": "linux-6.18.55/fs/erofs/decompressor.c",
+        "line": 475
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 10,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/erofs/decompressor.c",
+        "line": 459
+      },
+      "function": "z_erofs_parse_cfgs",
+      "id": "erofs:z_erofs_parse_cfgs:457:475",
+      "module": "erofs",
+      "path_lines": [
+        457,
+        459,
+        473,
+        450,
+        451,
+        474,
+        476
+      ],
+      "release_sites": [
+        {
+          "col": 3,
+          "file": "linux-6.18.55/fs/erofs/decompressor.c",
+          "line": 470
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "erofs_read_metadata",
+          "file": "linux-6.18.55/fs/erofs/decompressor.c",
+          "kind": "alloc",
+          "line": 457
+        },
+        {
+          "callee": "erofs_read_metadata",
+          "file": "linux-6.18.55/fs/erofs/decompressor.c",
+          "kind": "alloc",
+          "line": 457
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/erofs/decompressor.c"
+    },
+    {
+      "alloc": {
+        "col": 17,
+        "file": "linux-6.18.55/fs/erofs/zdata.c",
+        "line": 1663
+      },
+      "alloc_size": -1,
+      "allocator": "jobqueue_init",
+      "approximate": true,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/fs/erofs/zdata.c",
+        "line": 1779
+      },
+      "exit_kind": "void",
+      "fix": {
+        "col": 4,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/erofs/zdata.c",
+        "line": 1761
+      },
+      "function": "z_erofs_submit_queue",
+      "id": "erofs:z_erofs_submit_queue:1663:1779",
+      "module": "erofs",
+      "path_lines": [
+        1650,
+        1658,
+        1680,
+        1687,
+        1657,
+        1697,
+        1698,
+        1701,
+        1707,
+        1708,
+        1712,
+        1723,
+        1724,
+        1729,
+        1746,
+        1749,
+        1711,
+        1753,
+        1754,
+        1757,
+        1759,
+        1760,
+        1761,
+        1766,
+        1767,
+        1768,
+        1774,
+        1778,
+        1779
+      ],
+      "release_sites": [],
+      "return_value": "",
+      "triggers": [
+        {
+          "callee": "erofs_is_fileio_mode",
+          "file": "linux-6.18.55/fs/erofs/zdata.c",
+          "kind": "call",
+          "line": 1700
+        },
+        {
+          "callee": "PageWorkingset",
+          "file": "linux-6.18.55/fs/erofs/zdata.c",
+          "kind": "call",
+          "line": 1723
+        },
+        {
+          "callee": "bio_add_page",
+          "file": "linux-6.18.55/fs/erofs/zdata.c",
+          "kind": "call",
+          "line": 1746
+        },
+        {
+          "callee": "erofs_is_fileio_mode",
+          "file": "linux-6.18.55/fs/erofs/zdata.c",
+          "kind": "call",
+          "line": 1700
+        },
+        {
+          "callee": "PageWorkingset",
+          "file": "linux-6.18.55/fs/erofs/zdata.c",
+          "kind": "call",
+          "line": 1723
+        },
+        {
+          "callee": "bio_add_page",
+          "file": "linux-6.18.55/fs/erofs/zdata.c",
+          "kind": "call",
+          "line": 1746
+        },
+        {
+          "callee": "erofs_is_fileio_mode",
+          "file": "linux-6.18.55/fs/erofs/zdata.c",
+          "kind": "call",
+          "line": 1760
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/erofs/zdata.c"
+    },
+    {
+      "alloc": {
+        "col": 8,
+        "file": "linux-6.18.55/fs/erofs/zdata.c",
+        "line": 760
+      },
+      "alloc_size": -1,
+      "allocator": "z_erofs_alloc_pcluster",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 3,
+        "file": "linux-6.18.55/fs/erofs/zdata.c",
+        "line": 762
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 10,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/erofs/zdata.c",
+        "line": 762
+      },
+      "function": "z_erofs_register_pcluster",
+      "id": "erofs:z_erofs_register_pcluster:760:762",
+      "module": "erofs",
+      "path_lines": [
+        752,
+        762,
+        812
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/fs/erofs/zdata.c",
+          "line": 810
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "z_erofs_alloc_pcluster",
+          "file": "linux-6.18.55/fs/erofs/zdata.c",
+          "kind": "alloc",
+          "line": 760
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/erofs/zdata.c"
+    },
+    {
+      "alloc": {
+        "col": 9,
+        "file": "linux-6.18.55/fs/erofs/zdata.c",
+        "line": 273
+      },
+      "alloc_size": -1,
+      "allocator": "kmem_cache_alloc",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 2,
+        "file": "linux-6.18.55/fs/erofs/zdata.c",
+        "line": 278
+      },
+      "exit_kind": "unknown",
+      "fix": null,
+      "function": "z_erofs_alloc_pcluster",
+      "id": "erofs:z_erofs_alloc_pcluster:273:278",
+      "module": "erofs",
+      "path_lines": [
+        273,
+        274,
+        276,
+        267,
+        270,
+        278,
+        279
+      ],
+      "release_sites": [],
+      "return_value": "?",
+      "triggers": [],
+      "source_path": "linux-6.18.55/fs/erofs/zdata.c"
+    },
+    {
+      "alloc": {
+        "col": 9,
+        "file": "linux-6.18.55/fs/erofs/zdata.c",
+        "line": 273
+      },
+      "alloc_size": -1,
+      "allocator": "kmem_cache_alloc",
+      "approximate": false,
+      "category": "ownership-not-transferred-on-error-path",
+      "confidence": "medium",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/fs/erofs/zdata.c",
+        "line": 279
+      },
+      "exit_kind": "error",
+      "fix": null,
+      "function": "z_erofs_alloc_pcluster",
+      "id": "erofs:z_erofs_alloc_pcluster:273:279",
+      "module": "erofs",
+      "path_lines": [
+        273,
+        274,
+        276,
+        267,
+        270,
+        279
+      ],
+      "release_sites": [],
+      "return_value": "error from kmem_cache_alloc",
+      "triggers": [],
+      "source_path": "linux-6.18.55/fs/erofs/zdata.c"
+    }
+  ],
+  "module": "erofs",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 29,
+    "analysis_ms": 35.311189,
+    "budget_exhausted": 2,
+    "candidates": 6,
+    "functions": 191
+  },
+  "tool": "klg-analyze",
+  "ir": {
+    "objects": 12,
+    "ir_failed": []
+  }
+}

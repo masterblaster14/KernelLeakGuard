@@ -1,0 +1,26 @@
+[klg] built 32 modules and their LLVM IR in 20.9s
+[klg] static (full): 19 warnings in 32 modules
+[klg] static (no-escape): 30 warnings in 32 modules
+[klg] static (no-interproc): 15 warnings in 32 modules
+[klg] static (no-corr): 20 warnings in 32 modules
+[klg] static (no-containers): 14 warnings in 32 modules
+[klg] static (naive): 42 warnings in 32 modules
+[klg] runtime verification: {'confirmed': 14, 'inconclusive': 3, 'not-reproduced': 2}  timing={'sweep_vm_s': 80.03159952163696, 'mapping_vm_s': 50.01780152320862, 'confirm_vm_s': 78.02275729179382}
+| Approach | TP | FP | FN | Precision | Recall | F1 |
+|---|---|---|---|---|---|---|
+| static/full | 16 | 1 | 1 | 0.94 | 0.94 | 0.94 |
+| static/no-escape | 17 | 6 | 0 | 0.74 | 1.00 | 0.85 |
+| static/no-interproc | 12 | 1 | 5 | 0.92 | 0.71 | 0.80 |
+| static/no-corr | 16 | 2 | 1 | 0.89 | 0.94 | 0.91 |
+| static/no-containers | 14 | 0 | 3 | 1.00 | 0.82 | 0.90 |
+| static/naive | 16 | 11 | 1 | 0.59 | 0.94 | 0.73 |
+| hybrid | 14 | 0 | 3 | 1.00 | 0.82 | 0.90 |
+| klg/combined | 16 | 0 | 1 | 1.00 | 0.94 | 0.97 |
+| dynamic/exhaustive | 15 | 0 | 2 | 1.00 | 0.88 | 0.94 |
+| dynamic/random | 13 | 0 | 4 | 1.00 | 0.77 | 0.87 |
+| cppcheck | 6 | 1 | 11 | 0.86 | 0.35 | 0.50 |
+
+Triage of static warnings (verdict -> ground truth):
+  confirmed       {'LEAK': 14}
+  inconclusive    {'LEAK': 2, 'SAFE': 1}
+  not-reproduced  {'LEAK': 1, 'SAFE': 1}

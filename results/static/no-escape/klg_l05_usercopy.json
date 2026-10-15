@@ -1,0 +1,78 @@
+{
+  "alloc_sites": {
+    "cfg_store": [
+      {
+        "allocator": "kmalloc",
+        "file": "klg_l05_usercopy.c",
+        "line": 20
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 9,
+        "file": "klg_l05_usercopy.c",
+        "line": 20
+      },
+      "alloc_size": -1,
+      "allocator": "kmalloc",
+      "approximate": false,
+      "category": "missing-release-on-error-path",
+      "confidence": "high",
+      "exit": {
+        "col": 3,
+        "file": "klg_l05_usercopy.c",
+        "line": 25
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "klg_l05_usercopy.c",
+        "line": 25
+      },
+      "function": "cfg_store",
+      "id": "klg_l05_usercopy:cfg_store:20:25",
+      "module": "klg_l05_usercopy",
+      "path_lines": [
+        20,
+        21,
+        24,
+        25,
+        31
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "klg_l05_usercopy.c",
+          "line": 29
+        }
+      ],
+      "return_value": "-EFAULT",
+      "triggers": [
+        {
+          "callee": "copy_from_user",
+          "file": "klg_l05_usercopy.c",
+          "kind": "call",
+          "line": 24
+        }
+      ]
+    }
+  ],
+  "module": "klg_l05_usercopy",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": false,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 1,
+    "analysis_ms": 0.642957,
+    "budget_exhausted": 0,
+    "candidates": 1,
+    "functions": 6
+  },
+  "tool": "klg-analyze"
+}

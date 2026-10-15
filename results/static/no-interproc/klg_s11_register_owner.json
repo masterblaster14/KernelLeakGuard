@@ -1,0 +1,27 @@
+{
+  "alloc_sites": {
+    "entry_add": [
+      {
+        "allocator": "kzalloc",
+        "file": "klg_s11_register_owner.c",
+        "line": 36
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "klg_s11_register_owner",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": false
+  },
+  "stats": {
+    "alloc_sites": 1,
+    "analysis_ms": 0.83209100000000003,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 8
+  },
+  "tool": "klg-analyze"
+}

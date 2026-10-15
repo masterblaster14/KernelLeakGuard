@@ -1,0 +1,14 @@
+--- a/corpus/klg_l03_reg_fail.c
++++ b/corpus/klg_l03_reg_fail.c
+@@ -36,8 +36,10 @@
+ 	ch->id = 3;
+ 
+ 	ret = hw_register_channel(ch);
+-	if (ret)
++	if (ret) {
++		kfree(ch);
+ 		return ret;		/* ch leaks here */
++	}
+ 
+ 	ch->flags = 1;
+ 	hw_unregister_channel(ch);

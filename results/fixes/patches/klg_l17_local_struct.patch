@@ -1,0 +1,14 @@
+--- a/corpus/klg_l17_local_struct.c
++++ b/corpus/klg_l17_local_struct.c
+@@ -23,8 +23,10 @@
+ 		return -ENOMEM;
+ 
+ 	ws.out = kmalloc(ws.len, GFP_KERNEL);	/* GT:SAFE */
+-	if (!ws.out)
++	if (!ws.out) {
++		kfree(ws.in);
+ 		return -ENOMEM;		/* ws.in leaks here */
++	}
+ 
+ 	memset(ws.in, 1, ws.len);
+ 	memcpy(ws.out, ws.in, ws.len);

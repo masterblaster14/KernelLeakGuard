@@ -1,0 +1,14 @@
+--- a/corpus/klg_l08_kstrdup.c
++++ b/corpus/klg_l08_kstrdup.c
+@@ -18,8 +18,10 @@
+ 		return -ENOMEM;
+ 
+ 	blob = kmemdup(profile_template, sizeof(profile_template), GFP_KERNEL);	/* GT:SAFE */
+-	if (!blob)
++	if (!blob) {
++		kfree(label);
+ 		return -ENOMEM;		/* label leaks here */
++	}
+ 
+ 	pr_debug("profile %s: %*ph\n", label, 3, blob);
+ 	kfree(blob);

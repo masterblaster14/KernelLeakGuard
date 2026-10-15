@@ -1,0 +1,59 @@
+{
+  "alloc_sites": {
+    "affs_alloc_inode": [
+      {
+        "allocator": "kmem_cache_alloc_lru",
+        "file": "linux-6.18.55/fs/affs/super.c",
+        "line": 103
+      }
+    ],
+    "affs_dir_open": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/affs/dir.c",
+        "line": 38
+      }
+    ],
+    "affs_fill_super": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/affs/super.c",
+        "line": 330
+      }
+    ],
+    "affs_init_bitmap": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/affs/bitmap.c",
+        "line": 268
+      }
+    ],
+    "affs_init_fs_context": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/affs/super.c",
+        "line": 620
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "affs",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 5,
+    "analysis_ms": 8.033317,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 104
+  },
+  "tool": "klg-analyze",
+  "ir": {
+    "objects": 8,
+    "ir_failed": []
+  }
+}

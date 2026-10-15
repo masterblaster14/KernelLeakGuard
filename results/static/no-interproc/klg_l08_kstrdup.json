@@ -1,0 +1,83 @@
+{
+  "alloc_sites": {
+    "profile_load": [
+      {
+        "allocator": "kstrdup",
+        "file": "klg_l08_kstrdup.c",
+        "line": 16
+      },
+      {
+        "allocator": "kmemdup",
+        "file": "klg_l08_kstrdup.c",
+        "line": 20
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 10,
+        "file": "klg_l08_kstrdup.c",
+        "line": 16
+      },
+      "alloc_size": -1,
+      "allocator": "kstrdup",
+      "approximate": false,
+      "category": "missing-release-on-error-path",
+      "confidence": "high",
+      "exit": {
+        "col": 3,
+        "file": "klg_l08_kstrdup.c",
+        "line": 22
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "klg_l08_kstrdup.c",
+        "line": 22
+      },
+      "function": "profile_load",
+      "id": "klg_l08_kstrdup:profile_load:16:22",
+      "module": "klg_l08_kstrdup",
+      "path_lines": [
+        16,
+        20,
+        21,
+        22,
+        28
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "klg_l08_kstrdup.c",
+          "line": 26
+        }
+      ],
+      "return_value": "-ENOMEM",
+      "triggers": [
+        {
+          "callee": "kmemdup",
+          "file": "klg_l08_kstrdup.c",
+          "kind": "alloc",
+          "line": 20
+        }
+      ]
+    }
+  ],
+  "module": "klg_l08_kstrdup",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": false
+  },
+  "stats": {
+    "alloc_sites": 2,
+    "analysis_ms": 0.30274200000000001,
+    "budget_exhausted": 0,
+    "candidates": 1,
+    "functions": 6
+  },
+  "tool": "klg-analyze"
+}

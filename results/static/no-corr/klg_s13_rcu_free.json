@@ -1,0 +1,32 @@
+{
+  "alloc_sites": {
+    "route_add": [
+      {
+        "allocator": "kzalloc",
+        "file": "klg_s13_rcu_free.c",
+        "line": 34
+      },
+      {
+        "allocator": "kzalloc",
+        "file": "klg_s13_rcu_free.c",
+        "line": 39
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "klg_s13_rcu_free",
+  "options": {
+    "branch_correlation": false,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 2,
+    "analysis_ms": 0.49066399999999999,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 8
+  },
+  "tool": "klg-analyze"
+}

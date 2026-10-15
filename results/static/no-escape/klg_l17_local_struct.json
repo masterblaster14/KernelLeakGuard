@@ -1,0 +1,82 @@
+{
+  "alloc_sites": {
+    "transform_run": [
+      {
+        "allocator": "kmalloc",
+        "file": "klg_l17_local_struct.c",
+        "line": 21
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "klg_l17_local_struct.c",
+        "line": 25
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 10,
+        "file": "klg_l17_local_struct.c",
+        "line": 21
+      },
+      "alloc_size": -1,
+      "allocator": "kmalloc",
+      "approximate": false,
+      "category": "missing-release-on-error-path",
+      "confidence": "high",
+      "exit": {
+        "col": 3,
+        "file": "klg_l17_local_struct.c",
+        "line": 27
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "klg_l17_local_struct.c",
+        "line": 27
+      },
+      "function": "transform_run",
+      "id": "klg_l17_local_struct:transform_run:21:27",
+      "module": "klg_l17_local_struct",
+      "path_lines": [
+        21,
+        25,
+        27,
+        34
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "klg_l17_local_struct.c",
+          "line": 32
+        }
+      ],
+      "return_value": "-ENOMEM",
+      "triggers": [
+        {
+          "callee": "kmalloc",
+          "file": "klg_l17_local_struct.c",
+          "kind": "alloc",
+          "line": 25
+        }
+      ]
+    }
+  ],
+  "module": "klg_l17_local_struct",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": false,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 2,
+    "analysis_ms": 0.478431,
+    "budget_exhausted": 0,
+    "candidates": 1,
+    "functions": 6
+  },
+  "tool": "klg-analyze"
+}

@@ -1,0 +1,32 @@
+{
+  "alloc_sites": {
+    "initialize": [
+      {
+        "allocator": "kmalloc",
+        "file": "klg_s01_two_alloc_ok.c",
+        "line": 13
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "klg_s01_two_alloc_ok.c",
+        "line": 16
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "klg_s01_two_alloc_ok",
+  "options": {
+    "branch_correlation": false,
+    "containers": false,
+    "escape": false,
+    "interprocedural": false
+  },
+  "stats": {
+    "alloc_sites": 2,
+    "analysis_ms": 0.35730600000000001,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 3
+  },
+  "tool": "klg-analyze"
+}

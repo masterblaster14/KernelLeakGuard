@@ -1,0 +1,27 @@
+{
+  "alloc_sites": {
+    "cfg_store": [
+      {
+        "allocator": "kmalloc",
+        "file": "klg_l05_usercopy.c",
+        "line": 20
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "klg_l05_usercopy",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": false
+  },
+  "stats": {
+    "alloc_sites": 1,
+    "analysis_ms": 0.474082,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 6
+  },
+  "tool": "klg-analyze"
+}

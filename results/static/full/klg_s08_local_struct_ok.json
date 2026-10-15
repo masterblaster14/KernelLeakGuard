@@ -1,0 +1,32 @@
+{
+  "alloc_sites": {
+    "transform_run": [
+      {
+        "allocator": "kmalloc",
+        "file": "klg_s08_local_struct_ok.c",
+        "line": 20
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "klg_s08_local_struct_ok.c",
+        "line": 24
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "klg_s08_local_struct_ok",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 2,
+    "analysis_ms": 0.645733,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 6
+  },
+  "tool": "klg-analyze"
+}

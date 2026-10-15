@@ -1,0 +1,14 @@
+--- a/corpus/klg_l01_two_alloc.c
++++ b/corpus/klg_l01_two_alloc.c
+@@ -15,8 +15,10 @@
+ 	if (!a)
+ 		return -ENOMEM;
+ 	b = kmalloc(200, GFP_KERNEL);	/* GT:SAFE */
+-	if (!b)
++	if (!b) {
++		kfree(a);
+ 		return -ENOMEM;		/* a leaks here */
++	}
+ 
+ 	memset(a, 0, 100);
+ 	memset(b, 0, 200);

@@ -1,0 +1,19 @@
+{
+  "alloc_sites": {},
+  "candidates": [],
+  "module": "klg_s06_devm",
+  "options": {
+    "branch_correlation": true,
+    "containers": false,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 0,
+    "analysis_ms": 0.45197999999999999,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 3
+  },
+  "tool": "klg-analyze"
+}

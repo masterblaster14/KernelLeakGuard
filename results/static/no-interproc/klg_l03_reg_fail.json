@@ -1,0 +1,27 @@
+{
+  "alloc_sites": {
+    "channel_open": [
+      {
+        "allocator": "kzalloc",
+        "file": "klg_l03_reg_fail.c",
+        "line": 33
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "klg_l03_reg_fail",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": false
+  },
+  "stats": {
+    "alloc_sites": 1,
+    "analysis_ms": 0.41407699999999997,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 8
+  },
+  "tool": "klg-analyze"
+}

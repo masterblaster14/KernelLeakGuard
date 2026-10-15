@@ -1,0 +1,104 @@
+{
+  "alloc_sites": {
+    "entry_add": [
+      {
+        "allocator": "kzalloc",
+        "file": "klg_s11_register_owner.c",
+        "line": 36
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 6,
+        "file": "klg_s11_register_owner.c",
+        "line": 36
+      },
+      "alloc_size": 16,
+      "allocator": "kzalloc",
+      "approximate": false,
+      "category": "never-released",
+      "confidence": "medium",
+      "exit": {
+        "col": 3,
+        "file": "klg_s11_register_owner.c",
+        "line": 44
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "klg_s11_register_owner.c",
+        "line": 44
+      },
+      "function": "entry_add",
+      "id": "klg_s11_register_owner:entry_add:36:44",
+      "module": "klg_s11_register_owner",
+      "path_lines": [
+        36,
+        37,
+        39,
+        44,
+        48
+      ],
+      "release_sites": [],
+      "return_value": "error from table_resize",
+      "triggers": [
+        {
+          "callee": "table_resize",
+          "file": "klg_s11_register_owner.c",
+          "kind": "call",
+          "line": 42
+        }
+      ]
+    },
+    {
+      "alloc": {
+        "col": 6,
+        "file": "klg_s11_register_owner.c",
+        "line": 36
+      },
+      "alloc_size": 16,
+      "allocator": "kzalloc",
+      "approximate": false,
+      "category": "never-released",
+      "confidence": "medium",
+      "exit": {
+        "col": 2,
+        "file": "klg_s11_register_owner.c",
+        "line": 47
+      },
+      "exit_kind": "normal",
+      "fix": null,
+      "function": "entry_add",
+      "id": "klg_s11_register_owner:entry_add:36:47",
+      "module": "klg_s11_register_owner",
+      "path_lines": [
+        36,
+        37,
+        39,
+        46,
+        48
+      ],
+      "release_sites": [],
+      "return_value": "0",
+      "triggers": []
+    }
+  ],
+  "module": "klg_s11_register_owner",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": false,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 1,
+    "analysis_ms": 0.436089,
+    "budget_exhausted": 0,
+    "candidates": 2,
+    "functions": 8
+  },
+  "tool": "klg-analyze"
+}

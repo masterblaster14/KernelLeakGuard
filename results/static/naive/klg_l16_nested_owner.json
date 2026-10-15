@@ -1,0 +1,137 @@
+{
+  "alloc_sites": {
+    "bind_start": [
+      {
+        "allocator": "kzalloc",
+        "file": "klg_l16_nested_owner.c",
+        "line": 28
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "klg_l16_nested_owner.c",
+        "line": 32
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 13,
+        "file": "klg_l16_nested_owner.c",
+        "line": 32
+      },
+      "alloc_size": 512,
+      "allocator": "kmalloc",
+      "approximate": false,
+      "category": "never-released",
+      "confidence": "medium",
+      "exit": {
+        "col": 3,
+        "file": "klg_l16_nested_owner.c",
+        "line": 42
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "klg_l16_nested_owner.c",
+        "line": 41
+      },
+      "function": "bind_start",
+      "id": "klg_l16_nested_owner:bind_start:32:42",
+      "module": "klg_l16_nested_owner",
+      "path_lines": [
+        32,
+        37,
+        41,
+        48
+      ],
+      "release_sites": [],
+      "return_value": "error from ctx_bind",
+      "triggers": [
+        {
+          "callee": "ctx_bind",
+          "file": "klg_l16_nested_owner.c",
+          "kind": "call",
+          "line": 39
+        }
+      ]
+    },
+    {
+      "alloc": {
+        "col": 13,
+        "file": "klg_l16_nested_owner.c",
+        "line": 32
+      },
+      "alloc_size": 512,
+      "allocator": "kmalloc",
+      "approximate": false,
+      "category": "never-released",
+      "confidence": "medium",
+      "exit": {
+        "col": 2,
+        "file": "klg_l16_nested_owner.c",
+        "line": 47
+      },
+      "exit_kind": "normal",
+      "fix": null,
+      "function": "bind_start",
+      "id": "klg_l16_nested_owner:bind_start:32:47",
+      "module": "klg_l16_nested_owner",
+      "path_lines": [
+        32,
+        37,
+        45,
+        48
+      ],
+      "release_sites": [],
+      "return_value": "0",
+      "triggers": []
+    },
+    {
+      "alloc": {
+        "col": 13,
+        "file": "klg_l16_nested_owner.c",
+        "line": 32
+      },
+      "alloc_size": 512,
+      "allocator": "kmalloc",
+      "approximate": false,
+      "category": "never-released",
+      "confidence": "medium",
+      "exit": {
+        "col": 3,
+        "file": "klg_l16_nested_owner.c",
+        "line": 35
+      },
+      "exit_kind": "error",
+      "fix": null,
+      "function": "bind_start",
+      "id": "klg_l16_nested_owner:bind_start:32:35",
+      "module": "klg_l16_nested_owner",
+      "path_lines": [
+        32,
+        34,
+        48
+      ],
+      "release_sites": [],
+      "return_value": "-ENOMEM",
+      "triggers": []
+    }
+  ],
+  "module": "klg_l16_nested_owner",
+  "options": {
+    "branch_correlation": false,
+    "containers": false,
+    "escape": false,
+    "interprocedural": false
+  },
+  "stats": {
+    "alloc_sites": 2,
+    "analysis_ms": 0.41520200000000002,
+    "budget_exhausted": 0,
+    "candidates": 3,
+    "functions": 7
+  },
+  "tool": "klg-analyze"
+}

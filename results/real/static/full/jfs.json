@@ -1,0 +1,146 @@
+{
+  "alloc_sites": {
+    "ciGetLeafPrefixKey": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/fs/jfs/jfs_dtree.c",
+        "line": 3507
+      },
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/fs/jfs/jfs_dtree.c",
+        "line": 3512
+      }
+    ],
+    "dbDiscardAG": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/fs/jfs/jfs_dmap.c",
+        "line": 1596
+      }
+    ],
+    "dbMount": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/jfs/jfs_dmap.c",
+        "line": 164
+      }
+    ],
+    "diMount": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/jfs/jfs_imap.c",
+        "line": 105
+      }
+    ],
+    "dtSearch": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/fs/jfs/jfs_dtree.c",
+        "line": 585
+      }
+    ],
+    "dtSplitUp": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/fs/jfs/jfs_dtree.c",
+        "line": 956
+      }
+    ],
+    "ea_get": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/jfs/xattr.c",
+        "line": 489
+      }
+    ],
+    "get_UCSname": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/fs/jfs/jfs_unicode.c",
+        "line": 111
+      }
+    ],
+    "jfs_alloc_inode": [
+      {
+        "allocator": "kmem_cache_alloc_lru",
+        "file": "linux-6.18.55/fs/jfs/super.c",
+        "line": 105
+      }
+    ],
+    "jfs_fill_super": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/jfs/super.c",
+        "line": 452
+      }
+    ],
+    "jfs_init_fs_context": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/jfs/super.c",
+        "line": 916
+      }
+    ],
+    "lbmLogInit": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/jfs/jfs_logmgr.c",
+        "line": 1821
+      }
+    ],
+    "lmLogOpen": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/jfs/jfs_logmgr.c",
+        "line": 1090
+      }
+    ],
+    "open_dummy_log": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/jfs/jfs_logmgr.c",
+        "line": 1193
+      }
+    ],
+    "open_inline_log": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/jfs/jfs_logmgr.c",
+        "line": 1159
+      }
+    ],
+    "txInit": [
+      {
+        "allocator": "vmalloc",
+        "file": "linux-6.18.55/fs/jfs/jfs_txnmgr.c",
+        "line": 271
+      },
+      {
+        "allocator": "vmalloc",
+        "file": "linux-6.18.55/fs/jfs/jfs_txnmgr.c",
+        "line": 297
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "jfs",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 18,
+    "analysis_ms": 104.585499,
+    "budget_exhausted": 2,
+    "candidates": 0,
+    "functions": 320
+  },
+  "tool": "klg-analyze",
+  "ir": {
+    "objects": 22,
+    "ir_failed": []
+  }
+}

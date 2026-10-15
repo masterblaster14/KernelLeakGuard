@@ -1,0 +1,10 @@
+--- a/corpus/klg_l09_kcalloc.c
++++ b/corpus/klg_l09_kcalloc.c
+@@ -21,6 +21,7 @@
+ 	vals = kmalloc_array(NR_KEYS, sizeof(*vals), GFP_KERNEL);	/* GT:SAFE */
+ 	if (!vals) {
+ 		ret = -ENOMEM;
++		kfree(idx);
+ 		goto out;		/* idx leaks: out does not free it */
+ 	}
+ 

@@ -1,0 +1,99 @@
+{
+  "alloc_sites": {
+    "ring_alloc": [
+      {
+        "allocator": "kmalloc",
+        "file": "klg_s09_loop_cleanup.c",
+        "line": 20
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 13,
+        "file": "klg_s09_loop_cleanup.c",
+        "line": 20
+      },
+      "alloc_size": 128,
+      "allocator": "kmalloc",
+      "approximate": false,
+      "category": "never-released",
+      "confidence": "medium",
+      "exit": {
+        "col": 2,
+        "file": "klg_s09_loop_cleanup.c",
+        "line": 29
+      },
+      "exit_kind": "normal",
+      "fix": null,
+      "function": "ring_alloc",
+      "id": "klg_s09_loop_cleanup:ring_alloc:20:29",
+      "module": "klg_s09_loop_cleanup",
+      "path_lines": [
+        20,
+        23,
+        19,
+        25,
+        26,
+        27,
+        28,
+        29,
+        35
+      ],
+      "release_sites": [],
+      "return_value": "0",
+      "triggers": []
+    },
+    {
+      "alloc": {
+        "col": 13,
+        "file": "klg_s09_loop_cleanup.c",
+        "line": 20
+      },
+      "alloc_size": 128,
+      "allocator": "kmalloc",
+      "approximate": false,
+      "category": "never-released",
+      "confidence": "medium",
+      "exit": {
+        "col": 2,
+        "file": "klg_s09_loop_cleanup.c",
+        "line": 34
+      },
+      "exit_kind": "error",
+      "fix": null,
+      "function": "ring_alloc",
+      "id": "klg_s09_loop_cleanup:ring_alloc:20:34",
+      "module": "klg_s09_loop_cleanup",
+      "path_lines": [
+        20,
+        23,
+        19,
+        22,
+        32,
+        33,
+        34,
+        35
+      ],
+      "release_sites": [],
+      "return_value": "-ENOMEM",
+      "triggers": []
+    }
+  ],
+  "module": "klg_s09_loop_cleanup",
+  "options": {
+    "branch_correlation": false,
+    "containers": false,
+    "escape": false,
+    "interprocedural": false
+  },
+  "stats": {
+    "alloc_sites": 1,
+    "analysis_ms": 1.2702739999999999,
+    "budget_exhausted": 0,
+    "candidates": 2,
+    "functions": 6
+  },
+  "tool": "klg-analyze"
+}

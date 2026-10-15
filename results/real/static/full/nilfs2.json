@@ -1,0 +1,293 @@
+{
+  "alloc_sites": {
+    "alloc_nilfs": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/nilfs2/the_nilfs.c",
+        "line": 59
+      }
+    ],
+    "nilfs_alloc_inode": [
+      {
+        "allocator": "kmem_cache_alloc_lru",
+        "file": "linux-6.18.55/fs/nilfs2/super.c",
+        "line": 158
+      }
+    ],
+    "nilfs_attach_checkpoint": [
+      {
+        "allocator": "nilfs_find_or_create_root",
+        "file": "linux-6.18.55/fs/nilfs2/super.c",
+        "line": 559
+      }
+    ],
+    "nilfs_attach_log_writer": [
+      {
+        "allocator": "nilfs_segctor_new",
+        "file": "linux-6.18.55/fs/nilfs2/segment.c",
+        "line": 2875
+      }
+    ],
+    "nilfs_btree_alloc_path": [
+      {
+        "allocator": "kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/nilfs2/btree.c",
+        "line": 28
+      }
+    ],
+    "nilfs_btree_assign": [
+      {
+        "allocator": "nilfs_btree_alloc_path",
+        "file": "linux-6.18.55/fs/nilfs2/btree.c",
+        "line": 2312
+      }
+    ],
+    "nilfs_btree_delete": [
+      {
+        "allocator": "nilfs_btree_alloc_path",
+        "file": "linux-6.18.55/fs/nilfs2/btree.c",
+        "line": 1616
+      }
+    ],
+    "nilfs_btree_insert": [
+      {
+        "allocator": "nilfs_btree_alloc_path",
+        "file": "linux-6.18.55/fs/nilfs2/btree.c",
+        "line": 1240
+      }
+    ],
+    "nilfs_btree_last_key": [
+      {
+        "allocator": "nilfs_btree_alloc_path",
+        "file": "linux-6.18.55/fs/nilfs2/btree.c",
+        "line": 1666
+      }
+    ],
+    "nilfs_btree_lookup": [
+      {
+        "allocator": "nilfs_btree_alloc_path",
+        "file": "linux-6.18.55/fs/nilfs2/btree.c",
+        "line": 691
+      }
+    ],
+    "nilfs_btree_lookup_contig": [
+      {
+        "allocator": "nilfs_btree_alloc_path",
+        "file": "linux-6.18.55/fs/nilfs2/btree.c",
+        "line": 715
+      }
+    ],
+    "nilfs_btree_mark": [
+      {
+        "allocator": "nilfs_btree_alloc_path",
+        "file": "linux-6.18.55/fs/nilfs2/btree.c",
+        "line": 2375
+      }
+    ],
+    "nilfs_btree_propagate": [
+      {
+        "allocator": "nilfs_btree_alloc_path",
+        "file": "linux-6.18.55/fs/nilfs2/btree.c",
+        "line": 2115
+      }
+    ],
+    "nilfs_btree_seek_key": [
+      {
+        "allocator": "nilfs_btree_alloc_path",
+        "file": "linux-6.18.55/fs/nilfs2/btree.c",
+        "line": 1647
+      }
+    ],
+    "nilfs_fill_super": [
+      {
+        "allocator": "alloc_nilfs",
+        "file": "linux-6.18.55/fs/nilfs2/super.c",
+        "line": 1054
+      }
+    ],
+    "nilfs_find_or_create_root": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/nilfs2/the_nilfs.c",
+        "line": 886
+      }
+    ],
+    "nilfs_init_fs_context": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/nilfs2/super.c",
+        "line": 1293
+      }
+    ],
+    "nilfs_ioctl_clean_segments": [
+      {
+        "allocator": "memdup_array_user",
+        "file": "linux-6.18.55/fs/nilfs2/ioctl.c",
+        "line": 888
+      },
+      {
+        "allocator": "vmalloc",
+        "file": "linux-6.18.55/fs/nilfs2/ioctl.c",
+        "line": 914
+      }
+    ],
+    "nilfs_ioctl_set_suinfo": [
+      {
+        "allocator": "vmalloc",
+        "file": "linux-6.18.55/fs/nilfs2/ioctl.c",
+        "line": 1238
+      }
+    ],
+    "nilfs_mdt_init": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/nilfs2/mdt.c",
+        "line": 456
+      }
+    ],
+    "nilfs_palloc_init_blockgroup": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/nilfs2/alloc.c",
+        "line": 57
+      }
+    ],
+    "nilfs_prepare_segment_lock": [
+      {
+        "allocator": "kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/nilfs2/segment.c",
+        "line": 160
+      }
+    ],
+    "nilfs_scan_dsync_log": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/nilfs2/recovery.c",
+        "line": 373
+      }
+    ],
+    "nilfs_segbuf_new": [
+      {
+        "allocator": "kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/nilfs2/segbuf.c",
+        "line": 38
+      }
+    ],
+    "nilfs_segctor_begin_construction": [
+      {
+        "allocator": "nilfs_segbuf_new",
+        "file": "linux-6.18.55/fs/nilfs2/segment.c",
+        "line": 1333
+      }
+    ],
+    "nilfs_segctor_extend_segments": [
+      {
+        "allocator": "nilfs_segbuf_new",
+        "file": "linux-6.18.55/fs/nilfs2/segment.c",
+        "line": 1409
+      }
+    ],
+    "nilfs_segctor_new": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/nilfs2/segment.c",
+        "line": 2730
+      }
+    ],
+    "nilfs_segment_list_add": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/nilfs2/recovery.c",
+        "line": 417
+      }
+    ],
+    "nilfs_sysfs_create_device_group": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/nilfs2/sysfs.c",
+        "line": 1005
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 13,
+        "file": "linux-6.18.55/fs/nilfs2/ioctl.c",
+        "line": 888
+      },
+      "alloc_size": -1,
+      "allocator": "memdup_array_user",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 2,
+        "file": "linux-6.18.55/fs/nilfs2/ioctl.c",
+        "line": 957
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 17,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/nilfs2/ioctl.c",
+        "line": 891
+      },
+      "function": "nilfs_ioctl_clean_segments",
+      "id": "nilfs2:nilfs_ioctl_clean_segments:888:957",
+      "module": "nilfs2",
+      "path_lines": [
+        888,
+        891,
+        956,
+        958
+      ],
+      "release_sites": [
+        {
+          "col": 4,
+          "file": "linux-6.18.55/fs/nilfs2/ioctl.c",
+          "line": 921
+        },
+        {
+          "col": 3,
+          "file": "linux-6.18.55/fs/nilfs2/ioctl.c",
+          "line": 953
+        },
+        {
+          "col": 2,
+          "file": "linux-6.18.55/fs/nilfs2/ioctl.c",
+          "line": 954
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "memdup_array_user",
+          "file": "linux-6.18.55/fs/nilfs2/ioctl.c",
+          "kind": "alloc",
+          "line": 888
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/nilfs2/ioctl.c"
+    }
+  ],
+  "module": "nilfs2",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 30,
+    "analysis_ms": 45.106562,
+    "budget_exhausted": 0,
+    "candidates": 1,
+    "functions": 692
+  },
+  "tool": "klg-analyze",
+  "ir": {
+    "objects": 23,
+    "ir_failed": []
+  }
+}

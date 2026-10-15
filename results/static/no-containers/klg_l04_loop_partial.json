@@ -1,0 +1,27 @@
+{
+  "alloc_sites": {
+    "ring_alloc": [
+      {
+        "allocator": "kmalloc",
+        "file": "klg_l04_loop_partial.c",
+        "line": 19
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "klg_l04_loop_partial",
+  "options": {
+    "branch_correlation": true,
+    "containers": false,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 1,
+    "analysis_ms": 0.46510499999999999,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 6
+  },
+  "tool": "klg-analyze"
+}

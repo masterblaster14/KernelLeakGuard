@@ -1,0 +1,53 @@
+# Real Linux kernel modules used to evaluate KernelLeakGuard on real code.
+# All of them initialise without hardware, so their module_init (including
+# every error path in it) can be exercised under fault injection in the VM.
+# Merged by vm/build_kernel.sh after kernel.config.fragment.
+
+# --- networking: virtual and simulated devices ---
+CONFIG_DUMMY=m
+CONFIG_VETH=m
+CONFIG_NETDEVSIM=m
+CONFIG_BONDING=m
+CONFIG_MACVLAN=m
+CONFIG_IPVLAN=m
+CONFIG_NLMON=m
+CONFIG_TUN=m
+CONFIG_VXLAN=m
+CONFIG_GENEVE=m
+CONFIG_NET_TEAM=m
+CONFIG_MAC80211_HWSIM=m
+
+# --- block and SCSI ---
+CONFIG_BLK_DEV_NULL_BLK=m
+CONFIG_BLK_DEV_RAM=m
+CONFIG_ZRAM=m
+CONFIG_SCSI_DEBUG=m
+
+# --- device mapper targets ---
+CONFIG_DM_FLAKEY=m
+CONFIG_DM_DUST=m
+CONFIG_DM_DELAY=m
+
+# --- file systems ---
+CONFIG_MINIX_FS=m
+CONFIG_ROMFS_FS=m
+CONFIG_CRAMFS=m
+CONFIG_SQUASHFS=m
+CONFIG_UDF_FS=m
+CONFIG_NILFS2_FS=m
+CONFIG_JFS_FS=m
+CONFIG_F2FS_FS=m
+CONFIG_EXFAT_FS=m
+CONFIG_NTFS3_FS=m
+CONFIG_HFSPLUS_FS=m
+CONFIG_HFS_FS=m
+CONFIG_EROFS_FS=m
+CONFIG_QNX4FS_FS=m
+CONFIG_UFS_FS=m
+CONFIG_OMFS_FS=m
+CONFIG_AFFS_FS=m
+
+# --- sound and input ---
+CONFIG_SND_DUMMY=m
+CONFIG_SND_ALOOP=m
+CONFIG_INPUT_UINPUT=m

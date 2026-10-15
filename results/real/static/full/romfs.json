@@ -1,0 +1,38 @@
+{
+  "alloc_sites": {
+    "romfs_alloc_inode": [
+      {
+        "allocator": "kmem_cache_alloc_lru",
+        "file": "linux-6.18.55/fs/romfs/super.c",
+        "line": 369
+      }
+    ],
+    "romfs_fill_super": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/romfs/super.c",
+        "line": 484
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "romfs",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 2,
+    "analysis_ms": 1.401064,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 22
+  },
+  "tool": "klg-analyze",
+  "ir": {
+    "objects": 2,
+    "ir_failed": []
+  }
+}

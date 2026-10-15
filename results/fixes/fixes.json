@@ -1,0 +1,254 @@
+[
+  {
+    "id": "klg_l01_two_alloc:initialize:14:19",
+    "module": "klg_l01_two_alloc",
+    "function": "initialize",
+    "alloc": 14,
+    "checks": {
+      "compiles": true,
+      "static_clean": true,
+      "remaining_warnings": 0,
+      "runtime_faults_exercised": 4,
+      "runtime_clean": true,
+      "runtime_leaks": [],
+      "slab_errors": []
+    },
+    "status": "validated",
+    "reason": "reuses the release at line 24",
+    "patch": "--- a/corpus/klg_l01_two_alloc.c\n+++ b/corpus/klg_l01_two_alloc.c\n@@ -15,8 +15,10 @@\n \tif (!a)\n \t\treturn -ENOMEM;\n \tb = kmalloc(200, GFP_KERNEL);\t/* GT:SAFE */\n-\tif (!b)\n+\tif (!b) {\n+\t\tkfree(a);\n \t\treturn -ENOMEM;\t\t/* a leaks here */\n+\t}\n \n \tmemset(a, 0, 100);\n \tmemset(b, 0, 200);\n"
+  },
+  {
+    "id": "klg_l02_goto_ladder:sensor_setup:32:54",
+    "module": "klg_l02_goto_ladder",
+    "function": "sensor_setup",
+    "alloc": 32,
+    "checks": {
+      "compiles": true,
+      "static_clean": true,
+      "remaining_warnings": 0,
+      "runtime_faults_exercised": 6,
+      "runtime_clean": true,
+      "runtime_leaks": [],
+      "slab_errors": []
+    },
+    "status": "validated",
+    "reason": "reuses the release at line 51",
+    "patch": "--- a/corpus/klg_l02_goto_ladder.c\n+++ b/corpus/klg_l02_goto_ladder.c\n@@ -38,6 +38,7 @@\n \tname = kasprintf(GFP_KERNEL, \"sensor%d\", 0);\t/* GT:SAFE */\n \tif (!name) {\n \t\tret = -ENOMEM;\n+\t\tkfree(tx);\n \t\tgoto err_rx;\t\t/* BUG: should be err_tx */\n \t}\n \n"
+  },
+  {
+    "id": "klg_l03_reg_fail:channel_open:33:40",
+    "module": "klg_l03_reg_fail",
+    "function": "channel_open",
+    "alloc": 33,
+    "checks": {
+      "compiles": true,
+      "static_clean": true,
+      "remaining_warnings": 0,
+      "runtime_faults_exercised": 3,
+      "runtime_clean": true,
+      "runtime_leaks": [],
+      "slab_errors": []
+    },
+    "status": "validated",
+    "reason": "reuses the release at line 44",
+    "patch": "--- a/corpus/klg_l03_reg_fail.c\n+++ b/corpus/klg_l03_reg_fail.c\n@@ -36,8 +36,10 @@\n \tch->id = 3;\n \n \tret = hw_register_channel(ch);\n-\tif (ret)\n+\tif (ret) {\n+\t\tkfree(ch);\n \t\treturn ret;\t\t/* ch leaks here */\n+\t}\n \n \tch->flags = 1;\n \thw_unregister_channel(ch);\n"
+  },
+  {
+    "id": "klg_l04_loop_partial:ring_alloc:19:21",
+    "module": "klg_l04_loop_partial",
+    "function": "ring_alloc",
+    "alloc": 19,
+    "checks": {
+      "compiles": true,
+      "static_clean": false,
+      "remaining_warnings": 2,
+      "runtime_faults_exercised": 8,
+      "runtime_clean": true,
+      "runtime_leaks": [],
+      "slab_errors": []
+    },
+    "status": "runtime-validated",
+    "reason": "rollback loop over desc[0..i-1]; reuses the release at line 27; static warning remains (loop-counter limitation)",
+    "patch": "--- a/corpus/klg_l04_loop_partial.c\n+++ b/corpus/klg_l04_loop_partial.c\n@@ -17,8 +17,11 @@\n \n \tfor (i = 0; i < NR_DESC; i++) {\n \t\tdesc[i] = kmalloc(DESC_SIZE, GFP_KERNEL);\t/* GT:LEAK */\n-\t\tif (!desc[i])\n+\t\tif (!desc[i]) {\n+\t\t\twhile (--i >= 0)\n+\t\t\t\tkfree(desc[i]);\n \t\t\treturn -ENOMEM;\t/* earlier descriptors leak */\n+\t\t}\n \t}\n \n \tfor (i = 0; i < NR_DESC; i++)\n"
+  },
+  {
+    "id": "klg_l05_usercopy:cfg_store:20:25",
+    "module": "klg_l05_usercopy",
+    "function": "cfg_store",
+    "alloc": 20,
+    "checks": {
+      "compiles": true,
+      "static_clean": true,
+      "remaining_warnings": 0,
+      "runtime_faults_exercised": 3,
+      "runtime_clean": true,
+      "runtime_leaks": [],
+      "slab_errors": []
+    },
+    "status": "validated",
+    "reason": "reuses the release at line 29",
+    "patch": "--- a/corpus/klg_l05_usercopy.c\n+++ b/corpus/klg_l05_usercopy.c\n@@ -21,8 +21,10 @@\n \tif (!kbuf)\n \t\treturn -ENOMEM;\n \n-\tif (copy_from_user(kbuf, ubuf, len))\n+\tif (copy_from_user(kbuf, ubuf, len)) {\n+\t\tkfree(kbuf);\n \t\treturn -EFAULT;\t\t/* kbuf leaks here */\n+\t}\n \tkbuf[len] = '\\0';\n \n \tret = kstrtoul(kbuf, 0, &cfg_value);\n"
+  },
+  {
+    "id": "klg_l06_wrapper_alloc:session_start:37:43",
+    "module": "klg_l06_wrapper_alloc",
+    "function": "session_start",
+    "alloc": 37,
+    "checks": {
+      "compiles": true,
+      "static_clean": true,
+      "remaining_warnings": 0,
+      "runtime_faults_exercised": 4,
+      "runtime_clean": true,
+      "runtime_leaks": [],
+      "slab_errors": []
+    },
+    "status": "validated",
+    "reason": "reuses the release at line 48",
+    "patch": "--- a/corpus/klg_l06_wrapper_alloc.c\n+++ b/corpus/klg_l06_wrapper_alloc.c\n@@ -39,8 +39,10 @@\n \t\treturn -ENOMEM;\n \n \ttok = kmalloc(64, GFP_KERNEL);\t\t/* GT:SAFE */\n-\tif (!tok)\n+\tif (!tok) {\n+\t\tsession_destroy(s);\n \t\treturn -ENOMEM;\t\t/* s leaks here */\n+\t}\n \n \tstrscpy(tok, \"token\", 64);\n \tstrscpy(s->tag, tok, sizeof(s->tag));\n"
+  },
+  {
+    "id": "klg_l07_wrapper_free:xfer_run:27:33",
+    "module": "klg_l07_wrapper_free",
+    "function": "xfer_run",
+    "alloc": 27,
+    "checks": {
+      "compiles": true,
+      "static_clean": true,
+      "remaining_warnings": 0,
+      "runtime_faults_exercised": 4,
+      "runtime_clean": true,
+      "runtime_leaks": [],
+      "slab_errors": []
+    },
+    "status": "validated",
+    "reason": "reuses the release at line 38",
+    "patch": "--- a/corpus/klg_l07_wrapper_free.c\n+++ b/corpus/klg_l07_wrapper_free.c\n@@ -29,8 +29,10 @@\n \t\treturn -ENOMEM;\n \n \tscratch = kmalloc(1024, GFP_KERNEL);\t/* GT:SAFE */\n-\tif (!scratch)\n+\tif (!scratch) {\n+\t\tctx_release(c);\n \t\treturn -ENOMEM;\t\t/* c leaks: ctx_release() not called */\n+\t}\n \n \tmemset(scratch, 0, 1024);\n \tc->done = 1024;\n"
+  },
+  {
+    "id": "klg_l08_kstrdup:profile_load:16:22",
+    "module": "klg_l08_kstrdup",
+    "function": "profile_load",
+    "alloc": 16,
+    "checks": {
+      "compiles": true,
+      "static_clean": true,
+      "remaining_warnings": 0,
+      "runtime_faults_exercised": 4,
+      "runtime_clean": true,
+      "runtime_leaks": [],
+      "slab_errors": []
+    },
+    "status": "validated",
+    "reason": "reuses the release at line 26",
+    "patch": "--- a/corpus/klg_l08_kstrdup.c\n+++ b/corpus/klg_l08_kstrdup.c\n@@ -18,8 +18,10 @@\n \t\treturn -ENOMEM;\n \n \tblob = kmemdup(profile_template, sizeof(profile_template), GFP_KERNEL);\t/* GT:SAFE */\n-\tif (!blob)\n+\tif (!blob) {\n+\t\tkfree(label);\n \t\treturn -ENOMEM;\t\t/* label leaks here */\n+\t}\n \n \tpr_debug(\"profile %s: %*ph\\n\", label, 3, blob);\n \tkfree(blob);\n"
+  },
+  {
+    "id": "klg_l09_kcalloc:table_build:17:34",
+    "module": "klg_l09_kcalloc",
+    "function": "table_build",
+    "alloc": 17,
+    "checks": {
+      "compiles": true,
+      "static_clean": true,
+      "remaining_warnings": 0,
+      "runtime_faults_exercised": 4,
+      "runtime_clean": true,
+      "runtime_leaks": [],
+      "slab_errors": []
+    },
+    "status": "validated",
+    "reason": "reuses the release at line 32",
+    "patch": "--- a/corpus/klg_l09_kcalloc.c\n+++ b/corpus/klg_l09_kcalloc.c\n@@ -21,6 +21,7 @@\n \tvals = kmalloc_array(NR_KEYS, sizeof(*vals), GFP_KERNEL);\t/* GT:SAFE */\n \tif (!vals) {\n \t\tret = -ENOMEM;\n+\t\tkfree(idx);\n \t\tgoto out;\t\t/* idx leaks: out does not free it */\n \t}\n \n"
+  },
+  {
+    "id": "klg_l11_kmem_cache:req_submit:22:28",
+    "module": "klg_l11_kmem_cache",
+    "function": "req_submit",
+    "alloc": 22,
+    "checks": {
+      "compiles": true,
+      "static_clean": true,
+      "remaining_warnings": 0,
+      "runtime_faults_exercised": 4,
+      "runtime_clean": true,
+      "runtime_leaks": [],
+      "slab_errors": []
+    },
+    "status": "validated",
+    "reason": "reuses the release at line 34",
+    "patch": "--- a/corpus/klg_l11_kmem_cache.c\n+++ b/corpus/klg_l11_kmem_cache.c\n@@ -24,8 +24,10 @@\n \t\treturn -ENOMEM;\n \n \tpayload = kzalloc(256, GFP_KERNEL);\t/* GT:SAFE */\n-\tif (!payload)\n+\tif (!payload) {\n+\t\tkmem_cache_free(req_cache, req);\n \t\treturn -ENOMEM;\t\t/* req leaks here */\n+\t}\n \n \treq->sector = 8;\n \treq->len = 256;\n"
+  },
+  {
+    "id": "klg_l12_multi_exit:packet_prepare:14:27",
+    "module": "klg_l12_multi_exit",
+    "function": "packet_prepare",
+    "alloc": 14,
+    "checks": {
+      "compiles": true,
+      "static_clean": true,
+      "remaining_warnings": 0,
+      "runtime_faults_exercised": 8,
+      "runtime_clean": true,
+      "runtime_leaks": [],
+      "slab_errors": []
+    },
+    "status": "validated",
+    "reason": "reuses the release at line 20",
+    "patch": "--- a/corpus/klg_l12_multi_exit.c\n+++ b/corpus/klg_l12_multi_exit.c\n@@ -23,6 +23,7 @@\n \n \tcrc = kmalloc(32, GFP_KERNEL);\t\t/* GT:SAFE */\n \tif (!crc) {\n+\t\tkfree(pkt);\n \t\tkfree(hdr);\n \t\treturn -ENOMEM;\t\t/* BUG: pkt is not freed */\n \t}\n"
+  },
+  {
+    "id": "klg_l13_init_misc:ledctl_init:42:49",
+    "module": "klg_l13_init_misc",
+    "function": "ledctl_init",
+    "alloc": 42,
+    "checks": {
+      "compiles": true,
+      "static_clean": true,
+      "remaining_warnings": 0,
+      "runtime_faults_exercised": 43,
+      "runtime_clean": true,
+      "runtime_leaks": [],
+      "slab_errors": []
+    },
+    "status": "validated",
+    "reason": "kfree() matches kzalloc()",
+    "patch": "--- a/corpus/klg_l13_init_misc.c\n+++ b/corpus/klg_l13_init_misc.c\n@@ -45,8 +45,10 @@\n \tled_table_fill(tbl);\n \n \tret = misc_register(&ledctl_dev);\n-\tif (ret)\n+\tif (ret) {\n+\t\tkfree(tbl);\n \t\treturn ret;\t\t/* tbl leaks here */\n+\t}\n \n \tledctl_tbl = tbl;\n \treturn 0;\n"
+  },
+  {
+    "id": "klg_l14_cond_alloc:stats_setup:29:39",
+    "module": "klg_l14_cond_alloc",
+    "function": "stats_setup",
+    "alloc": 29,
+    "checks": {
+      "compiles": true,
+      "static_clean": true,
+      "remaining_warnings": 0,
+      "runtime_faults_exercised": 5,
+      "runtime_clean": true,
+      "runtime_leaks": [],
+      "slab_errors": []
+    },
+    "status": "validated",
+    "reason": "reuses the release at line 42",
+    "patch": "--- a/corpus/klg_l14_cond_alloc.c\n+++ b/corpus/klg_l14_cond_alloc.c\n@@ -35,6 +35,7 @@\n \n \tret = stats_calibrate(samples);\n \tif (ret) {\n+\t\tkfree(hist);\n \t\tkfree(samples);\n \t\treturn ret;\t\t/* hist leaks here */\n \t}\n"
+  },
+  {
+    "id": "klg_l17_local_struct:transform_run:21:27",
+    "module": "klg_l17_local_struct",
+    "function": "transform_run",
+    "alloc": 21,
+    "checks": {
+      "compiles": true,
+      "static_clean": true,
+      "remaining_warnings": 0,
+      "runtime_faults_exercised": 4,
+      "runtime_clean": true,
+      "runtime_leaks": [],
+      "slab_errors": []
+    },
+    "status": "validated",
+    "reason": "reuses the release at line 32",
+    "patch": "--- a/corpus/klg_l17_local_struct.c\n+++ b/corpus/klg_l17_local_struct.c\n@@ -23,8 +23,10 @@\n \t\treturn -ENOMEM;\n \n \tws.out = kmalloc(ws.len, GFP_KERNEL);\t/* GT:SAFE */\n-\tif (!ws.out)\n+\tif (!ws.out) {\n+\t\tkfree(ws.in);\n \t\treturn -ENOMEM;\t\t/* ws.in leaks here */\n+\t}\n \n \tmemset(ws.in, 1, ws.len);\n \tmemcpy(ws.out, ws.in, ws.len);\n"
+  }
+]

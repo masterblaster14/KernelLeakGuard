@@ -1,0 +1,87 @@
+{
+  "alloc_sites": {
+    "__exfat_get_dentry_set": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/fs/exfat/dir.c",
+        "line": 837
+      }
+    ],
+    "exfat_alloc_inode": [
+      {
+        "allocator": "kmem_cache_alloc_lru",
+        "file": "linux-6.18.55/fs/exfat/super.c",
+        "line": 194
+      }
+    ],
+    "exfat_alloc_namebuf": [
+      {
+        "allocator": "kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/exfat/dir.c",
+        "line": 187
+      }
+    ],
+    "exfat_allocate_bitmap": [
+      {
+        "allocator": "kvmalloc_array_node",
+        "file": "linux-6.18.55/fs/exfat/balloc.c",
+        "line": 99
+      }
+    ],
+    "exfat_cache_add": [
+      {
+        "allocator": "exfat_cache_alloc",
+        "file": "linux-6.18.55/fs/exfat/cache.c",
+        "line": 157
+      }
+    ],
+    "exfat_cache_alloc": [
+      {
+        "allocator": "kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/exfat/cache.c",
+        "line": 65
+      }
+    ],
+    "exfat_init_fs_context": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/exfat/super.c",
+        "line": 807
+      }
+    ],
+    "exfat_load_default_upcase_table": [
+      {
+        "allocator": "kvmalloc_array_node",
+        "file": "linux-6.18.55/fs/exfat/nls.c",
+        "line": 710
+      }
+    ],
+    "exfat_load_upcase_table": [
+      {
+        "allocator": "kvmalloc_array_node",
+        "file": "linux-6.18.55/fs/exfat/nls.c",
+        "line": 658
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "exfat",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 9,
+    "analysis_ms": 14.170788,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 202
+  },
+  "tool": "klg-analyze",
+  "ir": {
+    "objects": 10,
+    "ir_failed": []
+  }
+}

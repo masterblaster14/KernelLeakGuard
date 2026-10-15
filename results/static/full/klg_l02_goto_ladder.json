@@ -1,0 +1,89 @@
+{
+  "alloc_sites": {
+    "sensor_setup": [
+      {
+        "allocator": "kmalloc",
+        "file": "klg_l02_goto_ladder.c",
+        "line": 28
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "klg_l02_goto_ladder.c",
+        "line": 32
+      },
+      {
+        "allocator": "kasprintf",
+        "file": "klg_l02_goto_ladder.c",
+        "line": 38
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 7,
+        "file": "klg_l02_goto_ladder.c",
+        "line": 32
+      },
+      "alloc_size": 512,
+      "allocator": "kmalloc",
+      "approximate": false,
+      "category": "missing-release-on-error-path",
+      "confidence": "high",
+      "exit": {
+        "col": 2,
+        "file": "klg_l02_goto_ladder.c",
+        "line": 54
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "klg_l02_goto_ladder.c",
+        "line": 41
+      },
+      "function": "sensor_setup",
+      "id": "klg_l02_goto_ladder:sensor_setup:32:54",
+      "module": "klg_l02_goto_ladder",
+      "path_lines": [
+        32,
+        33,
+        38,
+        41,
+        53,
+        55
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "klg_l02_goto_ladder.c",
+          "line": 51
+        }
+      ],
+      "return_value": "-ENOMEM",
+      "triggers": [
+        {
+          "callee": "kasprintf",
+          "file": "klg_l02_goto_ladder.c",
+          "kind": "alloc",
+          "line": 38
+        }
+      ]
+    }
+  ],
+  "module": "klg_l02_goto_ladder",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 3,
+    "analysis_ms": 1.2301569999999999,
+    "budget_exhausted": 0,
+    "candidates": 1,
+    "functions": 7
+  },
+  "tool": "klg-analyze"
+}

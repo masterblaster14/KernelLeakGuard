@@ -1,0 +1,498 @@
+{
+  "alloc_sites": {
+    "__nsim_dev_port_add": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/netdevsim/dev.c",
+        "line": 1411
+      }
+    ],
+    "new_device_store": [
+      {
+        "allocator": "nsim_bus_dev_new",
+        "file": "linux-6.18.55/drivers/net/netdevsim/bus.c",
+        "line": 191
+      }
+    ],
+    "nsim_bus_dev_max_vfs_write": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/drivers/net/netdevsim/dev.c",
+        "line": 269
+      }
+    ],
+    "nsim_bus_dev_new": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/netdevsim/bus.c",
+        "line": 454
+      }
+    ],
+    "nsim_dev_dummy_fmsg_put": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/drivers/net/netdevsim/health.c",
+        "line": 74
+      }
+    ],
+    "nsim_dev_dummy_reporter_recover": [
+      {
+        "allocator": "kstrdup",
+        "file": "linux-6.18.55/drivers/net/netdevsim/health.c",
+        "line": 55
+      }
+    ],
+    "nsim_dev_health_break_write": [
+      {
+        "allocator": "memdup_user_nul",
+        "file": "linux-6.18.55/drivers/net/netdevsim/health.c",
+        "line": 154
+      }
+    ],
+    "nsim_dev_hwstats_enable_ifindex": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/netdevsim/hwstats.c",
+        "line": 241
+      }
+    ],
+    "nsim_dev_reload_create": [
+      {
+        "allocator": "nsim_fib_create",
+        "file": "linux-6.18.55/drivers/net/netdevsim/dev.c",
+        "line": 1528
+      }
+    ],
+    "nsim_dev_take_snapshot": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/drivers/net/netdevsim/dev.c",
+        "line": 85
+      }
+    ],
+    "nsim_dev_trap_fa_cookie_read": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/drivers/net/netdevsim/dev.c",
+        "line": 154
+      }
+    ],
+    "nsim_dev_trap_fa_cookie_write": [
+      {
+        "allocator": "memdup_user",
+        "file": "linux-6.18.55/drivers/net/netdevsim/dev.c",
+        "line": 188
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/drivers/net/netdevsim/dev.c",
+        "line": 192
+      }
+    ],
+    "nsim_dev_traps_init": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/netdevsim/dev.c",
+        "line": 882
+      },
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/drivers/net/netdevsim/dev.c",
+        "line": 886
+      },
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/drivers/net/netdevsim/dev.c",
+        "line": 894
+      }
+    ],
+    "nsim_drv_probe": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/drivers/net/netdevsim/dev.c",
+        "line": 1598
+      },
+      {
+        "allocator": "nsim_fib_create",
+        "file": "linux-6.18.55/drivers/net/netdevsim/dev.c",
+        "line": 1632
+      }
+    ],
+    "nsim_fib4_rt_create": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
+        "line": 280
+      }
+    ],
+    "nsim_fib4_rt_insert": [
+      {
+        "allocator": "nsim_fib4_rt_create",
+        "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
+        "line": 426
+      }
+    ],
+    "nsim_fib6_event_init": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
+        "line": 810
+      }
+    ],
+    "nsim_fib6_rt_create": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
+        "line": 547
+      }
+    ],
+    "nsim_fib6_rt_insert": [
+      {
+        "allocator": "nsim_fib6_rt_create",
+        "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
+        "line": 752
+      }
+    ],
+    "nsim_fib6_rt_nh_add": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
+        "line": 500
+      }
+    ],
+    "nsim_fib_create": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
+        "line": 1559
+      }
+    ],
+    "nsim_fib_event_schedule_work": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
+        "line": 990
+      }
+    ],
+    "nsim_nexthop_create": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
+        "line": 1119
+      }
+    ],
+    "nsim_nexthop_insert": [
+      {
+        "allocator": "nsim_nexthop_create",
+        "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
+        "line": 1262
+      }
+    ],
+    "nsim_queue_alloc": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/netdevsim/netdev.c",
+        "line": 729
+      }
+    ],
+    "nsim_queue_init": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/drivers/net/netdevsim/netdev.c",
+        "line": 1003
+      },
+      {
+        "allocator": "nsim_queue_alloc",
+        "file": "linux-6.18.55/drivers/net/netdevsim/netdev.c",
+        "line": 1009
+      }
+    ],
+    "nsim_queue_mem_alloc": [
+      {
+        "allocator": "nsim_queue_alloc",
+        "file": "linux-6.18.55/drivers/net/netdevsim/netdev.c",
+        "line": 781
+      }
+    ],
+    "nsim_rate_node_new": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/netdevsim/dev.c",
+        "line": 1295
+      }
+    ],
+    "nsim_udp_tunnels_info_create": [
+      {
+        "allocator": "kmemdup",
+        "file": "linux-6.18.55/drivers/net/netdevsim/udp_tunnels.c",
+        "line": 164
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 8,
+        "file": "linux-6.18.55/drivers/net/netdevsim/dev.c",
+        "line": 188
+      },
+      "alloc_size": -1,
+      "allocator": "memdup_user",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 3,
+        "file": "linux-6.18.55/drivers/net/netdevsim/dev.c",
+        "line": 190
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 10,
+        "exclusive": true,
+        "file": "linux-6.18.55/drivers/net/netdevsim/dev.c",
+        "line": 190
+      },
+      "function": "nsim_dev_trap_fa_cookie_write",
+      "id": "netdevsim:nsim_dev_trap_fa_cookie_write:188:190",
+      "module": "netdevsim",
+      "path_lines": [
+        188,
+        190,
+        217
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/drivers/net/netdevsim/dev.c",
+          "line": 203
+        },
+        {
+          "col": 2,
+          "file": "linux-6.18.55/drivers/net/netdevsim/dev.c",
+          "line": 215
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "memdup_user",
+          "file": "linux-6.18.55/drivers/net/netdevsim/dev.c",
+          "kind": "alloc",
+          "line": 188
+        }
+      ],
+      "source_path": "linux-6.18.55/drivers/net/netdevsim/dev.c"
+    },
+    {
+      "alloc": {
+        "col": 12,
+        "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
+        "line": 1262
+      },
+      "alloc_size": -1,
+      "allocator": "nsim_nexthop_create",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 3,
+        "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
+        "line": 1264
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 10,
+        "exclusive": true,
+        "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
+        "line": 1264
+      },
+      "function": "nsim_nexthop_insert",
+      "id": "netdevsim:nsim_nexthop_insert:1262:1264",
+      "module": "netdevsim",
+      "path_lines": [
+        1262,
+        1264,
+        1278
+      ],
+      "release_sites": [
+        {
+          "col": 3,
+          "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
+          "line": 1275
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "nsim_nexthop_create",
+          "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
+          "kind": "alloc",
+          "line": 1262
+        }
+      ],
+      "source_path": "linux-6.18.55/drivers/net/netdevsim/fib.c"
+    },
+    {
+      "alloc": {
+        "col": 12,
+        "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
+        "line": 752
+      },
+      "alloc_size": -1,
+      "allocator": "nsim_fib6_rt_create",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 3,
+        "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
+        "line": 755
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 10,
+        "exclusive": true,
+        "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
+        "line": 755
+      },
+      "function": "nsim_fib6_rt_insert",
+      "id": "netdevsim:nsim_fib6_rt_insert:752:755",
+      "module": "netdevsim",
+      "path_lines": [
+        752,
+        755,
+        767
+      ],
+      "release_sites": [
+        {
+          "col": 3,
+          "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
+          "line": 764
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "nsim_fib6_rt_create",
+          "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
+          "kind": "alloc",
+          "line": 752
+        }
+      ],
+      "source_path": "linux-6.18.55/drivers/net/netdevsim/fib.c"
+    },
+    {
+      "alloc": {
+        "col": 17,
+        "file": "linux-6.18.55/drivers/net/netdevsim/bus.c",
+        "line": 191
+      },
+      "alloc_size": -1,
+      "allocator": "nsim_bus_dev_new",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 2,
+        "file": "linux-6.18.55/drivers/net/netdevsim/bus.c",
+        "line": 207
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 9,
+        "exclusive": true,
+        "file": "linux-6.18.55/drivers/net/netdevsim/bus.c",
+        "line": 193
+      },
+      "function": "new_device_store",
+      "id": "netdevsim:new_device_store:191:207",
+      "module": "netdevsim",
+      "path_lines": [
+        191,
+        193,
+        206,
+        208
+      ],
+      "release_sites": [],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "nsim_bus_dev_new",
+          "file": "linux-6.18.55/drivers/net/netdevsim/bus.c",
+          "kind": "alloc",
+          "line": 191
+        }
+      ],
+      "source_path": "linux-6.18.55/drivers/net/netdevsim/bus.c"
+    },
+    {
+      "alloc": {
+        "col": 14,
+        "file": "linux-6.18.55/drivers/net/netdevsim/health.c",
+        "line": 154
+      },
+      "alloc_size": -1,
+      "allocator": "memdup_user_nul",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 3,
+        "file": "linux-6.18.55/drivers/net/netdevsim/health.c",
+        "line": 156
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 10,
+        "exclusive": true,
+        "file": "linux-6.18.55/drivers/net/netdevsim/health.c",
+        "line": 156
+      },
+      "function": "nsim_dev_health_break_write",
+      "id": "netdevsim:nsim_dev_health_break_write:154:156",
+      "module": "netdevsim",
+      "path_lines": [
+        154,
+        156,
+        169
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/drivers/net/netdevsim/health.c",
+          "line": 167
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "memdup_user_nul",
+          "file": "linux-6.18.55/drivers/net/netdevsim/health.c",
+          "kind": "alloc",
+          "line": 154
+        }
+      ],
+      "source_path": "linux-6.18.55/drivers/net/netdevsim/health.c"
+    }
+  ],
+  "module": "netdevsim",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 34,
+    "analysis_ms": 11.035124,
+    "budget_exhausted": 0,
+    "candidates": 5,
+    "functions": 264
+  },
+  "tool": "klg-analyze",
+  "ir": {
+    "objects": 8,
+    "ir_failed": []
+  }
+}

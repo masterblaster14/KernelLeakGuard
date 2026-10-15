@@ -1,0 +1,131 @@
+{
+  "alloc_sites": {
+    "__comp_algorithm_store": [
+      {
+        "allocator": "kstrdup",
+        "file": "linux-6.18.55/drivers/block/zram/zram_drv.c",
+        "line": 1241
+      }
+    ],
+    "disksize_store": [
+      {
+        "allocator": "zcomp_create",
+        "file": "linux-6.18.55/drivers/block/zram/zram_drv.c",
+        "line": 2518
+      }
+    ],
+    "lzo_create": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/block/zram/backend_lzo.c",
+        "line": 20
+      }
+    ],
+    "lzorle_create": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/block/zram/backend_lzorle.c",
+        "line": 20
+      }
+    ],
+    "zcomp_create": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/block/zram/zcomp.c",
+        "line": 241
+      }
+    ],
+    "zcomp_strm_init": [
+      {
+        "allocator": "vzalloc",
+        "file": "linux-6.18.55/drivers/block/zram/zcomp.c",
+        "line": 62
+      },
+      {
+        "allocator": "vzalloc",
+        "file": "linux-6.18.55/drivers/block/zram/zcomp.c",
+        "line": 67
+      }
+    ],
+    "zram_add": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/block/zram/zram_drv.c",
+        "line": 2687
+      }
+    ],
+    "zram_meta_alloc": [
+      {
+        "allocator": "vzalloc",
+        "file": "linux-6.18.55/drivers/block/zram/zram_drv.c",
+        "line": 1601
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 10,
+        "file": "linux-6.18.55/drivers/block/zram/zram_drv.c",
+        "line": 2518
+      },
+      "alloc_size": -1,
+      "allocator": "zcomp_create",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 2,
+        "file": "linux-6.18.55/drivers/block/zram/zram_drv.c",
+        "line": 2541
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 4,
+        "exclusive": true,
+        "file": "linux-6.18.55/drivers/block/zram/zram_drv.c",
+        "line": 2521
+      },
+      "function": "disksize_store",
+      "id": "zram:disksize_store:2518:2541",
+      "module": "zram",
+      "path_lines": [
+        2518,
+        2521,
+        2537,
+        2540,
+        2542
+      ],
+      "release_sites": [],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "zcomp_create",
+          "file": "linux-6.18.55/drivers/block/zram/zram_drv.c",
+          "kind": "alloc",
+          "line": 2518
+        }
+      ],
+      "source_path": "linux-6.18.55/drivers/block/zram/zram_drv.c"
+    }
+  ],
+  "module": "zram",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 9,
+    "analysis_ms": 2.431967,
+    "budget_exhausted": 0,
+    "candidates": 1,
+    "functions": 106
+  },
+  "tool": "klg-analyze",
+  "ir": {
+    "objects": 4,
+    "ir_failed": []
+  }
+}

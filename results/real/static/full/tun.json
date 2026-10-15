@@ -1,0 +1,102 @@
+{
+  "alloc_sites": {
+    "__tun_set_ebpf": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/drivers/net/tun.c",
+        "line": 2243
+      }
+    ],
+    "tun_flow_create": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/drivers/net/tun.c",
+        "line": 321
+      }
+    ],
+    "tun_queue_resize": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/drivers/net/tun.c",
+        "line": 3623
+      }
+    ],
+    "update_filter": [
+      {
+        "allocator": "memdup_user",
+        "file": "linux-6.18.55/drivers/net/tun.c",
+        "line": 832
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 9,
+        "file": "linux-6.18.55/drivers/net/tun.c",
+        "line": 832
+      },
+      "alloc_size": -1,
+      "allocator": "memdup_user",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 3,
+        "file": "linux-6.18.55/drivers/net/tun.c",
+        "line": 834
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 10,
+        "exclusive": true,
+        "file": "linux-6.18.55/drivers/net/tun.c",
+        "line": 834
+      },
+      "function": "update_filter",
+      "id": "tun:update_filter:832:834",
+      "module": "tun",
+      "path_lines": [
+        831,
+        834,
+        873
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/drivers/net/tun.c",
+          "line": 871
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "memdup_user",
+          "file": "linux-6.18.55/drivers/net/tun.c",
+          "kind": "alloc",
+          "line": 832
+        }
+      ],
+      "source_path": "linux-6.18.55/drivers/net/tun.c"
+    }
+  ],
+  "module": "tun",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 4,
+    "analysis_ms": 7.8312,
+    "budget_exhausted": 0,
+    "candidates": 1,
+    "functions": 121
+  },
+  "tool": "klg-analyze",
+  "ir": {
+    "objects": 1,
+    "ir_failed": []
+  }
+}

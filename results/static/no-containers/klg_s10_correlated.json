@@ -1,0 +1,27 @@
+{
+  "alloc_sites": {
+    "trace_dump": [
+      {
+        "allocator": "kmalloc",
+        "file": "klg_s10_correlated.c",
+        "line": 19
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "klg_s10_correlated",
+  "options": {
+    "branch_correlation": true,
+    "containers": false,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 1,
+    "analysis_ms": 0.40010499999999999,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 6
+  },
+  "tool": "klg-analyze"
+}

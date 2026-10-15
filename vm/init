@@ -1,0 +1,48 @@
+#!/bin/busybox sh
+# KernelLeakGuard guest init (PID 1 inside the QEMU virtual machine).
+# Mounts the host share, configures fault injection, runs the job script
+# written by the host orchestrator, then powers the VM off.
+
+/bin/busybox --install -s /bin
+export PATH=/bin:/sbin
+
+mount -t proc proc /proc
+mount -t sysfs sysfs /sys
+mount -t devtmpfs devtmpfs /dev 2>/dev/null
+mount -t debugfs debugfs /sys/kernel/debug
+mkdir -p /mnt/host /tmp
+mount -t tmpfs tmpfs /tmp
+mount -t 9p -o trans=virtio,version=9p2000.L,msize=262144 host0 /mnt/host
+
+DBG=/sys/kernel/debug
+# Fault injection is driven only through per-task fail-nth, so the global
+# probability stays 0. GFP_KERNEL allocations must be eligible for failure,
+# and every injected fault prints a stack trace for root-cause correlation.
+for fi in failslab fail_usercopy fail_function; do
+    [ -d $DBG/$fi ] || continue
+    echo 0 > $DBG/$fi/probability
+    echo -1 > $DBG/$fi/times
+    echo 2 > $DBG/$fi/verbose
+done
+echo N > $DBG/failslab/ignore-gfp-wait
+echo N > $DBG/failslab/cache-filter
+
+# Kmemleak: no automatic scanning; the verifier decides when to scan.
+echo scan=off > $DBG/kmemleak 2>/dev/null
+# Do not scan task stacks. Every routine under test has returned before a
+# scan, so a pointer still found on a (reused) kernel stack is a stale copy
+# that would hide a real leak.
+echo stack=off > $DBG/kmemleak 2>/dev/null
+
+echo "KLG-GUEST-READY $(uname -r)"
+
+if [ -f /mnt/host/job.sh ]; then
+    sh /mnt/host/job.sh > /mnt/host/out/job.log 2>&1
+    echo "KLG-JOB-EXIT $?"
+else
+    echo "KLG: no job.sh found, dropping to shell"
+    setsid cttyhack sh
+fi
+
+sync
+poweroff -f

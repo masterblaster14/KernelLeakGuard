@@ -1,0 +1,39 @@
+{
+  "alloc_sites": {
+    "label_use": [
+      {
+        "allocator": "make_label",
+        "file": "klg_s05_factory.c",
+        "line": 19
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "klg_s05_factory.c",
+        "line": 23
+      }
+    ],
+    "make_label": [
+      {
+        "allocator": "kasprintf",
+        "file": "klg_s05_factory.c",
+        "line": 12
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "klg_s05_factory",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 3,
+    "analysis_ms": 0.471086,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 7
+  },
+  "tool": "klg-analyze"
+}

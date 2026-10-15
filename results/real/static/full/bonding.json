@@ -1,0 +1,563 @@
+{
+  "alloc_sites": {
+    "alb_upper_dev_walk": [
+      {
+        "allocator": "bond_verify_device_path",
+        "file": "linux-6.18.55/drivers/net/bonding/bond_alb.c",
+        "line": 992
+      }
+    ],
+    "bond_alloc_slave": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 1733
+      },
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 1745
+      }
+    ],
+    "bond_arp_rcv": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 3131
+      }
+    ],
+    "bond_arp_send_all": [
+      {
+        "allocator": "bond_verify_device_path",
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 3078
+      }
+    ],
+    "bond_enslave": [
+      {
+        "allocator": "bond_alloc_slave",
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 1998
+      }
+    ],
+    "bond_ns_send_all": [
+      {
+        "allocator": "bond_verify_device_path",
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 3261
+      }
+    ],
+    "bond_update_slave_arr": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 5139
+      },
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 5141
+      }
+    ],
+    "bond_verify_device_path": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 3020
+      },
+      {
+        "allocator": "bond_verify_device_path",
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 3028
+      }
+    ],
+    "bonding_sysfs_store_option": [
+      {
+        "allocator": "kstrndup",
+        "file": "linux-6.18.55/drivers/net/bonding/bond_sysfs.c",
+        "line": 153
+      }
+    ],
+    "rlb_initialize": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/drivers/net/bonding/bond_alb.c",
+        "line": 868
+      }
+    ],
+    "slave_enable_netpoll": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 1362
+      }
+    ],
+    "tlb_initialize": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/net/bonding/bond_alb.c",
+        "line": 132
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 18,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 5139
+      },
+      "alloc_size": -1,
+      "allocator": "kzalloc",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 5199
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 26,
+        "exclusive": true,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 5152
+      },
+      "function": "bond_update_slave_arr",
+      "id": "bonding:bond_update_slave_arr:5139:5199",
+      "module": "bonding",
+      "path_lines": [
+        5139,
+        5141,
+        5143,
+        5147,
+        5148,
+        5152,
+        5162,
+        5199
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+          "line": 5186
+        },
+        {
+          "col": 2,
+          "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+          "line": 5196
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "bond_3ad_get_active_agg_info",
+          "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+          "kind": "call",
+          "line": 5151
+        }
+      ],
+      "source_path": "linux-6.18.55/drivers/net/bonding/bond_main.c"
+    },
+    {
+      "alloc": {
+        "col": 15,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 5141
+      },
+      "alloc_size": -1,
+      "allocator": "kzalloc",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 5199
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 26,
+        "exclusive": true,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 5152
+      },
+      "function": "bond_update_slave_arr",
+      "id": "bonding:bond_update_slave_arr:5141:5199",
+      "module": "bonding",
+      "path_lines": [
+        5141,
+        5143,
+        5147,
+        5148,
+        5152,
+        5162,
+        5199
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+          "line": 5195
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "bond_3ad_get_active_agg_info",
+          "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+          "kind": "call",
+          "line": 5151
+        }
+      ],
+      "source_path": "linux-6.18.55/drivers/net/bonding/bond_main.c"
+    },
+    {
+      "alloc": {
+        "col": 10,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 3078
+      },
+      "alloc_size": -1,
+      "allocator": "bond_verify_device_path",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 3097
+      },
+      "exit_kind": "void",
+      "fix": {
+        "col": 14,
+        "exclusive": true,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 3064
+      },
+      "function": "bond_arp_send_all",
+      "id": "bonding:bond_arp_send_all:3078:3097",
+      "module": "bonding",
+      "path_lines": [
+        3077,
+        3088,
+        3052,
+        3058,
+        3064,
+        3065,
+        3068,
+        3097
+      ],
+      "release_sites": [
+        {
+          "col": 3,
+          "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+          "line": 3095
+        }
+      ],
+      "return_value": "",
+      "triggers": [
+        {
+          "callee": "bond_verify_device_path",
+          "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+          "kind": "alloc",
+          "line": 3078
+        },
+        {
+          "callee": "ip_route_output",
+          "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+          "kind": "call",
+          "line": 3058
+        }
+      ],
+      "source_path": "linux-6.18.55/drivers/net/bonding/bond_main.c"
+    },
+    {
+      "alloc": {
+        "col": 10,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 3261
+      },
+      "alloc_size": -1,
+      "allocator": "bond_verify_device_path",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 3283
+      },
+      "exit_kind": "void",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 3271
+      },
+      "function": "bond_ns_send_all",
+      "id": "bonding:bond_ns_send_all:3261:3283",
+      "module": "bonding",
+      "path_lines": [
+        3260,
+        3271,
+        3233,
+        3239,
+        3244,
+        3249,
+        3252,
+        3283
+      ],
+      "release_sites": [
+        {
+          "col": 3,
+          "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+          "line": 3281
+        }
+      ],
+      "return_value": "",
+      "triggers": [
+        {
+          "callee": "bond_verify_device_path",
+          "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+          "kind": "alloc",
+          "line": 3261
+        }
+      ],
+      "source_path": "linux-6.18.55/drivers/net/bonding/bond_main.c"
+    },
+    {
+      "alloc": {
+        "col": 10,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 3028
+      },
+      "alloc_size": -1,
+      "allocator": "bond_verify_device_path",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 5,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 3031
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 5,
+        "exclusive": true,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 3031
+      },
+      "function": "bond_verify_device_path",
+      "id": "bonding:bond_verify_device_path:3028:3031",
+      "module": "bonding",
+      "path_lines": [
+        3028,
+        3030,
+        3032,
+        3027,
+        3031,
+        3043
+      ],
+      "release_sites": [],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "bond_verify_device_path",
+          "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+          "kind": "alloc",
+          "line": 3028
+        },
+        {
+          "callee": "bond_verify_device_path",
+          "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+          "kind": "alloc",
+          "line": 3028
+        },
+        {
+          "callee": "bond_verify_device_path",
+          "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+          "kind": "alloc",
+          "line": 3028
+        }
+      ],
+      "source_path": "linux-6.18.55/drivers/net/bonding/bond_main.c"
+    },
+    {
+      "alloc": {
+        "col": 10,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 3028
+      },
+      "alloc_size": -1,
+      "allocator": "bond_verify_device_path",
+      "approximate": false,
+      "category": "ownership-not-transferred-on-error-path",
+      "confidence": "medium",
+      "exit": {
+        "col": 2,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 3042
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 8,
+        "exclusive": true,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 3030
+      },
+      "function": "bond_verify_device_path",
+      "id": "bonding:bond_verify_device_path:3028:3042",
+      "module": "bonding",
+      "path_lines": [
+        3028,
+        3030,
+        3032,
+        3027,
+        3042,
+        3043
+      ],
+      "release_sites": [],
+      "return_value": "NULL",
+      "triggers": [
+        {
+          "callee": "bond_verify_device_path",
+          "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+          "kind": "alloc",
+          "line": 3028
+        },
+        {
+          "callee": "bond_verify_device_path",
+          "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+          "kind": "alloc",
+          "line": 3028
+        }
+      ],
+      "source_path": "linux-6.18.55/drivers/net/bonding/bond_main.c"
+    },
+    {
+      "alloc": {
+        "col": 10,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 3028
+      },
+      "alloc_size": -1,
+      "allocator": "bond_verify_device_path",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 3,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 3039
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 29,
+        "exclusive": true,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+        "line": 3035
+      },
+      "function": "bond_verify_device_path",
+      "id": "bonding:bond_verify_device_path:3028:3039",
+      "module": "bonding",
+      "path_lines": [
+        3028,
+        3030,
+        3032,
+        3027,
+        3034,
+        3035,
+        3039,
+        3043
+      ],
+      "release_sites": [],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "bond_verify_device_path",
+          "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+          "kind": "alloc",
+          "line": 3028
+        },
+        {
+          "callee": "is_vlan_dev",
+          "file": "linux-6.18.55/drivers/net/bonding/bond_main.c",
+          "kind": "call",
+          "line": 3034
+        }
+      ],
+      "source_path": "linux-6.18.55/drivers/net/bonding/bond_main.c"
+    },
+    {
+      "alloc": {
+        "col": 10,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_alb.c",
+        "line": 992
+      },
+      "alloc_size": -1,
+      "allocator": "bond_verify_device_path",
+      "approximate": false,
+      "category": "missing-release-on-error-path",
+      "confidence": "high",
+      "exit": {
+        "col": 4,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_alb.c",
+        "line": 994
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 4,
+        "exclusive": true,
+        "file": "linux-6.18.55/drivers/net/bonding/bond_alb.c",
+        "line": 994
+      },
+      "function": "alb_upper_dev_walk",
+      "id": "bonding:alb_upper_dev_walk:992:994",
+      "module": "bonding",
+      "path_lines": [
+        992,
+        994,
+        1002
+      ],
+      "release_sites": [
+        {
+          "col": 3,
+          "file": "linux-6.18.55/drivers/net/bonding/bond_alb.c",
+          "line": 998
+        }
+      ],
+      "return_value": "-ENOMEM",
+      "triggers": [
+        {
+          "callee": "bond_verify_device_path",
+          "file": "linux-6.18.55/drivers/net/bonding/bond_alb.c",
+          "kind": "alloc",
+          "line": 992
+        }
+      ],
+      "source_path": "linux-6.18.55/drivers/net/bonding/bond_alb.c"
+    }
+  ],
+  "module": "bonding",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 15,
+    "analysis_ms": 29.050722,
+    "budget_exhausted": 0,
+    "candidates": 8,
+    "functions": 434
+  },
+  "tool": "klg-analyze",
+  "ir": {
+    "objects": 9,
+    "ir_failed": []
+  }
+}

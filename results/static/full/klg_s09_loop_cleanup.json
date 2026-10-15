@@ -1,0 +1,131 @@
+{
+  "alloc_sites": {
+    "ring_alloc": [
+      {
+        "allocator": "kmalloc",
+        "file": "klg_s09_loop_cleanup.c",
+        "line": 20
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 13,
+        "file": "klg_s09_loop_cleanup.c",
+        "line": 20
+      },
+      "alloc_size": 128,
+      "allocator": "kmalloc",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 2,
+        "file": "klg_s09_loop_cleanup.c",
+        "line": 29
+      },
+      "exit_kind": "normal",
+      "fix": null,
+      "function": "ring_alloc",
+      "id": "klg_s09_loop_cleanup:ring_alloc:20:29",
+      "module": "klg_s09_loop_cleanup",
+      "path_lines": [
+        20,
+        23,
+        19,
+        25,
+        26,
+        27,
+        29,
+        35
+      ],
+      "release_sites": [
+        {
+          "col": 3,
+          "file": "klg_s09_loop_cleanup.c",
+          "line": 28
+        },
+        {
+          "col": 3,
+          "file": "klg_s09_loop_cleanup.c",
+          "line": 33
+        }
+      ],
+      "return_value": "0",
+      "triggers": []
+    },
+    {
+      "alloc": {
+        "col": 13,
+        "file": "klg_s09_loop_cleanup.c",
+        "line": 20
+      },
+      "alloc_size": 128,
+      "allocator": "kmalloc",
+      "approximate": false,
+      "category": "missing-release-on-error-path",
+      "confidence": "high",
+      "exit": {
+        "col": 2,
+        "file": "klg_s09_loop_cleanup.c",
+        "line": 34
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 4,
+        "exclusive": true,
+        "file": "klg_s09_loop_cleanup.c",
+        "line": 22
+      },
+      "function": "ring_alloc",
+      "id": "klg_s09_loop_cleanup:ring_alloc:20:34",
+      "module": "klg_s09_loop_cleanup",
+      "path_lines": [
+        20,
+        23,
+        19,
+        22,
+        32,
+        34,
+        35
+      ],
+      "release_sites": [
+        {
+          "col": 3,
+          "file": "klg_s09_loop_cleanup.c",
+          "line": 28
+        },
+        {
+          "col": 3,
+          "file": "klg_s09_loop_cleanup.c",
+          "line": 33
+        }
+      ],
+      "return_value": "-ENOMEM",
+      "triggers": [
+        {
+          "callee": "kmalloc",
+          "file": "klg_s09_loop_cleanup.c",
+          "kind": "alloc",
+          "line": 20
+        }
+      ]
+    }
+  ],
+  "module": "klg_s09_loop_cleanup",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 1,
+    "analysis_ms": 2.0105089999999999,
+    "budget_exhausted": 0,
+    "candidates": 2,
+    "functions": 6
+  },
+  "tool": "klg-analyze"
+}

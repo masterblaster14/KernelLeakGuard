@@ -1,0 +1,10 @@
+--- a/corpus/klg_l12_multi_exit.c
++++ b/corpus/klg_l12_multi_exit.c
+@@ -23,6 +23,7 @@
+ 
+ 	crc = kmalloc(32, GFP_KERNEL);		/* GT:SAFE */
+ 	if (!crc) {
++		kfree(pkt);
+ 		kfree(hdr);
+ 		return -ENOMEM;		/* BUG: pkt is not freed */
+ 	}

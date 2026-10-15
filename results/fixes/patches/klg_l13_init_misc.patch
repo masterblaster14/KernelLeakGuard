@@ -1,0 +1,14 @@
+--- a/corpus/klg_l13_init_misc.c
++++ b/corpus/klg_l13_init_misc.c
+@@ -45,8 +45,10 @@
+ 	led_table_fill(tbl);
+ 
+ 	ret = misc_register(&ledctl_dev);
+-	if (ret)
++	if (ret) {
++		kfree(tbl);
+ 		return ret;		/* tbl leaks here */
++	}
+ 
+ 	ledctl_tbl = tbl;
+ 	return 0;

@@ -1,0 +1,2021 @@
+{
+  "alloc_sites": {
+    "__ntfs_init_fs_context": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/super.c",
+        "line": 1784
+      },
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/super.c",
+        "line": 1797
+      },
+      {
+        "allocator": "__kvmalloc_node",
+        "file": "linux-6.18.55/fs/ntfs3/super.c",
+        "line": 1801
+      }
+    ],
+    "al_add_le": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/attrlist.c",
+        "line": 322
+      }
+    ],
+    "alloc_rsttbl_from_idx": [
+      {
+        "allocator": "extend_rsttbl",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 967
+      }
+    ],
+    "alloc_rsttbl_idx": [
+      {
+        "allocator": "extend_rsttbl",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 917
+      }
+    ],
+    "attr_create_nonres_log": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 3065
+      }
+    ],
+    "attr_make_nonresident": [
+      {
+        "allocator": "kmemdup",
+        "file": "linux-6.18.55/fs/ntfs3/attrib.c",
+        "line": 266
+      }
+    ],
+    "dir_search_u": [
+      {
+        "allocator": "fnd_get",
+        "file": "linux-6.18.55/fs/ntfs3/dir.c",
+        "line": 246
+      }
+    ],
+    "do_action": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 3166
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 3254
+      },
+      {
+        "allocator": "kmemdup",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 3323
+      },
+      {
+        "allocator": "kmemdup",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 3401
+      },
+      {
+        "allocator": "kmemdup",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 3463
+      }
+    ],
+    "extend_rsttbl": [
+      {
+        "allocator": "init_rsttbl",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 881
+      }
+    ],
+    "find_log_rec": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 2467
+      }
+    ],
+    "get_lznt_ctx": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/lznt.c",
+        "line": 302
+      }
+    ],
+    "indx_delete_entry": [
+      {
+        "allocator": "fnd_get",
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 2374
+      },
+      {
+        "allocator": "fnd_get",
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 2380
+      },
+      {
+        "allocator": "kmemdup",
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 2619
+      }
+    ],
+    "indx_get_entry_to_replace": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 2308
+      }
+    ],
+    "indx_insert_entry": [
+      {
+        "allocator": "fnd_get",
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 2028
+      }
+    ],
+    "indx_insert_into_buffer": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 1899
+      },
+      {
+        "allocator": "kmemdup",
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 1919
+      },
+      {
+        "allocator": "indx_new",
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 1940
+      }
+    ],
+    "indx_insert_into_root": [
+      {
+        "allocator": "kmemdup",
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 1680
+      },
+      {
+        "allocator": "kmemdup",
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 1706
+      },
+      {
+        "allocator": "indx_new",
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 1775
+      }
+    ],
+    "indx_new": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 984
+      },
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 988
+      }
+    ],
+    "indx_read": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 1089
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 1098
+      }
+    ],
+    "indx_update_dup": [
+      {
+        "allocator": "fnd_get",
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 2754
+      }
+    ],
+    "init_rsttbl": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 849
+      }
+    ],
+    "last_log_lsn": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 1670
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 2225
+      }
+    ],
+    "log_create_ra": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 1433
+      }
+    ],
+    "log_replay": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 3894
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 3908
+      },
+      {
+        "allocator": "log_create_ra",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 3935
+      },
+      {
+        "allocator": "log_create_ra",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4015
+      },
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4154
+      },
+      {
+        "allocator": "kmemdup",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4290
+      },
+      {
+        "allocator": "kmemdup",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4335
+      },
+      {
+        "allocator": "kmemdup",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4417
+      },
+      {
+        "allocator": "kmemdup",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4456
+      },
+      {
+        "allocator": "init_rsttbl",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4536
+      },
+      {
+        "allocator": "init_rsttbl",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4587
+      },
+      {
+        "allocator": "init_rsttbl",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4660
+      },
+      {
+        "allocator": "extend_rsttbl",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4753
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4787
+      },
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4895
+      },
+      {
+        "allocator": "attr_create_nonres_log",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4913
+      },
+      {
+        "allocator": "kmemdup",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4935
+      },
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 5320
+      }
+    ],
+    "mi_get": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/record.c",
+        "line": 74
+      }
+    ],
+    "mi_init": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/record.c",
+        "line": 105
+      }
+    ],
+    "ni_add_subrecord": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/frecord.c",
+        "line": 317
+      }
+    ],
+    "ni_create_attr_list": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/frecord.c",
+        "line": 785
+      }
+    ],
+    "ni_read_folio_cmpr": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/fs/ntfs3/frecord.c",
+        "line": 2100
+      }
+    ],
+    "ni_read_frame": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/fs/ntfs3/frecord.c",
+        "line": 2616
+      }
+    ],
+    "ni_try_remove_attr_list": [
+      {
+        "allocator": "kmemdup",
+        "file": "linux-6.18.55/fs/ntfs3/frecord.c",
+        "line": 661
+      }
+    ],
+    "ni_write_frame": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/fs/ntfs3/frecord.c",
+        "line": 2770
+      },
+      {
+        "allocator": "get_lznt_ctx",
+        "file": "linux-6.18.55/fs/ntfs3/frecord.c",
+        "line": 2813
+      }
+    ],
+    "ntfs3_label_write": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/super.c",
+        "line": 512
+      }
+    ],
+    "ntfs_alloc_inode": [
+      {
+        "allocator": "kmem_cache_alloc_lru",
+        "file": "linux-6.18.55/fs/ntfs3/super.c",
+        "line": 614
+      }
+    ],
+    "ntfs_compress_write": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/fs/ntfs3/file.c",
+        "line": 985
+      }
+    ],
+    "ntfs_create_inode": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/inode.c",
+        "line": 1295
+      },
+      {
+        "allocator": "ntfs_create_reparse_buffer",
+        "file": "linux-6.18.55/fs/ntfs3/inode.c",
+        "line": 1514
+      }
+    ],
+    "ntfs_create_reparse_buffer": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/inode.c",
+        "line": 1118
+      }
+    ],
+    "ntfs_d_compare": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/namei.c",
+        "line": 470
+      }
+    ],
+    "ntfs_d_hash": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/namei.c",
+        "line": 409
+      }
+    ],
+    "ntfs_fill_super": [
+      {
+        "allocator": "__kvmalloc_node",
+        "file": "linux-6.18.55/fs/ntfs3/super.c",
+        "line": 1498
+      }
+    ],
+    "ntfs_get_link": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/inode.c",
+        "line": 2078
+      }
+    ],
+    "ntfs_get_security_by_id": [
+      {
+        "allocator": "fnd_get",
+        "file": "linux-6.18.55/fs/ntfs3/fsntfs.c",
+        "line": 1991
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/fsntfs.c",
+        "line": 2026
+      }
+    ],
+    "ntfs_init_from_boot": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/super.c",
+        "line": 1129
+      },
+      {
+        "allocator": "kmemdup",
+        "file": "linux-6.18.55/fs/ntfs3/super.c",
+        "line": 1184
+      }
+    ],
+    "ntfs_inode_printk": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/super.c",
+        "line": 122
+      }
+    ],
+    "ntfs_insert_security": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/fsntfs.c",
+        "line": 2104
+      },
+      {
+        "allocator": "fnd_get",
+        "file": "linux-6.18.55/fs/ntfs3/fsntfs.c",
+        "line": 2110
+      }
+    ],
+    "ntfs_link_inode": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/inode.c",
+        "line": 1733
+      }
+    ],
+    "ntfs_load_attr_list": [
+      {
+        "allocator": "__kvmalloc_node",
+        "file": "linux-6.18.55/fs/ntfs3/attrlist.c",
+        "line": 61
+      },
+      {
+        "allocator": "__kvmalloc_node",
+        "file": "linux-6.18.55/fs/ntfs3/attrlist.c",
+        "line": 103
+      }
+    ],
+    "ntfs_lookup": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/namei.c",
+        "line": 71
+      }
+    ],
+    "ntfs_read_ea": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/xattr.c",
+        "line": 118
+      }
+    ],
+    "ntfs_readdir": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/dir.c",
+        "line": 429
+      }
+    ],
+    "ntfs_readlink_hlp": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/inode.c",
+        "line": 1954
+      }
+    ],
+    "ntfs_remove_reparse": [
+      {
+        "allocator": "fnd_get",
+        "file": "linux-6.18.55/fs/ntfs3/fsntfs.c",
+        "line": 2422
+      }
+    ],
+    "ntfs_rename": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/namei.c",
+        "line": 306
+      }
+    ],
+    "ntfs_security_init": [
+      {
+        "allocator": "fnd_get",
+        "file": "linux-6.18.55/fs/ntfs3/fsntfs.c",
+        "line": 1927
+      }
+    ],
+    "ntfs_set_ea": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/xattr.c",
+        "line": 408
+      }
+    ],
+    "ntfs_set_label": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/fsntfs.c",
+        "line": 2649
+      }
+    ],
+    "ntfs_translate_junction": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/inode.c",
+        "line": 1838
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/inode.c",
+        "line": 1851
+      }
+    ],
+    "ntfs_unlink_inode": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/inode.c",
+        "line": 1770
+      }
+    ],
+    "read_log_page": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 1195
+      }
+    ],
+    "read_log_rec_lcb": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 2518
+      }
+    ],
+    "read_rst_area": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 2408
+      }
+    ],
+    "run_add_entry": [
+      {
+        "allocator": "__kvmalloc_node",
+        "file": "linux-6.18.55/fs/ntfs3/run.c",
+        "line": 390
+      }
+    ],
+    "run_clone": [
+      {
+        "allocator": "__kvmalloc_node",
+        "file": "linux-6.18.55/fs/ntfs3/run.c",
+        "line": 1208
+      }
+    ],
+    "wnd_add_free_ext": [
+      {
+        "allocator": "kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/ntfs3/bitmap.c",
+        "line": 338
+      }
+    ],
+    "wnd_extend": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/fs/ntfs3/bitmap.c",
+        "line": 1328
+      }
+    ],
+    "wnd_init": [
+      {
+        "allocator": "kvmalloc_array_node",
+        "file": "linux-6.18.55/fs/ntfs3/bitmap.c",
+        "line": 663
+      }
+    ],
+    "wnd_remove_free_ext": [
+      {
+        "allocator": "kmem_cache_alloc",
+        "file": "linux-6.18.55/fs/ntfs3/bitmap.c",
+        "line": 476
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 11,
+        "file": "linux-6.18.55/fs/ntfs3/attrib.c",
+        "line": 266
+      },
+      "alloc_size": -1,
+      "allocator": "kmemdup",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/fs/ntfs3/attrib.c",
+        "line": 349
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 4,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/ntfs3/attrib.c",
+        "line": 282
+      },
+      "function": "attr_make_nonresident",
+      "id": "ntfs3:attr_make_nonresident:266:349",
+      "module": "ntfs3",
+      "path_lines": [
+        266,
+        267,
+        272,
+        276,
+        282,
+        349
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/fs/ntfs3/attrib.c",
+          "line": 323
+        },
+        {
+          "col": 2,
+          "file": "linux-6.18.55/fs/ntfs3/attrib.c",
+          "line": 346
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "attr_allocate_clusters",
+          "file": "linux-6.18.55/fs/ntfs3/attrib.c",
+          "kind": "call",
+          "line": 278
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/ntfs3/attrib.c"
+    },
+    {
+      "alloc": {
+        "col": 8,
+        "file": "linux-6.18.55/fs/ntfs3/attrlist.c",
+        "line": 103
+      },
+      "alloc_size": -1,
+      "allocator": "__kvmalloc_node",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/fs/ntfs3/attrlist.c",
+        "line": 125
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 4,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/ntfs3/attrlist.c",
+        "line": 112
+      },
+      "function": "ntfs_load_attr_list",
+      "id": "ntfs3:ntfs_load_attr_list:103:125",
+      "module": "ntfs3",
+      "path_lines": [
+        103,
+        104,
+        109,
+        112,
+        125
+      ],
+      "release_sites": [],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "ntfs_read_run_nb",
+          "file": "linux-6.18.55/fs/ntfs3/attrlist.c",
+          "kind": "call",
+          "line": 109
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/ntfs3/attrlist.c"
+    },
+    {
+      "alloc": {
+        "col": 10,
+        "file": "linux-6.18.55/fs/ntfs3/file.c",
+        "line": 985
+      },
+      "alloc_size": -1,
+      "allocator": "kmalloc_array",
+      "approximate": true,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/fs/ntfs3/file.c",
+        "line": 1175
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 4,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/ntfs3/file.c",
+        "line": 1008
+      },
+      "function": "ntfs_compress_write",
+      "id": "ntfs3:ntfs_compress_write:985:1175",
+      "module": "ntfs3",
+      "path_lines": [
+        985,
+        986,
+        989,
+        993,
+        998,
+        962,
+        999,
+        1008,
+        1064,
+        1175
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/fs/ntfs3/file.c",
+          "line": 1163
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "attr_data_get_block",
+          "file": "linux-6.18.55/fs/ntfs3/file.c",
+          "kind": "call",
+          "line": 1005
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/ntfs3/file.c"
+    },
+    {
+      "alloc": {
+        "col": 8,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 3894
+      },
+      "alloc_size": 256,
+      "allocator": "kzalloc",
+      "approximate": true,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 5412
+      },
+      "exit_kind": "unknown",
+      "fix": null,
+      "function": "log_replay",
+      "id": "ntfs3:log_replay:3894:5412",
+      "module": "ntfs3",
+      "path_lines": [
+        3894,
+        3895,
+        3898,
+        3908,
+        3914,
+        3923,
+        3950,
+        3951,
+        3991,
+        3995,
+        3994,
+        4006,
+        4007,
+        4020,
+        5412
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "line": 5409
+        }
+      ],
+      "return_value": "?",
+      "triggers": [],
+      "source_path": "linux-6.18.55/fs/ntfs3/fslog.c"
+    },
+    {
+      "alloc": {
+        "col": 10,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4290
+      },
+      "alloc_size": -1,
+      "allocator": "kmemdup",
+      "approximate": true,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 5412
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 7,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4576
+      },
+      "function": "log_replay",
+      "id": "ntfs3:log_replay:4290:5412",
+      "module": "ntfs3",
+      "path_lines": [
+        4290,
+        4296,
+        4301,
+        4304,
+        4309,
+        4319,
+        4330,
+        4335,
+        4342,
+        4343,
+        4368,
+        4376,
+        4378,
+        4396,
+        4399,
+        4404,
+        4414,
+        4417,
+        4418,
+        4423,
+        4428,
+        4431,
+        4436,
+        4446,
+        4456,
+        4462,
+        4466,
+        4467,
+        4481,
+        4485,
+        4489,
+        4491,
+        4494,
+        4496,
+        4524,
+        4530,
+        4535,
+        4543,
+        4550,
+        3857,
+        4559,
+        4562,
+        4576,
+        4579,
+        4580,
+        4586,
+        4595,
+        4598,
+        4608,
+        4615,
+        4618,
+        4642,
+        4647,
+        4685,
+        4698,
+        4705,
+        4706,
+        4710,
+        5412
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "line": 5392
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "check_log_rec",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4313
+        },
+        {
+          "callee": "check_rstbl",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4325
+        },
+        {
+          "callee": "check_dp_table",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4330
+        },
+        {
+          "callee": "check_log_rec",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4408
+        },
+        {
+          "callee": "check_log_rec",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4440
+        },
+        {
+          "callee": "check_rstbl",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4451
+        },
+        {
+          "callee": "enum_rstbl",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4466
+        },
+        {
+          "callee": "check_log_rec",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4567
+        },
+        {
+          "callee": "check_log_rec",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4567
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/ntfs3/fslog.c"
+    },
+    {
+      "alloc": {
+        "col": 10,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4335
+      },
+      "alloc_size": -1,
+      "allocator": "kmemdup",
+      "approximate": true,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 5412
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 7,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4576
+      },
+      "function": "log_replay",
+      "id": "ntfs3:log_replay:4335:5412",
+      "module": "ntfs3",
+      "path_lines": [
+        4335,
+        4342,
+        4343,
+        4368,
+        4376,
+        4378,
+        4396,
+        4399,
+        4404,
+        4414,
+        4417,
+        4418,
+        4423,
+        4428,
+        4431,
+        4436,
+        4446,
+        4456,
+        4462,
+        4466,
+        4467,
+        4481,
+        4485,
+        4489,
+        4491,
+        4494,
+        4496,
+        4524,
+        4530,
+        4535,
+        4543,
+        4550,
+        3857,
+        4559,
+        4562,
+        4576,
+        4579,
+        4580,
+        4586,
+        4595,
+        4599,
+        4604,
+        4608,
+        4615,
+        4618,
+        4642,
+        4647,
+        4685,
+        4698,
+        4705,
+        4706,
+        4710,
+        5412
+      ],
+      "release_sites": [
+        {
+          "col": 4,
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "line": 4659
+        },
+        {
+          "col": 2,
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "line": 5394
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "check_log_rec",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4408
+        },
+        {
+          "callee": "check_log_rec",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4440
+        },
+        {
+          "callee": "check_rstbl",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4451
+        },
+        {
+          "callee": "enum_rstbl",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4466
+        },
+        {
+          "callee": "check_log_rec",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4567
+        },
+        {
+          "callee": "check_log_rec",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4567
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/ntfs3/fslog.c"
+    },
+    {
+      "alloc": {
+        "col": 15,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4417
+      },
+      "alloc_size": -1,
+      "allocator": "kmemdup",
+      "approximate": true,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 5412
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 7,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4576
+      },
+      "function": "log_replay",
+      "id": "ntfs3:log_replay:4417:5412",
+      "module": "ntfs3",
+      "path_lines": [
+        4417,
+        4418,
+        4423,
+        4428,
+        4431,
+        4436,
+        4446,
+        4456,
+        4462,
+        4466,
+        4467,
+        4481,
+        4485,
+        4489,
+        4491,
+        4494,
+        4496,
+        4524,
+        4530,
+        4535,
+        4543,
+        4550,
+        3857,
+        4559,
+        4562,
+        4576,
+        4579,
+        4580,
+        4586,
+        4595,
+        4599,
+        4604,
+        4608,
+        4615,
+        4618,
+        4642,
+        4647,
+        4685,
+        4698,
+        4705,
+        4706,
+        4710,
+        5412
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "line": 5395
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "check_log_rec",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4440
+        },
+        {
+          "callee": "check_rstbl",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4451
+        },
+        {
+          "callee": "enum_rstbl",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4466
+        },
+        {
+          "callee": "check_log_rec",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4567
+        },
+        {
+          "callee": "check_log_rec",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4567
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/ntfs3/fslog.c"
+    },
+    {
+      "alloc": {
+        "col": 11,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4587
+      },
+      "alloc_size": -1,
+      "allocator": "init_rsttbl",
+      "approximate": true,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 5412
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 7,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 4576
+      },
+      "function": "log_replay",
+      "id": "ntfs3:log_replay:4587:5412",
+      "module": "ntfs3",
+      "path_lines": [
+        4587,
+        4593,
+        4595,
+        4598,
+        4608,
+        4615,
+        4618,
+        4848,
+        3857,
+        4559,
+        4562,
+        4576,
+        4579,
+        4580,
+        4586,
+        4642,
+        4647,
+        4685,
+        4698,
+        4705,
+        4706,
+        4710,
+        5412
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "line": 5392
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "check_log_rec",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4567
+        },
+        {
+          "callee": "check_log_rec",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 4567
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/ntfs3/fslog.c"
+    },
+    {
+      "alloc": {
+        "col": 15,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 1670
+      },
+      "alloc_size": -1,
+      "allocator": "kmalloc",
+      "approximate": true,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 2279
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 9,
+        "exclusive": false,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 1694
+      },
+      "function": "last_log_lsn",
+      "id": "ntfs3:last_log_lsn:1670:2279",
+      "module": "ntfs3",
+      "path_lines": [
+        1670,
+        1671,
+        1673,
+        1665,
+        1648,
+        1682,
+        1692,
+        1694,
+        1703,
+        1706,
+        1715,
+        1716,
+        1722,
+        1723,
+        1816,
+        1824,
+        1829,
+        1827,
+        1831,
+        1641,
+        1846,
+        1850,
+        2279
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "line": 2276
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "read_log_page",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 1680
+        },
+        {
+          "callee": "read_log_page",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 1692
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/ntfs3/fslog.c"
+    },
+    {
+      "alloc": {
+        "col": 12,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 2225
+      },
+      "alloc_size": -1,
+      "allocator": "kmalloc",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 2279
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 5,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 2253
+      },
+      "function": "last_log_lsn",
+      "id": "ntfs3:last_log_lsn:2225:2279",
+      "module": "ntfs3",
+      "path_lines": [
+        2225,
+        2230,
+        2236,
+        2240,
+        2244,
+        2253,
+        2221,
+        2212,
+        2222,
+        2262,
+        2179,
+        2279
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "line": 2069
+        },
+        {
+          "col": 2,
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "line": 2274
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "ntfs_sb_write_run",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 2248
+        },
+        {
+          "callee": "ntfs_sb_write_run",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 2248
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/ntfs3/fslog.c"
+    },
+    {
+      "alloc": {
+        "col": 10,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 3166
+      },
+      "alloc_size": 128,
+      "allocator": "kzalloc",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 5,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 3173
+      },
+      "exit_kind": "unknown",
+      "fix": null,
+      "function": "do_action",
+      "id": "ntfs3:do_action:3166:3173",
+      "module": "ntfs3",
+      "path_lines": [
+        3166,
+        3170,
+        3172,
+        3173,
+        3842
+      ],
+      "release_sites": [
+        {
+          "col": 5,
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "line": 3213
+        },
+        {
+          "col": 3,
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "line": 3833
+        }
+      ],
+      "return_value": "?",
+      "triggers": [],
+      "source_path": "linux-6.18.55/fs/ntfs3/fslog.c"
+    },
+    {
+      "alloc": {
+        "col": 10,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 3166
+      },
+      "alloc_size": 128,
+      "allocator": "kzalloc",
+      "approximate": false,
+      "category": "missing-release-on-error-path",
+      "confidence": "high",
+      "exit": {
+        "col": 2,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 3837
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 4,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+        "line": 3817
+      },
+      "function": "do_action",
+      "id": "ntfs3:do_action:3166:3837",
+      "module": "ntfs3",
+      "path_lines": [
+        3166,
+        3170,
+        3172,
+        3175,
+        3178,
+        3111,
+        3802,
+        3803,
+        3805,
+        3806,
+        3809,
+        3810,
+        3811,
+        3812,
+        3814,
+        3815,
+        3817,
+        3830,
+        3831,
+        3835,
+        3842
+      ],
+      "release_sites": [
+        {
+          "col": 5,
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "line": 3213
+        },
+        {
+          "col": 3,
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "line": 3833
+        }
+      ],
+      "return_value": "error from mi_write",
+      "triggers": [
+        {
+          "callee": "mi_write",
+          "file": "linux-6.18.55/fs/ntfs3/fslog.c",
+          "kind": "call",
+          "line": 3815
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/ntfs3/fslog.c"
+    },
+    {
+      "alloc": {
+        "col": 8,
+        "file": "linux-6.18.55/fs/ntfs3/inode.c",
+        "line": 1514
+      },
+      "alloc_size": -1,
+      "allocator": "ntfs_create_reparse_buffer",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/fs/ntfs3/inode.c",
+        "line": 1723
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 5,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/ntfs3/inode.c",
+        "line": 1557
+      },
+      "function": "ntfs_create_inode",
+      "id": "ntfs3:ntfs_create_inode:1514:1723",
+      "module": "ntfs3",
+      "path_lines": [
+        1514,
+        1525,
+        1538,
+        1557,
+        1576,
+        1723
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/fs/ntfs3/inode.c",
+          "line": 1716
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "attr_allocate_clusters",
+          "file": "linux-6.18.55/fs/ntfs3/inode.c",
+          "kind": "call",
+          "line": 1553
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/ntfs3/inode.c"
+    },
+    {
+      "alloc": {
+        "col": 8,
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 1089
+      },
+      "alloc_size": 88,
+      "allocator": "kzalloc",
+      "approximate": false,
+      "category": "missing-release-on-error-path",
+      "confidence": "high",
+      "exit": {
+        "col": 2,
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 1170
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 10,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 1141
+      },
+      "function": "indx_read",
+      "id": "ntfs3:indx_read:1089:1170",
+      "module": "ntfs3",
+      "path_lines": [
+        1089,
+        1090,
+        1092,
+        1096,
+        1105,
+        1111,
+        1112,
+        1135,
+        1141,
+        1142,
+        1147,
+        1150,
+        1157,
+        1158,
+        1162,
+        1163,
+        1165,
+        1170,
+        1171
+      ],
+      "release_sites": [
+        {
+          "col": 3,
+          "file": "linux-6.18.55/fs/ntfs3/index.c",
+          "line": 1167
+        }
+      ],
+      "return_value": "-EINVAL",
+      "triggers": [
+        {
+          "callee": "ntfs_read_bh",
+          "file": "linux-6.18.55/fs/ntfs3/index.c",
+          "kind": "call",
+          "line": 1106
+        },
+        {
+          "callee": "index_buf_check",
+          "file": "linux-6.18.55/fs/ntfs3/index.c",
+          "kind": "call",
+          "line": 1135
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/ntfs3/index.c"
+    },
+    {
+      "alloc": {
+        "col": 8,
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 1098
+      },
+      "alloc_size": -1,
+      "allocator": "kmalloc",
+      "approximate": false,
+      "category": "missing-release-on-error-path",
+      "confidence": "high",
+      "exit": {
+        "col": 2,
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 1170
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 10,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 1141
+      },
+      "function": "indx_read",
+      "id": "ntfs3:indx_read:1098:1170",
+      "module": "ntfs3",
+      "path_lines": [
+        1098,
+        1099,
+        1103,
+        1105,
+        1111,
+        1112,
+        1135,
+        1141,
+        1142,
+        1147,
+        1150,
+        1157,
+        1158,
+        1162,
+        1165,
+        1166,
+        1170,
+        1171
+      ],
+      "release_sites": [
+        {
+          "col": 3,
+          "file": "linux-6.18.55/fs/ntfs3/index.c",
+          "line": 1163
+        }
+      ],
+      "return_value": "-EINVAL",
+      "triggers": [
+        {
+          "callee": "ntfs_read_bh",
+          "file": "linux-6.18.55/fs/ntfs3/index.c",
+          "kind": "call",
+          "line": 1106
+        },
+        {
+          "callee": "index_buf_check",
+          "file": "linux-6.18.55/fs/ntfs3/index.c",
+          "kind": "call",
+          "line": 1135
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/ntfs3/index.c"
+    },
+    {
+      "alloc": {
+        "col": 6,
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 1775
+      },
+      "alloc_size": -1,
+      "allocator": "indx_new",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 2,
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 1846
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 9,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 1777
+      },
+      "function": "indx_insert_into_root",
+      "id": "ntfs3:indx_insert_into_root:1775:1846",
+      "module": "ntfs3",
+      "path_lines": [
+        1770,
+        1777,
+        1843,
+        1845,
+        1847
+      ],
+      "release_sites": [
+        {
+          "col": 3,
+          "file": "linux-6.18.55/fs/ntfs3/index.c",
+          "line": 1818
+        },
+        {
+          "col": 2,
+          "file": "linux-6.18.55/fs/ntfs3/index.c",
+          "line": 1841
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "indx_new",
+          "file": "linux-6.18.55/fs/ntfs3/index.c",
+          "kind": "alloc",
+          "line": 1775
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/ntfs3/index.c"
+    },
+    {
+      "alloc": {
+        "col": 7,
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 1940
+      },
+      "alloc_size": -1,
+      "allocator": "indx_new",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 2,
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 2009
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 9,
+        "exclusive": true,
+        "file": "linux-6.18.55/fs/ntfs3/index.c",
+        "line": 1942
+      },
+      "function": "indx_insert_into_buffer",
+      "id": "ntfs3:indx_insert_into_buffer:1940:2009",
+      "module": "ntfs3",
+      "path_lines": [
+        1940,
+        1942,
+        2006,
+        2010
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/fs/ntfs3/index.c",
+          "line": 1978
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "indx_new",
+          "file": "linux-6.18.55/fs/ntfs3/index.c",
+          "kind": "alloc",
+          "line": 1940
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/ntfs3/index.c"
+    },
+    {
+      "alloc": {
+        "col": 10,
+        "file": "linux-6.18.55/fs/ntfs3/super.c",
+        "line": 122
+      },
+      "alloc_size": 512,
+      "allocator": "kmalloc",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/fs/ntfs3/super.c",
+        "line": 157
+      },
+      "exit_kind": "void",
+      "fix": null,
+      "function": "ntfs_inode_printk",
+      "id": "ntfs3:ntfs_inode_printk:122:157",
+      "module": "ntfs3",
+      "path_lines": [
+        122,
+        120,
+        125,
+        129,
+        134,
+        137,
+        140,
+        143,
+        149,
+        157
+      ],
+      "release_sites": [
+        {
+          "col": 3,
+          "file": "linux-6.18.55/fs/ntfs3/super.c",
+          "line": 156
+        }
+      ],
+      "return_value": "",
+      "triggers": [],
+      "source_path": "linux-6.18.55/fs/ntfs3/super.c"
+    },
+    {
+      "alloc": {
+        "col": 9,
+        "file": "linux-6.18.55/fs/ntfs3/xattr.c",
+        "line": 118
+      },
+      "alloc_size": -1,
+      "allocator": "kmalloc",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 1,
+        "file": "linux-6.18.55/fs/ntfs3/xattr.c",
+        "line": 184
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 3,
+        "exclusive": false,
+        "file": "linux-6.18.55/fs/ntfs3/xattr.c",
+        "line": 130
+      },
+      "function": "ntfs_read_ea",
+      "id": "ntfs3:ntfs_read_ea:118:184",
+      "module": "ntfs3",
+      "path_lines": [
+        118,
+        119,
+        122,
+        123,
+        130,
+        133,
+        134,
+        184
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/fs/ntfs3/xattr.c",
+          "line": 180
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "attr_load_runs_range",
+          "file": "linux-6.18.55/fs/ntfs3/xattr.c",
+          "kind": "call",
+          "line": 127
+        }
+      ],
+      "source_path": "linux-6.18.55/fs/ntfs3/xattr.c"
+    }
+  ],
+  "module": "ntfs3",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 105,
+    "analysis_ms": 449.401397,
+    "budget_exhausted": 9,
+    "candidates": 19,
+    "functions": 439
+  },
+  "tool": "klg-analyze",
+  "ir": {
+    "objects": 18,
+    "ir_failed": []
+  }
+}

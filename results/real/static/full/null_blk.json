@@ -1,0 +1,80 @@
+{
+  "alloc_sites": {
+    "null_add_dev": [
+      {
+        "allocator": "kmalloc_node",
+        "file": "linux-6.18.55/drivers/block/null_blk/main.c",
+        "line": 1990
+      }
+    ],
+    "null_alloc_dev": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/block/null_blk/main.c",
+        "line": 799
+      }
+    ],
+    "null_alloc_page": [
+      {
+        "allocator": "kmalloc",
+        "file": "linux-6.18.55/drivers/block/null_blk/main.c",
+        "line": 887
+      }
+    ],
+    "null_create_dev": [
+      {
+        "allocator": "null_alloc_dev",
+        "file": "linux-6.18.55/drivers/block/null_blk/main.c",
+        "line": 2120
+      }
+    ],
+    "null_insert_page": [
+      {
+        "allocator": "null_alloc_page",
+        "file": "linux-6.18.55/drivers/block/null_blk/main.c",
+        "line": 1036
+      }
+    ],
+    "nullb_device_badblocks_store": [
+      {
+        "allocator": "kstrndup",
+        "file": "linux-6.18.55/drivers/block/null_blk/main.c",
+        "line": 548
+      }
+    ],
+    "nullb_group_make_group": [
+      {
+        "allocator": "null_alloc_dev",
+        "file": "linux-6.18.55/drivers/block/null_blk/main.c",
+        "line": 712
+      }
+    ],
+    "setup_queues": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "linux-6.18.55/drivers/block/null_blk/main.c",
+        "line": 1839
+      }
+    ]
+  },
+  "candidates": [],
+  "module": "null_blk",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 8,
+    "analysis_ms": 3.422516,
+    "budget_exhausted": 0,
+    "candidates": 0,
+    "functions": 148
+  },
+  "tool": "klg-analyze",
+  "ir": {
+    "objects": 1,
+    "ir_failed": []
+  }
+}

@@ -1,0 +1,15 @@
+klg_l01_two_alloc            validated  compiles=True static_clean=True runtime_clean=True faults=4  reuses the release at line 24
+klg_l02_goto_ladder          validated  compiles=True static_clean=True runtime_clean=True faults=6  reuses the release at line 51
+klg_l03_reg_fail             validated  compiles=True static_clean=True runtime_clean=True faults=3  reuses the release at line 44
+klg_l04_loop_partial         runtime-validated compiles=True static_clean=False runtime_clean=True faults=8  rollback loop over desc[0..i-1]; reuses the release at line 27; static warning remains (loop-counter limitation)
+klg_l05_usercopy             validated  compiles=True static_clean=True runtime_clean=True faults=3  reuses the release at line 29
+klg_l06_wrapper_alloc        validated  compiles=True static_clean=True runtime_clean=True faults=4  reuses the release at line 48
+klg_l07_wrapper_free         validated  compiles=True static_clean=True runtime_clean=True faults=4  reuses the release at line 38
+klg_l08_kstrdup              validated  compiles=True static_clean=True runtime_clean=True faults=4  reuses the release at line 26
+klg_l09_kcalloc              validated  compiles=True static_clean=True runtime_clean=True faults=4  reuses the release at line 32
+klg_l11_kmem_cache           validated  compiles=True static_clean=True runtime_clean=True faults=4  reuses the release at line 34
+klg_l12_multi_exit           validated  compiles=True static_clean=True runtime_clean=True faults=8  reuses the release at line 20
+klg_l13_init_misc            validated  compiles=True static_clean=True runtime_clean=True faults=43  kfree() matches kzalloc()
+klg_l14_cond_alloc           validated  compiles=True static_clean=True runtime_clean=True faults=5  reuses the release at line 42
+klg_l17_local_struct         validated  compiles=True static_clean=True runtime_clean=True faults=4  reuses the release at line 32
+[klg] fix patches: 13 fully validated, 1 runtime-validated only, of 14 confirmed leaks (patches in results/fixes/patches)

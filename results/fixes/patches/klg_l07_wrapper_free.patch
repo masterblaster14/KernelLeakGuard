@@ -1,0 +1,14 @@
+--- a/corpus/klg_l07_wrapper_free.c
++++ b/corpus/klg_l07_wrapper_free.c
+@@ -29,8 +29,10 @@
+ 		return -ENOMEM;
+ 
+ 	scratch = kmalloc(1024, GFP_KERNEL);	/* GT:SAFE */
+-	if (!scratch)
++	if (!scratch) {
++		ctx_release(c);
+ 		return -ENOMEM;		/* c leaks: ctx_release() not called */
++	}
+ 
+ 	memset(scratch, 0, 1024);
+ 	c->done = 1024;

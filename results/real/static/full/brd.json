@@ -1,0 +1,88 @@
+{
+  "alloc_sites": {
+    "brd_alloc": [
+      {
+        "allocator": "brd_find_or_alloc_device",
+        "file": "linux-6.18.55/drivers/block/brd.c",
+        "line": 317
+      }
+    ],
+    "brd_find_or_alloc_device": [
+      {
+        "allocator": "kzalloc",
+        "file": "linux-6.18.55/drivers/block/brd.c",
+        "line": 276
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 8,
+        "file": "linux-6.18.55/drivers/block/brd.c",
+        "line": 317
+      },
+      "alloc_size": -1,
+      "allocator": "brd_find_or_alloc_device",
+      "approximate": false,
+      "category": "missing-release-on-other-path",
+      "confidence": "low",
+      "exit": {
+        "col": 3,
+        "file": "linux-6.18.55/drivers/block/brd.c",
+        "line": 319
+      },
+      "exit_kind": "unknown",
+      "fix": {
+        "col": 10,
+        "exclusive": true,
+        "file": "linux-6.18.55/drivers/block/brd.c",
+        "line": 319
+      },
+      "function": "brd_alloc",
+      "id": "brd:brd_alloc:317:319",
+      "module": "brd",
+      "path_lines": [
+        299,
+        319,
+        352
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "linux-6.18.55/drivers/block/brd.c",
+          "line": 350
+        }
+      ],
+      "return_value": "?",
+      "triggers": [
+        {
+          "callee": "brd_find_or_alloc_device",
+          "file": "linux-6.18.55/drivers/block/brd.c",
+          "kind": "alloc",
+          "line": 317
+        }
+      ],
+      "source_path": "linux-6.18.55/drivers/block/brd.c"
+    }
+  ],
+  "module": "brd",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 2,
+    "analysis_ms": 1.241677,
+    "budget_exhausted": 0,
+    "candidates": 1,
+    "functions": 14
+  },
+  "tool": "klg-analyze",
+  "ir": {
+    "objects": 1,
+    "ir_failed": []
+  }
+}

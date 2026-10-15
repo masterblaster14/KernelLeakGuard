@@ -1,0 +1,78 @@
+{
+  "alloc_sites": {
+    "channel_open": [
+      {
+        "allocator": "kzalloc",
+        "file": "klg_l03_reg_fail.c",
+        "line": 33
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 7,
+        "file": "klg_l03_reg_fail.c",
+        "line": 33
+      },
+      "alloc_size": 8,
+      "allocator": "kzalloc",
+      "approximate": false,
+      "category": "missing-release-on-error-path",
+      "confidence": "high",
+      "exit": {
+        "col": 3,
+        "file": "klg_l03_reg_fail.c",
+        "line": 40
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "klg_l03_reg_fail.c",
+        "line": 40
+      },
+      "function": "channel_open",
+      "id": "klg_l03_reg_fail:channel_open:33:40",
+      "module": "klg_l03_reg_fail",
+      "path_lines": [
+        33,
+        34,
+        36,
+        40,
+        46
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "klg_l03_reg_fail.c",
+          "line": 44
+        }
+      ],
+      "return_value": "error from hw_register_channel",
+      "triggers": [
+        {
+          "callee": "hw_register_channel",
+          "file": "klg_l03_reg_fail.c",
+          "kind": "call",
+          "line": 38
+        }
+      ]
+    }
+  ],
+  "module": "klg_l03_reg_fail",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 1,
+    "analysis_ms": 0.76036300000000001,
+    "budget_exhausted": 0,
+    "candidates": 1,
+    "functions": 8
+  },
+  "tool": "klg-analyze"
+}

@@ -1,0 +1,90 @@
+{
+  "alloc_sites": {
+    "session_create": [
+      {
+        "allocator": "kzalloc",
+        "file": "klg_l06_wrapper_alloc.c",
+        "line": 20
+      }
+    ],
+    "session_start": [
+      {
+        "allocator": "session_create",
+        "file": "klg_l06_wrapper_alloc.c",
+        "line": 37
+      },
+      {
+        "allocator": "kmalloc",
+        "file": "klg_l06_wrapper_alloc.c",
+        "line": 41
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 6,
+        "file": "klg_l06_wrapper_alloc.c",
+        "line": 37
+      },
+      "alloc_size": -1,
+      "allocator": "session_create",
+      "approximate": false,
+      "category": "missing-release-on-error-path",
+      "confidence": "high",
+      "exit": {
+        "col": 3,
+        "file": "klg_l06_wrapper_alloc.c",
+        "line": 43
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "klg_l06_wrapper_alloc.c",
+        "line": 43
+      },
+      "function": "session_start",
+      "id": "klg_l06_wrapper_alloc:session_start:37:43",
+      "module": "klg_l06_wrapper_alloc",
+      "path_lines": [
+        37,
+        41,
+        42,
+        43,
+        50
+      ],
+      "release_sites": [
+        {
+          "col": 2,
+          "file": "klg_l06_wrapper_alloc.c",
+          "line": 48
+        }
+      ],
+      "return_value": "-ENOMEM",
+      "triggers": [
+        {
+          "callee": "kmalloc",
+          "file": "klg_l06_wrapper_alloc.c",
+          "kind": "alloc",
+          "line": 41
+        }
+      ]
+    }
+  ],
+  "module": "klg_l06_wrapper_alloc",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 3,
+    "analysis_ms": 0.96059799999999995,
+    "budget_exhausted": 0,
+    "candidates": 1,
+    "functions": 8
+  },
+  "tool": "klg-analyze"
+}
