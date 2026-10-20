@@ -33,3 +33,14 @@ results/real/runtime/mapping/
 results/real/runtime/confirm/
 results/real_pilot*/
 results/dashboard_run.*
+# seed harness build products (sources, reports and result.json stay tracked)
+results/seeded/*/*/*.o
+results/seeded/*/*/*.ko
+results/seeded/*/*/*.mod
+results/seeded/*/*/*.mod.c
+results/seeded/*/*/.*
+results/seeded/*/*/ir/
+results/seeded/*/*/Module.symvers
+results/seeded/*/*/modules.order
+results/seeded/*/*/runtime/
+results/seeded/*/runtime/

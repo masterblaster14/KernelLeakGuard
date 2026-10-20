@@ -386,10 +386,12 @@ Win+Shift+S and it can be inserted.
   - `41ec0ce` (initial)
   - `82a182f` "Model ERR_PTR returns; add seeded-bug evaluation on real kernel modules"
 - Both authored by Om Gupta <guptaom750@gmail.com>, with no Claude attribution.
+- Two more commits follow: "Consolidate project handoff document" and "Ignore seed harness build products". Run `git log --oneline` for the current list.
 - `.gitignore` excludes:
   - build outputs, `.venv`, `.scratch`, `results/ir`
-  - VM shares and mappings, `results/real/ir`, `results/fixes/build|runtime`, `results/seeded/*/buggy|fixed` build products are NOT excluded
+  - VM shares and mappings, `results/real/ir`, `results/fixes/build|runtime`
   - modwatch build outputs
+  - seed-harness build products and VM runs. The seed sources, reports and `result.json` stay tracked.
 - **Not pushed.** To push, once the user approves:
   1. Create the repository on GitHub, e.g. `masterblaster14/KernelLeakGuard`.
   2. `git remote add origin https://github.com/masterblaster14/KernelLeakGuard.git && git push -u origin master`
