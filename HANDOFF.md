@@ -163,8 +163,8 @@ and restarting did NOT stop VBS: **Windows Hello Enhanced Sign-in Security**
 (Settings → Accounts → Sign-in options → "Sign in with an external camera or fingerprint
 reader" ON, re-enrol face/fingerprint, restart) should free KVM, at the cost of the VBS
 isolation of the biometric sign-in. **The user decided to skip KVM**: all results are complete
-under TCG. The registry value was left at 0 (harmless while ESS keeps VBS on); the user may
-set it back to 1 (Admin PowerShell `reg add ... /d 1 /f`).
+under TCG. The user restored the registry value to 1 afterwards, so Windows is back to its
+original configuration.
 
 **Check KVM:** `wsl -d Ubuntu -- bash /home/gupta/KernelLeakGuard/.scratch/kvm.sh`.
 It must print "svm flags: >0" and "KVM open OK".
