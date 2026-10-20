@@ -1,0 +1,16 @@
+{
+  "module": "ufs",
+  "file": "fs/ufs/util.c",
+  "compiles": true,
+  "warnings_original": 2,
+  "warnings_patched": 1,
+  "removed": [
+    [
+      "free_full_branch",
+      966,
+      993,
+      "medium"
+    ]
+  ],
+  "added": []
+}

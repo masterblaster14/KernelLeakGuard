@@ -261,6 +261,40 @@ public:
     auto It = Events.find(I);
     return It == Events.end() ? nullptr : &It->second;
   }
+  /// The object is stored into memory outside this function (linked into a
+  /// list or hash table, assigned to a global or to another object): it is
+  /// published, not merely handed to a callee.
+  bool publishes() const {
+    for (const auto &E : Events) {
+      const auto *SI = dyn_cast<StoreInst>(E.first);
+      if (E.second.Kind != EvKind::Escape || !SI)
+        continue;
+      // A store into a scratch object allocated by this same function (e.g.
+      // a page-pointer array filled and freed again) publishes nothing.
+      const auto *Dst = dyn_cast<CallBase>(getUnderlyingObject(SI->getPointerOperand(), 12));
+      if (Dst && A.isAllocCall(*Dst))
+        continue;
+      return true;
+    }
+    // Handed to a module-defined function that provably publishes it (e.g.
+    // list_add_tail(), which kbuild IR keeps as a call). Escapes assumed for
+    // unknown external functions do not count.
+    for (const auto &E : Events) {
+      const auto *CB = dyn_cast<CallBase>(E.first);
+      if (E.second.Kind != EvKind::Escape || !CB)
+        continue;
+      const Function *Callee = calledFunction(*CB);
+      if (!Callee || Callee->isDeclaration())
+        continue;
+      auto It = A.Summaries.find(Callee);
+      if (It == A.Summaries.end())
+        continue;
+      for (unsigned I = 0; I < CB->arg_size() && I < It->second.PublishesParam.size(); ++I)
+        if (It->second.PublishesParam[I] && isAlias(CB->getArgOperand(I)))
+          return true;
+    }
+    return false;
+  }
   bool hasKind(EvKind K) const {
     for (const auto &E : Events)
       if (E.second.Kind == K)
@@ -565,29 +599,19 @@ void Analyzer::computeSummaries(Module &M) {
       Su.FreesParam.assign(F.arg_size(), false);
       Su.EscapesParam.assign(F.arg_size(), false);
       Su.ReturnsParam.assign(F.arg_size(), false);
+      Su.PublishesParam.assign(F.arg_size(), false);
     }
   if (!O.Interprocedural)
     return;
 
-  // Monotone fixpoint: facts only ever flip from false to true.
+  // Monotone fixpoints: facts only ever flip from false to true.
+  // 1. What each function does with its pointer parameters.
   for (unsigned Iter = 0; Iter < 10; ++Iter) {
     bool Changed = false;
     for (Function &F : M) {
       if (F.isDeclaration())
         continue;
       Summary &Su = Summaries[&F];
-      if (!Su.ReturnsAlloc && F.getReturnType()->isPointerTy()) {
-        for (const BasicBlock &BB : F)
-          if (const auto *RI = dyn_cast<ReturnInst>(BB.getTerminator()))
-            if (const Value *RV = RI->getReturnValue()) {
-              SmallPtrSet<const Value *, 16> Seen;
-              if (fromAllocation(*this, RV, Seen, &Analyzer::isAllocCall)) {
-                Su.ReturnsAlloc = true;
-                Changed = true;
-                break;
-              }
-            }
-      }
       for (const Argument &Arg : F.args()) {
         if (!Arg.getType()->isPointerTy())
           continue;
@@ -596,6 +620,10 @@ void Analyzer::computeSummaries(Module &M) {
         bool Frees = FT.hasKind(EvKind::Release);
         bool Escapes = FT.hasKind(EvKind::Escape);
         bool Returns = FT.hasKind(EvKind::Return);
+        if (Escapes && !Su.PublishesParam[I] && FT.publishes()) {
+          Su.PublishesParam[I] = true;
+          Changed = true;
+        }
         if (Frees && !Su.FreesParam[I]) {
           Su.FreesParam[I] = true;
           Changed = true;
@@ -608,6 +636,41 @@ void Analyzer::computeSummaries(Module &M) {
           Su.ReturnsParam[I] = true;
           Changed = true;
         }
+      }
+    }
+    if (!Changed)
+      break;
+  }
+
+  // 2. Which functions return a fresh allocation the caller owns. After 1,
+  //    so that a helper publishing the object (PublishesParam) is known.
+  for (unsigned Iter = 0; Iter < 10; ++Iter) {
+    bool Changed = false;
+    for (Function &F : M) {
+      if (F.isDeclaration())
+        continue;
+      Summary &Su = Summaries[&F];
+      if (!Su.ReturnsAlloc && F.getReturnType()->isPointerTy()) {
+        for (const BasicBlock &BB : F)
+          if (const auto *RI = dyn_cast<ReturnInst>(BB.getTerminator()))
+            if (const Value *RV = RI->getReturnValue()) {
+              SmallPtrSet<const Value *, 16> Seen;
+              if (!fromAllocation(*this, RV, Seen, &Analyzer::isAllocCall))
+                continue;
+              // A helper that publishes the new object before returning it
+              // (list_add into a global list, hash insertion) or returns a
+              // shared, reference-counted one does not give the caller sole
+              // ownership: it is a lookup, not an allocator.
+              bool Published = false;
+              for (const Value *V : Seen)
+                if (const auto *CB = dyn_cast<CallBase>(V); CB && isAllocCall(*CB))
+                  Published |= FlowTracker(*this, F, {CB}).publishes();
+              if (Published)
+                continue;
+              Su.ReturnsAlloc = true;
+              Changed = true;
+              break;
+            }
       }
     }
     if (!Changed)
@@ -680,6 +743,9 @@ private:
   /// conditions are re-evaluated with new values in the next iteration.
   SmallVector<std::pair<size_t, size_t>, 4> Stale;
   SmallVector<const CallBase *, 8> Trigs;
+  /// Calls that take ownership only on success, reached on this path and not
+  /// yet decided by a branch on their result.
+  SmallVector<const CallBase *, 4> Pending;
   SmallVector<const BasicBlock *, 8> TrigSucc; ///< error branch of each trigger
   DenseMap<const BasicBlock *, unsigned> Visits;
   std::set<unsigned> SeenExits;
@@ -825,6 +891,19 @@ private:
     }
   }
 
+  std::optional<bool> constantOnPath(const Value *C) const {
+    if (const auto *CI = dyn_cast<ConstantInt>(C))
+      return !CI->isZero();
+    const auto *IC = dyn_cast<ICmpInst>(C);
+    if (!IC)
+      return std::nullopt;
+    const auto *L = dyn_cast<ConstantInt>(resolveOnPath(IC->getOperand(0)));
+    const auto *R = dyn_cast<ConstantInt>(resolveOnPath(IC->getOperand(1)));
+    if (!L || !R)
+      return std::nullopt;
+    return ICmpInst::compare(L->getValue(), R->getValue(), IC->getPredicate());
+  }
+
   const Value *resolveOnPath(const Value *V) const {
     for (unsigned Guard = 0; Guard < 32; ++Guard) {
       const auto *P = dyn_cast<PHINode>(V);
@@ -892,6 +971,20 @@ private:
     }
     C.ExitKind = "unknown";
     C.ReturnValue = "?";
+  }
+
+  // A return of phi(obj, NULL) hands the object to the caller only on paths
+  // that bring obj into the phi; on the others (allocation kept, NULL or an
+  // ERR_PTR returned) the object is not transferred.
+  bool returnsOtherOnPath(const Instruction &I, const Event &E) const {
+    const auto *RI = dyn_cast<ReturnInst>(&I);
+    if (!RI || E.Kind != EvKind::Return || !RI->getReturnValue())
+      return false;
+    const Value *V = RI->getReturnValue();
+    const Value *R = resolveOnPath(V);
+    // undef: no return value was set on this path, i.e. the edge is
+    // infeasible (e.g. the default of clang's cleanup-destination switch).
+    return R != V && !isa<UndefValue>(R) && !FT.isAlias(R);
   }
 
   void recordLeak(const ReturnInst &RI) {
@@ -977,6 +1070,14 @@ private:
   }
 
   void dfs(BasicBlock *BB, BasicBlock::iterator It) {
+    size_t NPending = Pending.size();
+    dfsBlock(BB, It);
+    Pending.resize(NPending);
+  }
+
+  bool isPending(const CallBase *C) const { return C && is_contained(Pending, C); }
+
+  void dfsBlock(BasicBlock *BB, BasicBlock::iterator It) {
     if (done())
       return;
     if (++Steps > A.O.MaxStepsPerSite) {
@@ -989,9 +1090,16 @@ private:
       if (&I == &Site)
         Reallocated = true; // a new instance; the old one lives on in memory
       if (const Event *E = FT.eventAt(&I))
-        if (!Reallocated || E->ViaContainer) {
-          Reallocated = SavedRealloc;
-          return; // released or handed over: no leak on this path
+        if ((!Reallocated || E->ViaContainer) && !returnsOtherOnPath(I, *E)) {
+          const auto *CB = dyn_cast<CallBase>(&I);
+          const Function *Callee = CB ? calledFunction(*CB) : nullptr;
+          if (E->Kind == EvKind::Escape && Callee &&
+              A.S.transfersOnSuccess(Callee->getName())) {
+            Pending.push_back(CB); // decided by the branch on its result
+          } else {
+            Reallocated = SavedRealloc;
+            return; // released or handed over: no leak on this path
+          }
         }
       if (const auto *CB = dyn_cast<CallBase>(&I))
         if (CB->doesNotReturn()) {
@@ -999,6 +1107,10 @@ private:
           return;
         }
       if (const auto *RI = dyn_cast<ReturnInst>(&I)) {
+        if (!Pending.empty()) { // result never checked: assume it succeeded
+          Reallocated = SavedRealloc;
+          return;
+        }
         recordLeak(*RI);
         Reallocated = SavedRealloc;
         return;
@@ -1013,7 +1125,20 @@ private:
     if (auto *BR = dyn_cast<BranchInst>(T); BR && BR->isConditional()) {
       bool Neg;
       CondKey K = normalizeCond(BR->getCondition(), Neg);
+      // Compare the values the operands have on this path, so that a test of
+      // phi(err1, err2) correlates with an earlier test of err2 itself.
+      if (A.O.BranchCorrelation) {
+        K.A = resolveOnPath(K.A);
+        if (K.B)
+          K.B = resolveOnPath(K.B);
+      }
+      // A condition on values that are constants on this path (a one-case
+      // cleanup-destination switch becomes such a branch) decides the edge.
+      std::optional<bool> Known =
+          A.O.BranchCorrelation ? constantOnPath(BR->getCondition()) : std::nullopt;
       for (unsigned S = 0; S < 2 && !done(); ++S) {
+        if (Known && *Known != (S == 0))
+          continue;
         bool KeyValue = (S == 0) != Neg;
         if (A.O.BranchCorrelation) {
           bool Contradicts = false;
@@ -1030,6 +1155,11 @@ private:
         if (errPtrTest(K, KeyValue) && !Reallocated)
           continue; // tracked pointer is an ERR_PTR here: nothing to free
         const CallBase *Trig = errorTrigger(K, KeyValue);
+        if (isPending(errorTrigger(K, !KeyValue)))
+          continue; // the call succeeded: it took ownership
+        const CallBase *Undecided = isPending(Trig) ? Trig : nullptr;
+        if (Undecided) // the call failed: the object is still ours
+          Pending.erase(find(Pending, Undecided));
         Decisions.push_back({K, KeyValue});
         if (Trig) {
           Trigs.push_back(Trig);
@@ -1040,8 +1170,17 @@ private:
           Trigs.pop_back();
           TrigSucc.pop_back();
         }
+        if (Undecided)
+          Pending.push_back(Undecided);
         Decisions.pop_back();
       }
+    } else if (auto *SW = dyn_cast<SwitchInst>(T);
+               SW && A.O.BranchCorrelation &&
+               isa<ConstantInt>(resolveOnPath(SW->getCondition()))) {
+      // The selector is a constant on this path (e.g. clang's cleanup
+      // destination after a scoped goto): only one successor is feasible.
+      auto *CI = cast<ConstantInt>(resolveOnPath(SW->getCondition()));
+      follow(SW->findCaseValue(CI)->getCaseSuccessor());
     } else {
       for (BasicBlock *Succ : successors(BB)) {
         if (done())

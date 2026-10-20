@@ -1,5 +1,13 @@
 {
-  "alloc_sites": {},
+  "alloc_sites": {
+    "dummy_init_one": [
+      {
+        "allocator": "alloc_netdev_mqs",
+        "file": "linux-6.18.55/drivers/net/dummy.c",
+        "line": 154
+      }
+    ]
+  },
   "candidates": [],
   "module": "dummy",
   "options": {
@@ -9,8 +17,8 @@
     "interprocedural": true
   },
   "stats": {
-    "alloc_sites": 0,
-    "analysis_ms": 0.379465,
+    "alloc_sites": 1,
+    "analysis_ms": 0.611595,
     "budget_exhausted": 0,
     "candidates": 0,
     "functions": 10

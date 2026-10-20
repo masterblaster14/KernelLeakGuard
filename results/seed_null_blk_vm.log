@@ -1,0 +1,4 @@
+[klg] seed null_blk_alloc_dev (drivers/block/null_blk/main.c)
+       detected=True confirmed=True fixed=True
+[klg] seeded bugs: 1/1 detected and confirmed in the VM
+EXIT=0

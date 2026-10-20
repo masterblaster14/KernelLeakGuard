@@ -1,0 +1,52 @@
+{
+  "name": "null_blk_alloc_dev",
+  "module": "null_blk",
+  "file": "drivers/block/null_blk/main.c",
+  "function": "null_alloc_dev",
+  "removed": "kfree(dev);",
+  "removed_line": 812,
+  "bug": "null_alloc_dev() allocates the struct nullb_device with kzalloc() and frees it with kfree(dev) when badblocks_init() fails. Removing that call leaks the nullb_device: dev is a local variable that has not been published anywhere yet, and NULL is returned.",
+  "reachable": "null_init() calls null_alloc_dev() at module load; when it returns NULL, init fails with -ENOMEM and the module is unloaded, so failing the allocation inside badblocks_init() with fail-nth leaves the object unreferenced.",
+  "history": null,
+  "detected": true,
+  "pre_existing_warnings": 0,
+  "warnings": [
+    {
+      "alloc": 799,
+      "allocator": "kzalloc",
+      "exit": 813,
+      "return": "NULL",
+      "confidence": "medium"
+    }
+  ],
+  "dependencies": [
+    "configfs"
+  ],
+  "confirmed": true,
+  "sweep_max": 60,
+  "verdicts": {
+    "confirmed": 1
+  },
+  "evidence": [
+    {
+      "reason": "leak at main.c:799 after failing null_alloc_dev+0x63/0x210",
+      "backtrace": [
+        "__kmalloc_cache_noprof+0x1b5/0x420",
+        "do_one_initcall+0x119/0x300",
+        "do_init_module+0x60/0x250",
+        "__se_sys_finit_module+0x27f/0x370",
+        "do_syscall_64+0xc8/0x260",
+        "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+        "null_alloc_dev+0x1c/0x0 [null_blk]",
+        "init_module+0xd7/0x0 [null_blk]"
+      ]
+    }
+  ],
+  "crashes": 0,
+  "fix_patch": "--- a/main.c\n+++ b/main.c\n@@ -809,7 +809,7 @@\n \tINIT_RADIX_TREE(&dev->data, GFP_ATOMIC);\n \tINIT_RADIX_TREE(&dev->cache, GFP_ATOMIC);\n \tif (badblocks_init(&dev->badblocks, 0)) {\n-\t\t/* KLG-SEED: removed kfree(dev); */\n+\t\tkfree(dev);\n \t\treturn NULL;\n \t}\n \n",
+  "fix_compiles": true,
+  "fix_static_clean": true,
+  "fix_runtime_clean": true,
+  "vm_run": true,
+  "fixed": true
+}

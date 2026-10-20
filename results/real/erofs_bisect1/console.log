@@ -1,0 +1,35 @@
+c[?7l[2J[0mSeaBIOS (version 1.17.0-debian-1.17.0-1ubuntu1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+7EFC8B80+7EF08B80 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from ROM...
+c[?7l[2JKLG-GUEST-READY 6.18.55
+[   92.251690] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[  111.475761] kobject: can not set name properly!
+[  111.476449] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[  130.425044] kobject: kobject_add_internal failed for :a-0000136 (error: -12 parent: slab)
+[  130.425629] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[  149.606757] kobject: kobject_add_internal failed for :a-0000136 (error: -12 parent: slab)
+[  149.607578] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[  170.030713] kobject: kobject_add_internal failed for :a-0000136 (error: -12 parent: slab)
+[  170.031626] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[  189.575423] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[  208.799186] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[  227.786300] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[  246.766183] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[  265.907094] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[  285.062984] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[  304.363474] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[  324.032745] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[  343.789154] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[  363.473761] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[  382.752071] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[  402.272349] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[  421.587449] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[  441.667362] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[  460.785425] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+KLG-JOB-EXIT 0
+[  479.670524] reboot: Power down

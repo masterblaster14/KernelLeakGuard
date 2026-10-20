@@ -1,0 +1,1004 @@
+[    0.000000] Linux version 6.18.55 (gupta@OmLOQ) (Ubuntu clang version 21.1.8 (6ubuntu1), Ubuntu LLD 21.1.8) #8 SMP PREEMPT_DYNAMIC Mon Oct 12 19:49:56 UTC 2026
+[    0.000000] Command line: console=ttyS0 quiet loglevel=4 kmemleak=on log_buf_len=16M panic=-1 oops=panic nokaslr init_on_alloc=1 init_on_free=1 
+[    0.000000] BIOS-provided physical RAM map:
+[    0.000000] BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] usable
+[    0.000000] BIOS-e820: [mem 0x000000000009fc00-0x000000000009ffff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000000f0000-0x00000000000fffff] reserved
+[    0.000000] BIOS-e820: [mem 0x0000000000100000-0x000000007ffdffff] usable
+[    0.000000] BIOS-e820: [mem 0x000000007ffe0000-0x000000007fffffff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000fffc0000-0x00000000ffffffff] reserved
+[    0.000000] BIOS-e820: [mem 0x000000fd00000000-0x000000ffffffffff] reserved
+[    0.000000] NX (Execute Disable) protection: active
+[    0.000000] APIC: Static calls initialized
+[    0.000000] SMBIOS 2.8 present.
+[    0.000000] DMI: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+[    0.000000] DMI: Memory slots populated: 1/1
+[    0.000000] tsc: Fast TSC calibration using PIT
+[    0.000000] tsc: Detected 3293.867 MHz processor
+[    0.014768] e820: update [mem 0x00000000-0x00000fff] usable ==> reserved
+[    0.015208] e820: remove [mem 0x000a0000-0x000fffff] usable
+[    0.015508] last_pfn = 0x7ffe0 max_arch_pfn = 0x10000000000
+[    0.016626] MTRR map: 4 entries (3 fixed + 1 variable; max 19), built from 8 variable MTRRs
+[    0.017069] x86/PAT: Configuration [0-7]: WB  WC  UC- UC  WB  WP  UC- WT  
+[    0.046774] found SMP MP-table at [mem 0x000f5450-0x000f545f]
+[    0.050674] Using GB pages for direct mapping
+[    0.169358] printk: log buffer data + meta data: 16777216 + 58720256 = 75497472 bytes
+[    0.169452] printk: early log buf free: 2095488(99%)
+[    0.169639] RAMDISK: [mem 0x7fe65000-0x7ffdffff]
+[    0.170426] ACPI: Early table checksum verification disabled
+[    0.171353] ACPI: RSDP 0x00000000000F5270 000014 (v00 BOCHS )
+[    0.172063] ACPI: RSDT 0x000000007FFE2396 000034 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.173514] ACPI: FACP 0x000000007FFE2242 000074 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.174629] ACPI: DSDT 0x000000007FFE0040 002202 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.174829] ACPI: FACS 0x000000007FFE0000 000040
+[    0.174971] ACPI: APIC 0x000000007FFE22B6 000080 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.175029] ACPI: HPET 0x000000007FFE2336 000038 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.175079] ACPI: WAET 0x000000007FFE236E 000028 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.175253] ACPI: Reserving FACP table memory at [mem 0x7ffe2242-0x7ffe22b5]
+[    0.175300] ACPI: Reserving DSDT table memory at [mem 0x7ffe0040-0x7ffe2241]
+[    0.175309] ACPI: Reserving FACS table memory at [mem 0x7ffe0000-0x7ffe003f]
+[    0.175315] ACPI: Reserving APIC table memory at [mem 0x7ffe22b6-0x7ffe2335]
+[    0.175321] ACPI: Reserving HPET table memory at [mem 0x7ffe2336-0x7ffe236d]
+[    0.175327] ACPI: Reserving WAET table memory at [mem 0x7ffe236e-0x7ffe2395]
+[    0.178625] No NUMA configuration found
+[    0.178653] Faking a node at [mem 0x0000000000000000-0x000000007ffdffff]
+[    0.179761] NODE_DATA(0) allocated [mem 0x7b661800-0x7b664fff]
+[    0.187600] Zone ranges:
+[    0.187623]   DMA      [mem 0x0000000000001000-0x0000000000ffffff]
+[    0.187788]   DMA32    [mem 0x0000000001000000-0x000000007ffdffff]
+[    0.187799]   Normal   empty
+[    0.187820] Movable zone start for each node
+[    0.187858] Early memory node ranges
+[    0.187897]   node   0: [mem 0x0000000000001000-0x000000000009efff]
+[    0.188206]   node   0: [mem 0x0000000000100000-0x000000007ffdffff]
+[    0.188390] Initmem setup node 0 [mem 0x0000000000001000-0x000000007ffdffff]
+[    0.191531] On node 0, zone DMA: 1 pages in unavailable ranges
+[    0.192082] On node 0, zone DMA: 97 pages in unavailable ranges
+[    0.249952] On node 0, zone DMA32: 32 pages in unavailable ranges
+[    0.251297] ACPI: PM-Timer IO Port: 0x608
+[    0.252647] ACPI: LAPIC_NMI (acpi_id[0xff] dfl dfl lint[0x1])
+[    0.253457] IOAPIC[0]: apic_id 0, version 32, address 0xfec00000, GSI 0-23
+[    0.253637] ACPI: INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+[    0.254021] ACPI: INT_SRC_OVR (bus 0 bus_irq 5 global_irq 5 high level)
+[    0.254125] ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)
+[    0.254272] ACPI: INT_SRC_OVR (bus 0 bus_irq 10 global_irq 10 high level)
+[    0.254286] ACPI: INT_SRC_OVR (bus 0 bus_irq 11 global_irq 11 high level)
+[    0.254598] ACPI: Using ACPI (MADT) for SMP configuration information
+[    0.254657] ACPI: HPET id: 0x8086a201 base: 0xfed00000
+[    0.255356] CPU topo: Max. logical packages:   1
+[    0.255388] CPU topo: Max. logical dies:       1
+[    0.255405] CPU topo: Max. dies per package:   1
+[    0.255494] CPU topo: Max. threads per core:   1
+[    0.255756] CPU topo: Num. cores per package:     2
+[    0.255777] CPU topo: Num. threads per package:   2
+[    0.255789] CPU topo: Allowing 2 present CPUs plus 0 hotplug CPUs
+[    0.257302] PM: hibernation: Registered nosave memory: [mem 0x00000000-0x00000fff]
+[    0.257348] PM: hibernation: Registered nosave memory: [mem 0x0009f000-0x000fffff]
+[    0.257533] [mem 0x80000000-0xfffbffff] available for PCI devices
+[    0.257629] Booting paravirtualized kernel on bare hardware
+[    0.258145] clocksource: refined-jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1910969940391419 ns
+[    0.277789] setup_percpu: NR_CPUS:64 nr_cpumask_bits:2 nr_cpu_ids:2 nr_node_ids:1
+[    0.281610] percpu: Embedded 52 pages/cpu s172568 r8192 d32232 u1048576
+[    0.282602] pcpu-alloc: s172568 r8192 d32232 u1048576 alloc=1*2097152
+[    0.282729] pcpu-alloc: [0] 0 1 
+[    0.285212] Kernel command line: console=ttyS0 quiet loglevel=4 kmemleak=on log_buf_len=16M panic=-1 oops=panic nokaslr init_on_alloc=1 init_on_free=1 
+[    0.287265] Unknown kernel command line parameters "nokaslr", will be passed to user space.
+[    0.288365] random: crng init done
+[    0.290756] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.291799] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.296095] Fallback order for Node 0: 0 
+[    0.296473] Built 1 zonelists, mobility grouping on.  Total pages: 524158
+[    0.296546] Policy zone: DMA32
+[    0.297534] mem auto-init: stack:all(zero), heap alloc:on, heap free:on
+[    0.297555] mem auto-init: clearing system memory may take some time...
+[    0.297593] stackdepot: allocating hash table via alloc_large_system_hash
+[    0.297697] stackdepot hash table entries: 131072 (order: 9, 2097152 bytes, linear)
+[    0.300124] stackdepot: allocating space for 8192 stack pools via memblock
+[    2.588950] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+[    2.607722] ftrace: allocating 56036 entries in 220 pages
+[    2.607789] ftrace: allocated 220 pages with 5 groups
+[    2.623183] Dynamic Preempt: voluntary
+[    2.629731] rcu: Preemptible hierarchical RCU implementation.
+[    2.629761] rcu: 	RCU event tracing is enabled.
+[    2.629794] rcu: 	RCU restricting CPUs from NR_CPUS=64 to nr_cpu_ids=2.
+[    2.630001] 	Trampoline variant of Tasks RCU enabled.
+[    2.630011] 	Rude variant of Tasks RCU enabled.
+[    2.630021] 	Tracing variant of Tasks RCU enabled.
+[    2.630144] rcu: RCU calculated value of scheduler-enlistment delay is 100 jiffies.
+[    2.630175] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=2
+[    2.632440] RCU Tasks: Setting shift to 1 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=2.
+[    2.632519] RCU Tasks Rude: Setting shift to 1 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=2.
+[    2.632553] RCU Tasks Trace: Setting shift to 1 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=2.
+[    2.778535] NR_IRQS: 4352, nr_irqs: 440, preallocated irqs: 16
+[    2.794112] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    2.795830] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1911260446275000 ns
+[    2.811138] Console: colour VGA+ 80x25
+[    2.815659] printk: legacy console [ttyS0] enabled
+[    2.818758] ACPI: Core revision 20250807
+[    2.832310] clocksource: hpet: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604467 ns
+[    2.843124] APIC: Switch to symmetric I/O mode setup
+[    2.843803] x2apic: IRQ remapping doesn't support X2APIC mode
+[    2.856292] ..TIMER: vector=0x30 apic1=0 pin1=2 apic2=-1 pin2=-1
+[    2.863257] clocksource: tsc-early: mask: 0xffffffffffffffff max_cycles: 0x2f7aaaed6f2, max_idle_ns: 440795344040 ns
+[    2.863921] Calibrating delay loop (skipped), value calculated using timer frequency.. 6587.73 BogoMIPS (lpj=3293867)
+[    2.872622] x86/cpu: User Mode Instruction Prevention (UMIP) activated
+[    2.888116] Last level iTLB entries: 4KB 0, 2MB 0, 4MB 0
+[    2.888538] Last level dTLB entries: 4KB 0, 2MB 0, 4MB 0, 1GB 0
+[    2.892333] mitigations: Enabled attack vectors: user_kernel, user_user, SMT mitigations: auto
+[    2.893796] Speculative Store Bypass: Vulnerable
+[    2.894735] Spectre V2 : Mitigation: Retpolines
+[    2.895146] Spectre V1 : Mitigation: usercopy/swapgs barriers and __user pointer sanitization
+[    2.895518] Spectre V2 : Spectre v2 / SpectreRSB: Filling RSB on context switch and VMEXIT
+[    2.907026] x86/fpu: Supporting XSAVE feature 0x001: 'x87 floating point registers'
+[    2.910320] x86/fpu: Supporting XSAVE feature 0x002: 'SSE registers'
+[    2.910409] x86/fpu: Supporting XSAVE feature 0x004: 'AVX registers'
+[    2.910428] x86/fpu: Supporting XSAVE feature 0x008: 'MPX bounds registers'
+[    2.910443] x86/fpu: Supporting XSAVE feature 0x010: 'MPX CSR'
+[    2.910522] x86/fpu: Supporting XSAVE feature 0x200: 'Protection Keys User registers'
+[    2.910870] x86/fpu: xstate_offset[2]:  576, xstate_sizes[2]:  256
+[    2.911580] x86/fpu: xstate_offset[3]:  960, xstate_sizes[3]:   64
+[    2.911617] x86/fpu: xstate_offset[4]: 1024, xstate_sizes[4]:   64
+[    2.911753] x86/fpu: xstate_offset[9]: 2688, xstate_sizes[9]:    8
+[    2.911815] x86/fpu: Enabled xstate features 0x21f, context size is 2696 bytes, using 'standard' format.
+[    3.196657] Freeing SMP alternatives memory: 60K
+[    3.197529] pid_max: default: 32768 minimum: 301
+[    3.221940] LSM: initializing lsm=capability,selinux
+[    3.225390] SELinux:  Initializing.
+[    3.236353] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    3.236481] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    3.412481] smpboot: CPU0: AMD QEMU TCG CPU version 2.5+ (family: 0x6, model: 0x6, stepping: 0x3)
+[    3.442884] Performance Events: PMU not available due to virtualization, using software events only.
+[    3.445345] signal: max sigframe size: 3632
+[    3.448824] rcu: Hierarchical SRCU implementation.
+[    3.448899] rcu: 	Max phase no-delay instances is 400.
+[    3.456990] Timer migration: 1 hierarchy levels; 8 children per group; 1 crossnode level
+[    3.477629] smp: Bringing up secondary CPUs ...
+[    3.491315] smpboot: x86: Booting SMP configuration:
+[    3.491550] .... node  #0, CPUs:      #1
+[    3.593303] smp: Brought up 1 node, 2 CPUs
+[    3.593795] smpboot: Total of 2 processors activated (13170.94 BogoMIPS)
+[    3.620350] Memory: 1921744K/2096632K available (20037K kernel code, 9054K rwdata, 7608K rodata, 3364K init, 6452K bss, 168544K reserved, 0K cma-reserved)
+[    3.645764] devtmpfs: initialized
+[    3.696058] posixtimers hash table entries: 1024 (order: 2, 16384 bytes, linear)
+[    3.697034] futex hash table entries: 512 (32768 bytes on 1 NUMA nodes, total 32 KiB, linear).
+[    3.708701] PM: RTC time: 14:09:30, date: 2026-10-20
+[    3.726218] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    3.737405] audit: initializing netlink subsys (disabled)
+[    3.743917] audit: type=2000 audit(1792505369.895:1): state=initialized audit_enabled=0 res=1
+[    3.758792] thermal_sys: Registered thermal governor 'step_wise'
+[    3.759625] cpuidle: using governor menu
+[    3.772074] PCI: Using configuration type 1 for base access
+[    3.773727] mtrr: your CPUs had inconsistent fixed MTRR settings
+[    3.773764] mtrr: your CPUs had inconsistent variable MTRR settings
+[    3.773784] mtrr: your CPUs had inconsistent MTRRdefType settings
+[    3.773798] mtrr: probably your BIOS does not setup all CPUs.
+[    3.773813] mtrr: corrected configuration.
+[    3.780255] kprobes: kprobe jump-optimization is enabled. All kprobes are optimized if possible.
+[    3.823623] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    3.823738] HugeTLB: 28 KiB vmemmap can be freed for a 2.00 MiB page
+[    3.893650] ACPI: Added _OSI(Module Device)
+[    3.893799] ACPI: Added _OSI(Processor Device)
+[    3.893838] ACPI: Added _OSI(Processor Aggregator Device)
+[    4.182234] ACPI: 1 ACPI AML tables successfully acquired and loaded
+[    4.279704] ACPI: Interpreter enabled
+[    4.282778] ACPI: PM: (supports S0 S3 S4 S5)
+[    4.282892] ACPI: Using IOAPIC for interrupt routing
+[    4.285615] PCI: Using host bridge windows from ACPI; if necessary, use "pci=nocrs" and report a bug
+[    4.285703] PCI: Using E820 reservations for host bridge windows
+[    4.295349] ACPI: Enabled 2 GPEs in block 00 to 0F
+[    4.579940] ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+[    4.582657] acpi PNP0A03:00: _OSC: OS supports [ASPM ClockPM Segments MSI HPX-Type3]
+[    4.583038] acpi PNP0A03:00: _OSC: not requesting OS control; OS requires [ExtendedConfig ASPM ClockPM MSI]
+[    4.585588] acpi PNP0A03:00: fail to add MMCONFIG information, can't access extended configuration space under this bridge
+[    4.594163] PCI host bridge to bus 0000:00
+[    4.595336] pci_bus 0000:00: root bus resource [io  0x0000-0x0cf7 window]
+[    4.595686] pci_bus 0000:00: root bus resource [io  0x0d00-0xffff window]
+[    4.595775] pci_bus 0000:00: root bus resource [mem 0x000a0000-0x000bffff window]
+[    4.595926] pci_bus 0000:00: root bus resource [mem 0x80000000-0xfebfffff window]
+[    4.596000] pci_bus 0000:00: root bus resource [mem 0x100000000-0x17fffffff window]
+[    4.596740] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    4.599825] pci 0000:00:00.0: [8086:1237] type 00 class 0x060000 conventional PCI endpoint
+[    4.616861] pci 0000:00:01.0: [8086:7000] type 00 class 0x060100 conventional PCI endpoint
+[    4.620991] pci 0000:00:01.1: [8086:7010] type 00 class 0x010180 conventional PCI endpoint
+[    4.623597] pci 0000:00:01.1: BAR 4 [io  0xc060-0xc06f]
+[    4.623771] pci 0000:00:01.1: BAR 0 [io  0x01f0-0x01f7]: legacy IDE quirk
+[    4.623826] pci 0000:00:01.1: BAR 1 [io  0x03f6]: legacy IDE quirk
+[    4.624052] pci 0000:00:01.1: BAR 2 [io  0x0170-0x0177]: legacy IDE quirk
+[    4.624111] pci 0000:00:01.1: BAR 3 [io  0x0376]: legacy IDE quirk
+[    4.628704] pci 0000:00:01.3: [8086:7113] type 00 class 0x068000 conventional PCI endpoint
+[    4.629717] pci 0000:00:01.3: quirk: [io  0x0600-0x063f] claimed by PIIX4 ACPI
+[    4.629789] pci 0000:00:01.3: quirk: [io  0x0700-0x070f] claimed by PIIX4 SMB
+[    4.635199] pci 0000:00:02.0: [1234:1111] type 00 class 0x030000 conventional PCI endpoint
+[    4.636512] pci 0000:00:02.0: BAR 0 [mem 0xfd000000-0xfdffffff pref]
+[    4.636813] pci 0000:00:02.0: BAR 2 [mem 0xfebb0000-0xfebb0fff]
+[    4.636839] pci 0000:00:02.0: ROM [mem 0xfeba0000-0xfebaffff pref]
+[    4.638710] pci 0000:00:02.0: Video device with shadowed ROM at [mem 0x000c0000-0x000dffff]
+[    4.645548] pci 0000:00:03.0: [8086:100e] type 00 class 0x020000 conventional PCI endpoint
+[    4.647553] pci 0000:00:03.0: BAR 0 [mem 0xfeb80000-0xfeb9ffff]
+[    4.647613] pci 0000:00:03.0: BAR 1 [io  0xc000-0xc03f]
+[    4.647634] pci 0000:00:03.0: ROM [mem 0xfeb00000-0xfeb7ffff pref]
+[    4.712012] pci 0000:00:04.0: [1af4:1009] type 00 class 0x000200 conventional PCI endpoint
+[    4.714608] pci 0000:00:04.0: BAR 0 [io  0xc040-0xc05f]
+[    4.715529] pci 0000:00:04.0: BAR 1 [mem 0xfebb1000-0xfebb1fff]
+[    4.715620] pci 0000:00:04.0: BAR 4 [mem 0xfe000000-0xfe003fff 64bit pref]
+[    4.806520] ACPI: PCI: Interrupt link LNKA configured for IRQ 10
+[    4.812305] ACPI: PCI: Interrupt link LNKB configured for IRQ 10
+[    4.819289] ACPI: PCI: Interrupt link LNKC configured for IRQ 11
+[    4.826036] ACPI: PCI: Interrupt link LNKD configured for IRQ 11
+[    4.829072] ACPI: PCI: Interrupt link LNKS configured for IRQ 9
+[    4.853153] iommu: Default domain type: Translated
+[    4.853224] iommu: DMA domain TLB invalidation policy: lazy mode
+[    4.864363] SCSI subsystem initialized
+[    4.867452] libata version 3.00 loaded.
+[    4.871734] ACPI: bus type USB registered
+[    4.875293] usbcore: registered new interface driver usbfs
+[    4.877175] usbcore: registered new interface driver hub
+[    4.878068] usbcore: registered new device driver usb
+[    4.880847] pps_core: LinuxPPS API ver. 1 registered
+[    4.880985] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    4.881287] PTP clock support registered
+[    4.890367] Advanced Linux Sound Architecture Driver Initialized.
+[    4.928659] NetLabel: Initializing
+[    4.928712] NetLabel:  domain hash size = 128
+[    4.928734] NetLabel:  protocols = UNLABELED CIPSOv4 CALIPSO
+[    4.930876] NetLabel:  unlabeled traffic allowed by default
+[    4.942192] PCI: Using ACPI for IRQ routing
+[    4.942559] PCI: pci_cache_line_size set to 64 bytes
+[    4.943189] e820: reserve RAM buffer [mem 0x0009fc00-0x0009ffff]
+[    4.943625] e820: reserve RAM buffer [mem 0x7ffe0000-0x7fffffff]
+[    4.949481] pci 0000:00:02.0: vgaarb: setting as boot VGA device
+[    4.949481] pci 0000:00:02.0: vgaarb: bridge control possible
+[    4.949481] pci 0000:00:02.0: vgaarb: VGA device added: decodes=io+mem,owns=io+mem,locks=none
+[    4.949583] vgaarb: loaded
+[    4.953671] hpet0: at MMIO 0xfed00000, IRQs 2, 8, 0
+[    4.953912] hpet0: 3 comparators, 64-bit 100.000000 MHz counter
+[    4.961230] clocksource: Switched to clocksource tsc-early
+[    5.119953] VFS: Disk quotas dquot_6.6.0
+[    5.120545] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    5.132480] pnp: PnP ACPI init
+[    5.140863] pnp 00:02: [dma 2]
+[    5.161887] pnp: PnP ACPI: found 5 devices
+[    5.317799] clocksource: acpi_pm: mask: 0xffffff max_cycles: 0xffffff, max_idle_ns: 2085701024 ns
+[    5.319703] NET: Registered PF_INET protocol family
+[    5.322602] IP idents hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    5.343830] tcp_listen_portaddr_hash hash table entries: 1024 (order: 2, 16384 bytes, linear)
+[    5.344226] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    5.344497] TCP established hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    5.344964] TCP bind hash table entries: 16384 (order: 7, 524288 bytes, linear)
+[    5.345702] TCP: Hash tables configured (established 16384 bind 16384)
+[    5.348197] UDP hash table entries: 1024 (order: 4, 65536 bytes, linear)
+[    5.348692] UDP-Lite hash table entries: 1024 (order: 4, 65536 bytes, linear)
+[    5.352851] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    5.364271] RPC: Registered named UNIX socket transport module.
+[    5.364365] RPC: Registered udp transport module.
+[    5.364381] RPC: Registered tcp transport module.
+[    5.364394] RPC: Registered tcp-with-tls transport module.
+[    5.364408] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    5.378487] pci_bus 0000:00: resource 4 [io  0x0000-0x0cf7 window]
+[    5.378623] pci_bus 0000:00: resource 5 [io  0x0d00-0xffff window]
+[    5.378647] pci_bus 0000:00: resource 6 [mem 0x000a0000-0x000bffff window]
+[    5.378669] pci_bus 0000:00: resource 7 [mem 0x80000000-0xfebfffff window]
+[    5.378691] pci_bus 0000:00: resource 8 [mem 0x100000000-0x17fffffff window]
+[    5.381337] pci 0000:00:01.0: PIIX3: Enabling Passive Release
+[    5.381593] pci 0000:00:00.0: Limiting direct PCI/PCI transfers
+[    5.382650] PCI: CLS 0 bytes, default 64
+[    5.401905] Trying to unpack rootfs image as initramfs...
+[    5.435890] Initialise system trusted keyrings
+[    5.441635] workingset: timestamp_bits=56 max_order=19 bucket_order=0
+[    5.460266] NFS: Registering the id_resolver key type
+[    5.460816] Key type id_resolver registered
+[    5.460863] Key type id_legacy registered
+[    5.463797] 9p: Installing v9fs 9p2000 file system support
+[    5.597471] Freeing initrd memory: 1516K
+[    5.631116] Key type asymmetric registered
+[    5.631315] Asymmetric key parser 'x509' registered
+[    5.632536] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 251)
+[    5.635450] io scheduler mq-deadline registered
+[    5.635613] io scheduler kyber registered
+[    5.645943] input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+[    5.655850] ACPI: button: Power Button [PWRF]
+[    5.761516] ACPI: \_SB_.LNKD: Enabled at IRQ 11
+[    5.773230] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    5.786374] 00:04: ttyS0 at I/O 0x3f8 (irq = 4, base_baud = 115200) is a 16550A
+[    5.822859] Non-volatile memory driver v1.3
+[    5.823343] Linux agpgart interface v0.103
+[    5.829466] ACPI: bus type drm_connector registered
+[    5.951212] loop: module loaded
+[    5.992585] scsi host0: ata_piix
+[    6.003810] scsi host1: ata_piix
+[    6.006590] ata1: PATA max MWDMA2 cmd 0x1f0 ctl 0x3f6 bmdma 0xc060 irq 14 lpm-pol 0
+[    6.006698] ata2: PATA max MWDMA2 cmd 0x170 ctl 0x376 bmdma 0xc068 irq 15 lpm-pol 0
+[    6.026632] e100: Intel(R) PRO/100 Network Driver
+[    6.026679] e100: Copyright(c) 1999-2006 Intel Corporation
+[    6.027318] e1000: Intel(R) PRO/1000 Network Driver
+[    6.027348] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[    6.118964] ACPI: \_SB_.LNKC: Enabled at IRQ 10
+[    6.179760] ata2: found unknown device (class 0)
+[    6.190720] ata2.00: ATAPI: QEMU DVD-ROM, 2.5+, max UDMA/100
+[    6.219192] scsi 1:0:0:0: CD-ROM            QEMU     QEMU DVD-ROM     2.5+ PQ: 0 ANSI: 5
+[    6.252295] sr 1:0:0:0: [sr0] scsi3-mmc drive: 4x/4x cd/rw xa/form2 tray
+[    6.265680] cdrom: Uniform CD-ROM driver Revision: 3.20
+[    6.287325] sr 1:0:0:0: Attached scsi CD-ROM sr0
+[    6.294129] sr 1:0:0:0: Attached scsi generic sg0 type 5
+[    6.399490] tsc: Refined TSC clocksource calibration: 3293.848 MHz
+[    6.400338] clocksource: tsc: mask: 0xffffffffffffffff max_cycles: 0x2f7a98c406a, max_idle_ns: 440795202126 ns
+[    6.405921] clocksource: Switched to clocksource tsc
+[    6.493830] e1000 0000:00:03.0 eth0: (PCI:33MHz:32-bit) 52:54:00:12:34:56
+[    6.494801] e1000 0000:00:03.0 eth0: Intel(R) PRO/1000 Network Connection
+[    6.495803] e1000e: Intel(R) PRO/1000 Network Driver
+[    6.495830] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    6.496627] sky2: driver version 1.30
+[    6.510553] usbcore: registered new interface driver usblp
+[    6.511559] usbcore: registered new interface driver usb-storage
+[    6.513957] i8042: PNP: PS/2 Controller [PNP0303:KBD,PNP0f13:MOU] at 0x60,0x64 irq 1,12
+[    6.524003] serio: i8042 KBD port at 0x60,0x64 irq 1
+[    6.524775] serio: i8042 AUX port at 0x60,0x64 irq 12
+[    6.539321] rtc_cmos PNP0B00:00: RTC can wake from S4
+[    6.539324] input: AT Translated Set 2 keyboard as /devices/platform/i8042/serio0/input/input1
+[    6.551461] rtc_cmos PNP0B00:00: registered as rtc0
+[    6.554711] rtc_cmos PNP0B00:00: alarms up to one day, y3k, 242 bytes nvram, hpet irqs
+[    6.563869] device-mapper: ioctl: 4.50.0-ioctl (2025-04-28) initialised: dm-devel@lists.linux.dev
+[    6.564712] amd_pstate: the _CPC object is not present in SBIOS or ACPI disabled
+[    6.565736] hid: raw HID events driver (C) Jiri Kosina
+[    6.581673] usbcore: registered new interface driver usbhid
+[    6.581750] usbhid: USB HID core driver
+[    6.607120] Initializing XFRM netlink socket
+[    6.608366] NET: Registered PF_INET6 protocol family
+[    6.640532] Segment Routing with IPv6
+[    6.642352] In-situ OAM (IOAM) with IPv6
+[    6.645182] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    6.658150] NET: Registered PF_PACKET protocol family
+[    6.663743] 9pnet: Installing 9P2000 support
+[    6.687004] Key type dns_resolver registered
+[    6.697568] IPI shorthand broadcast: enabled
+[    6.984710] sched_clock: Marking stable (6934129852, 49906212)->(7031545568, -47509504)
+[    6.988005] input: ImExPS/2 Generic Explorer Mouse as /devices/platform/i8042/serio1/input/input3
+[    7.000549] registered taskstats version 1
+[    7.000757] Loading compiled-in X.509 certificates
+[    7.144706] Demotion targets for Node 0: null
+[    7.145311] kmemleak: Kernel memory leak detector initialized (mem pool available: 15831)
+[    7.185636] PM:   Magic number: 14:628:182
+[    7.186396] netconsole: network logging started
+[    7.190615] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+[    7.212789] kworker/u8:1 (59) used greatest stack depth: 14624 bytes left
+[    7.239911] Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+[    7.242791] Loaded X.509 cert 'wens: 61c038651aabdcf94bd0ac7ff06c7248db18c600'
+[    7.247646] ALSA device list:
+[    7.247883]   No soundcards found.
+[    7.250435] faux_driver regulatory: Direct firmware load for regulatory.db failed with error -2
+[    7.251219] cfg80211: failed to load regulatory.db
+[    8.100463] Freeing unused kernel image (initmem) memory: 3364K
+[    8.101840] Write protecting the kernel read-only data: 28672k
+[    8.109390] Freeing unused kernel image (text/rodata gap) memory: 440K
+[    8.114075] Freeing unused kernel image (rodata/data gap) memory: 584K
+[    8.413794] x86/mm: Checked W+X mappings: passed, no W+X pages found.
+[    8.415404] Run /init as init process
+[    8.415482]   with arguments:
+[    8.415531]     /init
+[    8.415581]     nokaslr
+[    8.415624]   with environment:
+[    8.415663]     HOME=/
+[    8.415716]     TERM=linux
+[    8.703849] busybox (63) used greatest stack depth: 8 bytes left
+[    9.041508] klg_modwatch: loading out-of-tree module taints kernel.
+[   18.286887] KLG: attempt n=0 target=/mnt/host/mods/erofs.ko
+[   18.347666] KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+[   18.348059] KLG-SYM erofs ffffffffa0001000 .Ltmp6
+[   18.348081] KLG-SYM erofs ffffffffa0001070 .Ltmp7
+[   18.348091] KLG-SYM erofs ffffffffa0001090 .Ltmp8
+[   18.348100] KLG-SYM erofs ffffffffa00010f0 .Ltmp9
+[   18.348108] KLG-SYM erofs ffffffffa0001110 .Ltmp10
+[   18.348117] KLG-SYM erofs ffffffffa0001170 .Ltmp11
+[   18.348126] KLG-SYM erofs ffffffffa0001190 .Ltmp12
+[   18.348134] KLG-SYM erofs ffffffffa0001200 .Ltmp13
+[   18.348143] KLG-SYM erofs ffffffffa0001220 .Ltmp14
+[   18.348151] KLG-SYM erofs ffffffffa0001290 .Ltmp15
+[   18.348160] KLG-SYM erofs ffffffffa00012b0 .Ltmp16
+[   18.348168] KLG-SYM erofs ffffffffa0001320 .Ltmp17
+[   18.348177] KLG-SYM erofs ffffffffa0001350 trace_event_raw_event_erofs_lookup
+[   18.348186] KLG-SYM erofs ffffffffa0001340 .Ltmp18
+[   18.348194] KLG-SYM erofs ffffffffa00014a0 perf_trace_erofs_lookup
+[   18.348203] KLG-SYM erofs ffffffffa0001490 .Ltmp19
+[   18.348211] KLG-SYM erofs ffffffffa0001620 trace_event_raw_event_erofs_fill_inode
+[   18.348221] KLG-SYM erofs ffffffffa0001610 .Ltmp20
+[   18.348229] KLG-SYM erofs ffffffffa00017a0 perf_trace_erofs_fill_inode
+[   18.348238] KLG-SYM erofs ffffffffa0001790 .Ltmp21
+[   18.348246] KLG-SYM erofs ffffffffa0001940 trace_event_raw_event_erofs_read_folio
+[   18.348256] KLG-SYM erofs ffffffffa0001930 .Ltmp22
+[   18.348264] KLG-SYM erofs ffffffffa0001a70 perf_trace_erofs_read_folio
+[   18.348273] KLG-SYM erofs ffffffffa0001a60 .Ltmp23
+[   18.348281] KLG-SYM erofs ffffffffa0001bc0 trace_event_raw_event_erofs_readahead
+[   18.348369] KLG-SYM erofs ffffffffa0001bb0 .Ltmp24
+[   18.348394] KLG-SYM erofs ffffffffa0001cc0 perf_trace_erofs_readahead
+[   18.348407] KLG-SYM erofs ffffffffa0001cb0 .Ltmp25
+[   18.348416] KLG-SYM erofs ffffffffa0001de0 trace_event_raw_event_erofs_map_blocks_enter
+[   18.348427] KLG-SYM erofs ffffffffa0001dd0 .Ltmp26
+[   18.348436] KLG-SYM erofs ffffffffa0001ee0 perf_trace_erofs_map_blocks_enter
+[   18.348446] KLG-SYM erofs ffffffffa0001ed0 .Ltmp27
+[   18.348454] KLG-SYM erofs ffffffffa0002000 trace_event_raw_event_erofs_map_blocks_exit
+[   18.348464] KLG-SYM erofs ffffffffa0001ff0 .Ltmp28
+[   18.348475] KLG-SYM erofs ffffffffa0002120 perf_trace_erofs_map_blocks_exit
+[   18.348484] KLG-SYM erofs ffffffffa0002110 .Ltmp29
+[   18.348493] KLG-SYM erofs ffffffffa0002260 .Ltmp30
+[   18.348502] KLG-SYM erofs ffffffffa0002360 .Ltmp31
+[   18.348510] KLG-SYM erofs ffffffffa00024b0 erofs_alloc_inode
+[   18.348519] KLG-SYM erofs ffffffffa00024a0 .Ltmp32
+[   18.348528] KLG-SYM erofs ffffffffa0002550 erofs_free_inode
+[   18.348536] KLG-SYM erofs ffffffffa0002540 .Ltmp33
+[   18.348545] KLG-SYM erofs ffffffffa00025a0 erofs_evict_inode
+[   18.348554] KLG-SYM erofs ffffffffa0002590 .Ltmp34
+[   18.348562] KLG-SYM erofs ffffffffa00025e0 erofs_put_super
+[   18.348571] KLG-SYM erofs ffffffffa00025d0 .Ltmp35
+[   18.348581] KLG-SYM erofs ffffffffa0002d20 erofs_release_device_info
+[   18.348590] KLG-SYM erofs ffffffffa00026b0 erofs_statfs
+[   18.348599] KLG-SYM erofs ffffffffa00026a0 .Ltmp36
+[   18.348607] KLG-SYM erofs ffffffffa0002790 erofs_show_options
+[   18.348616] KLG-SYM erofs ffffffffa0002780 .Ltmp37
+[   18.348625] KLG-SYM erofs ffffffffa000f000 .Ltmp38
+[   18.348633] KLG-SYM erofs ffffffffa0002d70 erofs_inode_init_once
+[   18.348642] KLG-SYM erofs ffffffffa000eeb0 .Ltmp39
+[   18.348654] KLG-SYM erofs ffffffffa00028a0 trace_raw_output_erofs_lookup
+[   18.348670] KLG-SYM erofs ffffffffa0002890 .Ltmp40
+[   18.348683] KLG-SYM erofs ffffffffa0002930 trace_raw_output_erofs_fill_inode
+[   18.348696] KLG-SYM erofs ffffffffa0002920 .Ltmp41
+[   18.348709] KLG-SYM erofs ffffffffa00029b0 trace_raw_output_erofs_read_folio
+[   18.348722] KLG-SYM erofs ffffffffa00029a0 .Ltmp42
+[   18.348735] KLG-SYM erofs ffffffffa0002a70 trace_raw_output_erofs_readahead
+[   18.348750] KLG-SYM erofs ffffffffa0002a60 .Ltmp43
+[   18.348765] KLG-SYM erofs ffffffffa0002b00 trace_raw_output_erofs_map_blocks_enter
+[   18.348780] KLG-SYM erofs ffffffffa0002af0 .Ltmp44
+[   18.348796] KLG-SYM erofs ffffffffa0002be0 trace_raw_output_erofs_map_blocks_exit
+[   18.348805] KLG-SYM erofs ffffffffa0002bd0 .Ltmp45
+[   18.348814] KLG-SYM erofs ffffffffa0002d10 .Ltmp46
+[   18.348822] KLG-SYM erofs ffffffffa0002d60 .Ltmp47
+[   18.348831] KLG-SYM erofs ffffffffa0002da0 erofs_init_fs_context
+[   18.348839] KLG-SYM erofs ffffffffa0002d90 .Ltmp48
+[   18.348848] KLG-SYM erofs ffffffffa0002e80 erofs_kill_sb
+[   18.348857] KLG-SYM erofs ffffffffa0002e70 .Ltmp49
+[   18.348865] KLG-SYM erofs ffffffffa0003300 erofs_sb_free
+[   18.348874] KLG-SYM erofs ffffffffa0002f20 erofs_fc_free
+[   18.348882] KLG-SYM erofs ffffffffa0002f10 .Ltmp50
+[   18.348891] KLG-SYM erofs ffffffffa0002f50 erofs_fc_parse_param
+[   18.348900] KLG-SYM erofs ffffffffa0002f40 .Ltmp51
+[   18.348908] KLG-SYM erofs ffffffffa00031b0 erofs_fc_get_tree
+[   18.348917] KLG-SYM erofs ffffffffa00031a0 .Ltmp52
+[   18.348925] KLG-SYM erofs ffffffffa0003390 erofs_fc_fill_super
+[   18.348934] KLG-SYM erofs ffffffffa0003270 erofs_fc_reconfigure
+[   18.348946] KLG-SYM erofs ffffffffa0003260 .Ltmp53
+[   18.348954] KLG-SYM erofs ffffffffa00032f0 .Ltmp54
+[   18.349091] KLG-SYM erofs ffffffffa0003380 .Ltmp55
+[   18.349111] KLG-SYM erofs ffffffffa0003aa0 erofs_set_sysfs_name
+[   18.349125] KLG-SYM erofs ffffffffa0003b40 erofs_scan_devices
+[   18.349141] KLG-SYM erofs ffffffffa0003a90 .Ltmp56
+[   18.349154] KLG-SYM erofs ffffffffa0004170 super_set_sysfs_name_generic
+[   18.349168] KLG-SYM erofs ffffffffa0003b30 .Ltmp57
+[   18.349180] KLG-SYM erofs ffffffffa0003dd0 erofs_init_device
+[   18.349193] KLG-SYM erofs ffffffffa0003dc0 .Ltmp58
+[   18.349206] KLG-SYM erofs ffffffffa0003fb0 erofs_encode_fh
+[   18.349222] KLG-SYM erofs ffffffffa0003fa0 .Ltmp59
+[   18.349240] KLG-SYM erofs ffffffffa0004030 erofs_fh_to_dentry
+[   18.349252] KLG-SYM erofs ffffffffa0004020 .Ltmp60
+[   18.349260] KLG-SYM erofs ffffffffa0004080 erofs_fh_to_parent
+[   18.349269] KLG-SYM erofs ffffffffa0004070 .Ltmp61
+[   18.349279] KLG-SYM erofs ffffffffa00040d0 erofs_get_parent
+[   18.349288] KLG-SYM erofs ffffffffa00040c0 .Ltmp62
+[   18.349297] KLG-SYM erofs ffffffffa0004160 .Ltmp63
+[   18.349306] KLG-SYM erofs ffffffffa0004200 .Ltmp0
+[   18.349317] KLG-SYM erofs ffffffffa00049c0 erofs_iget5_eq
+[   18.349326] KLG-SYM erofs ffffffffa00049f0 erofs_iget5_set
+[   18.349335] KLG-SYM erofs ffffffffa00049b0 .Ltmp2
+[   18.349343] KLG-SYM erofs ffffffffa00049e0 .Ltmp3
+[   18.349352] KLG-SYM erofs ffffffffa0004a50 .Ltmp4
+[   18.349450] KLG-SYM erofs ffffffffa0004b10 .Ltmp5
+[   18.349461] KLG-SYM erofs ffffffffa0004bc0 .Ltmp27
+[   18.349478] KLG-SYM erofs ffffffffa0004c70 .Ltmp0
+[   18.349493] KLG-SYM erofs ffffffffa0004ca0 .Ltmp1
+[   18.349505] KLG-SYM erofs ffffffffa0004d20 .Ltmp4
+[   18.349517] KLG-SYM erofs ffffffffa0004f10 .Ltmp8
+[   18.349530] KLG-SYM erofs ffffffffa0004f90 .Ltmp9
+[   18.349543] KLG-SYM erofs ffffffffa0005020 .Ltmp10
+[   18.349558] KLG-SYM erofs ffffffffa00054f0 .Ltmp15
+[   18.349572] KLG-SYM erofs ffffffffa00056c0 .Ltmp16
+[   18.349589] KLG-SYM erofs ffffffffa00056f0 .Ltmp17
+[   18.349602] KLG-SYM erofs ffffffffa0005720 .Ltmp19
+[   18.349610] KLG-SYM erofs ffffffffa0005790 .Ltmp21
+[   18.349620] KLG-SYM erofs ffffffffa00057e0 erofs_read_folio
+[   18.349629] KLG-SYM erofs ffffffffa00057d0 .Ltmp22
+[   18.349638] KLG-SYM erofs ffffffffa0005860 erofs_readahead
+[   18.349646] KLG-SYM erofs ffffffffa0005850 .Ltmp24
+[   18.349655] KLG-SYM erofs ffffffffa00058f0 erofs_bmap
+[   18.349664] KLG-SYM erofs ffffffffa00058e0 .Ltmp26
+[   18.349672] KLG-SYM erofs ffffffffa0005920 erofs_file_llseek
+[   18.349681] KLG-SYM erofs ffffffffa0005910 .Ltmp27
+[   18.349691] KLG-SYM erofs ffffffffa00059c0 erofs_file_read_iter
+[   18.349701] KLG-SYM erofs ffffffffa00059b0 .Ltmp28
+[   18.349710] KLG-SYM erofs ffffffffa0005a30 erofs_iomap_begin
+[   18.349719] KLG-SYM erofs ffffffffa0005a20 .Ltmp29
+[   18.349728] KLG-SYM erofs ffffffffa0005ca0 erofs_iomap_end
+[   18.349736] KLG-SYM erofs ffffffffa0005c90 .Ltmp30
+[   18.349745] KLG-SYM erofs ffffffffa0005d40 .Ltmp0
+[   18.349753] KLG-SYM erofs ffffffffa00061f0 erofs_lookup
+[   18.349762] KLG-SYM erofs ffffffffa00061e0 .Ltmp1
+[   18.349770] KLG-SYM erofs ffffffffa0006320 erofs_readdir
+[   18.349779] KLG-SYM erofs ffffffffa0006310 .Ltmp0
+[   18.349787] KLG-SYM erofs ffffffffa00067f0 .Ltmp0
+[   18.349796] KLG-SYM erofs ffffffffa00068a0 .Ltmp1
+[   18.349804] KLG-SYM erofs ffffffffa0006900 .Ltmp2
+[   18.349813] KLG-SYM erofs ffffffffa000f0f0 .Ltmp3
+[   18.349821] KLG-SYM erofs ffffffffa0006950 erofs_attr_show
+[   18.349830] KLG-SYM erofs ffffffffa0006940 .Ltmp4
+[   18.349838] KLG-SYM erofs ffffffffa0006a00 erofs_attr_store
+[   18.349847] KLG-SYM erofs ffffffffa00069f0 .Ltmp5
+[   18.349856] KLG-SYM erofs ffffffffa0006bd0 erofs_sb_release
+[   18.349864] KLG-SYM erofs ffffffffa0006bc0 .Ltmp6
+[   18.349873] KLG-SYM erofs ffffffffa0006c00 erofs_xattr_user_list
+[   18.349882] KLG-SYM erofs ffffffffa0006bf0 .Ltmp0
+[   18.349890] KLG-SYM erofs ffffffffa0006c40 erofs_xattr_generic_get
+[   18.349899] KLG-SYM erofs ffffffffa0006c30 .Ltmp1
+[   18.349907] KLG-SYM erofs ffffffffa0006c90 erofs_xattr_trusted_list
+[   18.349985] KLG-SYM erofs ffffffffa0006c80 .Ltmp2
+[   18.350091] KLG-SYM erofs ffffffffa0006cb0 .Ltmp3
+[   18.350103] KLG-SYM erofs ffffffffa0006f50 erofs_init_inode_xattrs
+[   18.350113] KLG-SYM erofs ffffffffa0007290 erofs_xattr_iter_inline
+[   18.350122] KLG-SYM erofs ffffffffa00079c0 erofs_getxattr_foreach
+[   18.350131] KLG-SYM erofs ffffffffa0006f40 .Ltmp4
+[   18.350139] KLG-SYM erofs ffffffffa0007280 .Ltmp8
+[   18.350148] KLG-SYM erofs ffffffffa0007b70 erofs_listxattr_foreach
+[   18.350157] KLG-SYM erofs ffffffffa00073e0 .Ltmp9
+[   18.350165] KLG-SYM erofs ffffffffa00075d0 .Ltmp10
+[   18.350174] KLG-SYM erofs ffffffffa0007660 .Ltmp11
+[   18.350183] KLG-SYM erofs ffffffffa00078c0 .Ltmp12
+[   18.350191] KLG-SYM erofs ffffffffa00079b0 .Ltmp13
+[   18.350200] KLG-SYM erofs ffffffffa0007d60 erofs_xattr_copy_to_buffer
+[   18.350209] KLG-SYM erofs ffffffffa0007b60 .Ltmp14
+[   18.350217] KLG-SYM erofs ffffffffa0007d50 .Ltmp15
+[   18.350226] KLG-SYM erofs ffffffffa0007e10 .Ltmp0
+[   18.350234] KLG-SYM erofs ffffffffa0007e70 .Ltmp1
+[   18.350243] KLG-SYM erofs ffffffffa0008190 z_erofs_load_lz4_config
+[   18.350252] KLG-SYM erofs ffffffffa0008180 .Ltmp2
+[   18.350260] KLG-SYM erofs ffffffffa0008210 z_erofs_lz4_decompress
+[   18.350272] KLG-SYM erofs ffffffffa0008200 .Ltmp3
+[   18.350281] KLG-SYM erofs ffffffffa00087e0 z_erofs_transform_plain
+[   18.350290] KLG-SYM erofs ffffffffa00087d0 .Ltmp4
+[   18.350298] KLG-SYM erofs ffffffffa0008a10 .Ltmp5
+[   18.350306] KLG-SYM erofs ffffffffa000f190 .Ltmp6
+[   18.350315] KLG-SYM erofs ffffffffa0008c20 .Ltmp7
+[   18.350323] KLG-SYM erofs ffffffffa0008ca0 .Ltmp0
+[   18.350332] KLG-SYM erofs ffffffffa00095f0 z_erofs_map_blocks_fo
+[   18.350340] KLG-SYM erofs ffffffffa00095e0 .Ltmp6
+[   18.350351] KLG-SYM erofs ffffffffa0009cc0 z_erofs_load_lcluster_from_disk
+[   18.350360] KLG-SYM erofs ffffffffa0009b60 z_erofs_iomap_begin_report
+[   18.350369] KLG-SYM erofs ffffffffa0009b50 .Ltmp7
+[   18.350377] KLG-SYM erofs ffffffffa0009cb0 .Ltmp8
+[   18.350386] KLG-SYM erofs ffffffffa000a210 .Ltmp0
+[   18.350394] KLG-SYM erofs ffffffffa000a250 z_erofs_destroy_pcluster_pool
+[   18.350403] KLG-SYM erofs ffffffffa000a240 .Ltmp1
+[   18.350411] KLG-SYM erofs ffffffffa000f220 .Ltmp2
+[   18.350420] KLG-SYM erofs ffffffffa000a310 .Ltmp8
+[   18.350428] KLG-SYM erofs ffffffffa000a3b0 .Ltmp9
+[   18.350436] KLG-SYM erofs ffffffffa000ab10 __erofs_try_to_release_pcluster
+[   18.350481] KLG-SYM erofs ffffffffa000ac30 z_erofs_rcu_callback
+[   18.350495] KLG-SYM erofs ffffffffa000a4f0 z_erofs_read_folio
+[   18.350532] KLG-SYM erofs ffffffffa000a4e0 .Ltmp11
+[   18.350544] KLG-SYM erofs ffffffffa000acd0 z_erofs_pcluster_readmore
+[   18.350554] KLG-SYM erofs ffffffffa000ae80 z_erofs_scan_folio
+[   18.350586] KLG-SYM erofs ffffffffa000be30 z_erofs_runqueue
+[   18.350604] KLG-SYM erofs ffffffffa000a6e0 z_erofs_readahead
+[   18.350615] KLG-SYM erofs ffffffffa000a6d0 .Ltmp14
+[   18.350625] KLG-SYM erofs ffffffffa000a980 z_erofs_cache_invalidate_folio
+[   18.350634] KLG-SYM erofs ffffffffa000a970 .Ltmp21
+[   18.350642] KLG-SYM erofs ffffffffa000a9f0 z_erofs_cache_release_folio
+[   18.350651] KLG-SYM erofs ffffffffa000a9e0 .Ltmp22
+[   18.350660] KLG-SYM erofs ffffffffa000ab00 .Ltmp26
+[   18.350668] KLG-SYM erofs ffffffffa000ac20 .Ltmp31
+[   18.350677] KLG-SYM erofs ffffffffa000acc0 .Ltmp32
+[   18.350685] KLG-SYM erofs ffffffffa000ae70 .Ltmp35
+[   18.350694] KLG-SYM erofs ffffffffa000be20 .Ltmp46
+[   18.350702] KLG-SYM erofs ffffffffa000d880 z_erofs_decompressqueue_work
+[   18.350711] KLG-SYM erofs ffffffffa000d460 z_erofs_endio
+[   18.350720] KLG-SYM erofs ffffffffa000d740 z_erofs_decompress_kickoff
+[   18.350729] KLG-SYM erofs ffffffffa000c7c0 z_erofs_decompress_queue
+[   18.350738] KLG-SYM erofs ffffffffa000c7b0 .Ltmp58
+[   18.350746] KLG-SYM erofs ffffffffa000d450 .Ltmp70
+[   18.350755] KLG-SYM erofs ffffffffa000d730 .Ltmp83
+[   18.350763] KLG-SYM erofs ffffffffa000d870 .Ltmp85
+[   18.350771] KLG-SYM erofs ffffffffa000d8f0 .Ltmp0
+[   18.350780] KLG-SYM erofs ffffffffa000d970 .Ltmp1
+[   18.350790] KLG-SYM erofs ffffffffa000d9b0 .Ltmp2
+[   18.350799] KLG-SYM erofs ffffffffa000f4e0 .Ltmp3
+[   18.350808] KLG-SYM erofs ffffffffa000dba0 .Ltmp9
+[   18.350817] KLG-SYM erofs ffffffffa000dcb0 .Ltmp12
+[   18.350826] KLG-SYM erofs ffffffffa000dd50 .Ltmp13
+[   18.350834] KLG-SYM erofs ffffffffa000de40 .Ltmp16
+[   18.350843] KLG-SYM erofs ffffffffa000dec0 .Ltmp17
+[   18.350851] KLG-SYM erofs ffffffffa000f5e0 .Ltmp18
+[   18.350860] KLG-SYM erofs ffffffffa000df70 erofs_shrink_count
+[   18.350868] KLG-SYM erofs ffffffffa000dfb0 erofs_shrink_scan
+[   18.350877] KLG-SYM erofs ffffffffa000df60 .Ltmp19
+[   18.350886] KLG-SYM erofs ffffffffa000dfa0 .Ltmp20
+[   18.350894] KLG-SYM erofs ffffffffa000e0c0 .Ltmp21
+[   18.350902] KLG-SYM erofs ffffffffa000e0f0 .Ltmp0
+[   18.350911] KLG-SYM erofs ffffffffa000e180 .Ltmp1
+[   18.350919] KLG-SYM erofs ffffffffa000e1c0 erofs_fileio_rq_submit
+[   18.350928] KLG-SYM erofs ffffffffa000e1b0 .Ltmp2
+[   18.350936] KLG-SYM erofs ffffffffa000e740 erofs_fileio_ki_complete
+[   18.350945] KLG-SYM erofs ffffffffa000e3c0 erofs_fileio_read_folio
+[   18.350954] KLG-SYM erofs ffffffffa000e3b0 .Ltmp4
+[   18.350962] KLG-SYM erofs ffffffffa000ea40 erofs_fileio_scan_folio
+[   18.351046] KLG-SYM erofs ffffffffa000e520 erofs_fileio_readahead
+[   18.351057] KLG-SYM erofs ffffffffa000e510 .Ltmp6
+[   18.351065] KLG-SYM erofs ffffffffa000e730 .Ltmp12
+[   18.351074] KLG-SYM erofs ffffffffa000ea30 .Ltmp24
+[   18.351083] KLG-SYM erofs ffffffffa0001340 __pfx_trace_event_raw_event_erofs_lookup
+[   18.351092] KLG-SYM erofs ffffffffa0001490 __pfx_perf_trace_erofs_lookup
+[   18.351101] KLG-SYM erofs ffffffffa0001610 __pfx_trace_event_raw_event_erofs_fill_inode
+[   18.351112] KLG-SYM erofs ffffffffa0001790 __pfx_perf_trace_erofs_fill_inode
+[   18.351121] KLG-SYM erofs ffffffffa0001930 __pfx_trace_event_raw_event_erofs_read_folio
+[   18.351130] KLG-SYM erofs ffffffffa0001a60 __pfx_perf_trace_erofs_read_folio
+[   18.351139] KLG-SYM erofs ffffffffa0001bb0 __pfx_trace_event_raw_event_erofs_readahead
+[   18.351148] KLG-SYM erofs ffffffffa0001cb0 __pfx_perf_trace_erofs_readahead
+[   18.351157] KLG-SYM erofs ffffffffa0001dd0 __pfx_trace_event_raw_event_erofs_map_blocks_enter
+[   18.351167] KLG-SYM erofs ffffffffa0001ed0 __pfx_perf_trace_erofs_map_blocks_enter
+[   18.351176] KLG-SYM erofs ffffffffa0001ff0 __pfx_trace_event_raw_event_erofs_map_blocks_exit
+[   18.351186] KLG-SYM erofs ffffffffa0002110 __pfx_perf_trace_erofs_map_blocks_exit
+[   18.351195] KLG-SYM erofs ffffffffa00024a0 __pfx_erofs_alloc_inode
+[   18.351204] KLG-SYM erofs ffffffffa0002540 __pfx_erofs_free_inode
+[   18.351213] KLG-SYM erofs ffffffffa0002590 __pfx_erofs_evict_inode
+[   18.351222] KLG-SYM erofs ffffffffa00025d0 __pfx_erofs_put_super
+[   18.351231] KLG-SYM erofs ffffffffa00026a0 __pfx_erofs_statfs
+[   18.351240] KLG-SYM erofs ffffffffa0002780 __pfx_erofs_show_options
+[   18.351249] KLG-SYM erofs ffffffffa0002890 __pfx_trace_raw_output_erofs_lookup
+[   18.351258] KLG-SYM erofs ffffffffa0002920 __pfx_trace_raw_output_erofs_fill_inode
+[   18.351267] KLG-SYM erofs ffffffffa00029a0 __pfx_trace_raw_output_erofs_read_folio
+[   18.351277] KLG-SYM erofs ffffffffa0002a60 __pfx_trace_raw_output_erofs_readahead
+[   18.351286] KLG-SYM erofs ffffffffa0002af0 __pfx_trace_raw_output_erofs_map_blocks_enter
+[   18.351296] KLG-SYM erofs ffffffffa0002bd0 __pfx_trace_raw_output_erofs_map_blocks_exit
+[   18.351305] KLG-SYM erofs ffffffffa0002d10 __pfx_erofs_release_device_info
+[   18.351315] KLG-SYM erofs ffffffffa0002d60 __pfx_erofs_inode_init_once
+[   18.351324] KLG-SYM erofs ffffffffa0002d90 __pfx_erofs_init_fs_context
+[   18.351332] KLG-SYM erofs ffffffffa0002e70 __pfx_erofs_kill_sb
+[   18.351341] KLG-SYM erofs ffffffffa0002f10 __pfx_erofs_fc_free
+[   18.351350] KLG-SYM erofs ffffffffa0002f40 __pfx_erofs_fc_parse_param
+[   18.351358] KLG-SYM erofs ffffffffa00031a0 __pfx_erofs_fc_get_tree
+[   18.351367] KLG-SYM erofs ffffffffa0003260 __pfx_erofs_fc_reconfigure
+[   18.351376] KLG-SYM erofs ffffffffa00032f0 __pfx_erofs_sb_free
+[   18.351385] KLG-SYM erofs ffffffffa0003380 __pfx_erofs_fc_fill_super
+[   18.351394] KLG-SYM erofs ffffffffa0003a90 __pfx_erofs_set_sysfs_name
+[   18.351402] KLG-SYM erofs ffffffffa0003b30 __pfx_erofs_scan_devices
+[   18.351411] KLG-SYM erofs ffffffffa0003dc0 __pfx_erofs_init_device
+[   18.351420] KLG-SYM erofs ffffffffa0003fa0 __pfx_erofs_encode_fh
+[   18.351429] KLG-SYM erofs ffffffffa0004020 __pfx_erofs_fh_to_dentry
+[   18.351438] KLG-SYM erofs ffffffffa0004070 __pfx_erofs_fh_to_parent
+[   18.351447] KLG-SYM erofs ffffffffa00040c0 __pfx_erofs_get_parent
+[   18.351456] KLG-SYM erofs ffffffffa0004160 __pfx_super_set_sysfs_name_generic
+[   18.351465] KLG-SYM erofs ffffffffa00049b0 __pfx_erofs_iget5_eq
+[   18.351473] KLG-SYM erofs ffffffffa00049e0 __pfx_erofs_iget5_set
+[   18.351482] KLG-SYM erofs ffffffffa00057d0 __pfx_erofs_read_folio
+[   18.351491] KLG-SYM erofs ffffffffa0005850 __pfx_erofs_readahead
+[   18.351502] KLG-SYM erofs ffffffffa00058e0 __pfx_erofs_bmap
+[   18.351518] KLG-SYM erofs ffffffffa0005910 __pfx_erofs_file_llseek
+[   18.351534] KLG-SYM erofs ffffffffa00059b0 __pfx_erofs_file_read_iter
+[   18.351545] KLG-SYM erofs ffffffffa0005a20 __pfx_erofs_iomap_begin
+[   18.351554] KLG-SYM erofs ffffffffa0005c90 __pfx_erofs_iomap_end
+[   18.351563] KLG-SYM erofs ffffffffa00061e0 __pfx_erofs_lookup
+[   18.351573] KLG-SYM erofs ffffffffa0006310 __pfx_erofs_readdir
+[   18.351581] KLG-SYM erofs ffffffffa0006940 __pfx_erofs_attr_show
+[   18.351590] KLG-SYM erofs ffffffffa00069f0 __pfx_erofs_attr_store
+[   18.351599] KLG-SYM erofs ffffffffa0006bc0 __pfx_erofs_sb_release
+[   18.351608] KLG-SYM erofs ffffffffa0006bf0 __pfx_erofs_xattr_user_list
+[   18.351617] KLG-SYM erofs ffffffffa0006c30 __pfx_erofs_xattr_generic_get
+[   18.351626] KLG-SYM erofs ffffffffa0006c80 __pfx_erofs_xattr_trusted_list
+[   18.351636] KLG-SYM erofs ffffffffa0006f40 __pfx_erofs_init_inode_xattrs
+[   18.351645] KLG-SYM erofs ffffffffa0007280 __pfx_erofs_xattr_iter_inline
+[   18.351654] KLG-SYM erofs ffffffffa00079b0 __pfx_erofs_getxattr_foreach
+[   18.351664] KLG-SYM erofs ffffffffa0007b60 __pfx_erofs_listxattr_foreach
+[   18.351673] KLG-SYM erofs ffffffffa0007d50 __pfx_erofs_xattr_copy_to_buffer
+[   18.351682] KLG-SYM erofs ffffffffa0008180 __pfx_z_erofs_load_lz4_config
+[   18.351692] KLG-SYM erofs ffffffffa0008200 __pfx_z_erofs_lz4_decompress
+[   18.351732] KLG-SYM erofs ffffffffa00087d0 __pfx_z_erofs_transform_plain
+[   18.351748] KLG-SYM erofs ffffffffa00095e0 __pfx_z_erofs_map_blocks_fo
+[   18.351761] KLG-SYM erofs ffffffffa0009b50 __pfx_z_erofs_iomap_begin_report
+[   18.351772] KLG-SYM erofs ffffffffa0009cb0 __pfx_z_erofs_load_lcluster_from_disk
+[   18.351782] KLG-SYM erofs ffffffffa000a240 __pfx_z_erofs_destroy_pcluster_pool
+[   18.351792] KLG-SYM erofs ffffffffa000a4e0 __pfx_z_erofs_read_folio
+[   18.351802] KLG-SYM erofs ffffffffa000a6d0 __pfx_z_erofs_readahead
+[   18.351811] KLG-SYM erofs ffffffffa000a970 __pfx_z_erofs_cache_invalidate_folio
+[   18.351821] KLG-SYM erofs ffffffffa000a9e0 __pfx_z_erofs_cache_release_folio
+[   18.351830] KLG-SYM erofs ffffffffa000ab00 __pfx___erofs_try_to_release_pcluster
+[   18.351840] KLG-SYM erofs ffffffffa000ac20 __pfx_z_erofs_rcu_callback
+[   18.351849] KLG-SYM erofs ffffffffa000acc0 __pfx_z_erofs_pcluster_readmore
+[   18.351859] KLG-SYM erofs ffffffffa000ae70 __pfx_z_erofs_scan_folio
+[   18.351868] KLG-SYM erofs ffffffffa000be20 __pfx_z_erofs_runqueue
+[   18.351877] KLG-SYM erofs ffffffffa000c7b0 __pfx_z_erofs_decompress_queue
+[   18.351886] KLG-SYM erofs ffffffffa000d450 __pfx_z_erofs_endio
+[   18.351895] KLG-SYM erofs ffffffffa000d730 __pfx_z_erofs_decompress_kickoff
+[   18.351905] KLG-SYM erofs ffffffffa000d870 __pfx_z_erofs_decompressqueue_work
+[   18.351914] KLG-SYM erofs ffffffffa000df60 __pfx_erofs_shrink_count
+[   18.351923] KLG-SYM erofs ffffffffa000dfa0 __pfx_erofs_shrink_scan
+[   18.351932] KLG-SYM erofs ffffffffa000e1b0 __pfx_erofs_fileio_rq_submit
+[   18.351942] KLG-SYM erofs ffffffffa000e3b0 __pfx_erofs_fileio_read_folio
+[   18.351951] KLG-SYM erofs ffffffffa000e510 __pfx_erofs_fileio_readahead
+[   18.351961] KLG-SYM erofs ffffffffa000e730 __pfx_erofs_fileio_ki_complete
+[   18.352117] KLG-SYM erofs ffffffffa000ea30 __pfx_erofs_fileio_scan_folio
+[   18.352135] KLG-SYM erofs ffffffffa0001000 
+[   18.352145] KLG-SYM erofs ffffffffa000ee7c 
+[   18.352154] KLG-SYM erofs ffffffffa000f000 
+[   18.352163] KLG-SYM erofs ffffffffa000eeb0 
+[   18.352171] KLG-SYM erofs ffffffffa000eef0 
+[   18.352182] KLG-SYM erofs ffffffffa0004fa0 erofs_read_metabuf
+[   18.352191] KLG-SYM erofs ffffffffa0004cb0 erofs_put_metabuf
+[   18.352201] KLG-SYM erofs ffffffffa000a320 z_erofs_init_super
+[   18.352210] KLG-SYM erofs ffffffffa0004210 erofs_iget
+[   18.352219] KLG-SYM erofs ffffffffa000de50 erofs_shrinker_register
+[   18.352228] KLG-SYM erofs ffffffffa0007670 erofs_xattr_prefixes_init
+[   18.352237] KLG-SYM erofs ffffffffa0006800 erofs_register_sysfs
+[   18.352246] KLG-SYM erofs ffffffffa0008a20 z_erofs_parse_cfgs
+[   18.352256] KLG-SYM erofs ffffffffa0005d50 erofs_namei
+[   18.352265] KLG-SYM erofs ffffffffa0004a60 erofs_getattr
+[   18.352274] KLG-SYM erofs ffffffffa0004b20 erofs_ioctl
+[   18.352283] KLG-SYM erofs ffffffffa0004bd0 erofs_compat_ioctl
+[   18.352292] KLG-SYM erofs ffffffffa00078d0 erofs_get_acl
+[   18.352301] KLG-SYM erofs ffffffffa00073f0 erofs_listxattr
+[   18.352310] KLG-SYM erofs ffffffffa00057a0 erofs_fiemap
+[   18.352319] KLG-SYM erofs ffffffffa0004c80 erofs_unmap_metabuf
+[   18.352328] KLG-SYM erofs ffffffffa0004f20 erofs_init_metabuf
+[   18.352338] KLG-SYM erofs ffffffffa0005030 erofs_map_blocks
+[   18.352348] KLG-SYM erofs ffffffffa0005500 erofs_map_dev
+[   18.352357] KLG-SYM erofs ffffffffa00056d0 erofs_onlinefolio_init
+[   18.352366] KLG-SYM erofs ffffffffa0005700 erofs_onlinefolio_split
+[   18.352376] KLG-SYM erofs ffffffffa0005730 erofs_onlinefolio_end
+[   18.352387] KLG-SYM erofs ffffffffa000a3c0 z_erofs_shrink_scan
+[   18.352397] KLG-SYM erofs ffffffffa0006cc0 erofs_getxattr
+[   18.352406] KLG-SYM erofs ffffffffa0007e20 z_erofs_fixup_insize
+[   18.352415] KLG-SYM erofs ffffffffa0007e80 z_erofs_stream_switch_bufs
+[   18.352424] KLG-SYM erofs ffffffffa000dcc0 __erofs_allocpage
+[   18.352433] KLG-SYM erofs ffffffffa000d9c0 z_erofs_gbuf_growsize
+[   18.352442] KLG-SYM erofs ffffffffa000d900 z_erofs_get_gbuf
+[   18.352452] KLG-SYM erofs ffffffffa000d980 z_erofs_put_gbuf
+[   18.352461] KLG-SYM erofs ffffffffa000f1a0 z_erofs_init_decompressor
+[   18.352470] KLG-SYM erofs ffffffffa0008c30 z_erofs_exit_decompressor
+[   18.352479] KLG-SYM erofs ffffffffa000f4f0 z_erofs_gbuf_init
+[   18.352487] KLG-SYM erofs ffffffffa000dbb0 z_erofs_gbuf_exit
+[   18.352496] KLG-SYM erofs ffffffffa0008cb0 z_erofs_map_blocks_iter
+[   18.352505] KLG-SYM erofs ffffffffa000dd60 erofs_release_pages
+[   18.352514] KLG-SYM erofs ffffffffa000e190 erofs_fileio_submit_bio
+[   18.352523] KLG-SYM erofs ffffffffa000e100 erofs_fileio_bio_alloc
+[   18.352532] KLG-SYM erofs ffffffffa0001000 __pfx___traceiter_erofs_lookup
+[   18.352541] KLG-SYM erofs ffffffffa0001070 __pfx___probestub_erofs_lookup
+[   18.352550] KLG-SYM erofs ffffffffa0001090 __pfx___traceiter_erofs_fill_inode
+[   18.352560] KLG-SYM erofs ffffffffa00010f0 __pfx___probestub_erofs_fill_inode
+[   18.352569] KLG-SYM erofs ffffffffa0001110 __pfx___traceiter_erofs_read_folio
+[   18.352577] KLG-SYM erofs ffffffffa0001170 __pfx___probestub_erofs_read_folio
+[   18.352586] KLG-SYM erofs ffffffffa0001190 __pfx___traceiter_erofs_readahead
+[   18.352595] KLG-SYM erofs ffffffffa0001200 __pfx___probestub_erofs_readahead
+[   18.352604] KLG-SYM erofs ffffffffa0001220 __pfx___traceiter_erofs_map_blocks_enter
+[   18.352614] KLG-SYM erofs ffffffffa0001290 __pfx___probestub_erofs_map_blocks_enter
+[   18.352623] KLG-SYM erofs ffffffffa00012b0 __pfx___traceiter_erofs_map_blocks_exit
+[   18.352632] KLG-SYM erofs ffffffffa0001320 __pfx___probestub_erofs_map_blocks_exit
+[   18.352641] KLG-SYM erofs ffffffffa0001080 __probestub_erofs_lookup
+[   18.352650] KLG-SYM erofs ffffffffa000ee7c __SCT__tp_func_erofs_lookup
+[   18.352659] KLG-SYM erofs ffffffffa0001010 __traceiter_erofs_lookup
+[   18.352668] KLG-SYM erofs ffffffffa0001100 __probestub_erofs_fill_inode
+[   18.352677] KLG-SYM erofs ffffffffa000ee84 __SCT__tp_func_erofs_fill_inode
+[   18.352686] KLG-SYM erofs ffffffffa00010a0 __traceiter_erofs_fill_inode
+[   18.352695] KLG-SYM erofs ffffffffa0001180 __probestub_erofs_read_folio
+[   18.352704] KLG-SYM erofs ffffffffa000ee8c __SCT__tp_func_erofs_read_folio
+[   18.352713] KLG-SYM erofs ffffffffa0001120 __traceiter_erofs_read_folio
+[   18.352722] KLG-SYM erofs ffffffffa0002260 __pfx__erofs_printk
+[   18.352730] KLG-SYM erofs ffffffffa0002360 __pfx_erofs_read_metadata
+[   18.352739] KLG-SYM erofs ffffffffa0001210 __probestub_erofs_readahead
+[   18.352748] KLG-SYM erofs ffffffffa000ee94 __SCT__tp_func_erofs_readahead
+[   18.352757] KLG-SYM erofs ffffffffa00011a0 __traceiter_erofs_readahead
+[   18.352766] KLG-SYM erofs ffffffffa00012a0 __probestub_erofs_map_blocks_enter
+[   18.352777] KLG-SYM erofs ffffffffa000ee9c __SCT__tp_func_erofs_map_blocks_enter
+[   18.352787] KLG-SYM erofs ffffffffa0001230 __traceiter_erofs_map_blocks_enter
+[   18.352796] KLG-SYM erofs ffffffffa0001330 __probestub_erofs_map_blocks_exit
+[   18.352805] KLG-SYM erofs ffffffffa000eea4 __SCT__tp_func_erofs_map_blocks_exit
+[   18.352814] KLG-SYM erofs ffffffffa00012c0 __traceiter_erofs_map_blocks_exit
+[   18.352823] KLG-SYM erofs ffffffffa0002270 _erofs_printk
+[   18.352832] KLG-SYM erofs ffffffffa0002370 erofs_read_metadata
+[   18.352841] KLG-SYM erofs ffffffffa0004d30 erofs_bread
+[   18.352849] KLG-SYM erofs ffffffffa0004200 __pfx_erofs_iget
+[   18.352858] KLG-SYM erofs ffffffffa0004a50 __pfx_erofs_getattr
+[   18.352867] KLG-SYM erofs ffffffffa0004b10 __pfx_erofs_ioctl
+[   18.352876] KLG-SYM erofs ffffffffa0004bc0 __pfx_erofs_compat_ioctl
+[   18.352884] KLG-SYM erofs ffffffffa0004c70 __pfx_erofs_unmap_metabuf
+[   18.352894] KLG-SYM erofs ffffffffa0004ca0 __pfx_erofs_put_metabuf
+[   18.352903] KLG-SYM erofs ffffffffa0004d20 __pfx_erofs_bread
+[   18.352912] KLG-SYM erofs ffffffffa0004f10 __pfx_erofs_init_metabuf
+[   18.352921] KLG-SYM erofs ffffffffa0004f90 __pfx_erofs_read_metabuf
+[   18.352930] KLG-SYM erofs ffffffffa0005020 __pfx_erofs_map_blocks
+[   18.352939] KLG-SYM erofs ffffffffa00054f0 __pfx_erofs_map_dev
+[   18.352948] KLG-SYM erofs ffffffffa00056c0 __pfx_erofs_onlinefolio_init
+[   18.352957] KLG-SYM erofs ffffffffa00056f0 __pfx_erofs_onlinefolio_split
+[   18.352966] KLG-SYM erofs ffffffffa0005720 __pfx_erofs_onlinefolio_end
+[   18.352975] KLG-SYM erofs ffffffffa0005790 __pfx_erofs_fiemap
+[   18.352984] KLG-SYM erofs ffffffffa00068b0 erofs_unregister_sysfs
+[   18.352993] KLG-SYM erofs ffffffffa000ded0 erofs_shrinker_unregister
+[   18.353002] KLG-SYM erofs ffffffffa00075e0 erofs_xattr_prefixes_cleanup
+[   18.353011] KLG-SYM erofs ffffffffa0005d40 __pfx_erofs_namei
+[   18.353020] KLG-SYM erofs ffffffffa00067f0 __pfx_erofs_register_sysfs
+[   18.353029] KLG-SYM erofs ffffffffa00068a0 __pfx_erofs_unregister_sysfs
+[   18.353138] KLG-SYM erofs ffffffffa0006900 __pfx_erofs_exit_sysfs
+[   18.353155] KLG-SYM erofs ffffffffa000f010 init_module
+[   18.353170] KLG-SYM erofs ffffffffa0006cb0 __pfx_erofs_getxattr
+[   18.353184] KLG-SYM erofs ffffffffa000f5f0 erofs_init_shrinker
+[   18.353198] KLG-SYM erofs ffffffffa00073e0 __pfx_erofs_listxattr
+[   18.353212] KLG-SYM erofs ffffffffa00075d0 __pfx_erofs_xattr_prefixes_cleanup
+[   18.353227] KLG-SYM erofs ffffffffa0007660 __pfx_erofs_xattr_prefixes_init
+[   18.353243] KLG-SYM erofs ffffffffa00078c0 __pfx_erofs_get_acl
+[   18.353259] KLG-SYM erofs ffffffffa000f230 z_erofs_init_subsystem
+[   18.353274] KLG-SYM erofs ffffffffa000e0d0 erofs_exit_shrinker
+[   18.353289] KLG-SYM erofs ffffffffa0007e10 __pfx_z_erofs_fixup_insize
+[   18.353305] KLG-SYM erofs ffffffffa0007e70 __pfx_z_erofs_stream_switch_bufs
+[   18.353321] KLG-SYM erofs ffffffffa000f100 erofs_init_sysfs
+[   18.353337] KLG-SYM erofs ffffffffa0006910 erofs_exit_sysfs
+[   18.353351] KLG-SYM erofs ffffffffa0008a10 __pfx_z_erofs_parse_cfgs
+[   18.353389] KLG-SYM erofs ffffffffa0008c20 __pfx_z_erofs_exit_decompressor
+[   18.353399] KLG-SYM erofs ffffffffa0008ca0 __pfx_z_erofs_map_blocks_iter
+[   18.353410] KLG-SYM erofs ffffffffa000a220 z_erofs_exit_subsystem
+[   18.353419] KLG-SYM erofs ffffffffa000eec0 cleanup_module
+[   18.353428] KLG-SYM erofs ffffffffa000a210 __pfx_z_erofs_exit_subsystem
+[   18.353438] KLG-SYM erofs ffffffffa000a310 __pfx_z_erofs_init_super
+[   18.353447] KLG-SYM erofs ffffffffa000a3b0 __pfx_z_erofs_shrink_scan
+[   18.353457] KLG-SYM erofs ffffffffa000d8f0 __pfx_z_erofs_get_gbuf
+[   18.353466] KLG-SYM erofs ffffffffa000d970 __pfx_z_erofs_put_gbuf
+[   18.353474] KLG-SYM erofs ffffffffa000d9b0 __pfx_z_erofs_gbuf_growsize
+[   18.353483] KLG-SYM erofs ffffffffa000dba0 __pfx_z_erofs_gbuf_exit
+[   18.353493] KLG-SYM erofs ffffffffa000dcb0 __pfx___erofs_allocpage
+[   18.353502] KLG-SYM erofs ffffffffa000dd50 __pfx_erofs_release_pages
+[   18.353511] KLG-SYM erofs ffffffffa000de40 __pfx_erofs_shrinker_register
+[   18.353521] KLG-SYM erofs ffffffffa000dec0 __pfx_erofs_shrinker_unregister
+[   18.353530] KLG-SYM erofs ffffffffa000e0c0 __pfx_erofs_exit_shrinker
+[   18.353540] KLG-SYM erofs ffffffffa000e0f0 __pfx_erofs_fileio_bio_alloc
+[   18.353549] KLG-SYM erofs ffffffffa000e180 __pfx_erofs_fileio_submit_bio
+[   18.353559] KLG-SYM erofs ffffffffa000f000 __pfx_init_module
+[   18.353569] KLG-SYM erofs ffffffffa000f0f0 __pfx_erofs_init_sysfs
+[   18.353578] KLG-SYM erofs ffffffffa000f190 __pfx_z_erofs_init_decompressor
+[   18.353587] KLG-SYM erofs ffffffffa000f220 __pfx_z_erofs_init_subsystem
+[   18.353596] KLG-SYM erofs ffffffffa000f4e0 __pfx_z_erofs_gbuf_init
+[   18.353605] KLG-SYM erofs ffffffffa000f5e0 __pfx_erofs_init_shrinker
+[   18.353615] KLG-SYM erofs ffffffffa000eeb0 __pfx_cleanup_module
+[   18.485647] KLG: attempt n=85 target=/mnt/host/mods/erofs.ko
+[   18.544756] KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+[   18.565206] FAULT_INJECTION: forcing a failure.
+[   18.565206] name failslab, interval 1, probability 0, space 0, times -1
+[   18.566475] CPU: 0 UID: 0 PID: 77 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) 
+[   18.566755] Tainted: [O]=OOT_MODULE
+[   18.566774] Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+[   18.566999] Call Trace:
+[   18.567107]  <TASK>
+[   18.567246]  dump_stack_lvl+0x84/0xc0
+[   18.567620]  should_fail_ex+0x38f/0x3a0
+[   18.567639]  ? should_failslab+0x56/0x70
+[   18.567656]  ? __kmalloc_cache_noprof+0x41/0x420
+[   18.567671]  ? sysfs_slab_add+0xa8/0x270
+[   18.567684]  ? do_kmem_cache_create+0x560/0x650
+[   18.567698]  ? __kmem_cache_create_args+0x12b/0x350
+[   18.567716]  ? z_erofs_init_subsystem+0x77/0x2b0 [erofs]
+[   18.567816]  ? init_module+0x98/0xe0 [erofs]
+[   18.567852]  ? do_one_initcall+0x119/0x300
+[   18.567865]  ? do_init_module+0x60/0x250
+[   18.567883]  ? __se_sys_finit_module+0x27f/0x370
+[   18.567905]  ? do_syscall_64+0xc8/0x260
+[   18.567929]  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   18.568051]  ? __create_object+0x5e/0x100
+[   18.568073]  ? sysfs_slab_add+0xa8/0x270
+[   18.568089]  should_failslab+0x56/0x70
+[   18.568105]  __kmalloc_cache_noprof+0x41/0x420
+[   18.568124]  sysfs_slab_add+0xa8/0x270
+[   18.568141]  do_kmem_cache_create+0x560/0x650
+[   18.568160]  __kmem_cache_create_args+0x12b/0x350
+[   18.568181]  z_erofs_init_subsystem+0x77/0x2b0 [erofs]
+[   18.568242]  init_module+0x98/0xe0 [erofs]
+[   18.568307]  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+[   18.568345]  ? __pfx_init_module+0x10/0x10 [erofs]
+[   18.568380]  do_one_initcall+0x119/0x300
+[   18.568411]  ? unwind_next_frame+0xba0/0xd00
+[   18.568426]  ? arch_stack_walk+0x103/0x170
+[   18.568441]  ? __is_insn_slot_addr+0x4c/0x60
+[   18.568456]  ? kernel_text_address+0xb2/0xd0
+[   18.568472]  ? __pfx_stack_trace_consume_entry+0x10/0x10
+[   18.568487]  ? __kernel_text_address+0x12/0x40
+[   18.568502]  ? unwind_get_return_address+0x1b/0x40
+[   18.568515]  ? arch_stack_walk+0x11b/0x170
+[   18.568536]  ? stack_depot_save_flags+0x3f/0x710
+[   18.568559]  ? set_track_prepare+0xeb/0x120
+[   18.568574]  ? __kmalloc_cache_noprof+0x1b5/0x420
+[   18.568587]  ? do_init_module+0x22/0x250
+[   18.568598]  ? __se_sys_finit_module+0x27f/0x370
+[   18.568612]  ? do_syscall_64+0xc8/0x260
+[   18.568624]  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   18.568646]  ? __link_object+0x15b/0x1c0
+[   18.568660]  ? __create_object+0x5e/0x100
+[   18.568674]  ? do_init_module+0x22/0x250
+[   18.568686]  ? __kmalloc_cache_noprof+0x1b5/0x420
+[   18.568704]  do_init_module+0x60/0x250
+[   18.568719]  __se_sys_finit_module+0x27f/0x370
+[   18.568755]  do_syscall_64+0xc8/0x260
+[   18.568775]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   18.568932] RIP: 0033:0x42d90d
+[   18.569462] Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+[   18.569593] RSP: 002b:00007ffc469d3258 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[   18.569646] RAX: ffffffffffffffda RBX: 0000000000000055 RCX: 000000000042d90d
+[   18.569664] RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+[   18.569679] RBP: 00007ffc469d3265 R08: 0000000000000000 R09: 6f6b0073666f7265
+[   18.569695] R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffc469d3420
+[   18.569710] R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffc469d3260
+[   18.569778]  </TASK>
+[   18.570454] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   18.610684] ------------[ cut here ]------------
+[   18.610795] kobject: '(null)' (000000009bff6528): is not initialized, yet kobject_put() is being called.
+[   18.612436] WARNING: CPU: 0 PID: 77 at lib/kobject.c:736 kobject_put+0x3b/0xc0
+[   18.612603] Modules linked in: erofs(-) klg_modwatch(O) [last unloaded: erofs]
+[   18.612883] CPU: 0 UID: 0 PID: 77 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) 
+[   18.612911] Tainted: [O]=OOT_MODULE
+[   18.612920] Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+[   18.612951] RIP: 0010:kobject_put+0x3b/0xc0
+[   18.613221] Code: 00 00 00 48 89 fb eb 08 4c 89 fb 4d 85 ff 74 78 f6 43 3c 01 75 18 90 48 8b 33 48 c7 c7 8e 8d a4 82 48 89 da e8 46 ea ea fe 90 <0f> 0b 90 90 b8 ff ff ff ff f0 0f c1 43 38 83 f8 01 75 49 4c 8b 33
+[   18.613241] RSP: 0018:ff11000006033e10 EFLAGS: 00010246
+[   18.613275] RAX: 895565b566258800 RBX: ff1100000556e980 RCX: 895565b566258800
+[   18.613286] RDX: 0000000000000000 RSI: 00000000fff7ffff RDI: ff1100007b665000
+[   18.613296] RBP: ff11000006033f00 R08: 000000000007ffff R09: ff1100007e265000
+[   18.613306] R10: 000000000017fffd R11: 00000000fff7ffff R12: ffffffffa020ff80
+[   18.613317] R13: 0000000000000000 R14: ffffffffa020ff98 R15: ffffffffa020ff88
+[   18.613444] FS:  0000000003a4c3c0(0000) GS:ff110000f5488000(0000) knlGS:0000000000000000
+[   18.613512] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   18.613537] CR2: 0000000003a4e000 CR3: 0000000006090000 CR4: 0000000000751ef0
+[   18.613623] PKRU: 55555554
+[   18.613652] Call Trace:
+[   18.613729]  <TASK>
+[   18.613750]  z_erofs_destroy_pcluster_pool+0x16/0xc0 [erofs]
+[   18.613806]  z_erofs_exit_subsystem+0x1a/0x20 [erofs]
+[   18.613841]  cleanup_module+0x1f/0x140 [erofs]
+[   18.613876]  __se_sys_delete_module+0x289/0x310
+[   18.613916]  do_syscall_64+0xc8/0x260
+[   18.613941]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   18.613961] RIP: 0033:0x42d90d
+[   18.613986] Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+[   18.613999] RSP: 002b:00007ffc469d3258 EFLAGS: 00000246 ORIG_RAX: 00000000000000b0
+[   18.614084] RAX: ffffffffffffffda RBX: 0000000000000055 RCX: 000000000042d90d
+[   18.614094] RDX: 0000000000468996 RSI: 0000000000000800 RDI: 00007ffc469d3260
+[   18.614104] RBP: 0000000000000000 R08: 0000000000000000 R09: 6f6b0073666f7265
+[   18.614113] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000001
+[   18.614122] R13: 0000000000000006 R14: 0000000000000000 R15: 00007ffc469d3260
+[   18.614147]  </TASK>
+[   18.614194] ---[ end trace 0000000000000000 ]---
+[   18.614439] ------------[ cut here ]------------
+[   18.614448] refcount_t: underflow; use-after-free.
+[   18.614495] WARNING: CPU: 0 PID: 77 at lib/refcount.c:28 refcount_warn_saturate+0xb4/0x140
+[   18.614526] Modules linked in: erofs(-) klg_modwatch(O) [last unloaded: erofs]
+[   18.614566] CPU: 0 UID: 0 PID: 77 Comm: klg-agent Tainted: G        W  O        6.18.55 #8 PREEMPT(voluntary) 
+[   18.614589] Tainted: [W]=WARN, [O]=OOT_MODULE
+[   18.614596] Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+[   18.614606] RIP: 0010:refcount_warn_saturate+0xb4/0x140
+[   18.614625] Code: ff 90 0f 0b 90 90 c3 cc cc cc cc cc 80 3d a7 36 c9 01 00 75 90 c6 05 9e 36 c9 01 01 90 48 c7 c7 27 fc a7 82 e8 ad 80 9e ff 90 <0f> 0b 90 90 c3 cc cc cc cc cc 80 3d 7c 36 c9 01 00 0f 85 64 ff ff
+[   18.614637] RSP: 0018:ff11000006033e30 EFLAGS: 00010246
+[   18.614652] RAX: 895565b566258800 RBX: 0000000000000800 RCX: 895565b566258800
+[   18.614662] RDX: 0000000000000000 RSI: 00000000fff7ffff RDI: ff1100007b665000
+[   18.614671] RBP: ff11000006033f00 R08: 000000000007ffff R09: ff1100007e265000
+[   18.614682] R10: 000000000017fffd R11: 00000000fff7ffff R12: ffffffffa020ff80
+[   18.614691] R13: 0000000000000000 R14: ffffffffa020ff98 R15: ffffffffa020ff88
+[   18.614701] FS:  0000000003a4c3c0(0000) GS:ff110000f5488000(0000) knlGS:0000000000000000
+[   18.614714] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   18.614724] CR2: 0000000003a4e000 CR3: 0000000006090000 CR4: 0000000000751ef0
+[   18.614734] PKRU: 55555554
+[   18.614742] Call Trace:
+[   18.614753]  <TASK>
+[   18.614763]  z_erofs_destroy_pcluster_pool+0x16/0xc0 [erofs]
+[   18.614844]  z_erofs_exit_subsystem+0x1a/0x20 [erofs]
+[   18.614885]  cleanup_module+0x1f/0x140 [erofs]
+[   18.614921]  __se_sys_delete_module+0x289/0x310
+[   18.614957]  do_syscall_64+0xc8/0x260
+[   18.615122]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   18.615147] RIP: 0033:0x42d90d
+[   18.615167] Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+[   18.615180] RSP: 002b:00007ffc469d3258 EFLAGS: 00000246 ORIG_RAX: 00000000000000b0
+[   18.615201] RAX: ffffffffffffffda RBX: 0000000000000055 RCX: 000000000042d90d
+[   18.615211] RDX: 0000000000468996 RSI: 0000000000000800 RDI: 00007ffc469d3260
+[   18.615220] RBP: 0000000000000000 R08: 0000000000000000 R09: 6f6b0073666f7265
+[   18.615229] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000001
+[   18.615239] R13: 0000000000000006 R14: 0000000000000000 R15: 00007ffc469d3260
+[   18.615263]  </TASK>
+[   18.615271] ---[ end trace 0000000000000000 ]---
+[   27.887624] kmemleak: 4 new suspected memory leaks (see /sys/kernel/debug/kmemleak)

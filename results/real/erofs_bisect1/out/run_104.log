@@ -1,0 +1,8 @@
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=104
+@@ATTEMPT n=104 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END

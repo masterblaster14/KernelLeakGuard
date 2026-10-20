@@ -1,0 +1,147 @@
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=85
+@@ATTEMPT n=85 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 1 UID: 0 PID: 130 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? __kmalloc_cache_noprof+0x41/0x420
+K  ? sysfs_slab_add+0xa8/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x77/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __create_object+0x5e/0x100
+K  ? sysfs_slab_add+0xa8/0x270
+K  should_failslab+0x56/0x70
+K  __kmalloc_cache_noprof+0x41/0x420
+K  sysfs_slab_add+0xa8/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x77/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007fffe7dd7e08 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 0000000000000055 RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007fffe7dd7e15 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007fffe7dd7fd0
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007fffe7dd7e10
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+K ------------[ cut here ]------------
+K kobject: '(null)' (0000000004bd8a8e): is not initialized, yet kobject_put() is being called.
+K WARNING: CPU: 0 PID: 130 at lib/kobject.c:736 kobject_put+0x3b/0xc0
+K Modules linked in: erofs(-) klg_modwatch(O) [last unloaded: erofs]
+K CPU: 0 UID: 0 PID: 130 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K RIP: 0010:kobject_put+0x3b/0xc0
+K Code: 00 00 00 48 89 fb eb 08 4c 89 fb 4d 85 ff 74 78 f6 43 3c 01 75 18 90 48 8b 33 48 c7 c7 8e 8d a4 82 48 89 da e8 46 ea ea fe 90 <0f> 0b 90 90 b8 ff ff ff ff f0 0f c1 43 38 83 f8 01 75 49 4c 8b 33
+K RSP: 0018:ff11000006663e10 EFLAGS: 00010246
+K RAX: d231525339b70800 RBX: ff11000005b3b980 RCX: d231525339b70800
+K RDX: 0000000000000000 RSI: 00000000fff7ffff RDI: ff1100007b665000
+K RBP: ff11000006663f00 R08: 000000000007ffff R09: ff1100007e265000
+K R10: 000000000017fffd R11: 00000000fff7ffff R12: ffffffffa020ff80
+K R13: 0000000000000000 R14: ffffffffa020ff98 R15: ffffffffa020ff88
+K FS:  00000000269db3c0(0000) GS:ff110000f5488000(0000) knlGS:0000000000000000
+K CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+K CR2: 00007fffe7dd5d88 CR3: 000000000662a000 CR4: 0000000000751ef0
+K PKRU: 55555554
+K Call Trace:
+K  <TASK>
+K  z_erofs_destroy_pcluster_pool+0x16/0xc0 [erofs]
+K  z_erofs_exit_subsystem+0x1a/0x20 [erofs]
+K  cleanup_module+0x1f/0x140 [erofs]
+K  __se_sys_delete_module+0x289/0x310
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007fffe7dd7e08 EFLAGS: 00000246 ORIG_RAX: 00000000000000b0
+K RAX: ffffffffffffffda RBX: 0000000000000055 RCX: 000000000042d90d
+K RDX: 0000000000468996 RSI: 0000000000000800 RDI: 00007fffe7dd7e10
+K RBP: 0000000000000000 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000001
+K R13: 0000000000000006 R14: 0000000000000000 R15: 00007fffe7dd7e10
+K  </TASK>
+K ---[ end trace 0000000000000000 ]---
+K ------------[ cut here ]------------
+K refcount_t: underflow; use-after-free.
+K WARNING: CPU: 0 PID: 130 at lib/refcount.c:28 refcount_warn_saturate+0xb4/0x140
+K Modules linked in: erofs(-) klg_modwatch(O) [last unloaded: erofs]
+K CPU: 0 UID: 0 PID: 130 Comm: klg-agent Tainted: G        W  O        6.18.55 #8 PREEMPT(voluntary) 
+K Tainted: [W]=WARN, [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K RIP: 0010:refcount_warn_saturate+0xb4/0x140
+K Code: ff 90 0f 0b 90 90 c3 cc cc cc cc cc 80 3d a7 36 c9 01 00 75 90 c6 05 9e 36 c9 01 01 90 48 c7 c7 27 fc a7 82 e8 ad 80 9e ff 90 <0f> 0b 90 90 c3 cc cc cc cc cc 80 3d 7c 36 c9 01 00 0f 85 64 ff ff
+K RSP: 0018:ff11000006663e30 EFLAGS: 00010246
+K RAX: d231525339b70800 RBX: 0000000000000800 RCX: d231525339b70800
+K RDX: 0000000000000000 RSI: 00000000fff7ffff RDI: ff1100007b665000
+K RBP: ff11000006663f00 R08: 000000000007ffff R09: ff1100007e265000
+K R10: 000000000017fffd R11: 00000000fff7ffff R12: ffffffffa020ff80
+K R13: 0000000000000000 R14: ffffffffa020ff98 R15: ffffffffa020ff88
+K FS:  00000000269db3c0(0000) GS:ff110000f5488000(0000) knlGS:0000000000000000
+K CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+K CR2: 00007fffe7dd5d88 CR3: 000000000662a000 CR4: 0000000000751ef0
+K PKRU: 55555554
+K Call Trace:
+K  <TASK>
+K  z_erofs_destroy_pcluster_pool+0x16/0xc0 [erofs]
+K  z_erofs_exit_subsystem+0x1a/0x20 [erofs]
+K  cleanup_module+0x1f/0x140 [erofs]
+K  __se_sys_delete_module+0x289/0x310
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007fffe7dd7e08 EFLAGS: 00000246 ORIG_RAX: 00000000000000b0
+K RAX: ffffffffffffffda RBX: 0000000000000055 RCX: 000000000042d90d
+K RDX: 0000000000468996 RSI: 0000000000000800 RDI: 00007fffe7dd7e10
+K RBP: 0000000000000000 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000001
+K R13: 0000000000000006 R14: 0000000000000000 R15: 00007fffe7dd7e10
+K  </TASK>
+K ---[ end trace 0000000000000000 ]---
+@@END

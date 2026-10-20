@@ -10,7 +10,7 @@
   },
   "stats": {
     "alloc_sites": 0,
-    "analysis_ms": 0.23627799999999999,
+    "analysis_ms": 0.27979999999999999,
     "budget_exhausted": 0,
     "candidates": 0,
     "functions": 3

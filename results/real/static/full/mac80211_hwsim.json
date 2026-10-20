@@ -18,115 +18,16 @@
         "file": "linux-6.18.55/drivers/net/wireless/virtual/mac80211_hwsim.c",
         "line": 6500
       }
+    ],
+    "init_mac80211_hwsim": [
+      {
+        "allocator": "alloc_netdev_mqs",
+        "file": "linux-6.18.55/drivers/net/wireless/virtual/mac80211_hwsim.c",
+        "line": 7189
+      }
     ]
   },
-  "candidates": [
-    {
-      "alloc": {
-        "col": 12,
-        "file": "linux-6.18.55/drivers/net/wireless/virtual/mac80211_hwsim.c",
-        "line": 6489
-      },
-      "alloc_size": -1,
-      "allocator": "kstrndup",
-      "approximate": false,
-      "category": "missing-release-on-error-path",
-      "confidence": "high",
-      "exit": {
-        "col": 1,
-        "file": "linux-6.18.55/drivers/net/wireless/virtual/mac80211_hwsim.c",
-        "line": 6518
-      },
-      "exit_kind": "error",
-      "fix": {
-        "col": 4,
-        "exclusive": true,
-        "file": "linux-6.18.55/drivers/net/wireless/virtual/mac80211_hwsim.c",
-        "line": 6509
-      },
-      "function": "hwsim_new_radio_nl",
-      "id": "mac80211_hwsim:hwsim_new_radio_nl:6489:6518",
-      "module": "mac80211_hwsim",
-      "path_lines": [
-        6489,
-        6494,
-        6497,
-        6500,
-        6501,
-        6505,
-        6509,
-        6518
-      ],
-      "release_sites": [
-        {
-          "col": 2,
-          "file": "linux-6.18.55/drivers/net/wireless/virtual/mac80211_hwsim.c",
-          "line": 6515
-        }
-      ],
-      "return_value": "-EINVAL",
-      "triggers": [
-        {
-          "callee": "parse_pmsr_capa",
-          "file": "linux-6.18.55/drivers/net/wireless/virtual/mac80211_hwsim.c",
-          "kind": "call",
-          "line": 6507
-        }
-      ],
-      "source_path": "linux-6.18.55/drivers/net/wireless/virtual/mac80211_hwsim.c"
-    },
-    {
-      "alloc": {
-        "col": 15,
-        "file": "linux-6.18.55/drivers/net/wireless/virtual/mac80211_hwsim.c",
-        "line": 6500
-      },
-      "alloc_size": 20,
-      "allocator": "kmalloc",
-      "approximate": false,
-      "category": "missing-release-on-error-path",
-      "confidence": "high",
-      "exit": {
-        "col": 1,
-        "file": "linux-6.18.55/drivers/net/wireless/virtual/mac80211_hwsim.c",
-        "line": 6518
-      },
-      "exit_kind": "error",
-      "fix": {
-        "col": 4,
-        "exclusive": true,
-        "file": "linux-6.18.55/drivers/net/wireless/virtual/mac80211_hwsim.c",
-        "line": 6509
-      },
-      "function": "hwsim_new_radio_nl",
-      "id": "mac80211_hwsim:hwsim_new_radio_nl:6500:6518",
-      "module": "mac80211_hwsim",
-      "path_lines": [
-        6500,
-        6501,
-        6505,
-        6509,
-        6518
-      ],
-      "release_sites": [
-        {
-          "col": 2,
-          "file": "linux-6.18.55/drivers/net/wireless/virtual/mac80211_hwsim.c",
-          "line": 6516
-        }
-      ],
-      "return_value": "-EINVAL",
-      "triggers": [
-        {
-          "callee": "parse_pmsr_capa",
-          "file": "linux-6.18.55/drivers/net/wireless/virtual/mac80211_hwsim.c",
-          "kind": "call",
-          "line": 6507
-        }
-      ],
-      "source_path": "linux-6.18.55/drivers/net/wireless/virtual/mac80211_hwsim.c"
-    }
-  ],
+  "candidates": [],
   "module": "mac80211_hwsim",
   "options": {
     "branch_correlation": true,
@@ -135,10 +36,10 @@
     "interprocedural": true
   },
   "stats": {
-    "alloc_sites": 3,
-    "analysis_ms": 9.826976,
+    "alloc_sites": 4,
+    "analysis_ms": 10.643017,
     "budget_exhausted": 0,
-    "candidates": 2,
+    "candidates": 0,
     "functions": 155
   },
   "tool": "klg-analyze"

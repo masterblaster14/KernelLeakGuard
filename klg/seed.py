@@ -34,7 +34,9 @@ OUT = config.RESULTS / "seeded"
 
 
 def _modname(spec: dict) -> str:
-    return Path(spec["module_file"]).stem.replace("-", "_")
+    """Kernel module name: spec "module" (multi-file modules such as zram, built
+    from zram_drv.c + zcomp.c + ...) or the source file's stem."""
+    return spec.get("module") or Path(spec["module_file"]).stem.replace("-", "_")
 
 
 def _func_range(lines: list[str], func: str) -> tuple[int, int]:
@@ -82,20 +84,43 @@ def _apply(spec: dict, src_text: str) -> tuple[str, int]:
                        f"{spec['function']}() (occurrence {want})")
 
 
-def _build_module(name: str, src: Path, work: Path, orig_dir: str) -> Path:
+def _build_module(name: str, src: Path, work: Path, orig_dir: str,
+                  file_name: str | None = None) -> Path:
+    """Build module `name` out of tree in `work` with `src` as its source.
+
+    file_name set (multi-file module): the module's whole source directory is
+    copied, `src` replaces file_name, and the directory's own Makefile lists
+    the objects. Otherwise the module is the single file <name>.c."""
     work.mkdir(parents=True, exist_ok=True)
-    shutil.copy(src, work / f"{name}.c")
-    # Some drivers include private headers from their own tree directory
-    # (e.g. scsi_debug.c -> "sd.h"); add that directory to the include path.
-    (work / "Kbuild").write_text(
-        f"obj-m += {name}.o\nccflags-y += -g -I$(srctree)/{orig_dir}\n")
+    flags = f"ccflags-y += -g -I$(srctree)/{orig_dir}\n"
+    if file_name:
+        sdir = config.KSRC / orig_dir
+        for f in list(sdir.glob("*.c")) + list(sdir.glob("*.h")):
+            shutil.copy(f, work / f.name)
+        shutil.copy(src, work / file_name)
+        # Kbuild takes precedence over Makefile in M=.
+        (work / "Kbuild").write_text((sdir / "Makefile").read_text() + "\n" + flags)
+    else:
+        shutil.copy(src, work / f"{name}.c")
+        # Some drivers include private headers from their own tree directory
+        # (e.g. scsi_debug.c -> "sd.h"); add that directory to the include path.
+        (work / "Kbuild").write_text(f"obj-m += {name}.o\n" + flags)
     subprocess.run(["make", "-C", str(config.KSRC), f"O={config.KBUILD}", "LLVM=1",
                     f"M={work}", "-j4", "modules"], check=True, capture_output=True, text=True)
     return work / f"{name}.ko"
 
 
 def _analyze(name: str, ko: Path, work: Path, tag: str) -> dict:
-    bc = build.emit_ir(ko.with_suffix(".o"), work / "ir", cwd=work)
+    # Every C object of the module (kbuild's .mod list), linked into one bitcode.
+    objs = [work / o for o in ko.with_suffix(".mod").read_text().split()]
+    bcs = [build.emit_ir(o, work / "ir" / "objs", cwd=work) for o in objs
+           if (work / (Path(o).stem + ".c")).exists()]
+    if len(bcs) == 1:
+        bc = bcs[0]
+    else:
+        bc = work / "ir" / f"{name}.bc"
+        subprocess.run(["llvm-link", "-o", str(bc), *map(str, bcs)], check=True,
+                       capture_output=True, text=True)
     return analyze.analyze_module(bc, name, out_dir=work / "static" / tag)
 
 
@@ -105,21 +130,38 @@ def _func_warnings(rep: dict, func: str) -> set[tuple[int, int]]:
             for c in rep["candidates"] if c["function"] == func}
 
 
+VM_FIELDS = ("confirmed", "verdicts", "evidence", "crashes", "sweep_max",
+             "fix_runtime_clean", "vm_run")
+
+
 def run_seed(spec: dict, skip_vm: bool) -> dict:
     name = _modname(spec)
     orig_dir = str(Path(spec["module_file"]).parent)
     real_src = config.KSRC / spec["module_file"]
     work = OUT / spec["name"]
+    # A seed whose leak kmemleak cannot observe opts out of the VM ("vm": false,
+    # with the reason in "vm_note").
+    skip_vm = skip_vm or spec.get("vm", True) is False
+    previous = {}
     if work.exists():
-        shutil.rmtree(work)
-    work.mkdir(parents=True)
+        if skip_vm and (work / "result.json").exists():
+            # --skip-vm re-checks the static part only: keep the earlier VM
+            # results and their runtime evidence.
+            previous = json.loads((work / "result.json").read_text())
+            for sub in ("buggy", "fixed"):
+                if (work / sub).exists():
+                    shutil.rmtree(work / sub)
+        else:
+            shutil.rmtree(work)
+    work.mkdir(parents=True, exist_ok=True)
 
     # Baseline: the unmodified upstream module (= the fixed version too).
     base = work / "fixed"
     base.mkdir()
     base_src = base / "src.c"
     base_src.write_text(real_src.read_text())
-    bko = _build_module(name, base_src, base, orig_dir)
+    multi = Path(spec["module_file"]).name if spec.get("module") else None
+    bko = _build_module(name, base_src, base, orig_dir, multi)
     brep = _analyze(name, bko, base, "fixed")
     base_warn = _func_warnings(brep, spec["function"])
 
@@ -128,7 +170,7 @@ def run_seed(spec: dict, skip_vm: bool) -> dict:
     buggy = work / "buggy"
     buggy.mkdir()
     (buggy / "src.c").write_text(patched_text)
-    ko = _build_module(name, buggy / "src.c", buggy, orig_dir)
+    ko = _build_module(name, buggy / "src.c", buggy, orig_dir, multi)
     rep = _analyze(name, ko, buggy, "buggy")
     # The seeded leak is a warning the removal introduced (absent in baseline).
     seeded = sorted(_func_warnings(rep, spec["function"]) - base_warn)
@@ -138,6 +180,7 @@ def run_seed(spec: dict, skip_vm: bool) -> dict:
               "function": spec["function"], "removed": spec["remove"],
               "removed_line": removed_line, "bug": spec["bug"],
               "reachable": spec.get("reachable", ""),
+              "history": spec.get("history"),
               "detected": bool(seeded),
               "pre_existing_warnings": len(base_warn),
               "warnings": [{"alloc": c["alloc"]["line"], "allocator": c["allocator"],
@@ -152,7 +195,13 @@ def run_seed(spec: dict, skip_vm: bool) -> dict:
     result["dependencies"] = deps
 
     # --- confirm in the VM -------------------------------------------------
+    # "sweep_max": map only the first N init fault points. The seeded function
+    # runs early in init; later fault points of some modules crash the guest
+    # (null_blk: from n ~ 739) and add hours under TCG without adding evidence.
     result["confirmed"] = False
+    saved_max = verify.SWEEP_MAX_INIT
+    verify.SWEEP_MAX_INIT = spec.get("sweep_max", saved_max)
+    result["sweep_max"] = verify.SWEEP_MAX_INIT
     if not skip_vm and cand:
         mods = {name: {"ko": ko, "src": buggy / "src.c"}}
         evidence.KO_PATHS[name] = ko
@@ -173,7 +222,8 @@ def run_seed(spec: dict, skip_vm: bool) -> dict:
     # --- fix: re-inserting the removed statement is exactly the baseline ----
     # (built and analysed above). The fix is valid when the baseline compiles
     # and no longer carries the seeded warning.
-    result["fix_patch"] = _unified(patched_text, real_src.read_text(), f"{name}.c")
+    result["fix_patch"] = _unified(patched_text, real_src.read_text(),
+                                    Path(spec["module_file"]).name)
     result["fix_compiles"] = True
     result["fix_static_clean"] = not (set(seeded) & _func_warnings(brep, spec["function"]))
     result["fix_runtime_clean"] = None
@@ -181,9 +231,15 @@ def run_seed(spec: dict, skip_vm: bool) -> dict:
         mods = {name: {"ko": bko, "src": base_src}}
         evidence.KO_PATHS[name] = bko
         targets = [verify.Target(name, "init", f"/mnt/host/mods/{name}.ko")]
-        fver = verify.run(mods, {name: brep}, out_root=base / "runtime", baselines=False,
+        fver = verify.run(mods, {name: brep}, out_root=work / "runtime_fixed", baselines=False,
                           targets=targets, gt=None, inject_fns=[], resilient=True)
         result["fix_runtime_clean"] = not any(v["status"] == "confirmed" for v in fver["verdicts"])
+    verify.SWEEP_MAX_INIT = saved_max
+    result["vm_run"] = not skip_vm and bool(cand)
+    if not result["vm_run"] and previous.get("vm_run", "verdicts" in previous):
+        result.update({k: previous[k] for k in VM_FIELDS if k in previous})
+    if spec.get("vm_note"):
+        result["vm_note"] = spec["vm_note"]
     result["fixed"] = (result["fix_compiles"] and result["fix_static_clean"]
                        and (result["fix_runtime_clean"] in (True, None)))
     (work / "result.json").write_text(json.dumps(result, indent=2))
@@ -208,8 +264,13 @@ def run(only: list[str] | None = None, skip_vm: bool = False) -> list[dict]:
         r = run_seed(spec, skip_vm)
         results.append(r)
         print(f"       detected={r['detected']} confirmed={r['confirmed']} fixed={r['fixed']}")
-    (OUT / "summary.json").write_text(json.dumps(results, indent=2))
-    ok = sum(1 for r in results if r["detected"] and (r["confirmed"] or skip_vm))
-    print(f"[klg] seeded bugs: {ok}/{len(results)} detected"
-          + ("" if skip_vm else " and confirmed in the VM"))
+    # The summary covers every seed in seeds/, also those not re-run (--only).
+    every = [json.loads((OUT / s["name"] / "result.json").read_text())
+             for s in (json.loads(p.read_text()) for p in sorted(SEED_DIR.glob("*.json")))
+             if (OUT / s["name"] / "result.json").exists()]
+    (OUT / "summary.json").write_text(json.dumps(every, indent=2))
+    det = sum(1 for r in every if r["detected"])
+    conf = sum(1 for r in every if r["detected"] and r.get("confirmed"))
+    print(f"[klg] seeded bugs: {det}/{len(every)} detected, {conf}/{len(every)} "
+          "confirmed in the VM")
     return results

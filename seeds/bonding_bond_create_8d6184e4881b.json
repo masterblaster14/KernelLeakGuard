@@ -1,0 +1,18 @@
+{
+  "name": "bonding_bond_create_8d6184e4881b",
+  "module_file": "drivers/net/bonding/bond_main.c",
+  "module": "bonding",
+  "function": "bond_create",
+  "remove": "free_netdev(bond_dev);",
+  "occurrence": 1,
+  "sweep_max": 60,
+  "history": {
+    "commit": "8d6184e4881b",
+    "subject": "bonding: fix device leak on error in bond_create()",
+    "date": "2010-02-27",
+    "url": "https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8d6184e4881b"
+  },
+  "bug": "A real bug that shipped in Linux until 2010: when register_netdevice() fails, bond_create() returns without free_netdev(), leaking the net_device allocated by alloc_netdev_mq(). Upstream commit 8d6184e4881b added the release; removing it from Linux 6.18.55 restores the original bug.",
+  "reachable": "bonding_init() calls bond_create() for each of max_bonds (default 1) at module load and propagates its error, so failing an allocation inside register_netdevice() with fail-nth makes initialisation fail and leaves the net_device unreferenced.",
+  "reference": "Historical bug re-introduction: the fix is the upstream patch."
+}

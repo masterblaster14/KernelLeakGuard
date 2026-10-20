@@ -229,14 +229,15 @@
         1698,
         1701,
         1707,
-        1708,
         1712,
         1723,
         1724,
+        1725,
         1729,
         1746,
         1749,
         1711,
+        1708,
         1753,
         1754,
         1757,
@@ -297,75 +298,6 @@
         }
       ],
       "source_path": "linux-6.18.55/fs/erofs/zdata.c"
-    },
-    {
-      "alloc": {
-        "col": 9,
-        "file": "linux-6.18.55/fs/erofs/zdata.c",
-        "line": 273
-      },
-      "alloc_size": -1,
-      "allocator": "kmem_cache_alloc",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 2,
-        "file": "linux-6.18.55/fs/erofs/zdata.c",
-        "line": 278
-      },
-      "exit_kind": "unknown",
-      "fix": null,
-      "function": "z_erofs_alloc_pcluster",
-      "id": "erofs:z_erofs_alloc_pcluster:273:278",
-      "module": "erofs",
-      "path_lines": [
-        273,
-        274,
-        276,
-        267,
-        270,
-        278,
-        279
-      ],
-      "release_sites": [],
-      "return_value": "?",
-      "triggers": [],
-      "source_path": "linux-6.18.55/fs/erofs/zdata.c"
-    },
-    {
-      "alloc": {
-        "col": 9,
-        "file": "linux-6.18.55/fs/erofs/zdata.c",
-        "line": 273
-      },
-      "alloc_size": -1,
-      "allocator": "kmem_cache_alloc",
-      "approximate": false,
-      "category": "ownership-not-transferred-on-error-path",
-      "confidence": "medium",
-      "exit": {
-        "col": 1,
-        "file": "linux-6.18.55/fs/erofs/zdata.c",
-        "line": 279
-      },
-      "exit_kind": "error",
-      "fix": null,
-      "function": "z_erofs_alloc_pcluster",
-      "id": "erofs:z_erofs_alloc_pcluster:273:279",
-      "module": "erofs",
-      "path_lines": [
-        273,
-        274,
-        276,
-        267,
-        270,
-        279
-      ],
-      "release_sites": [],
-      "return_value": "error from kmem_cache_alloc",
-      "triggers": [],
-      "source_path": "linux-6.18.55/fs/erofs/zdata.c"
     }
   ],
   "module": "erofs",
@@ -377,9 +309,9 @@
   },
   "stats": {
     "alloc_sites": 29,
-    "analysis_ms": 36.806337,
+    "analysis_ms": 82.537281,
     "budget_exhausted": 2,
-    "candidates": 3,
+    "candidates": 1,
     "functions": 191
   },
   "tool": "klg-analyze"

@@ -1,13 +1,13 @@
-test_findings_filters (test_dashboard.TestDashboard.test_findings_filters) ... 2026-10-15 20:04:49.604 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+test_findings_filters (test_dashboard.TestDashboard.test_findings_filters) ... 2026-10-20 17:01:45.609 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ok
-test_pages_render (test_dashboard.TestDashboard.test_pages_render) ... 2026-10-15 20:04:50.820 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-10-15 20:04:50.915 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-10-15 20:04:51.014 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-10-15 20:04:51.111 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-10-15 20:04:51.228 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-10-15 20:04:51.364 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+test_pages_render (test_dashboard.TestDashboard.test_pages_render) ... 2026-10-20 17:01:46.395 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-20 17:01:46.513 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-20 17:01:46.627 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-20 17:01:46.738 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-20 17:01:46.929 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-20 17:01:47.076 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ok
-test_run_button_starts_and_finishes (test_dashboard.TestDashboard.test_run_button_starts_and_finishes) ... 2026-10-15 20:04:51.456 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+test_run_button_starts_and_finishes (test_dashboard.TestDashboard.test_run_button_starts_and_finishes) ... 2026-10-20 17:01:47.191 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ok
 test_alloc_size_reported (test_klg.TestAnalyzer.test_alloc_size_reported) ... ok
 test_branch_correlation (test_klg.TestAnalyzer.test_branch_correlation) ... ok
@@ -30,11 +30,16 @@ test_exact_line_match (test_klg.TestPlanning.test_exact_line_match) ... ok
 test_function_fallback_needs_single_site (test_klg.TestPlanning.test_function_fallback_needs_single_site) ... ok
 test_schedule_isolates_init_tests (test_klg.TestPlanning.test_schedule_isolates_init_tests) ... ok
 test_silent_fault_fallback (test_klg.TestPlanning.test_silent_fault_fallback) ... ok
+test_cleanup_branch_in_loop_is_resolved (test_klg.TestRealCodePatterns.test_cleanup_branch_in_loop_is_resolved) ... ok
+test_cleanup_switch_default_is_infeasible (test_klg.TestRealCodePatterns.test_cleanup_switch_default_is_infeasible) ... ok
+test_ownership_transferred_only_on_success (test_klg.TestRealCodePatterns.test_ownership_transferred_only_on_success) ... ok
+test_phi_return_null_path_leaks (test_klg.TestRealCodePatterns.test_phi_return_null_path_leaks) ... ok
+test_publishing_helper_is_a_lookup (test_klg.TestRealCodePatterns.test_publishing_helper_is_a_lookup) ... ok
 test_fragment_mapping_complete (test_klg.TestRealModules.test_fragment_mapping_complete) ... ok
 test_load_order_dependencies_first (test_klg.TestRealModules.test_load_order_dependencies_first) ... ok
 test_modname (test_klg.TestRealModules.test_modname) ... ok
 
 ----------------------------------------------------------------------
-Ran 27 tests in 3.462s
+Ran 32 tests in 2.894s
 
 OK

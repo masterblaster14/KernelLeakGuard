@@ -1,0 +1,2165 @@
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=173
+@@ATTEMPT n=173 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 1 UID: 0 PID: 373 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? __kmalloc_node_track_caller_noprof+0xf6/0x4d0
+K  ? kstrdup+0x34/0x70
+K  ? __kernfs_new_node+0x3b/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? kernfs_create_dir_ns+0x24/0x80
+K  ? sysfs_create_dir_ns+0x8e/0x140
+K  ? kobject_add_internal+0x1f9/0x390
+K  ? kobject_init_and_add+0xb2/0x160
+K  ? sysfs_slab_add+0x7d/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  __kmalloc_node_track_caller_noprof+0xf6/0x4d0
+K  ? __kernfs_new_node+0x3b/0x240
+K  kstrdup+0x34/0x70
+K  __kernfs_new_node+0x3b/0x240
+K  ? __kmalloc_node_track_caller_noprof+0x2cf/0x4d0
+K  ? kstrdup+0x34/0x70
+K  ? kobject_set_name_vargs+0x23/0xa0
+K  ? kobject_init_and_add+0xa2/0x160
+K  ? sysfs_slab_add+0x7d/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  kernfs_new_node+0x7a/0xb0
+K  kernfs_create_dir_ns+0x24/0x80
+K  sysfs_create_dir_ns+0x8e/0x140
+K  kobject_add_internal+0x1f9/0x390
+K  kobject_init_and_add+0xb2/0x160
+K  ? snprintf+0x56/0x80
+K  sysfs_slab_add+0x7d/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007ffc94023458 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000ad RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007ffc94023465 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffc94023620
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffc94023460
+K  </TASK>
+K kobject: kobject_add_internal failed for :a-0000376 (error: -12 parent: slab)
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=174
+@@ATTEMPT n=174 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=175
+@@ATTEMPT n=175 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 1 UID: 0 PID: 379 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? kernfs_create_dir_ns+0x24/0x80
+K  ? sysfs_create_dir_ns+0x8e/0x140
+K  ? kobject_add_internal+0x1f9/0x390
+K  ? kobject_init_and_add+0xb2/0x160
+K  ? sysfs_slab_add+0x7d/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? __kmalloc_node_track_caller_noprof+0x2cf/0x4d0
+K  ? kobject_set_name_vargs+0x23/0xa0
+K  ? kobject_init_and_add+0xa2/0x160
+K  ? sysfs_slab_add+0x7d/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  kernfs_new_node+0x7a/0xb0
+K  kernfs_create_dir_ns+0x24/0x80
+K  sysfs_create_dir_ns+0x8e/0x140
+K  kobject_add_internal+0x1f9/0x390
+K  kobject_init_and_add+0xb2/0x160
+K  ? snprintf+0x56/0x80
+K  sysfs_slab_add+0x7d/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007ffde159b0c8 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000af RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007ffde159b0d5 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffde159b290
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffde159b0d0
+K  </TASK>
+K kobject: kobject_add_internal failed for :a-0000376 (error: -12 parent: slab)
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=176
+@@ATTEMPT n=176 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=177
+@@ATTEMPT n=177 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=178
+@@ATTEMPT n=178 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=179
+@@ATTEMPT n=179 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 1 UID: 0 PID: 391 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007ffd0df30228 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000b3 RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007ffd0df30235 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffd0df303f0
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffd0df30230
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=180
+@@ATTEMPT n=180 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=181
+@@ATTEMPT n=181 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 0 UID: 0 PID: 397 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007ffe2bda6828 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000b5 RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007ffe2bda6835 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffe2bda69f0
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffe2bda6830
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=182
+@@ATTEMPT n=182 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=183
+@@ATTEMPT n=183 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 0 UID: 0 PID: 403 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007fff576175b8 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000b7 RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007fff576175c5 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007fff57617780
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007fff576175c0
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=184
+@@ATTEMPT n=184 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=185
+@@ATTEMPT n=185 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 0 UID: 0 PID: 409 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007ffc903165f8 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000b9 RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007ffc90316605 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffc903167c0
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffc90316600
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=186
+@@ATTEMPT n=186 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=187
+@@ATTEMPT n=187 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 1 UID: 0 PID: 415 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007ffdec300698 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000bb RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007ffdec3006a5 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffdec300860
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffdec3006a0
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=188
+@@ATTEMPT n=188 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=189
+@@ATTEMPT n=189 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 0 UID: 0 PID: 421 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007ffdf7c4e968 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000bd RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007ffdf7c4e975 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffdf7c4eb30
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffdf7c4e970
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=190
+@@ATTEMPT n=190 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=191
+@@ATTEMPT n=191 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 1 UID: 0 PID: 427 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007ffff03f2eb8 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000bf RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007ffff03f2ec5 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffff03f3080
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffff03f2ec0
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=192
+@@ATTEMPT n=192 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=193
+@@ATTEMPT n=193 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 1 UID: 0 PID: 433 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007fff3bed2fd8 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000c1 RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007fff3bed2fe5 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007fff3bed31a0
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007fff3bed2fe0
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=194
+@@ATTEMPT n=194 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=195
+@@ATTEMPT n=195 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 1 UID: 0 PID: 439 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007fffb8547868 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000c3 RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007fffb8547875 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007fffb8547a30
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007fffb8547870
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=196
+@@ATTEMPT n=196 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=197
+@@ATTEMPT n=197 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 1 UID: 0 PID: 445 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007fff874cdcc8 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000c5 RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007fff874cdcd5 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007fff874cde90
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007fff874cdcd0
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=198
+@@ATTEMPT n=198 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=199
+@@ATTEMPT n=199 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 1 UID: 0 PID: 451 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007ffe10fe2c78 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000c7 RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007ffe10fe2c85 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffe10fe2e40
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffe10fe2c80
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=200
+@@ATTEMPT n=200 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=201
+@@ATTEMPT n=201 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 0 UID: 0 PID: 457 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007fffcc8527c8 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000c9 RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007fffcc8527d5 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007fffcc852990
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007fffcc8527d0
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=202
+@@ATTEMPT n=202 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=203
+@@ATTEMPT n=203 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 0 UID: 0 PID: 463 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007ffc42c26f98 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000cb RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007ffc42c26fa5 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffc42c27160
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffc42c26fa0
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=204
+@@ATTEMPT n=204 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=205
+@@ATTEMPT n=205 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 1 UID: 0 PID: 469 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007ffd896ba1d8 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000cd RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007ffd896ba1e5 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffd896ba3a0
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffd896ba1e0
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=206
+@@ATTEMPT n=206 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=207
+@@ATTEMPT n=207 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 1 UID: 0 PID: 475 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007ffc647c84a8 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000cf RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007ffc647c84b5 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffc647c8670
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffc647c84b0
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=208
+@@ATTEMPT n=208 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=209
+@@ATTEMPT n=209 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 1 UID: 0 PID: 481 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007ffc6db8ee18 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000d1 RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007ffc6db8ee25 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffc6db8efe0
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffc6db8ee20
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=210
+@@ATTEMPT n=210 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=211
+@@ATTEMPT n=211 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 1 UID: 0 PID: 487 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007fffcc0b1408 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000d3 RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007fffcc0b1415 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007fffcc0b15d0
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007fffcc0b1410
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=212
+@@ATTEMPT n=212 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=213
+@@ATTEMPT n=213 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 1 UID: 0 PID: 493 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007fff70da4b98 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000d5 RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007fff70da4ba5 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007fff70da4d60
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007fff70da4ba0
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=214
+@@ATTEMPT n=214 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=215
+@@ATTEMPT n=215 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 0 UID: 0 PID: 499 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007ffda75a4ba8 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000d7 RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007ffda75a4bb5 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffda75a4d70
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffda75a4bb0
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=216
+@@ATTEMPT n=216 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=217
+@@ATTEMPT n=217 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 0 UID: 0 PID: 505 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007fff0bb75838 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000d9 RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007fff0bb75845 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007fff0bb75a00
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007fff0bb75840
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=218
+@@ATTEMPT n=218 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=219
+@@ATTEMPT n=219 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 0 UID: 0 PID: 511 Comm: klg-agent Tainted: G           O        6.18.55 #1 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  ? kernfs_new_node+0x7a/0xb0
+K  ? __kernfs_create_file+0x25/0xa0
+K  ? sysfs_add_file_mode_ns+0xaf/0x100
+K  ? internal_create_group+0x244/0x4a0
+K  ? sysfs_slab_add+0x146/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  should_failslab+0x56/0x70
+K  kmem_cache_alloc_noprof+0x45/0x400
+K  ? __kernfs_new_node+0x5c/0x240
+K  __kernfs_new_node+0x5c/0x240
+K  ? kernfs_activate+0x5b/0x70
+K  ? down_write+0x12/0x60
+K  kernfs_new_node+0x7a/0xb0
+K  __kernfs_create_file+0x25/0xa0
+K  sysfs_add_file_mode_ns+0xaf/0x100
+K  internal_create_group+0x244/0x4a0
+K  sysfs_slab_add+0x146/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x12f/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007fff5a74afc8 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 00000000000000db RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007fff5a74afd5 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007fff5a74b190
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007fff5a74afd0
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+@@END
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END
+@@BEGIN n=220
+@@ATTEMPT n=220 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+@@END

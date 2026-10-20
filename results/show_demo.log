@@ -5,8 +5,6 @@ klg_l02_goto_ladder:32 sensor_setup() kmalloc leaks at line 54 (-ENOMEM, high) -
     leak at klg_l02_goto_ladder.c:32 after failing sensor_setup+0x5f/0xb0
 klg_l03_reg_fail:33 channel_open() kzalloc leaks at line 40 (error from hw_register_channel, high) -> confirmed
     leak at klg_l03_reg_fail.c:33 after failing channel_open+0x32/0x70
-klg_l04_loop_partial:19 ring_alloc() kmalloc leaks at line 28 (0, low) -> inconclusive
-    no failing call controls the leaking path
 klg_l04_loop_partial:19 ring_alloc() kmalloc leaks at line 21 (-ENOMEM, high) -> confirmed
     leak in ring_alloc() after failing ring_alloc+0x48/0x2d0; frame has no line info (merged by optimisation), function's only allocation site is line 19
 klg_l05_usercopy:20 cfg_store() kmalloc leaks at line 25 (-EFAULT, high) -> confirmed
@@ -19,8 +17,8 @@ klg_l08_kstrdup:16 profile_load() kstrdup leaks at line 22 (-ENOMEM, high) -> co
     leak at klg_l08_kstrdup.c:16 after failing profile_load+0x3b/0x60
 klg_l09_kcalloc:17 table_build() kmalloc_array leaks at line 34 (-ENOMEM, high) -> confirmed
     leak at klg_l09_kcalloc.c:17 after failing table_build+0x44/0xc0
-klg_l10_vmalloc:22 fw_stage() vmalloc leaks at line 28 (-ENOMEM, high) -> not-reproduced
-    predicted failure injected, no object left unreferenced
+klg_l10_vmalloc:22 fw_stage() vmalloc leaks at line 28 (-ENOMEM, high) -> confirmed
+    leak at klg_l10_vmalloc.c:22 after failing fw_stage+0x37/0x80
 klg_l11_kmem_cache:22 req_submit() kmem_cache_alloc leaks at line 28 (-ENOMEM, high) -> confirmed
     leak at klg_l11_kmem_cache.c:22 after failing req_submit+0x3d/0x90
 klg_l12_multi_exit:14 packet_prepare() kmalloc leaks at line 27 (-ENOMEM, high) -> confirmed
@@ -33,7 +31,5 @@ klg_l15_ida:21 widget_add() kzalloc leaks at line 27 (error from ida_alloc, high
     no fault point reaches the failing call (klg_l15_ida.c:25)
 klg_l17_local_struct:21 transform_run() kmalloc leaks at line 27 (-ENOMEM, high) -> confirmed
     leak at klg_l17_local_struct.c:21 after failing transform_run+0x42/0x90
-klg_s09_loop_cleanup:20 ring_alloc() kmalloc leaks at line 29 (0, low) -> inconclusive
-    no failing call controls the leaking path
 klg_s09_loop_cleanup:20 ring_alloc() kmalloc leaks at line 34 (-ENOMEM, high) -> not-reproduced
     predicted failure injected, no object left unreferenced

@@ -39,6 +39,7 @@ STEPS = {
     "evaluate": "Metrics against ground truth",
     "fix": "Generate fix patches and validate them (compile, re-analyse, VM)",
     "real": "Real Linux kernel modules: static + runtime (~30 min)",
+    "seed": "Seeded leaks in real modules: detect → confirm in VM → fix (~5 min)",
 }
 
 st.set_page_config(page_title="KernelLeakGuard", page_icon="🛡️", layout="wide")
@@ -298,6 +299,70 @@ elif page == "Real kernel code":
         else:
             st.markdown("None: every injected failure in the initialisation of these modules "
                         "released its memory correctly.")
+        rc = _json(real / "root_causes.json", {})
+        if rc:
+            st.subheader("Root causes of the findings on real code")
+            for key, title in (("slub_sysfs_leak", "Slab-cache leak in the SLUB allocator"),
+                               ("f2fs_sysfs_leak", "Kobject-name leak in f2fs (regression from 2026)"),
+                               ("ntfs3_do_action_leak", "Leak in ntfs3 log replay (static finding)"),
+                               ("ufs_bforget_leak", "Leak in ufs truncation (static finding, known since 2018)"),
+                               ("null_blk_crash", "Use-after-free of module memory (null_blk)")):
+                f = rc.get(key)
+                if not f:
+                    continue
+                st.markdown(f"**{title}** — `{f['component']}`  \n**Trigger:** "
+                            f"{f.get('trigger', f.get('found_by', ''))}")
+                st.markdown("\n".join(f"{i}. {m}" for i, m in enumerate(f["mechanism"], 1)))
+                st.markdown(f"**Upstream:** {f['upstream']}")
+                if key == "slub_sysfs_leak":
+                    a, b = f["stock"], f["patched"]
+                    st.markdown(f"**Fix validated in the VM:** stock kernel {a['unreferenced']} "
+                                f"leaked objects in {a['leaking_batches']}/{a['batches']} batches; "
+                                f"patched kernel {b['unreferenced']} (sysfs failure exercised "
+                                f"{b['sysfs_failures_exercised']} times).")
+                    patch = config.ROOT / f["patch"]
+                    if patch.exists():
+                        with st.expander("Patch"):
+                            st.code(patch.read_text(), language="diff")
+                elif key == "f2fs_sysfs_leak":
+                    ib = f["introduced_by"]
+                    st.markdown(f"**Introduced by** {ib['commit']} \"{ib['subject']}\" ({ib['date']}): "
+                                f"{ib['note']}.  \n**Fix validated in the VM:** stock "
+                                f"{sum(f['stock_leaked_names'].values())} leaked names, patched "
+                                f"{sum(f['patched_leaked_names'].values())}.")
+                    patch = config.ROOT / f["patch"]
+                    if patch.exists():
+                        with st.expander("Patch"):
+                            st.code(patch.read_text(), language="diff")
+                elif key in ("ntfs3_do_action_leak", "ufs_bforget_leak"):
+                    v = f["validation"]
+                    st.markdown(f"**Fix validated statically:** compiles; warnings "
+                                f"{v['warnings_original']} → {v['warnings_patched']}, none new. "
+                                f"Runtime: {f['runtime']}.")
+                    patch = config.ROOT / f["patch"]
+                    if patch.exists():
+                        with st.expander("Patch"):
+                            st.code(patch.read_text(), language="diff")
+                else:
+                    st.markdown(f"**Crashed at fault points:** {f['crashed']} of {f['probed']}  \n"
+                                f"**Fix:** {f['fix']}")
+        seeds = _json(config.RESULTS / "seeded" / "summary.json", [])
+        if seeds:
+            st.subheader("Seeded leaks (detect → confirm → fix on real code)")
+            st.dataframe(pd.DataFrame([{
+                "module": s["module"], "function": s["function"], "removed": s["removed"],
+                "origin": (f"real bug, fixed upstream by {s['history']['commit']}"
+                           if s.get("history") else "seeded by us"),
+                "line": s["removed_line"], "detected": s["detected"],
+                "confirmed (VM)": s.get("confirmed"), "fixed": s.get("fixed")} for s in seeds]),
+                width="stretch", hide_index=True)
+            for s in seeds:
+                for e in s.get("evidence", [])[:1]:
+                    st.markdown(f"**{s['module']}:** {e['reason']}")
+                    st.code("\n".join(e.get("backtrace", [])[:8]))
+                if s.get("fix_patch"):
+                    with st.expander(f"{s['module']} fix patch"):
+                        st.code(s["fix_patch"], language="diff")
 
 elif page == "Evaluation":
     st.title("Evaluation")

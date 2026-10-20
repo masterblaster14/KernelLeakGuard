@@ -1,30 +1,109 @@
 [
   {
-    "name": "brd_blk_alloc_disk",
-    "module": "brd",
-    "file": "drivers/block/brd.c",
-    "function": "brd_alloc",
-    "removed": "brd_free_device(brd);",
-    "removed_line": 350,
-    "bug": "On the blk_alloc_disk()/add_disk() failure path of brd_alloc() the brd_device obtained from brd_find_or_alloc_device() is released by brd_free_device(brd). Removing that call leaks the brd_device (and its xarray) when disk allocation fails during module initialisation.",
-    "reachable": "brd_init() calls brd_alloc() in a loop at module load, so failing blk_alloc_disk()/add_disk() with fail-nth reproduces the leak.",
+    "name": "bonding_bond_create_8d6184e4881b",
+    "module": "bonding",
+    "file": "drivers/net/bonding/bond_main.c",
+    "function": "bond_create",
+    "removed": "free_netdev(bond_dev);",
+    "removed_line": 6509,
+    "bug": "A real bug that shipped in Linux until 2010: when register_netdevice() fails, bond_create() returns without free_netdev(), leaking the net_device allocated by alloc_netdev_mq(). Upstream commit 8d6184e4881b added the release; removing it from Linux 6.18.55 restores the original bug.",
+    "reachable": "bonding_init() calls bond_create() for each of max_bonds (default 1) at module load and propagates its error, so failing an allocation inside register_netdevice() with fail-nth makes initialisation fail and leaves the net_device unreferenced.",
+    "history": {
+      "commit": "8d6184e4881b",
+      "subject": "bonding: fix device leak on error in bond_create()",
+      "date": "2010-02-27",
+      "url": "https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8d6184e4881b"
+    },
     "detected": true,
     "pre_existing_warnings": 0,
     "warnings": [
       {
-        "alloc": 317,
-        "allocator": "brd_find_or_alloc_device",
-        "exit": 351,
-        "return": "?",
-        "confidence": "low"
+        "alloc": 6497,
+        "allocator": "alloc_netdev_mqs",
+        "exit": 6510,
+        "return": "error from register_netdevice",
+        "confidence": "medium"
       }
     ],
     "dependencies": [],
-    "confirmed": false,
-    "fix_patch": "--- a/brd.c\n+++ b/brd.c\n@@ -347,7 +347,7 @@\n out_cleanup_disk:\n \tput_disk(disk);\n out_free_dev:\n-\t/* KLG-SEED: removed brd_free_device(brd); */\n+\tbrd_free_device(brd);\n \treturn err;\n }\n \n",
+    "confirmed": true,
+    "sweep_max": 60,
+    "verdicts": {
+      "confirmed": 1
+    },
+    "evidence": [
+      {
+        "reason": "leak at bond_main.c:6497 after failing bond_create+0x66/0xa0",
+        "backtrace": [
+          "__kvmalloc_node_noprof+0x30f/0x5c0",
+          "alloc_netdev_mqs+0x86/0x580",
+          "do_one_initcall+0x119/0x300",
+          "do_init_module+0x60/0x250",
+          "__se_sys_finit_module+0x27f/0x370",
+          "do_syscall_64+0xc8/0x260",
+          "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+          "bond_create+0x44/0x0 [bonding]"
+        ]
+      }
+    ],
+    "crashes": 0,
+    "fix_patch": "--- a/bond_main.c\n+++ b/bond_main.c\n@@ -6506,7 +6506,7 @@\n \n \tres = register_netdevice(bond_dev);\n \tif (res < 0) {\n-\t\t/* KLG-SEED: removed free_netdev(bond_dev); */\n+\t\tfree_netdev(bond_dev);\n \t\tgoto out;\n \t}\n \n",
     "fix_compiles": true,
     "fix_static_clean": true,
-    "fix_runtime_clean": null,
+    "fix_runtime_clean": true,
+    "vm_run": true,
+    "fixed": true
+  },
+  {
+    "name": "null_blk_alloc_dev",
+    "module": "null_blk",
+    "file": "drivers/block/null_blk/main.c",
+    "function": "null_alloc_dev",
+    "removed": "kfree(dev);",
+    "removed_line": 812,
+    "bug": "null_alloc_dev() allocates the struct nullb_device with kzalloc() and frees it with kfree(dev) when badblocks_init() fails. Removing that call leaks the nullb_device: dev is a local variable that has not been published anywhere yet, and NULL is returned.",
+    "reachable": "null_init() calls null_alloc_dev() at module load; when it returns NULL, init fails with -ENOMEM and the module is unloaded, so failing the allocation inside badblocks_init() with fail-nth leaves the object unreferenced.",
+    "history": null,
+    "detected": true,
+    "pre_existing_warnings": 0,
+    "warnings": [
+      {
+        "alloc": 799,
+        "allocator": "kzalloc",
+        "exit": 813,
+        "return": "NULL",
+        "confidence": "medium"
+      }
+    ],
+    "dependencies": [
+      "configfs"
+    ],
+    "confirmed": true,
+    "sweep_max": 60,
+    "verdicts": {
+      "confirmed": 1
+    },
+    "evidence": [
+      {
+        "reason": "leak at main.c:799 after failing null_alloc_dev+0x63/0x210",
+        "backtrace": [
+          "__kmalloc_cache_noprof+0x1b5/0x420",
+          "do_one_initcall+0x119/0x300",
+          "do_init_module+0x60/0x250",
+          "__se_sys_finit_module+0x27f/0x370",
+          "do_syscall_64+0xc8/0x260",
+          "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+          "null_alloc_dev+0x1c/0x0 [null_blk]",
+          "init_module+0xd7/0x0 [null_blk]"
+        ]
+      }
+    ],
+    "crashes": 0,
+    "fix_patch": "--- a/main.c\n+++ b/main.c\n@@ -809,7 +809,7 @@\n \tINIT_RADIX_TREE(&dev->data, GFP_ATOMIC);\n \tINIT_RADIX_TREE(&dev->cache, GFP_ATOMIC);\n \tif (badblocks_init(&dev->badblocks, 0)) {\n-\t\t/* KLG-SEED: removed kfree(dev); */\n+\t\tkfree(dev);\n \t\treturn NULL;\n \t}\n \n",
+    "fix_compiles": true,
+    "fix_static_clean": true,
+    "fix_runtime_clean": true,
+    "vm_run": true,
     "fixed": true
   }
 ]

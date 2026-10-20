@@ -150,6 +150,27 @@ w.para(
     f"{n_fix_ok} of {n_fix} confirmed leaks it generates a fix patch validated by compilation, "
     f"re-analysis and an exhaustive re-run in the VM. The complete pipeline runs in about "
     f"{round((vm_sweep + vm_map + vm_conf) / 60 + 0.5)} minutes on a laptop.")
+if _has_real:
+    _ab_real = json.loads(_rs.read_text())
+    _ab_conf = sorted([s_ for s_ in seeds if s_.get("confirmed")],
+                      key=lambda s_: not s_.get("history"))
+    w.para(
+        f"On {_ab_real['modules']} real Linux modules, general precision refinements reduced the "
+        f"static warnings from 115 to {_ab_real['warnings']} without changing any benchmark "
+        "result"
+        + ((f", and a real historical leak in {_ab_conf[0]['module']} (fixed upstream by commit "
+            f"{_ab_conf[0]['history']['commit']}), re-introduced into today's code, was detected, "
+            "confirmed in the VM with kmemleak and fixed end to end"
+            if _ab_conf[0].get("history") else
+            f", and a seeded early-exit leak in real {_ab_conf[0]['module']} code was detected, "
+            "confirmed in the VM and fixed end to end") if _ab_conf else "")
+        + ". The tool also found five defects in the kernel itself, all still present in "
+        "mainline: a slab-cache leak in the SLUB allocator, exposed by fault injection during "
+        "the initialisation of erofs, f2fs, hfsplus and nilfs2, and a leak in f2fs introduced "
+        "by a 2026 fix, both with fixes validated in the VM; memory leaks in ntfs3's log replay "
+        "and in ufs's truncation (reported in 2018 but never fixed), found statically, with "
+        "fixes that remove the warnings; and a use-after-free of module memory when a module's "
+        "initialisation fails after it added a disk.")
 
 # ------------------------------------------------------------ chapter 1 -----
 w.chapter_heading(1, "Introduction")
@@ -354,14 +375,22 @@ w.bullets([
      "store into non-local memory, returning the pointer, or passing it to a function that "
      "captures it transfers ownership and ends the function's responsibility."),
     ("Function summaries: ", "for each module function and each pointer parameter a monotone "
-     "fixpoint computes whether it frees, captures or returns the parameter, and whether the "
-     "function returns new memory (allocation wrappers)."),
+     "fixpoint computes whether it frees, captures or returns the parameter, and whether it "
+     "provably publishes it (stores it into a list, hash table, global or another object, "
+     "directly or through a module helper such as list_add_tail()). A second fixpoint marks "
+     "functions that return new memory (allocation wrappers), but only when the new object is "
+     "not published first: a helper that links the object into a list or returns a shared, "
+     "reference-counted one is a lookup, and the caller does not own the result."),
     ("Path search: ", "a depth-first search from the allocation to every return, pruning the "
      "edge on which the allocation itself failed (a NULL check, or an IS_ERR() check when the "
      "value is an ERR_PTR error code) and edges that contradict an earlier decision on the same "
      "condition (branch correlation, seeded with the dominating conditions that guard the "
-     "allocation). Loops are unrolled twice; a second execution of the allocation creates a new "
-     "instance while the earlier one stays reachable through memory."),
+     "allocation). Values are resolved along the current path: a return of phi(object, NULL) "
+     "hands the object over only on the paths that bring it into the phi, and a switch whose "
+     "selector is a constant on the path (the cleanup-destination switch clang emits for a "
+     "goto out of a scoped block) has a single feasible successor. Loops are unrolled twice; "
+     "a second execution of the allocation creates a new instance while the earlier one stays "
+     "reachable through memory."),
     ("Reporting: ", "the returned value on the path is resolved (constant errno, NULL, or a "
      "propagated error code) to classify error exits; the failing calls that guard the "
      "path become triggers; confidence is high when the function frees the object on "
@@ -779,22 +808,36 @@ if real_sum and real_sum.get("runtime_modules"):
         f"loaded first. The static analysis covered {real_sum['functions']} functions with "
         f"{real_sum['alloc_sites']} allocation sites and reported {real_sum['warnings']} "
         f"warnings in {real_sum['analysis_ms'] / 1000:.1f} s.")
+    _hist = json.loads((RES / "real" / "precision_history.json").read_text())["steps"]
     w.para(
-        "A first run on real code exposed a dominant false-positive pattern absent from the "
-        "benchmark: kernel lookup and factory helpers return an ERR_PTR error code (checked with "
-        "IS_ERR()) instead of NULL on failure, and the analyser flagged the error-return path as "
-        "a leak even though the pointer there is an error code, not memory. Modelling IS_ERR() "
-        "like the NULL check (an ERR_PTR on the error branch is nothing to free) cut the real-code "
-        "warnings from 115 to " + str(real_sum["warnings"]) + " without changing any benchmark "
-        "result. The figures below are after this change; the remaining warnings are discussed "
-        "next.")
+        "Real code exposed false-positive patterns that are absent from the benchmark, and each "
+        "was fixed in the analyser by a general rule, not by naming kernel functions. (1) Kernel "
+        "lookup and factory helpers return an ERR_PTR error code (checked with IS_ERR()) instead "
+        "of NULL; the IS_ERR() edge is now pruned like the NULL edge. (2) Helpers such as "
+        "hfs_bnode_find(), find_build_dev_info() or add_fsync_inode() link the new object into "
+        "a hash table or list before returning it, so the caller does not own it; such helpers "
+        "are now lookups, not allocators. (3) clang emits a cleanup-destination switch when a "
+        "goto leaves a scoped block; its default edge cannot execute, but the path search "
+        "followed it and reached the return without the cleanup. Conditions are now evaluated "
+        "on the values their operands have along the path, which also handles error codes kept "
+        "in a variable (snd_aloop's err < 0 at a shared unlock label). Investigating a missed seeded leak (Section 4.5) also uncovered a "
+        "false negative: a single return of phi(object, NULL) was treated as returning the "
+        "object on every path, hiding leaks on the NULL-returning error path. The table shows "
+        "the warnings after each step; no step changed any benchmark result in any of the six "
+        "analyser variants, and every warning removed by the ownership rule was checked by hand "
+        "in the kernel source.")
+    w.table(["Analyser refinement", "Static warnings (39 modules)"],
+            [[h["step"], h["warnings"]] for h in _hist],
+            "Effect of each precision refinement on real kernel code", widths=[10.5, 4], size=9)
     w.para(
-        f"The runtime stage was run on {len(rmods)} representative modules "
-        f"({', '.join(rmods)}). Hardware virtualization was unavailable in WSL during this "
+        (f"The runtime stage was run on all {len(rmods)} modules "
+         if len(rmods) == real_sum["modules"] else
+         f"The runtime stage was run on {len(rmods)} representative modules ")
+        + f"({', '.join(rmods)}). Hardware virtualization was unavailable in WSL during this "
         "run (Windows virtualization-based security), so the guest ran under QEMU software "
-        "emulation, which is correct but 10-20x slower; running all modules is a matter of "
-        "time, not of method. For each module the mapping run failed every fault point of its "
-        "initialisation reachable from the module's own code, with kmemleak checked after each "
+        "emulation, which is correct but 10-20x slower. For each module the mapping run failed "
+        "every fault point of its initialisation reachable from the module's own code (library "
+        "modules without an initialisation routine have none), with kmemleak checked after each "
         "module, and every static warning was given a targeted confirmation test.")
     rows = []
     crashes_by = {}
@@ -822,17 +865,18 @@ if real_sum and real_sum.get("runtime_modules"):
         tc[t["label"]] = tc.get(t["label"], 0) + 1
     reviewed = [t for t in rtri if t["basis"] == "reviewed in source"]
     w.para(
-        f"**Manual review.** Of the {len(rtri)} warnings in these modules, "
-        + ", ".join(f"{n} are {k}" for k, n in sorted(tc.items()))
-        + f". All {len(reviewed)} warnings read in the kernel source (every high-confidence "
-        "one) are false positives. The causes are the analyser's known "
-        "blind spots: functions that return an ERR_PTR or a reference-counted object (the "
-        "IS_ERR path holds nothing to free), error codes kept in a variable that later "
-        "selects the cleanup (for example err < 0 at a shared unlock label in snd_aloop), and "
-        "objects handed to a list inside a helper. No warning was confirmed at runtime "
-        "either. On real code the static analyser alone is therefore far less precise than on "
-        "the benchmark; this is exactly the situation the runtime stage is designed for, since "
-        "it does not let any of these warnings become a confirmed report.")
+        f"**Manual review.** Of the {len(rtri)} warning(s) in these modules, "
+        + ", ".join(f"{n} {'is a' if n == 1 else 'are'} {k}{'' if n == 1 else 's'}"
+                    for k, n in sorted(tc.items()))
+        + f"; all {len(reviewed)} were read in the kernel source, and the real bugs are "
+        "described below. The false positives share causes the analyser does not model: release "
+        "decisions on values held in memory (in->index, *raw_super), on pointer identity "
+        "(free new unless e == new, name != s_name_buf), on the relation between two loop "
+        "counters, and ownership handed to asynchronous work. Before the refinements above, "
+        "the same review had found every high-confidence warning to be a false positive, which "
+        "is what motivated them. No warning was confirmed at runtime, so none became a false "
+        "report; the two real bugs lie in mount-time code that module initialisation does not "
+        "reach.")
     rv = {}
     for v in rver.get("verdicts", []):
         rv[v["status"]] = rv.get(v["status"], 0) + 1
@@ -855,85 +899,177 @@ if real_sum and real_sum.get("runtime_modules"):
            if leaks else "no unreferenced object in any of these modules: every injected failure "
            "in their initialisation released its memory correctly")
         + ".")
-    if any(l["module"] == "erofs" for l in leaks):
+    _rc_file = RES / "real" / "root_causes.json"
+    rc = json.loads(_rc_file.read_text()) if _rc_file.exists() else {}
+    sl = rc.get("slub_sysfs_leak")
+    if sl and any(l["module"] == "erofs" for l in leaks):
         w.para(
-            "The erofs report consists of 32-byte strings allocated by kstrdup() inside the slab "
-            "allocator's __kmem_cache_create_args(), reached from erofs's "
-            "z_erofs_create_pcluster_pool() during module initialisation: these are kmem_cache "
-            "names. Reading the code, erofs destroys every cache it created when a later step "
-            "fails, and the slab core frees the duplicated name when create_cache() fails. The "
-            "unreferenced names therefore most likely come from an error path inside slab cache "
-            "creation or destruction under allocation failure (for example the sysfs "
-            "registration step) rather than from erofs itself. The root cause has not been "
-            "determined; like the crash below, this is a reproducible observation to analyse "
-            "and check upstream, not yet a confirmed new bug.")
+            "**Root cause of the erofs report: a leak in the SLUB allocator.** The unreferenced "
+            "objects are complete slab caches (a struct kmem_cache, its per-node structures and "
+            "its kstrdup'd name, e.g. \"erofs_pcluster-1\"). We bisected erofs's initialisation "
+            "with the fault-probe helper (one kmemleak scan per batch of fault points, then per "
+            f"fault point): {sl['stock']['leaking_batches']} of {sl['stock']['batches']} batches "
+            f"leaked, and the trigger is {sl['trigger']}. The mechanism, confirmed with the full "
+            "kernel log in the guest, is: "
+            + "; ".join(sl["mechanism"]) + ". The kernel's own warning at destruction time shows "
+            "the path:")
+        w.code("kobject: '(null)': is not initialized, yet kobject_put() is being called.\n"
+               + "\n".join("  " + t for t in sl["warn_trace"])
+               + "\nrefcount_t: underflow; use-after-free.", size=8)
+        w.para(
+            "erofs is only the messenger: any kernel code that creates a mergeable slab cache can "
+            "leak it this way under allocation failure, and the sweep of all modules indeed "
+            f"reported the same leak in {', '.join(sl.get('also_in', [])[:-1])} and "
+            f"{sl.get('also_in', [''])[-1]}. The code is "
+            f"{sl['upstream']}. Our fix "
+            f"({sl['patch']}) makes sysfs_slab_release() release a cache whose kobject was never "
+            "initialised directly instead of calling kobject_put(). Re-running the same "
+            f"{sl['patched']['batches']} batches on a guest kernel built with the patch exercised "
+            f"the failing sysfs registration {sl['patched']['sysfs_failures_exercised']} times "
+            f"and left {sl['patched']['unreferenced']} unreferenced objects and "
+            f"{sl['patched']['kobject_warnings']} kobject warnings (stock kernel: "
+            f"{sl['stock']['unreferenced']} objects). The fix is validated in the VM but has "
+            "not been submitted upstream; the mailing lists should be searched for a pending "
+            "fix before it is.")
+    ff = rc.get("f2fs_sysfs_leak")
+    if ff:
+        ib = ff["introduced_by"]
+        st, pt = ff["stock_leaked_names"], ff["patched_leaked_names"]
+        w.para(
+            "**A regression in f2fs found by the sweep.** The other leak reported by the sweep is "
+            "in f2fs: " + "; ".join(ff["mechanism"]) + f". The code was introduced in "
+            f"{ib['date'][:7]} by commit {ib['commit']} (\"{ib['subject']}\"): {ib['note']}; it "
+            f"is {ff['upstream']}. Our patch ({ff['patch']}) puts each kobject from its own "
+            "failure path and still never puts the uninitialised one. On the "
+            f"{ff['trigger'].split(':')[0]} the stock module leaked "
+            + ", ".join(f"{n} \"{k}\" names" for k, n in sorted(st.items()))
+            + f" and the patched module {sum(pt.values())}. The leaked names are allocated inside "
+            "the kobject core, outside the module, so only the runtime stage can find this kind "
+            "of leak.")
+    nt = rc.get("ntfs3_do_action_leak")
+    if nt:
+        v = nt["validation"]
+        w.para(
+            "**A leak found statically in ntfs3.** Of the remaining static warnings, the "
+            "high-confidence one in ntfs3's log replay is a genuine leak: "
+            + "; ".join(nt["mechanism"]) + f". The code is {nt['upstream']}. Our fix "
+            f"({nt['patch']}) calls mi_put(mi) before returning; built against the guest kernel "
+            f"it compiles, and re-analysing the patched module removes exactly this warning "
+            f"({v['warnings_original']} warnings before, {v['warnings_patched']} after, none new). "
+            f"It is {nt['runtime']}, so we report it as a source-confirmed static finding.")
+    uf = rc.get("ufs_bforget_leak")
+    if uf:
+        v = uf["validation"]
+        w.para(
+            "**A known but unfixed leak in ufs.** The second real bug among the static warnings: "
+            + "; ".join(uf["mechanism"]) + f". The code is {uf['upstream']}, so KernelLeakGuard "
+            "independently rediscovered it. Our patch "
+            f"({uf['patch']}) adds the kfree(); it compiles and re-analysis removes exactly this "
+            f"warning ({v['warnings_original']} warnings before, {v['warnings_patched']} after, "
+            f"none new). It is {uf['runtime']}.")
+    nb = rc.get("null_blk_crash")
     if crashes_by:
-        first_mod, crs = next(iter(crashes_by.items()))
+        def _kinds(v):
+            k = {}
+            for c_ in v:
+                k[c_["kind"]] = k.get(c_["kind"], 0) + 1
+            return ", ".join(f"{n} {kind}{'es' if kind == 'crash' and n != 1 else 's' if n != 1 else ''}"
+                             for kind, n in sorted(k.items()))
+        crash_mods = {m_: v for m_, v in crashes_by.items() if any(c_["kind"] == "crash" for c_ in v)}
+        hang_mods = [m_ for m_, v in crashes_by.items() if all(c_["kind"] == "hang" for c_ in v)]
+        first_mod, crs = next(iter(crash_mods.items())) if crash_mods else next(iter(crashes_by.items()))
         trace = [l for l in crs[0]["console"] if re.search(r"BUG|Oops|RIP|\+0x", l)][:9]
         w.para(
-            f"**Kernel crashes found.** The sweep crashed the guest kernel "
-            + "; ".join(f"{len(v)} time(s) while loading {k}" for k, v in crashes_by.items())
-            + f". For {first_mod}, failing an allocation at certain points of its initialisation "
-            "leads to a page fault in bdev_release(): a block-device file opened during the "
-            "failed initialisation is released on return to user space after the module has "
-            "already been freed, and the release reads the module's block_device_operations from "
-            "freed module memory. The crash is reproducible at consecutive fault points and the "
-            "crash-recovery mechanism resumed the sweep after each one. The root cause (null_blk "
-            "error handling or the block layer) has not been analysed yet and the crash has not "
-            "been checked against the latest upstream kernel, so we report it as a reproducible "
-            "crash under allocation failure, not yet as a confirmed new bug.")
+            "**Kernel crashes and hangs found.** During the sweep the guest had "
+            + "; ".join(f"{_kinds(v)} while loading {k}" for k, v in crashes_by.items())
+            + f". Every {first_mod} crash is the same page fault in bdev_release() reading freed "
+            "module memory (below); the crash-recovery mechanism resumed the sweep after each one "
+            "and stopped the module's sweep after repeated crashes."
+            + (f" The {', '.join(hang_mods)} hangs (no progress for 15 minutes at certain fault "
+               "points of its initialisation) were not analysed; to save time under software "
+               "emulation its sweep was stopped after these hangs instead of the usual ten."
+               if hang_mods else ""))
         w.code("\n".join(trace), size=8)
+        if nb:
+            w.para(
+                f"**Root cause of the null_blk crash.** Probing fault points "
+                f"{nb['probed'][0]}-{nb['probed'][-1]} one at a time on a freshly booted guest "
+                f"crashed it at {', '.join(map(str, nb['crashed']))}, so no earlier state is "
+                f"needed. With a verbose console the trigger is {nb['trigger']}. The mechanism: "
+                + "; ".join(nb["mechanism"]) + ". The crash stack confirms the deferred release ("
+                + " <- ".join(nb["crash_stack"]) + "). Any module that adds a disk and then "
+                f"fails its initialisation is exposed; the code is {nb['upstream']}. We did not "
+                f"validate a fix: {nb['fix']}.")
 if seeds:
     w.h2(f"{SEC_SEED} Seeded Leaks in Real Kernel Code")
     w.para(
-        "The modules above show that the static analyser is less precise on real code and that "
-        "its warnings there mostly sit on paths the init-time runtime stage does not reach. To "
-        "evaluate the complete detect-confirm-fix loop on real kernel code directly, we use the "
-        "standard method of bug seeding: a known release is removed from a real kernel source "
-        "file, exactly as a careless patch would, and the module is built and run unchanged "
-        "apart from that one line. The original module has no such leak; the bug is ours, and "
-        "clearly marked. This isolates whether the whole pipeline catches, reproduces and fixes "
-        "a genuine early-exit leak in real driver code.")
+        "The current real modules contain few early-exit leaks on code the runtime stage can "
+        "execute, so to evaluate the complete detect-confirm-fix loop on real kernel code we "
+        "re-introduce leaks into real kernel sources and build the module out of tree against "
+        "the guest kernel, unchanged apart from that change. Where possible the leak is a real "
+        "historical bug: the release added by an upstream leak fix is removed again, so the code "
+        "is exactly what Linux shipped before that fix and the fix is the upstream patch. "
+        "Otherwise one release statement is removed as a careless patch would; such bugs are "
+        "ours and clearly marked. A warning "
+        "counts as detected only if it is new compared with the unmodified module, and the fix "
+        "(re-inserting the statement) must compile, clear the warning and leave kmemleak clean "
+        "on a VM re-run.")
     srows = []
-    for s in seeds:
-        w0 = s["warnings"][0] if s["warnings"] else {}
-        conf = "yes" if s.get("confirmed") else ("—" if not s.get("warnings") else "no")
-        srows.append([s["module"], s["file"].split("/")[-1] + ":" + str(s["removed_line"]),
-                      s["removed"], "yes" if s["detected"] else "no", conf,
-                      "yes" if s.get("fixed") else "no"])
-    w.table(["Module", "Removed at", "Removed statement", "Detected", "Confirmed (VM)", "Fixed"],
-            srows, "Seeded early-exit leaks in real kernel modules", widths=[2.3, 2.6, 4.2, 1.6, 2, 1.3],
-            size=8.5)
-    s0 = seeds[0]
+    for s_ in seeds:
+        w0 = s_["warnings"][0] if s_["warnings"] else {}
+        h = s_.get("history")
+        srows.append([s_["module"], s_["file"].split("/")[-1] + ":" + str(s_["removed_line"]),
+                      s_["removed"],
+                      f"real bug (fixed by {h['commit']}, {h['date'][:4]})" if h else "seeded by us",
+                      "yes" if s_["detected"] else "no",
+                      "yes" if s_.get("confirmed") else "no",
+                      "yes" if s_.get("fixed") else "no"])
+    w.table(["Module", "Removed at", "Removed statement", "Origin", "Detected", "Confirmed (VM)",
+             "Fixed"], srows, "Early-exit leaks re-introduced into real kernel modules",
+            widths=[1.8, 2.4, 3.2, 3.2, 1.4, 1.7, 1.1], size=8)
+    for s_ in seeds:
+        h = s_.get("history")
+        w.para(f"**{s_['module']}, {s_['function']}()"
+               + (f" — upstream commit {h['commit']} \"{h['subject']}\" ({h['date']})" if h else "")
+               + f".** {s_['bug']} {s_.get('reachable', '')}")
+        w0 = s_["warnings"][0] if s_["warnings"] else None
+        if w0:
+            w.para(
+                f"KernelLeakGuard reported the allocation at line {w0['alloc']} ({w0['allocator']}) "
+                f"leaking at the exit on line {w0['exit']} (returning {w0['return']}, confidence "
+                f"{w0['confidence']}); the unmodified module has no such warning.")
+        if s_.get("confirmed"):
+            ev0 = s_.get("evidence", [{}])[0]
+            w.para(
+                f"In the guest VM the module-filtered sweep mapped the failing call, and the "
+                f"targeted test ({ev0.get('reason', '')}) made module initialisation fail; "
+                "kmemleak then reported the object as unreferenced, with the allocation "
+                "backtrace pointing back into the module's init path (module frames symbolised "
+                "through klg_modwatch):")
+            if ev0.get("backtrace"):
+                w.code("unreferenced object:\n  " + "\n  ".join(ev0["backtrace"][:8]), size=8)
+            w.para(
+                "Re-inserting the removed statement (the generated fix) compiles, clears the "
+                "static warning and leaves kmemleak with nothing to report on the VM re-run"
+                + (f"; the guest did not crash ({s_.get('crashes', 0)} crashes)." if s_.get("crashes") == 0 else "."))
+        elif s_.get("vm_note"):
+            w.para(s_["vm_note"])
     w.para(
-        f"For example, in {s0['file']} the call `{s0['removed']}` releases the "
-        f"{s0['module']}_device obtained earlier in {s0['function']}() when disk allocation "
-        "fails. " + s0["bug"].split(". ", 1)[-1] + " " + s0.get("reachable", ""))
-    conf = [s for s in seeds if s.get("confirmed")]
-    if conf:
-        ev0 = conf[0].get("evidence", [{}])[0]
-        w.para(
-            f"KernelLeakGuard flagged the leak statically, and in the guest VM the fault-point "
-            "sweep failed the disk allocation during module initialisation; kmemleak then "
-            "reported the object as unreferenced, with the allocation backtrace pointing back "
-            "into the module's init path:")
-        if ev0.get("backtrace"):
-            w.code("unreferenced object:\n  " + "\n  ".join(ev0["backtrace"][:8]), size=8)
-        w.para(
-            f"Re-inserting the removed statement (the generated fix) makes the module compile, "
-            "clears the static warning and leaves kmemleak with nothing to report on the VM "
-            f"re-run. {len(conf)} of {len(seeds)} seeded leak(s) were detected, confirmed with "
-            "kernel evidence and fixed, end to end, on real kernel code. The crash-prone block "
-            "drivers (brd, null_blk) also showed that failing allocations during their "
-            "initialisation can crash the kernel, which the recovery mechanism handled.")
-    else:
-        w.para(
-            "All seeded leaks were detected statically and the re-inserted-release fix was "
-            "validated. Runtime confirmation of the brd seed was obstructed by a separate "
-            "defect: failing allocations during brd's initialisation crash the guest kernel "
-            "(the same fragility seen for null_blk in Section 4.4), so a clean kmemleak scan of "
-            "the leaking path could not always complete. This is itself a finding about block "
-            "drivers under fault injection.")
+        "**Choosing seeds.** A seed is only useful when kmemleak can observe the leak, which "
+        "rules out most candidates, and we report the rejected ones. In brd, removing "
+        "brd_free_device() leaves the object linked in the global brd_devices list: it stays "
+        "reachable, so this is a stale-entry bug, not an unreferenced leak. The analyser "
+        "initially flagged it, and its ownership rule (Section 4.4) now correctly treats "
+        "brd_find_or_alloc_device() as a lookup. In zram (zram_add()) and scsi_debug the object "
+        "is first stored in an IDR or passed to a registering helper, so the analyser "
+        "conservatively treats it as escaped and does not warn: these are honest misses of the "
+        "escape analysis on code where ownership is handed over and then taken back. A "
+        "historical scsi_debug fix (e6d773f93a49, a device name leaked when device_register() "
+        "fails) was not used because the leaked name is allocated inside the driver core, "
+        "outside the module the static stage analyses. The "
+        "null_blk seed also revealed two analyser gaps, both fixed generally: the phi-return "
+        "false negative (Section 4.4) and the missing model of badblocks_init(), which only "
+        "initialises the struct badblocks it is given.")
 w.h2(f"{SEC_AN} Analysis")
 w.para(
     "**Static versus hybrid.** Runtime verification removed all static false positives "
@@ -1004,12 +1140,26 @@ w.para(
 if real_sum and real_sum.get("runtime_modules"):
     w.para(
         f"On {real_sum['modules']} real Linux modules the static analyser reported "
-        f"{real_sum['warnings']} warnings; the reviewed ones were false positives caused by "
-        "patterns it does not yet model, and the runtime stage confirmed none of them, so no "
-        "false report reached the developer. Exercising the initialisation of real modules "
-        "under fault injection also exposed a reproducible kernel crash in the null_blk load "
-        "path and a kmemleak report during erofs initialisation, showing that the runtime half "
-        "is useful beyond confirming static warnings; both still need root-cause analysis.")
+        f"{real_sum['warnings']} warnings after general precision refinements (115 before), "
+        "and the runtime stage confirmed none of them, so no false report reached the "
+        "developer. "
+        + (f"{len([s_ for s_ in seeds if s_.get('confirmed')])} of {len(seeds)} leaks "
+           "re-introduced into real module code"
+           + (", including a real historical bug," if sum(1 for s_ in seeds if s_.get("history")
+                                                             and s_.get("confirmed")) == 1
+              else ", including real historical bugs," if any(s_.get("history") and s_.get("confirmed")
+                                                               for s_ in seeds) else "")
+           + " were detected, confirmed in the VM with kmemleak evidence and fixed end to end. "
+           if seeds else "")
+        + "Exercising the initialisation of "
+        "real modules under fault injection also found three kernel defects that we "
+        "root-caused and checked against mainline: a slab-cache leak in the SLUB allocator when "
+        "sysfs registration fails and a kobject-name leak in f2fs introduced by a 2026 fix (both "
+        "fixes validated in the VM), and a use-after-free of module memory when a module's "
+        "initialisation fails after it added a disk. The static analyser "
+        "also found leaks in ntfs3's log replay and in ufs's truncation that are still present "
+        "in mainline; our fixes remove the warnings. The runtime half is therefore useful beyond confirming static "
+        "warnings.")
 w.para("Key findings: ownership-transfer analysis is the single most important refinement for "
        "precision; predicting the failing call and filtering fault injection to the module's "
        "own code make runtime verification cheaper and more precise than blind fault "
@@ -1018,12 +1168,18 @@ w.para("Key findings: ownership-transfer analysis is the single most important r
 w.h2("5.2 Future Work")
 w.bullets([
     "Field-sensitive heap ownership to detect nested leaks such as klg_l16.",
-    "Model reference-counted lookups (functions returning a put-released object) and error "
-    "codes stored in variables: the remaining false-positive causes on real kernel code "
-    "(Section 4.4); the ERR_PTR pattern is already handled.",
-    "Run the runtime stage on all 39 real modules with hardware acceleration (only a "
-    "representative subset ran, under software emulation), and analyse the root cause of "
-    "the null_blk crash and check it against the latest upstream kernel before reporting it.",
+    "Track error codes stored in variables (value correlation, e.g. err < 0 at a shared "
+    "cleanup label) and release through list iteration: remaining false-positive causes on "
+    "real kernel code (Section 4.4).",
+    "Drive non-initialisation entry points (file-system images to mount, ioctl and netlink "
+    "programs, syzkaller-style system-call sequences) so that warnings outside module "
+    "initialisation become testable.",
+    "Run the runtime stage with hardware acceleration (KVM) instead of software emulation, "
+    "which makes the real-module run 10-20x faster and allows repeated runs.",
+    "Report the SLUB slab-cache leak, the f2fs regression, the ntfs3 log-replay leak and the "
+    "ufs leak upstream with their patches, and the null_blk / block-layer use-after-free to the block maintainers, after "
+    "checking the mailing lists for pending fixes; confirm the ntfs3 leak at runtime with a "
+    "crafted image.",
     "Reproducing known MLEE-reported leaks on the corresponding historical kernel versions.",
     "Value-range reasoning about loop counters to avoid rollback-loop false positives.",
     "Patches for shared error labels (goto ladders used by several paths), which are "

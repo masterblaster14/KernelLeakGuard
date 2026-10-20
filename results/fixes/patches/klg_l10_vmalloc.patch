@@ -1,0 +1,14 @@
+--- a/corpus/klg_l10_vmalloc.c
++++ b/corpus/klg_l10_vmalloc.c
+@@ -24,8 +24,10 @@
+ 		return -ENOMEM;
+ 
+ 	hdr = kzalloc(sizeof(*hdr), GFP_KERNEL);	/* GT:SAFE */
+-	if (!hdr)
++	if (!hdr) {
++		vfree(fw);
+ 		return -ENOMEM;		/* fw leaks here */
++	}
+ 
+ 	memset(fw, 0, FW_SIZE);
+ 	hdr->magic = 0x4b4c47;

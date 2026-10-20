@@ -1,0 +1,176 @@
+{
+  "slub_sysfs_leak": {
+    "module": "erofs",
+    "component": "mm/slub.c (sysfs_slab_add / sysfs_slab_release)",
+    "trigger": "fail-nth 85 of erofs init: kmalloc in create_unique_id(), inlined into sysfs_slab_add(), while creating the erofs_pcluster-1 cache",
+    "mechanism": [
+      "sysfs_slab_add() returns before kobject_init_and_add() when create_unique_id() fails, so the cache's kobject is never initialised",
+      "do_kmem_cache_create() treats sysfs failure as non-fatal and keeps the cache",
+      "kmem_cache_destroy() unlinks the cache and calls kobject_put() on the uninitialised kobject: WARN, refcount underflow, kmem_cache_release() never runs",
+      "the struct kmem_cache, its per-node structures and its name stay allocated and unreferenced"
+    ],
+    "stock": {
+      "batches": 9,
+      "leaking_batches": 5,
+      "unreferenced": 20
+    },
+    "patched": {
+      "batches": 9,
+      "leaking_batches": 0,
+      "unreferenced": 0,
+      "sysfs_failures_exercised": 167,
+      "kobject_warnings": 0
+    },
+    "warn_trace": [
+      "z_erofs_destroy_pcluster_pool+0x16/0xc0 [erofs]",
+      "z_erofs_exit_subsystem+0x1a/0x20 [erofs]",
+      "cleanup_module+0x1f/0x140 [erofs]",
+      "__se_sys_delete_module+0x289/0x310",
+      "do_syscall_64+0xc8/0x260",
+      "entry_SYSCALL_64_after_hwframe+0x77/0x7f"
+    ],
+    "upstream": "unchanged in mainline 7.3 and linux-next (next-20261020) as of 2026-10-20",
+    "patch": "patches/0001-mm-slub-release-cache-whose-sysfs-kobject-was-never-initialised.patch",
+    "also_in": [
+      "erofs",
+      "f2fs",
+      "hfsplus",
+      "nilfs2"
+    ]
+  },
+  "null_blk_crash": {
+    "module": "null_blk",
+    "component": "block/genhd.c disk_scan_partitions() deferred fput + module init failure",
+    "trigger": "fail-nth 739 of null_blk init: kmalloc in configfs_register_subsystem(), after null_init() has added its disk",
+    "probed": [
+      739,
+      740,
+      741,
+      742,
+      743,
+      744,
+      745
+    ],
+    "crashed": [
+      739,
+      741,
+      743,
+      745
+    ],
+    "fault_stack": [
+      "__kmalloc_cache_noprof+0x41/0x420",
+      "configfs_register_subsystem+0x2d/0x240 [configfs]",
+      "init_module+0x11b/0xff0 [null_blk]",
+      "do_one_initcall+0x119/0x300",
+      "do_init_module+0x60/0x250"
+    ],
+    "crash_stack": [
+      "blkdev_release+0x11/0x20",
+      "__fput+0xfe/0x280",
+      "task_work_run+0x8b/0xb0",
+      "exit_to_user_mode_loop+0xaa/0xc0"
+    ],
+    "mechanism": [
+      "add_disk() -> disk_scan_partitions() opens the whole disk (taking a module reference through disk->fops->owner) and drops it with fput(); called from a user task (finit_module), the final __fput() is deferred to task_work",
+      "configfs_register_subsystem() then fails; null_init() destroys its device and returns the error, and the module loader frees the module",
+      "on return to user space the deferred __fput() runs bdev_release(), whose module_put(disk->fops->owner) reads the freed module's block_device_operations"
+    ],
+    "upstream": "unchanged in mainline 7.3 (disk_scan_partitions() still uses fput(); null_init() still registers configfs after creating devices)",
+    "fix": "releasing the scan file synchronously (__fput_sync()) is documented as reserved for kernel threads; the fix belongs to the block / module-loader maintainers"
+  },
+  "ntfs3_do_action_leak": {
+    "module": "ntfs3",
+    "component": "fs/ntfs3/fslog.c do_action() (log replay)",
+    "found_by": "static analysis (high-confidence warning), confirmed by reading the source",
+    "mechanism": [
+      "for an InitializeFileRecordSegment log record whose MFT record cannot be read (mi_get() fails), do_action() allocates a struct mft_inode with kzalloc()",
+      "mi_format_new() can fail (mi_init()'s buffer allocation, or ntfs_get_bh() after mi->mrec was allocated) and does not free mi",
+      "do_action() then returns the error without mi_put(): the mft_inode (and mi->mrec) leak; on success the object is released by mi_put() at the out label"
+    ],
+    "upstream": "unchanged in mainline 7.3 and linux-next (next-20261020); a web search found no existing report or fix",
+    "patch": "patches/0002-fs-ntfs3-free-mft_inode-when-mi_format_new-fails-in-do_action.patch",
+    "validation": {
+      "module": "ntfs3",
+      "file": "fs/ntfs3/fslog.c",
+      "compiles": true,
+      "warnings_original": 5,
+      "warnings_patched": 4,
+      "removed": [
+        [
+          "do_action",
+          3166,
+          3173,
+          "high"
+        ],
+        [
+          "do_action",
+          3166,
+          3837,
+          "high"
+        ]
+      ],
+      "added": [
+        [
+          "do_action",
+          3166,
+          3842,
+          "high"
+        ]
+      ]
+    },
+    "runtime": "not confirmed at runtime, which needs an NTFS image with a dirty log that replays InitializeFileRecordSegment for an unreadable record"
+  },
+  "f2fs_sysfs_leak": {
+    "module": "f2fs",
+    "component": "fs/f2fs/sysfs.c f2fs_init_sysfs()",
+    "found_by": "runtime sweep of module initialisation (kmemleak)",
+    "trigger": "fault points 369-429 of f2fs init: allocations inside kobject_init_and_add() for the \"features\" and \"tuning\" kobjects",
+    "mechanism": [
+      "kobject_init_and_add() requires kobject_put() even when it fails (the kobject name is already allocated)",
+      "f2fs_init_sysfs() jumps past kobject_put(&f2fs_feat) when adding \"features\" fails and past kobject_put(&f2fs_tune) when adding \"tuning\" fails",
+      "initialisation fails, the module is freed, and the kstrdup'd kobject names are left unreferenced"
+    ],
+    "stock_leaked_names": {
+      "features": 25,
+      "tuning": 4
+    },
+    "patched_leaked_names": {},
+    "upstream": "unchanged in mainline 7.3 as of 2026-10-20",
+    "introduced_by": {
+      "commit": "b635f2ecdb5a",
+      "subject": "f2fs: fix uninitialized kobject put in f2fs_init_sysfs()",
+      "date": "2026-04-10",
+      "note": "the rewrite stopped putting an uninitialised f2fs_tune but also stopped putting the kobject whose own kobject_init_and_add() failed; backported to stable (present in 6.18.55)"
+    },
+    "patch": "patches/0003-f2fs-put-kobjects-when-kobject_init_and_add-fails-in-f2fs_init_sysfs.patch"
+  },
+  "ufs_bforget_leak": {
+    "module": "ufs",
+    "component": "fs/ufs/util.c ubh_bforget(), called by fs/ufs/inode.c free_full_branch()",
+    "found_by": "static analysis (warning), confirmed by reading the source",
+    "mechanism": [
+      "free_full_branch() reads an indirect block with ubh_bread(), which kmallocs a struct ufs_buffer_head",
+      "it ends with ubh_bforget(ubh), which bforget()s the buffers but, unlike ubh_brelse(), does not kfree() the ufs_buffer_head",
+      "one ufs_buffer_head leaks for every indirect block freed when a file is truncated or deleted"
+    ],
+    "upstream": "unchanged in mainline 7.3; the leak was reported with a fix in 2018 (\"ufs: Fix memory leak in the unlink path\", Luis Henriques) that is not in mainline",
+    "patch": "patches/0004-ufs-free-the-ufs_buffer_head-in-ubh_bforget.patch",
+    "validation": {
+      "module": "ufs",
+      "file": "fs/ufs/util.c",
+      "compiles": true,
+      "warnings_original": 2,
+      "warnings_patched": 1,
+      "removed": [
+        [
+          "free_full_branch",
+          966,
+          993,
+          "medium"
+        ]
+      ],
+      "added": []
+    },
+    "runtime": "not confirmed at runtime, which needs a mounted UFS image and a truncate"
+  }
+}

@@ -41,10 +41,46 @@ REVIEWED = {
         "false positive",
         "the sdebug_dev_info objects are freed in the clean: loop by list iteration; the "
         "analyser does not track release through list_for_each_entry_safe."),
+    ("erofs", "z_erofs_submit_queue", 1663): (
+        "false positive",
+        "the queue from jobqueue_init() is freed with kvfree() when no bio was submitted, "
+        "otherwise handed to z_erofs_decompress_kickoff() and the bios (bi_private); the "
+        "decompression work frees it."),
     ("ntfs3", "indx_read", 1089): (
-        "needs review",
-        "kzalloc on an -EINVAL path; the surrounding cleanup is non-trivial and was not fully "
-        "traced by hand."),
+        "false positive",
+        "in and ib are freed at out unless they were stored (in->index, *node); on the error "
+        "paths those fields still hold their initial values, which the analyser does not track."),
+    ("ntfs3", "indx_read", 1098): (
+        "false positive", "same pattern as the allocation at line 1089 (ib != in->index)."),
+    ("ntfs3", "do_action", 3166, 3173): (
+        "real bug",
+        "the kzalloc'd mft_inode (and mi->mrec) leak when mi_format_new() fails; still in "
+        "mainline; patches/0002 adds mi_put()."),
+    ("ntfs3", "do_action", 3166, 3837): (
+        "false positive",
+        "mi is released at out by mi_put() unless it is mi2_child; the analyser does not "
+        "correlate that comparison."),
+    ("ntfs3", "ntfs_inode_printk", 122): (
+        "false positive",
+        "name is either the static s_name_buf or the kmalloc'd buffer and is freed when "
+        "name != s_name_buf."),
+    ("ufs", "free_full_branch", 966): (
+        "real bug",
+        "ubh_bforget() releases the buffers but not the struct ufs_buffer_head that ubh_bread() "
+        "allocated (ubh_brelse() does kfree it); proposed upstream in 2018 but not merged; "
+        "patches/0004 adds the kfree()."),
+    ("ufs", "ufs_truncate_blocks", 1139): (
+        "false positive",
+        "every buffer read into ubh[] is released by free_branch_tail() (ubh_brelse) in the "
+        "while (i--) loop; the analyser does not relate the two loop counters."),
+    ("f2fs", "read_raw_super_block", 4448): (
+        "false positive",
+        "super is stored in *raw_super when a valid block is found, otherwise freed by "
+        "if (!*raw_super); the decision depends on the caller's memory."),
+    ("f2fs", "__add_ino_entry", 517): (
+        "false positive", "new is freed at the end unless it was inserted (e != new)."),
+    ("f2fs", "cache_nat_entry", 452): (
+        "false positive", "new is freed unless it was inserted (e != new)."),
 }
 
 # Allocators that return an ERR_PTR (or a reference-counted object) on failure:
@@ -67,8 +103,9 @@ def main():
             continue
         for c in json.loads(p.read_text())["candidates"]:
             key = (p.stem, c["function"], c["alloc"]["line"])
-            if key in REVIEWED:
-                label, note = REVIEWED[key]
+            exact = key + (c["exit"]["line"],)
+            if exact in REVIEWED or key in REVIEWED:
+                label, note = REVIEWED[exact if exact in REVIEWED else key]
                 how = "reviewed in source"
             elif c["allocator"] in ERR_PTR_ALLOCATORS:
                 label = "likely false positive"

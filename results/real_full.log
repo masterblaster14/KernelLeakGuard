@@ -1,3 +1,2 @@
-[klg] real: 39 real modules (6376 functions, 590 allocation sites): 64 static warnings; runtime: 30 inconclusive (15 modules run in the VM); 6166 fault points of module init exercised; 1 leak site(s) found by the sweep; 10 guest crash(es)/hang(s).
+[klg] real: 39 real modules (6376 functions, 513 allocation sites): 11 static warnings; runtime: 11 inconclusive (39 modules run in the VM); 9779 fault points of module init exercised; 10 leak site(s) found by the sweep; 15 guest crash(es)/hang(s).
 EXIT=0
-20:04:04

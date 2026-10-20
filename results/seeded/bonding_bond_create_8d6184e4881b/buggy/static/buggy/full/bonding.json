@@ -1,0 +1,170 @@
+{
+  "alloc_sites": {
+    "alb_upper_dev_walk": [
+      {
+        "allocator": "bond_verify_device_path",
+        "file": "bond_alb.c",
+        "line": 992
+      }
+    ],
+    "bond_alloc_slave": [
+      {
+        "allocator": "kzalloc",
+        "file": "bond_main.c",
+        "line": 1733
+      },
+      {
+        "allocator": "kzalloc",
+        "file": "bond_main.c",
+        "line": 1745
+      }
+    ],
+    "bond_arp_rcv": [
+      {
+        "allocator": "kmalloc",
+        "file": "bond_main.c",
+        "line": 3131
+      }
+    ],
+    "bond_arp_send_all": [
+      {
+        "allocator": "bond_verify_device_path",
+        "file": "bond_main.c",
+        "line": 3078
+      }
+    ],
+    "bond_create": [
+      {
+        "allocator": "alloc_netdev_mqs",
+        "file": "bond_main.c",
+        "line": 6497
+      }
+    ],
+    "bond_enslave": [
+      {
+        "allocator": "bond_alloc_slave",
+        "file": "bond_main.c",
+        "line": 1998
+      }
+    ],
+    "bond_ns_send_all": [
+      {
+        "allocator": "bond_verify_device_path",
+        "file": "bond_main.c",
+        "line": 3261
+      }
+    ],
+    "bond_update_slave_arr": [
+      {
+        "allocator": "kzalloc",
+        "file": "bond_main.c",
+        "line": 5139
+      },
+      {
+        "allocator": "kzalloc",
+        "file": "bond_main.c",
+        "line": 5141
+      }
+    ],
+    "bond_verify_device_path": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "bond_main.c",
+        "line": 3020
+      },
+      {
+        "allocator": "bond_verify_device_path",
+        "file": "bond_main.c",
+        "line": 3028
+      }
+    ],
+    "bonding_sysfs_store_option": [
+      {
+        "allocator": "kstrndup",
+        "file": "bond_sysfs.c",
+        "line": 153
+      }
+    ],
+    "rlb_initialize": [
+      {
+        "allocator": "kmalloc",
+        "file": "bond_alb.c",
+        "line": 868
+      }
+    ],
+    "slave_enable_netpoll": [
+      {
+        "allocator": "kzalloc",
+        "file": "bond_main.c",
+        "line": 1362
+      }
+    ],
+    "tlb_initialize": [
+      {
+        "allocator": "kzalloc",
+        "file": "bond_alb.c",
+        "line": 132
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 13,
+        "file": "bond_main.c",
+        "line": 6497
+      },
+      "alloc_size": -1,
+      "allocator": "alloc_netdev_mqs",
+      "approximate": false,
+      "category": "ownership-not-transferred-on-error-path",
+      "confidence": "medium",
+      "exit": {
+        "col": 3,
+        "file": "bond_main.c",
+        "line": 6510
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "bond_main.c",
+        "line": 6510
+      },
+      "function": "bond_create",
+      "id": "bonding:bond_create:6497:6510",
+      "module": "bonding",
+      "path_lines": [
+        6497,
+        6503,
+        6510,
+        6518
+      ],
+      "release_sites": [],
+      "return_value": "error from register_netdevice",
+      "triggers": [
+        {
+          "callee": "register_netdevice",
+          "file": "bond_main.c",
+          "kind": "call",
+          "line": 6507
+        }
+      ]
+    }
+  ],
+  "module": "bonding",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 16,
+    "analysis_ms": 41.481344,
+    "budget_exhausted": 0,
+    "candidates": 1,
+    "functions": 434
+  },
+  "tool": "klg-analyze"
+}

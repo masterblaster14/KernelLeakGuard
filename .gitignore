@@ -44,3 +44,8 @@ results/seeded/*/*/Module.symvers
 results/seeded/*/*/modules.order
 results/seeded/*/*/runtime/
 results/seeded/*/runtime/
+# fault-probe VM shares: module copies (evidence logs stay tracked)
+results/real/*/mods/
+# patch-validation module builds (validation.json stays tracked)
+results/real/*_fix/*/
+results/seeded/*/runtime_fixed/

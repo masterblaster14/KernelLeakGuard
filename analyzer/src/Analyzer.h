@@ -35,6 +35,9 @@ struct Summary {
   std::vector<bool> FreesParam;
   std::vector<bool> EscapesParam;
   std::vector<bool> ReturnsParam;
+  /// The parameter is provably stored outside the function (here or in a
+  /// module-defined callee): linked into a list, hash table or global.
+  std::vector<bool> PublishesParam;
 };
 
 struct SourceLoc {

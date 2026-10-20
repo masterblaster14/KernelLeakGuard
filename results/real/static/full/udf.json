@@ -118,105 +118,7 @@
       }
     ]
   },
-  "candidates": [
-    {
-      "alloc": {
-        "col": 10,
-        "file": "linux-6.18.55/fs/udf/dir.c",
-        "line": 70
-      },
-      "alloc_size": 254,
-      "allocator": "kmalloc",
-      "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 1,
-        "file": "linux-6.18.55/fs/udf/dir.c",
-        "line": 129
-      },
-      "exit_kind": "unknown",
-      "fix": null,
-      "function": "udf_readdir",
-      "id": "udf:udf_readdir:70:129",
-      "module": "udf",
-      "path_lines": [
-        70,
-        71,
-        76,
-        67,
-        79,
-        84,
-        115,
-        129
-      ],
-      "release_sites": [
-        {
-          "col": 2,
-          "file": "linux-6.18.55/fs/udf/dir.c",
-          "line": 126
-        }
-      ],
-      "return_value": "?",
-      "triggers": [],
-      "source_path": "linux-6.18.55/fs/udf/dir.c"
-    },
-    {
-      "alloc": {
-        "col": 9,
-        "file": "linux-6.18.55/fs/udf/namei.c",
-        "line": 586
-      },
-      "alloc_size": 255,
-      "allocator": "kmalloc",
-      "approximate": true,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 1,
-        "file": "linux-6.18.55/fs/udf/namei.c",
-        "line": 729
-      },
-      "exit_kind": "unknown",
-      "fix": {
-        "col": 8,
-        "exclusive": true,
-        "file": "linux-6.18.55/fs/udf/namei.c",
-        "line": 613
-      },
-      "function": "udf_symlink",
-      "id": "udf:udf_symlink:586:729",
-      "module": "udf",
-      "path_lines": [
-        586,
-        587,
-        592,
-        598,
-        605,
-        613,
-        624,
-        643,
-        729
-      ],
-      "release_sites": [
-        {
-          "col": 2,
-          "file": "linux-6.18.55/fs/udf/namei.c",
-          "line": 721
-        }
-      ],
-      "return_value": "?",
-      "triggers": [
-        {
-          "callee": "udf_new_block",
-          "file": "linux-6.18.55/fs/udf/namei.c",
-          "kind": "call",
-          "line": 608
-        }
-      ],
-      "source_path": "linux-6.18.55/fs/udf/namei.c"
-    }
-  ],
+  "candidates": [],
   "module": "udf",
   "options": {
     "branch_correlation": true,
@@ -226,9 +128,9 @@
   },
   "stats": {
     "alloc_sites": 17,
-    "analysis_ms": 29.766948,
-    "budget_exhausted": 1,
-    "candidates": 2,
+    "analysis_ms": 43.766458,
+    "budget_exhausted": 0,
+    "candidates": 0,
     "functions": 204
   },
   "tool": "klg-analyze"

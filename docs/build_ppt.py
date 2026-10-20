@@ -325,22 +325,41 @@ _crashed = sorted({c.get("where", {}).get("log", "").removeprefix("sweep_")
                    for c in _real.get("crash_details", []) if c.get("where", {}).get("log")})
 _seeds = json.loads((RES / "seeded" / "summary.json").read_text()) if (RES / "seeded" / "summary.json").exists() else []
 _sdet = sum(1 for s_ in _seeds if s_.get("detected"))
-bullets(s, Inches(0.6), Inches(1.4), Inches(12), Inches(5.5), [
+_sconf = [s_ for s_ in _seeds if s_.get("confirmed")]
+_rc = json.loads((RES / "real" / "root_causes.json").read_text()) if (RES / "real" / "root_causes.json").exists() else {}
+_sl = _rc.get("slub_sysfs_leak", {})
+bullets(s, Inches(0.6), Inches(1.4), Inches(12), Inches(5.6), [
     ("Static: ", f"{_real.get('modules', 0)} modules, {_real.get('functions', 0)} functions, "
      f"{_real.get('alloc_sites', 0)} allocation sites → {_real.get('warnings', 0)} warnings "
-     "(ERR_PTR modeling cut these from 115)"),
+     "(115 before general refinements: ERR_PTR, ownership of published objects, infeasible "
+     "cleanup paths; benchmark unchanged)"),
     ("Runtime (VM): ", f"{len(_real.get('runtime_modules', []))} modules, "
-     f"{_real.get('fault_points', 0)} fault points of module init exercised"),
-    ("Manual review: ", f"the {_rev} high-confidence warnings read in source are false positives "
-     "(refcounted lookups, error codes in variables, list ownership); most sit in mount/ioctl "
-     "code init-time testing does not reach"),
-    ("Seeded leak: ", f"removed one release from real brd init code → detected statically and "
-     "fixed (re-inserted + validated); confirms the loop works on real code"),
-    ("Found on real code: ", (f"reproducible kernel crash loading {', '.join(_crashed)} under "
-                              "allocation failure" if _crashed else "no crash")
-     + f"; {len(_real.get('dynamic_leaks', []))} kmemleak report in erofs init"),
-    ("Lesson: ", "static precision drops on real code; runtime verification keeps reports clean"),
-], 16, 10)
+     f"{_real.get('fault_points', 0)} fault points of module init exercised; no warning confirmed"),
+    ("Re-introduced leaks: ", "; ".join(
+        f"{s_['module']} {s_['function']}()"
+        + (f" (real bug, fixed upstream by {s_['history']['commit']})" if s_.get("history") else " (seeded)")
+        + (" → detected, confirmed by kmemleak in the VM, fixed" if s_.get("confirmed")
+           else " → detected" if s_.get("detected") else " → not detected")
+        for s_ in _seeds) or "—"),
+    ("SLUB leak (root-caused): ", (f"init of {', '.join(_sl.get('also_in', ['erofs']))} exposed a slab-cache "
+                                   f"leak in mm/slub.c when sysfs registration fails; still in mainline; our patch: "
+                                   f"{_sl['stock']['unreferenced']} → {_sl['patched']['unreferenced']} "
+                                   "leaked objects in the VM" if _sl else "—")),
+    ("f2fs regression (runtime): ", ("kobject names leak since commit b635f2ecdb (Apr 2026, also in "
+                                     "stable); our patch: "
+                                     f"{sum(_rc['f2fs_sysfs_leak']['stock_leaked_names'].values())} → "
+                                     f"{sum(_rc['f2fs_sysfs_leak']['patched_leaked_names'].values())} leaks"
+                                     if _rc.get("f2fs_sysfs_leak") else "—")),
+    ("Static finds: ", ("ntfs3 do_action() leaks an mft_inode when mi_format_new() fails; ufs "
+                        "ubh_bforget() never frees the ufs_buffer_head (reported 2018, unfixed); "
+                        "both in mainline, patches remove the warnings"
+                        if _rc.get("ntfs3_do_action_leak") else "—")),
+    ("null_blk crash (root-caused): ", (f"use-after-free of module memory: deferred fput of the "
+                                        "partition-scan file runs after a failed init freed the module"
+                                        if _crashed else "no crash")),
+    ("Lesson: ", "static precision drops on real code; runtime verification keeps reports clean "
+     "and its fault injection finds real kernel defects"),
+], 15, 9)
 
 # 16 Case study -----------------------------------------------------------------
 s = slide("Case study: klg_l02 — wrong goto label")

@@ -1,0 +1,12 @@
+{
+  "name": "null_blk_alloc_dev",
+  "module_file": "drivers/block/null_blk/main.c",
+  "module": "null_blk",
+  "function": "null_alloc_dev",
+  "remove": "kfree(dev);",
+  "occurrence": 1,
+  "bug": "null_alloc_dev() allocates the struct nullb_device with kzalloc() and frees it with kfree(dev) when badblocks_init() fails. Removing that call leaks the nullb_device: dev is a local variable that has not been published anywhere yet, and NULL is returned.",
+  "reachable": "null_init() calls null_alloc_dev() at module load; when it returns NULL, init fails with -ENOMEM and the module is unloaded, so failing the allocation inside badblocks_init() with fail-nth leaves the object unreferenced.",
+  "reference": "Models the class of early-exit leaks MLEE targets: a release on an error branch omitted by a code change.",
+  "sweep_max": 60
+}

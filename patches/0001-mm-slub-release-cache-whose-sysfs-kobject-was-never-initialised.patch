@@ -1,0 +1,32 @@
+mm/slub: release a cache whose sysfs kobject was never initialised
+
+sysfs_slab_add() returns before kobject_init_and_add() when
+create_unique_id() fails, and do_kmem_cache_create() deliberately keeps the
+cache when sysfs registration fails. kmem_cache_destroy() then calls
+kobject_put() on the uninitialised kobject: "kobject: '(null)': is not
+initialized, yet kobject_put() is being called", a refcount underflow, and
+kmem_cache_release() never runs, so the struct kmem_cache, its per-node
+structures and its name leak (kmemleak reports them after fault injection
+during module initialisation, e.g. erofs, f2fs, hfsplus, nilfs2).
+
+Release such a cache directly in sysfs_slab_release().
+---
+--- a/mm/slub.c	2026-10-03 10:39:03.000000000 +0000
++++ b/mm/slub.c	2026-10-20 14:11:22.474227116 +0000
+@@ -9753,6 +9753,16 @@
+ 
+ void sysfs_slab_release(struct kmem_cache *s)
+ {
++	/*
++	 * sysfs_slab_add() returns before kobject_init_and_add() when
++	 * create_unique_id() fails, and cache creation proceeds anyway. Such a
++	 * kobject was never initialised: kobject_put() would warn, underflow
++	 * the refcount and never call kmem_cache_release(), leaking the cache.
++	 */
++	if (!s->kobj.state_initialized) {
++		slab_kmem_cache_release(s);
++		return;
++	}
+ 	kobject_put(&s->kobj);
+ }
+ 

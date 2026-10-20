@@ -1,0 +1,121 @@
+{
+  "alloc_sites": {
+    "null_add_dev": [
+      {
+        "allocator": "kmalloc_node",
+        "file": "main.c",
+        "line": 1990
+      }
+    ],
+    "null_alloc_dev": [
+      {
+        "allocator": "kzalloc",
+        "file": "main.c",
+        "line": 799
+      }
+    ],
+    "null_alloc_page": [
+      {
+        "allocator": "kmalloc",
+        "file": "main.c",
+        "line": 887
+      }
+    ],
+    "null_create_dev": [
+      {
+        "allocator": "null_alloc_dev",
+        "file": "main.c",
+        "line": 2120
+      }
+    ],
+    "null_insert_page": [
+      {
+        "allocator": "null_alloc_page",
+        "file": "main.c",
+        "line": 1036
+      }
+    ],
+    "nullb_device_badblocks_store": [
+      {
+        "allocator": "kstrndup",
+        "file": "main.c",
+        "line": 548
+      }
+    ],
+    "nullb_group_make_group": [
+      {
+        "allocator": "null_alloc_dev",
+        "file": "main.c",
+        "line": 712
+      }
+    ],
+    "setup_queues": [
+      {
+        "allocator": "kmalloc_array",
+        "file": "main.c",
+        "line": 1839
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "alloc": {
+        "col": 8,
+        "file": "main.c",
+        "line": 799
+      },
+      "alloc_size": 424,
+      "allocator": "kzalloc",
+      "approximate": false,
+      "category": "ownership-not-transferred-on-error-path",
+      "confidence": "medium",
+      "exit": {
+        "col": 3,
+        "file": "main.c",
+        "line": 813
+      },
+      "exit_kind": "error",
+      "fix": {
+        "col": 3,
+        "exclusive": true,
+        "file": "main.c",
+        "line": 813
+      },
+      "function": "null_alloc_dev",
+      "id": "null_blk:null_alloc_dev:799:813",
+      "module": "null_blk",
+      "path_lines": [
+        799,
+        800,
+        809,
+        813,
+        850
+      ],
+      "release_sites": [],
+      "return_value": "NULL",
+      "triggers": [
+        {
+          "callee": "badblocks_init",
+          "file": "main.c",
+          "kind": "call",
+          "line": 811
+        }
+      ]
+    }
+  ],
+  "module": "null_blk",
+  "options": {
+    "branch_correlation": true,
+    "containers": true,
+    "escape": true,
+    "interprocedural": true
+  },
+  "stats": {
+    "alloc_sites": 8,
+    "analysis_ms": 4.4127530000000004,
+    "budget_exhausted": 0,
+    "candidates": 1,
+    "functions": 148
+  },
+  "tool": "klg-analyze"
+}

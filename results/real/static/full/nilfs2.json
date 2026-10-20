@@ -14,13 +14,6 @@
         "line": 158
       }
     ],
-    "nilfs_attach_checkpoint": [
-      {
-        "allocator": "nilfs_find_or_create_root",
-        "file": "linux-6.18.55/fs/nilfs2/super.c",
-        "line": 559
-      }
-    ],
     "nilfs_attach_log_writer": [
       {
         "allocator": "nilfs_segctor_new",
@@ -218,8 +211,8 @@
     "interprocedural": true
   },
   "stats": {
-    "alloc_sites": 30,
-    "analysis_ms": 50.766036,
+    "alloc_sites": 29,
+    "analysis_ms": 57.919642,
     "budget_exhausted": 0,
     "candidates": 0,
     "functions": 692

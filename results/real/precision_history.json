@@ -1,0 +1,25 @@
+{
+  "note": "Static warnings on the 39 real modules (same bitcode) after each analyser refinement, measured once each. The benchmark results were unchanged by every step (all six analyser variants).",
+  "steps": [
+    {
+      "step": "initial MLEE-style analysis",
+      "warnings": 115
+    },
+    {
+      "step": "IS_ERR()/ERR_PTR modelled like the NULL check",
+      "warnings": 64
+    },
+    {
+      "step": "phi returns resolved per path (fixes a false negative; no real-code change)",
+      "warnings": 64
+    },
+    {
+      "step": "ownership: helpers that publish the object are lookups, not allocators",
+      "warnings": 42
+    },
+    {
+      "step": "conditions on values that are constant on the path resolved (clang cleanup destinations, error codes kept in a variable)",
+      "warnings": 11
+    }
+  ]
+}

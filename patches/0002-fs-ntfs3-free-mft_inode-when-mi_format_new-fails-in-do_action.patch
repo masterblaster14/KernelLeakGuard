@@ -1,0 +1,22 @@
+fs/ntfs3: free the mft_inode when mi_format_new() fails in do_action()
+
+When log replay initialises a file record segment that cannot be read,
+do_action() allocates a struct mft_inode and formats it with
+mi_format_new(). If that fails, do_action() returns the error without
+releasing mi (and mi->mrec when mi_init() succeeded). Release it with
+mi_put(), as the out label does on the normal path.
+---
+--- a/fs/ntfs3/fslog.c	2026-10-20 14:44:39.611152580 +0000
++++ b/fs/ntfs3/fslog.c	2026-10-20 14:44:39.629492130 +0000
+@@ -3168,6 +3168,11 @@
+ 				if (!mi)
+ 					return -ENOMEM;
+ 				err = mi_format_new(mi, sbi, rno, 0, false);
++				if (err) {
++					/* mi is not attached anywhere yet. */
++					mi_put(mi);
++					return err;
++				}
+ 			}
+ 			if (err)
+ 				return err;

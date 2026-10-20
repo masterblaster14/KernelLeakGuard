@@ -1,4 +1,6 @@
-[klg] seed brd_blk_alloc_disk (drivers/block/brd.c)
-       detected=True confirmed=False fixed=True
-[klg] seeded bugs: 0/1 detected and confirmed in the VM
+[klg] seed bonding_bond_create_8d6184e4881b (drivers/net/bonding/bond_main.c)
+       detected=True confirmed=True fixed=True
+[klg] seed null_blk_alloc_dev (drivers/block/null_blk/main.c)
+       detected=True confirmed=True fixed=True
+[klg] seeded bugs: 2/2 detected, 2/2 confirmed in the VM
 EXIT=0

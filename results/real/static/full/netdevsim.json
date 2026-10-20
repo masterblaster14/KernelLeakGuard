@@ -28,6 +28,13 @@
         "line": 454
       }
     ],
+    "nsim_create": [
+      {
+        "allocator": "alloc_netdev_mqs",
+        "file": "linux-6.18.55/drivers/net/netdevsim/netdev.c",
+        "line": 1131
+      }
+    ],
     "nsim_dev_dummy_fmsg_put": [
       {
         "allocator": "kmalloc",
@@ -125,13 +132,6 @@
         "line": 280
       }
     ],
-    "nsim_fib4_rt_insert": [
-      {
-        "allocator": "nsim_fib4_rt_create",
-        "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
-        "line": 426
-      }
-    ],
     "nsim_fib6_event_init": [
       {
         "allocator": "kmalloc_array",
@@ -144,13 +144,6 @@
         "allocator": "kzalloc",
         "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
         "line": 547
-      }
-    ],
-    "nsim_fib6_rt_insert": [
-      {
-        "allocator": "nsim_fib6_rt_create",
-        "file": "linux-6.18.55/drivers/net/netdevsim/fib.c",
-        "line": 752
       }
     ],
     "nsim_fib6_rt_nh_add": [
@@ -238,8 +231,8 @@
     "interprocedural": true
   },
   "stats": {
-    "alloc_sites": 34,
-    "analysis_ms": 16.587006,
+    "alloc_sites": 33,
+    "analysis_ms": 17.708634,
     "budget_exhausted": 0,
     "candidates": 0,
     "functions": 264

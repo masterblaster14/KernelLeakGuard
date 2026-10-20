@@ -1,212 +1,79 @@
 [
   {
-    "id": "bonding:bond_update_slave_arr:5139:5199",
-    "module": "bonding",
-    "label": "not reviewed",
-    "note": "low-confidence warning, not reviewed",
-    "basis": "-"
-  },
-  {
-    "id": "bonding:bond_update_slave_arr:5141:5199",
-    "module": "bonding",
-    "label": "not reviewed",
-    "note": "low-confidence warning, not reviewed",
-    "basis": "-"
-  },
-  {
     "id": "erofs:z_erofs_submit_queue:1663:1779",
     "module": "erofs",
-    "label": "likely false positive",
-    "note": "jobqueue_init() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "erofs:z_erofs_alloc_pcluster:273:278",
-    "module": "erofs",
-    "label": "not reviewed",
-    "note": "low-confidence warning, not reviewed",
-    "basis": "-"
-  },
-  {
-    "id": "erofs:z_erofs_alloc_pcluster:273:279",
-    "module": "erofs",
-    "label": "not reviewed",
-    "note": "low-confidence warning, not reviewed",
-    "basis": "-"
-  },
-  {
-    "id": "hfs:hfs_brec_update_parent:386:391",
-    "module": "hfs",
     "label": "false positive",
-    "note": "hfs_bnode_find() node is put on the error path via hfs_bnode_put.",
+    "note": "the queue from jobqueue_init() is freed with kvfree() when no bio was submitted, otherwise handed to z_erofs_decompress_kickoff() and the bios (bi_private); the decompression work frees it.",
     "basis": "reviewed in source"
   },
   {
-    "id": "hfs:hfs_bmap_free:387:418",
-    "module": "hfs",
-    "label": "likely false positive",
-    "note": "hfs_bnode_find() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "hfs:hfs_correct_next_unused_CNID:259:330",
-    "module": "hfs",
+    "id": "f2fs:read_raw_super_block:4448:4487",
+    "module": "f2fs",
     "label": "false positive",
-    "note": "hfs_bnode_find() returns a reference-counted node released by hfs_bnode_put; on the deeper -ENOENT exits the first node has already been put. The analyser does not model the refcounted lookup.",
+    "note": "super is stored in *raw_super when a valid block is found, otherwise freed by if (!*raw_super); the decision depends on the caller's memory.",
     "basis": "reviewed in source"
   },
   {
-    "id": "hfs:hfs_correct_next_unused_CNID:259:331",
-    "module": "hfs",
+    "id": "f2fs:__add_ino_entry:517:549",
+    "module": "f2fs",
     "label": "false positive",
-    "note": "hfs_bnode_find() returns a reference-counted node released by hfs_bnode_put; on the deeper -ENOENT exits the first node has already been put. The analyser does not model the refcounted lookup.",
+    "note": "new is freed at the end unless it was inserted (e != new).",
     "basis": "reviewed in source"
   },
   {
-    "id": "hfs:hfs_correct_next_unused_CNID:272:330",
-    "module": "hfs",
+    "id": "f2fs:cache_nat_entry:452:468",
+    "module": "f2fs",
     "label": "false positive",
-    "note": "same refcounted-lookup pattern as the node obtained at line 259.",
+    "note": "new is freed unless it was inserted (e != new).",
     "basis": "reviewed in source"
   },
   {
-    "id": "hfs:hfs_correct_next_unused_CNID:272:331",
-    "module": "hfs",
-    "label": "false positive",
-    "note": "same refcounted-lookup pattern as the node obtained at line 259.",
+    "id": "ntfs3:do_action:3166:3173",
+    "module": "ntfs3",
+    "label": "real bug",
+    "note": "the kzalloc'd mft_inode (and mi->mrec) leak when mi_format_new() fails; still in mainline; patches/0002 adds mi_put().",
     "basis": "reviewed in source"
   },
   {
-    "id": "mac80211_hwsim:hwsim_new_radio_nl:6489:6518",
-    "module": "mac80211_hwsim",
+    "id": "ntfs3:do_action:3166:3837",
+    "module": "ntfs3",
     "label": "false positive",
-    "note": "hwname is freed at out_free on every exit.",
+    "note": "mi is released at out by mi_put() unless it is mi2_child; the analyser does not correlate that comparison.",
     "basis": "reviewed in source"
   },
   {
-    "id": "mac80211_hwsim:hwsim_new_radio_nl:6500:6518",
-    "module": "mac80211_hwsim",
+    "id": "ntfs3:indx_read:1089:1170",
+    "module": "ntfs3",
     "label": "false positive",
-    "note": "param.pmsr_capa is freed at out_free on every exit.",
+    "note": "in and ib are freed at out unless they were stored (in->index, *node); on the error paths those fields still hold their initial values, which the analyser does not track.",
     "basis": "reviewed in source"
   },
   {
-    "id": "scsi_debug:scsi_debug_queuecommand:9284:9291",
-    "module": "scsi_debug",
-    "label": "likely false positive",
-    "note": "find_build_dev_info() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "scsi_debug:scsi_debug_queuecommand:9284:9298",
-    "module": "scsi_debug",
-    "label": "likely false positive",
-    "note": "find_build_dev_info() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "scsi_debug:scsi_debug_queuecommand:9284:9308",
-    "module": "scsi_debug",
-    "label": "likely false positive",
-    "note": "find_build_dev_info() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "scsi_debug:scsi_debug_queuecommand:9284:9420",
-    "module": "scsi_debug",
-    "label": "likely false positive",
-    "note": "find_build_dev_info() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "scsi_debug:scsi_debug_queuecommand:9284:9390",
-    "module": "scsi_debug",
-    "label": "likely false positive",
-    "note": "find_build_dev_info() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "scsi_debug:scsi_debug_sdev_configure:6652:6668",
-    "module": "scsi_debug",
-    "label": "likely false positive",
-    "note": "find_build_dev_info() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "scsi_debug:scsi_debug_sdev_configure:6652:6662",
-    "module": "scsi_debug",
-    "label": "likely false positive",
-    "note": "find_build_dev_info() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "scsi_debug:sdebug_add_host_helper:8851:8888",
-    "module": "scsi_debug",
+    "id": "ntfs3:indx_read:1098:1170",
+    "module": "ntfs3",
     "label": "false positive",
-    "note": "the sdebug_dev_info objects are freed in the clean: loop by list iteration; the analyser does not track release through list_for_each_entry_safe.",
+    "note": "same pattern as the allocation at line 1089 (ib != in->index).",
     "basis": "reviewed in source"
   },
   {
-    "id": "scsi_debug:sdebug_add_host_helper:8851:8874",
-    "module": "scsi_debug",
+    "id": "ntfs3:ntfs_inode_printk:122:157",
+    "module": "ntfs3",
     "label": "false positive",
-    "note": "the sdebug_dev_info objects are freed in the clean: loop by list iteration; the analyser does not track release through list_for_each_entry_safe.",
+    "note": "name is either the static s_name_buf or the kmalloc'd buffer and is freed when name != s_name_buf.",
     "basis": "reviewed in source"
   },
   {
-    "id": "snd_aloop:loopback_open:1263:1350",
-    "module": "snd_aloop",
+    "id": "ufs:ufs_truncate_blocks:1139:1166",
+    "module": "ufs",
     "label": "false positive",
-    "note": "dpcm is freed at the unlock label whenever err < 0; the analyser does not track that err holds -ENOMEM on this path (value correlation).",
+    "note": "every buffer read into ubh[] is released by free_branch_tail() (ubh_brelse) in the while (i--) loop; the analyser does not relate the two loop counters.",
     "basis": "reviewed in source"
   },
   {
-    "id": "squashfs:squashfs_readdir:109:216",
-    "module": "squashfs",
-    "label": "not reviewed",
-    "note": "low-confidence warning, not reviewed",
-    "basis": "-"
-  },
-  {
-    "id": "squashfs:squashfs_readahead:590:667",
-    "module": "squashfs",
-    "label": "not reviewed",
-    "note": "low-confidence warning, not reviewed",
-    "basis": "-"
-  },
-  {
-    "id": "squashfs:read_indexes:166:201",
-    "module": "squashfs",
-    "label": "not reviewed",
-    "note": "low-confidence warning, not reviewed",
-    "basis": "-"
-  },
-  {
-    "id": "squashfs:seek_hole_data:706:748",
-    "module": "squashfs",
-    "label": "not reviewed",
-    "note": "low-confidence warning, not reviewed",
-    "basis": "-"
-  },
-  {
-    "id": "squashfs:squashfs_fill_super:221:489",
-    "module": "squashfs",
-    "label": "likely false positive",
-    "note": "squashfs_read_table() returns an ERR_PTR or a reference-counted object; exits after an error check hold nothing to free",
-    "basis": "pattern"
-  },
-  {
-    "id": "vxlan:vxlan_mdb_remote_src_add:853:876",
-    "module": "vxlan",
-    "label": "false positive",
-    "note": "the entry is linked into the remote's source list by the add helper and removed on the error path when it was newly created.",
-    "basis": "reviewed in source"
-  },
-  {
-    "id": "vxlan:vxlan_mdb_remote_src_add:853:871",
-    "module": "vxlan",
-    "label": "false positive",
-    "note": "the entry is linked into the remote's source list by the add helper and removed on the error path when it was newly created.",
+    "id": "ufs:free_full_branch:966:993",
+    "module": "ufs",
+    "label": "real bug",
+    "note": "ubh_bforget() releases the buffers but not the struct ufs_buffer_head that ubh_bread() allocated (ubh_brelse() does kfree it); proposed upstream in 2018 but not merged; patches/0004 adds the kfree().",
     "basis": "reviewed in source"
   }
 ]

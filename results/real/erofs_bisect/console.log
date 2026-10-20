@@ -1,0 +1,200 @@
+c[?7l[2J[0mSeaBIOS (version 1.17.0-debian-1.17.0-1ubuntu1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+7EFC8B80+7EF08B80 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from ROM...
+c[?7l[2JKLG-GUEST-READY 6.18.55
+[   16.894851] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   17.400122] kobject: can not set name properly!
+[   17.400399] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   17.922165] kobject: kobject_add_internal failed for :a-0000136 (error: -12 parent: slab)
+[   17.922817] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   18.392696] kobject: kobject_add_internal failed for :a-0000136 (error: -12 parent: slab)
+[   18.393023] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   18.935736] kobject: kobject_add_internal failed for :a-0000136 (error: -12 parent: slab)
+[   18.936048] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   19.449247] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   20.029784] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   20.496130] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   20.952023] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   21.424639] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   21.902013] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   22.388708] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   22.874155] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   23.353694] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   23.859714] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   24.352813] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   24.854129] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   25.352631] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   25.852072] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   26.380779] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   34.946393] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   35.443749] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   35.945889] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   36.463209] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   36.967842] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   37.457038] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   37.937659] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   38.417881] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   38.911319] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   39.396565] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   39.882853] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   40.400671] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   40.899978] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   41.385822] SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+[   43.379111] SLUB: Unable to add cache alias erofs_pcluster-4 to sysfs
+[   43.870384] SLUB: Unable to add cache alias erofs_pcluster-4 to sysfs
+[   45.841186] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   46.349701] kobject: can not set name properly!
+[   46.349904] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   55.467768] kobject: kobject_add_internal failed for :a-0000376 (error: -12 parent: slab)
+[   55.468113] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   55.954467] kobject: kobject_add_internal failed for :a-0000376 (error: -12 parent: slab)
+[   55.955105] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   56.951571] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   57.449292] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   57.933110] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   58.448813] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   58.913923] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   59.366366] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   59.854287] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   60.357529] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   60.889582] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   61.388620] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   61.887367] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   62.458369] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   62.929638] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   63.464001] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   63.967337] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   64.458767] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   65.006365] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   65.501932] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   65.967583] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   66.471464] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   66.959189] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   76.344125] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   76.899382] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   77.450770] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   77.981092] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   78.487768] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   79.045041] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   79.555006] SLUB: Unable to add cache erofs_pcluster-16 to sysfs
+[   82.761232] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[   83.234126] kobject: can not set name properly!
+[   83.234998] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[   83.738547] kobject: kobject_add_internal failed for :a-0001144 (error: -12 parent: slab)
+[   83.739459] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[   84.235766] kobject: kobject_add_internal failed for :a-0001144 (error: -12 parent: slab)
+[   84.236280] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[   84.704738] kobject: kobject_add_internal failed for :a-0001144 (error: -12 parent: slab)
+[   84.705976] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[   85.194753] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[   85.664251] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[   86.246595] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[   86.741582] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[   87.219362] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[   87.714844] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[   96.454693] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[   96.944673] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[   97.419109] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[   97.923729] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[   98.386419] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[   98.888251] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[   99.391238] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[   99.913752] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[  100.422256] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[  100.898288] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[  101.417769] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[  102.243943] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[  102.823352] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[  103.288810] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[  103.785373] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[  104.291095] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[  104.778639] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[  105.273293] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[  105.785621] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[  106.276728] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[  106.788978] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[  107.337104] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[  107.851389] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[  108.415440] SLUB: Unable to add cache erofs_pcluster-64 to sysfs
+[  119.705862] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  120.227143] kobject: can not set name properly!
+[  120.227343] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  120.751029] kobject: kobject_add_internal failed for :a-0002168 (error: -12 parent: slab)
+[  120.752445] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  121.272144] kobject: kobject_add_internal failed for :a-0002168 (error: -12 parent: slab)
+[  121.272859] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  121.886583] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  122.385413] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  122.877678] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  123.373527] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  123.881837] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  124.395669] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  124.888300] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  125.528361] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  126.154928] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  127.370829] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  128.003717] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  128.764290] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  129.298438] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  129.859718] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  138.489781] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  139.498943] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  140.036139] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  140.511609] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  141.012435] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  141.522551] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  142.032602] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  142.547736] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  143.060332] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  143.557610] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  144.007631] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  144.469313] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  144.964228] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  145.472427] SLUB: Unable to add cache erofs_pcluster-128 to sysfs
+[  148.405424] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  148.908710] kobject: can not set name properly!
+[  148.909356] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  149.400139] kobject: kobject_add_internal failed for :a-0004232 (error: -12 parent: slab)
+[  149.401290] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  149.891914] kobject: kobject_add_internal failed for :a-0004232 (error: -12 parent: slab)
+[  149.892740] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  158.480047] kobject: kobject_add_internal failed for :a-0004232 (error: -12 parent: slab)
+[  158.480751] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  158.989639] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  159.509571] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  159.976340] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  160.457592] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  161.448110] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  161.906112] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  162.385088] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  162.882575] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  163.353859] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  163.871052] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  164.369803] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  164.861990] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  165.401781] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  165.896743] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  166.427318] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  166.930536] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  167.457900] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  167.964303] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  168.461039] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  168.956437] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  169.466914] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  169.947472] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  178.523636] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  179.057566] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  179.559426] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  180.019732] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  180.547884] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  181.074441] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  181.578856] SLUB: Unable to add cache erofs_pcluster-257 to sysfs
+[  187.094218] workqueue: Failed to allocate a worker
+[  187.581322] workqueue: Failed to create a worker thread: -ENOMEM
+KLG-JOB-EXIT 0
+[  199.991121] reboot: Power down

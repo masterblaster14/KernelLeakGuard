@@ -1,0 +1,52 @@
+[
+  {
+    "restart": 1,
+    "kind": "crash",
+    "where": {
+      "log": "run_739",
+      "fail_nth": 739
+    },
+    "console": [
+      "BUG: unable to handle page fault for address: ffffffffa0221650",
+      "#PF: supervisor read access in kernel mode",
+      "#PF: error_code(0x0000) - not-present page",
+      "PGD 2c2e067 P4D 2c2f067 PUD 2c30063 PMD 6071067 PTE 0",
+      "Oops: Oops: 0000 [#1] SMP NOPTI",
+      "CPU: 1 UID: 0 PID: 78 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) ",
+      "Tainted: [O]=OOT_MODULE",
+      "Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014",
+      "RIP: 0010:bdev_release+0x129/0x170",
+      "Code: 4c 89 ef e8 d9 07 00 00 49 8b 7d 10 eb 18 f0 ff 8b 80 fc ff ff 75 08 4c 89 e7 e8 c2 07 00 00 48 8b bb 50 fc ff ff 48 8b 47 48 <4c> 8b 58 18 4d 85 db 74 06 2e e8 d8 a0 be 00 4c 89 ff e8 10 32 be",
+      "RSP: 0018:ff1100000601fe58 EFLAGS: 00010286",
+      "RAX: ffffffffa0221638 RBX: ff11000004c80a00 RCX: 0000000000000001",
+      "RDX: 7fffffffffffffff RSI: 0000000000000000 RDI: ff11000005baf400",
+      "RBP: 0000000000000000 R08: ff11000005f1f1e0 R09: 00000000802a0025",
+      "R10: ff11000005f1f300 R11: ffffffff817a34e0 R12: ff11000004c80640",
+      "R13: ff11000005ef86c0 R14: ff11000005baf400 R15: ff11000005baf568",
+      "FS:  000000000b4833c0(0000) GS:ff110000f5588000(0000) knlGS:0000000000000000",
+      "CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033",
+      "CR2: ffffffffa0221650 CR3: 000000000615b000 CR4: 0000000000751ef0",
+      "PKRU: 55555554",
+      "Call Trace:",
+      "<TASK>",
+      "blkdev_release+0x11/0x20",
+      "__fput+0xfe/0x280",
+      "task_work_run+0x8b/0xb0",
+      "exit_to_user_mode_loop+0xaa/0xc0",
+      "do_syscall_64+0x1dc/0x260",
+      "entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+      "RIP: 0033:0x42d90d",
+      "Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48",
+      "RSP: 002b:00007ffe12184418 EFLAGS: 00000246 ORIG_RAX: 0000000000000139",
+      "RAX: fffffffffffffff4 RBX: 00000000000002e3 RCX: 000000000042d90d",
+      "RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006",
+      "RBP: 00007ffe12184428 R08: 0000000000000000 R09: 6b6c625f6c6c756e",
+      "R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffe121845e0",
+      "R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffe12184420",
+      "</TASK>",
+      "Modules linked in: configfs klg_modwatch(O) [last unloaded: null_blk]",
+      "CR2: ffffffffa0221650",
+      "---[ end trace 0000000000000000 ]---"
+    ]
+  }
+]

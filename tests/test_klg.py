@@ -249,5 +249,50 @@ class TestAnalyzer(unittest.TestCase):
         self.assertEqual(rep["candidates"][0]["alloc_size"], 100)
 
 
+@unittest.skipUnless(config.ANALYZER.exists(), "klg-analyze not built")
+class TestRealCodePatterns(unittest.TestCase):
+    """Patterns found on real kernel code (tests/analyzer_cases/klg_cases.c),
+    compiled the way kbuild IR is built."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = tempfile.TemporaryDirectory()
+        cls.bc = Path(cls.tmp.name) / "cases.bc"
+        subprocess.run(["clang", "-O2", "-g", "-c", "-emit-llvm", "-Xclang", "-disable-llvm-passes",
+                        str(ROOT / "tests" / "analyzer_cases" / "klg_cases.c"), "-o", str(cls.bc)],
+                       check=True)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.tmp.cleanup()
+
+    def functions(self, *flags):
+        out = Path(self.tmp.name) / "out.json"
+        subprocess.run([str(config.ANALYZER), str(self.bc), "-o", str(out),
+                        "--module-name", "cases", *flags], check=True)
+        return {c["function"] for c in json.loads(out.read_text())["candidates"]}
+
+    def test_phi_return_null_path_leaks(self):
+        self.assertIn("phi_return_leak", self.functions())
+
+    def test_cleanup_switch_default_is_infeasible(self):
+        self.assertNotIn("scoped_goto_ok", self.functions())
+        self.assertIn("scoped_goto_ok", self.functions("--no-corr"))
+
+    def test_cleanup_branch_in_loop_is_resolved(self):
+        self.assertNotIn("loop_return_ok", self.functions())
+        self.assertIn("loop_return_ok", self.functions("--no-corr"))
+
+    def test_ownership_transferred_only_on_success(self):
+        found = self.functions()
+        self.assertIn("netdev_create_leak", found)
+        self.assertNotIn("netdev_create_ok", found)
+
+    def test_publishing_helper_is_a_lookup(self):
+        found = self.functions()
+        self.assertNotIn("use_lookup", found)
+        self.assertIn("use_table", found)       # scratch-buffer store is not publishing
+
+
 if __name__ == "__main__":
     unittest.main()

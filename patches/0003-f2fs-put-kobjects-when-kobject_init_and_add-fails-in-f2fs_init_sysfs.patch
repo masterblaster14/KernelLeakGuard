@@ -1,0 +1,43 @@
+f2fs: put kobjects when kobject_init_and_add() fails in f2fs_init_sysfs()
+
+kobject_init_and_add() initialises the kobject before it can fail, so the
+caller must kobject_put() it on failure as well; otherwise the kobject name
+allocated by kobject_set_name_vargs() leaks. Since the unwind was split, a
+failure to add "features" skips kobject_put(&f2fs_feat) and a failure to add
+"tuning" skips kobject_put(&f2fs_tune). kmemleak reports the names
+("features", "tuning") after fault injection makes module loading fail.
+
+Put each kobject from its own failure path; f2fs_tune is still only put
+once it has been initialised.
+
+Fixes: b635f2ecdb5a ("f2fs: fix uninitialized kobject put in f2fs_init_sysfs()")
+---
+--- a/fs/f2fs/sysfs.c	2026-10-20 16:38:32.582231828 +0000
++++ b/fs/f2fs/sysfs.c	2026-10-20 16:38:55.203759345 +0000
+@@ -1936,15 +1936,16 @@
+ 	if (ret)
+ 		return ret;
+ 
++	/* kobject_init_and_add() needs kobject_put() on failure, too. */
+ 	ret = kobject_init_and_add(&f2fs_feat, &f2fs_feat_ktype,
+ 				   NULL, "features");
+ 	if (ret)
+-		goto unregister_kset;
++		goto put_feat;
+ 
+ 	ret = kobject_init_and_add(&f2fs_tune, &f2fs_tune_ktype,
+ 				   NULL, "tuning");
+ 	if (ret)
+-		goto put_feat;
++		goto put_tune;
+ 
+ 	f2fs_proc_root = proc_mkdir("fs/f2fs", NULL);
+ 	if (!f2fs_proc_root) {
+@@ -1958,7 +1959,6 @@
+ 	kobject_put(&f2fs_tune);
+ put_feat:
+ 	kobject_put(&f2fs_feat);
+-unregister_kset:
+ 	kset_unregister(&f2fs_kset);
+ 	return ret;
+ }

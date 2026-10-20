@@ -1,12 +1,5 @@
 {
   "alloc_sites": {
-    "geneve_sock_add": [
-      {
-        "allocator": "geneve_socket_create",
-        "file": "linux-6.18.55/drivers/net/geneve.c",
-        "line": 690
-      }
-    ],
     "geneve_socket_create": [
       {
         "allocator": "kzalloc",
@@ -24,8 +17,8 @@
     "interprocedural": true
   },
   "stats": {
-    "alloc_sites": 2,
-    "analysis_ms": 6.055633,
+    "alloc_sites": 1,
+    "analysis_ms": 6.574114,
     "budget_exhausted": 0,
     "candidates": 0,
     "functions": 58

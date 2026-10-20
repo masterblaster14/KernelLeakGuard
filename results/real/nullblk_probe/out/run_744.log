@@ -1,0 +1,12 @@
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD null_blk text=ffffffffa0006000+6000 init=ffffffffa000c000+1000
+K null_blk: disk nullb0 created
+K null_blk: module loaded
+@@END
+@@BEGIN n=744
+@@ATTEMPT n=744 ret=0 errno=0 injected=1
+K KLG-MOD null_blk text=ffffffffa0006000+6000 init=ffffffffa000c000+1000
+K null_blk: disk nullb0 created
+K null_blk: module loaded
+@@END

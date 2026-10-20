@@ -61,7 +61,7 @@
     "checks": {
       "compiles": true,
       "static_clean": false,
-      "remaining_warnings": 2,
+      "remaining_warnings": 1,
       "runtime_faults_exercised": 8,
       "runtime_clean": true,
       "runtime_leaks": [],
@@ -162,6 +162,24 @@
     "patch": "--- a/corpus/klg_l09_kcalloc.c\n+++ b/corpus/klg_l09_kcalloc.c\n@@ -21,6 +21,7 @@\n \tvals = kmalloc_array(NR_KEYS, sizeof(*vals), GFP_KERNEL);\t/* GT:SAFE */\n \tif (!vals) {\n \t\tret = -ENOMEM;\n+\t\tkfree(idx);\n \t\tgoto out;\t\t/* idx leaks: out does not free it */\n \t}\n \n"
   },
   {
+    "id": "klg_l10_vmalloc:fw_stage:22:28",
+    "module": "klg_l10_vmalloc",
+    "function": "fw_stage",
+    "alloc": 22,
+    "checks": {
+      "compiles": true,
+      "static_clean": true,
+      "remaining_warnings": 0,
+      "runtime_faults_exercised": 10,
+      "runtime_clean": true,
+      "runtime_leaks": [],
+      "slab_errors": []
+    },
+    "status": "validated",
+    "reason": "reuses the release at line 34",
+    "patch": "--- a/corpus/klg_l10_vmalloc.c\n+++ b/corpus/klg_l10_vmalloc.c\n@@ -24,8 +24,10 @@\n \t\treturn -ENOMEM;\n \n \thdr = kzalloc(sizeof(*hdr), GFP_KERNEL);\t/* GT:SAFE */\n-\tif (!hdr)\n+\tif (!hdr) {\n+\t\tvfree(fw);\n \t\treturn -ENOMEM;\t\t/* fw leaks here */\n+\t}\n \n \tmemset(fw, 0, FW_SIZE);\n \thdr->magic = 0x4b4c47;\n"
+  },
+  {
     "id": "klg_l11_kmem_cache:req_submit:22:28",
     "module": "klg_l11_kmem_cache",
     "function": "req_submit",
@@ -206,7 +224,7 @@
       "compiles": true,
       "static_clean": true,
       "remaining_warnings": 0,
-      "runtime_faults_exercised": 43,
+      "runtime_faults_exercised": 42,
       "runtime_clean": true,
       "runtime_leaks": [],
       "slab_errors": []

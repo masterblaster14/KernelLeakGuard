@@ -34,6 +34,8 @@ const char *const DefaultAllocators[] = {
     "kstrdup", "kstrndup", "kmemdup", "kmemdup_nul", "kmemdup_array",
     "kasprintf", "kvasprintf", "memdup_user", "memdup_user_nul",
     "vmemdup_user", "strndup_user",
+    // network devices (alloc_netdev*(), alloc_etherdev*() expand to these)
+    "alloc_netdev_mqs", "alloc_etherdev_mqs",
 };
 
 const char *const DefaultManagedPrefixes[] = {"devm_", "pcim_", "drmm_",
@@ -50,6 +52,7 @@ const Dealloc DefaultDeallocators[] = {
     {"kfree_sensitive", 0}, {"kvfree_sensitive", 0},
     {"kfree_const", 0},     {"kmem_cache_free", 1},
     {"krealloc", 0},        {"kvfree_call_rcu", Spec::AnyArg},
+    {"free_netdev", 0},
 };
 
 // External functions that only read or write through their pointer
@@ -81,6 +84,8 @@ const char *const DefaultNonEscaping[] = {
     "__list_del_entry_valid_or_report", "get_random_bytes", "ktime_get",
     "ktime_get_real_ts64", "msleep", "usleep_range_state", "__udelay",
     "__const_udelay", "schedule", "cond_resched", "__cond_resched",
+    // initialise / tear down an embedded struct badblocks; never retain it
+    "badblocks_init", "badblocks_exit",
 };
 
 const char *const DefaultNonEscapingPrefixes[] = {
@@ -138,6 +143,13 @@ bool Spec::isNonEscaping(StringRef Name) const {
     if (StringRef(N).starts_with(P))
       return true;
   return false;
+}
+
+bool Spec::transfersOnSuccess(StringRef Name) const {
+  // register_netdevice(): "the caller must free the device with
+  // free_netdev()" when registration fails.
+  static const StringSet<> Names = {"register_netdevice", "register_netdev"};
+  return Names.contains(normalize(Name));
 }
 
 bool Spec::loadJSON(const std::string &Path, std::string &Err) {

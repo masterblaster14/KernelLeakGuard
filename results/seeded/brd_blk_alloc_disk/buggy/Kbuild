@@ -1,2 +1,0 @@
-obj-m += brd.o
-ccflags-y += -g -I$(srctree)/drivers/block

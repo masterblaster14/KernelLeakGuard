@@ -274,13 +274,6 @@
       ]
     },
     {
-      "id": "klg_l04_loop_partial:ring_alloc:19:28",
-      "module": "klg_l04_loop_partial",
-      "status": "inconclusive",
-      "reason": "no failing call controls the leaking path",
-      "tests": []
-    },
-    {
       "id": "klg_l04_loop_partial:ring_alloc:19:21",
       "module": "klg_l04_loop_partial",
       "status": "confirmed",
@@ -1028,8 +1021,8 @@
     {
       "id": "klg_l10_vmalloc:fw_stage:22:28",
       "module": "klg_l10_vmalloc",
-      "status": "not-reproduced",
-      "reason": "predicted failure injected, no object left unreferenced",
+      "status": "confirmed",
+      "reason": "leak at klg_l10_vmalloc.c:22 after failing fw_stage+0x37/0x80",
       "tests": [
         {
           "test": "klg_l10_vmalloc__n9",
@@ -1041,7 +1034,83 @@
           "returns": [
             -12
           ],
-          "leaks": []
+          "leaks": [
+            {
+              "size": 65536,
+              "locs": [
+                [
+                  "klg_l10_vmalloc.c",
+                  22
+                ],
+                [
+                  "klg_l10_vmalloc.c",
+                  38
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "kmemleak_vmalloc+0x2d/0xc0",
+                "__vmalloc_node_range_noprof+0x6c8/0x710",
+                "vmalloc_noprof+0x58/0x70",
+                "fw_stage+0x14/0x80 [klg_l10_vmalloc]",
+                "klg_trigger_write+0x12/0x30 [klg_l10_vmalloc]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100"
+              ]
+            },
+            {
+              "size": 65536,
+              "locs": [
+                [
+                  "klg_l10_vmalloc.c",
+                  22
+                ],
+                [
+                  "klg_l10_vmalloc.c",
+                  38
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "kmemleak_vmalloc+0x2d/0xc0",
+                "__vmalloc_node_range_noprof+0x6c8/0x710",
+                "vmalloc_noprof+0x58/0x70",
+                "fw_stage+0x14/0x80 [klg_l10_vmalloc]",
+                "klg_trigger_write+0x12/0x30 [klg_l10_vmalloc]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100"
+              ]
+            },
+            {
+              "size": 65536,
+              "locs": [
+                [
+                  "klg_l10_vmalloc.c",
+                  22
+                ],
+                [
+                  "klg_l10_vmalloc.c",
+                  38
+                ]
+              ],
+              "functions": [],
+              "resolved": true,
+              "backtrace": [
+                "kmemleak_vmalloc+0x2d/0xc0",
+                "__vmalloc_node_range_noprof+0x6c8/0x710",
+                "vmalloc_noprof+0x58/0x70",
+                "fw_stage+0x14/0x80 [klg_l10_vmalloc]",
+                "klg_trigger_write+0x12/0x30 [klg_l10_vmalloc]",
+                "full_proxy_write+0x5c/0xb0",
+                "vfs_write+0x136/0x450",
+                "ksys_write+0x79/0x100"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1662,13 +1731,6 @@
           ]
         }
       ]
-    },
-    {
-      "id": "klg_s09_loop_cleanup:ring_alloc:20:29",
-      "module": "klg_s09_loop_cleanup",
-      "status": "inconclusive",
-      "reason": "no failing call controls the leaking path",
-      "tests": []
     },
     {
       "id": "klg_s09_loop_cleanup:ring_alloc:20:34",
@@ -7455,9 +7517,7 @@
     "baseline": []
   },
   "timing": {
-    "sweep_vm_s": 80.03159952163696,
-    "mapping_vm_s": 50.01780152320862,
-    "confirm_vm_s": 78.02275729179382
+    "confirm_vm_s": 94.03675603866577
   },
   "baselines": {
     "exhaustive": {

@@ -18,52 +18,6 @@
       "alloc_size": 128,
       "allocator": "kmalloc",
       "approximate": false,
-      "category": "missing-release-on-other-path",
-      "confidence": "low",
-      "exit": {
-        "col": 2,
-        "file": "klg_s09_loop_cleanup.c",
-        "line": 29
-      },
-      "exit_kind": "normal",
-      "fix": null,
-      "function": "ring_alloc",
-      "id": "klg_s09_loop_cleanup:ring_alloc:20:29",
-      "module": "klg_s09_loop_cleanup",
-      "path_lines": [
-        20,
-        23,
-        19,
-        25,
-        26,
-        27,
-        29,
-        35
-      ],
-      "release_sites": [
-        {
-          "col": 3,
-          "file": "klg_s09_loop_cleanup.c",
-          "line": 28
-        },
-        {
-          "col": 3,
-          "file": "klg_s09_loop_cleanup.c",
-          "line": 33
-        }
-      ],
-      "return_value": "0",
-      "triggers": []
-    },
-    {
-      "alloc": {
-        "col": 13,
-        "file": "klg_s09_loop_cleanup.c",
-        "line": 20
-      },
-      "alloc_size": 128,
-      "allocator": "kmalloc",
-      "approximate": false,
       "category": "missing-release-on-error-path",
       "confidence": "high",
       "exit": {
@@ -122,9 +76,9 @@
   },
   "stats": {
     "alloc_sites": 1,
-    "analysis_ms": 0.49099500000000001,
+    "analysis_ms": 0.369396,
     "budget_exhausted": 0,
-    "candidates": 2,
+    "candidates": 1,
     "functions": 6
   },
   "tool": "klg-analyze"

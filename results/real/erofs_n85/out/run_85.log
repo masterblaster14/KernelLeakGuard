@@ -1,0 +1,623 @@
+@@BEGIN n=0
+@@ATTEMPT n=0 ret=0 errno=0 injected=0
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K KLG-SYM erofs ffffffffa0001000 .Ltmp6
+K KLG-SYM erofs ffffffffa0001070 .Ltmp7
+K KLG-SYM erofs ffffffffa0001090 .Ltmp8
+K KLG-SYM erofs ffffffffa00010f0 .Ltmp9
+K KLG-SYM erofs ffffffffa0001110 .Ltmp10
+K KLG-SYM erofs ffffffffa0001170 .Ltmp11
+K KLG-SYM erofs ffffffffa0001190 .Ltmp12
+K KLG-SYM erofs ffffffffa0001200 .Ltmp13
+K KLG-SYM erofs ffffffffa0001220 .Ltmp14
+K KLG-SYM erofs ffffffffa0001290 .Ltmp15
+K KLG-SYM erofs ffffffffa00012b0 .Ltmp16
+K KLG-SYM erofs ffffffffa0001320 .Ltmp17
+K KLG-SYM erofs ffffffffa0001350 trace_event_raw_event_erofs_lookup
+K KLG-SYM erofs ffffffffa0001340 .Ltmp18
+K KLG-SYM erofs ffffffffa00014a0 perf_trace_erofs_lookup
+K KLG-SYM erofs ffffffffa0001490 .Ltmp19
+K KLG-SYM erofs ffffffffa0001620 trace_event_raw_event_erofs_fill_inode
+K KLG-SYM erofs ffffffffa0001610 .Ltmp20
+K KLG-SYM erofs ffffffffa00017a0 perf_trace_erofs_fill_inode
+K KLG-SYM erofs ffffffffa0001790 .Ltmp21
+K KLG-SYM erofs ffffffffa0001940 trace_event_raw_event_erofs_read_folio
+K KLG-SYM erofs ffffffffa0001930 .Ltmp22
+K KLG-SYM erofs ffffffffa0001a70 perf_trace_erofs_read_folio
+K KLG-SYM erofs ffffffffa0001a60 .Ltmp23
+K KLG-SYM erofs ffffffffa0001bc0 trace_event_raw_event_erofs_readahead
+K KLG-SYM erofs ffffffffa0001bb0 .Ltmp24
+K KLG-SYM erofs ffffffffa0001cc0 perf_trace_erofs_readahead
+K KLG-SYM erofs ffffffffa0001cb0 .Ltmp25
+K KLG-SYM erofs ffffffffa0001de0 trace_event_raw_event_erofs_map_blocks_enter
+K KLG-SYM erofs ffffffffa0001dd0 .Ltmp26
+K KLG-SYM erofs ffffffffa0001ee0 perf_trace_erofs_map_blocks_enter
+K KLG-SYM erofs ffffffffa0001ed0 .Ltmp27
+K KLG-SYM erofs ffffffffa0002000 trace_event_raw_event_erofs_map_blocks_exit
+K KLG-SYM erofs ffffffffa0001ff0 .Ltmp28
+K KLG-SYM erofs ffffffffa0002120 perf_trace_erofs_map_blocks_exit
+K KLG-SYM erofs ffffffffa0002110 .Ltmp29
+K KLG-SYM erofs ffffffffa0002260 .Ltmp30
+K KLG-SYM erofs ffffffffa0002360 .Ltmp31
+K KLG-SYM erofs ffffffffa00024b0 erofs_alloc_inode
+K KLG-SYM erofs ffffffffa00024a0 .Ltmp32
+K KLG-SYM erofs ffffffffa0002550 erofs_free_inode
+K KLG-SYM erofs ffffffffa0002540 .Ltmp33
+K KLG-SYM erofs ffffffffa00025a0 erofs_evict_inode
+K KLG-SYM erofs ffffffffa0002590 .Ltmp34
+K KLG-SYM erofs ffffffffa00025e0 erofs_put_super
+K KLG-SYM erofs ffffffffa00025d0 .Ltmp35
+K KLG-SYM erofs ffffffffa0002d20 erofs_release_device_info
+K KLG-SYM erofs ffffffffa00026b0 erofs_statfs
+K KLG-SYM erofs ffffffffa00026a0 .Ltmp36
+K KLG-SYM erofs ffffffffa0002790 erofs_show_options
+K KLG-SYM erofs ffffffffa0002780 .Ltmp37
+K KLG-SYM erofs ffffffffa000f000 .Ltmp38
+K KLG-SYM erofs ffffffffa0002d70 erofs_inode_init_once
+K KLG-SYM erofs ffffffffa000eeb0 .Ltmp39
+K KLG-SYM erofs ffffffffa00028a0 trace_raw_output_erofs_lookup
+K KLG-SYM erofs ffffffffa0002890 .Ltmp40
+K KLG-SYM erofs ffffffffa0002930 trace_raw_output_erofs_fill_inode
+K KLG-SYM erofs ffffffffa0002920 .Ltmp41
+K KLG-SYM erofs ffffffffa00029b0 trace_raw_output_erofs_read_folio
+K KLG-SYM erofs ffffffffa00029a0 .Ltmp42
+K KLG-SYM erofs ffffffffa0002a70 trace_raw_output_erofs_readahead
+K KLG-SYM erofs ffffffffa0002a60 .Ltmp43
+K KLG-SYM erofs ffffffffa0002b00 trace_raw_output_erofs_map_blocks_enter
+K KLG-SYM erofs ffffffffa0002af0 .Ltmp44
+K KLG-SYM erofs ffffffffa0002be0 trace_raw_output_erofs_map_blocks_exit
+K KLG-SYM erofs ffffffffa0002bd0 .Ltmp45
+K KLG-SYM erofs ffffffffa0002d10 .Ltmp46
+K KLG-SYM erofs ffffffffa0002d60 .Ltmp47
+K KLG-SYM erofs ffffffffa0002da0 erofs_init_fs_context
+K KLG-SYM erofs ffffffffa0002d90 .Ltmp48
+K KLG-SYM erofs ffffffffa0002e80 erofs_kill_sb
+K KLG-SYM erofs ffffffffa0002e70 .Ltmp49
+K KLG-SYM erofs ffffffffa0003300 erofs_sb_free
+K KLG-SYM erofs ffffffffa0002f20 erofs_fc_free
+K KLG-SYM erofs ffffffffa0002f10 .Ltmp50
+K KLG-SYM erofs ffffffffa0002f50 erofs_fc_parse_param
+K KLG-SYM erofs ffffffffa0002f40 .Ltmp51
+K KLG-SYM erofs ffffffffa00031b0 erofs_fc_get_tree
+K KLG-SYM erofs ffffffffa00031a0 .Ltmp52
+K KLG-SYM erofs ffffffffa0003390 erofs_fc_fill_super
+K KLG-SYM erofs ffffffffa0003270 erofs_fc_reconfigure
+K KLG-SYM erofs ffffffffa0003260 .Ltmp53
+K KLG-SYM erofs ffffffffa00032f0 .Ltmp54
+K KLG-SYM erofs ffffffffa0003380 .Ltmp55
+K KLG-SYM erofs ffffffffa0003aa0 erofs_set_sysfs_name
+K KLG-SYM erofs ffffffffa0003b40 erofs_scan_devices
+K KLG-SYM erofs ffffffffa0003a90 .Ltmp56
+K KLG-SYM erofs ffffffffa0004170 super_set_sysfs_name_generic
+K KLG-SYM erofs ffffffffa0003b30 .Ltmp57
+K KLG-SYM erofs ffffffffa0003dd0 erofs_init_device
+K KLG-SYM erofs ffffffffa0003dc0 .Ltmp58
+K KLG-SYM erofs ffffffffa0003fb0 erofs_encode_fh
+K KLG-SYM erofs ffffffffa0003fa0 .Ltmp59
+K KLG-SYM erofs ffffffffa0004030 erofs_fh_to_dentry
+K KLG-SYM erofs ffffffffa0004020 .Ltmp60
+K KLG-SYM erofs ffffffffa0004080 erofs_fh_to_parent
+K KLG-SYM erofs ffffffffa0004070 .Ltmp61
+K KLG-SYM erofs ffffffffa00040d0 erofs_get_parent
+K KLG-SYM erofs ffffffffa00040c0 .Ltmp62
+K KLG-SYM erofs ffffffffa0004160 .Ltmp63
+K KLG-SYM erofs ffffffffa0004200 .Ltmp0
+K KLG-SYM erofs ffffffffa00049c0 erofs_iget5_eq
+K KLG-SYM erofs ffffffffa00049f0 erofs_iget5_set
+K KLG-SYM erofs ffffffffa00049b0 .Ltmp2
+K KLG-SYM erofs ffffffffa00049e0 .Ltmp3
+K KLG-SYM erofs ffffffffa0004a50 .Ltmp4
+K KLG-SYM erofs ffffffffa0004b10 .Ltmp5
+K KLG-SYM erofs ffffffffa0004bc0 .Ltmp27
+K KLG-SYM erofs ffffffffa0004c70 .Ltmp0
+K KLG-SYM erofs ffffffffa0004ca0 .Ltmp1
+K KLG-SYM erofs ffffffffa0004d20 .Ltmp4
+K KLG-SYM erofs ffffffffa0004f10 .Ltmp8
+K KLG-SYM erofs ffffffffa0004f90 .Ltmp9
+K KLG-SYM erofs ffffffffa0005020 .Ltmp10
+K KLG-SYM erofs ffffffffa00054f0 .Ltmp15
+K KLG-SYM erofs ffffffffa00056c0 .Ltmp16
+K KLG-SYM erofs ffffffffa00056f0 .Ltmp17
+K KLG-SYM erofs ffffffffa0005720 .Ltmp19
+K KLG-SYM erofs ffffffffa0005790 .Ltmp21
+K KLG-SYM erofs ffffffffa00057e0 erofs_read_folio
+K KLG-SYM erofs ffffffffa00057d0 .Ltmp22
+K KLG-SYM erofs ffffffffa0005860 erofs_readahead
+K KLG-SYM erofs ffffffffa0005850 .Ltmp24
+K KLG-SYM erofs ffffffffa00058f0 erofs_bmap
+K KLG-SYM erofs ffffffffa00058e0 .Ltmp26
+K KLG-SYM erofs ffffffffa0005920 erofs_file_llseek
+K KLG-SYM erofs ffffffffa0005910 .Ltmp27
+K KLG-SYM erofs ffffffffa00059c0 erofs_file_read_iter
+K KLG-SYM erofs ffffffffa00059b0 .Ltmp28
+K KLG-SYM erofs ffffffffa0005a30 erofs_iomap_begin
+K KLG-SYM erofs ffffffffa0005a20 .Ltmp29
+K KLG-SYM erofs ffffffffa0005ca0 erofs_iomap_end
+K KLG-SYM erofs ffffffffa0005c90 .Ltmp30
+K KLG-SYM erofs ffffffffa0005d40 .Ltmp0
+K KLG-SYM erofs ffffffffa00061f0 erofs_lookup
+K KLG-SYM erofs ffffffffa00061e0 .Ltmp1
+K KLG-SYM erofs ffffffffa0006320 erofs_readdir
+K KLG-SYM erofs ffffffffa0006310 .Ltmp0
+K KLG-SYM erofs ffffffffa00067f0 .Ltmp0
+K KLG-SYM erofs ffffffffa00068a0 .Ltmp1
+K KLG-SYM erofs ffffffffa0006900 .Ltmp2
+K KLG-SYM erofs ffffffffa000f0f0 .Ltmp3
+K KLG-SYM erofs ffffffffa0006950 erofs_attr_show
+K KLG-SYM erofs ffffffffa0006940 .Ltmp4
+K KLG-SYM erofs ffffffffa0006a00 erofs_attr_store
+K KLG-SYM erofs ffffffffa00069f0 .Ltmp5
+K KLG-SYM erofs ffffffffa0006bd0 erofs_sb_release
+K KLG-SYM erofs ffffffffa0006bc0 .Ltmp6
+K KLG-SYM erofs ffffffffa0006c00 erofs_xattr_user_list
+K KLG-SYM erofs ffffffffa0006bf0 .Ltmp0
+K KLG-SYM erofs ffffffffa0006c40 erofs_xattr_generic_get
+K KLG-SYM erofs ffffffffa0006c30 .Ltmp1
+K KLG-SYM erofs ffffffffa0006c90 erofs_xattr_trusted_list
+K KLG-SYM erofs ffffffffa0006c80 .Ltmp2
+K KLG-SYM erofs ffffffffa0006cb0 .Ltmp3
+K KLG-SYM erofs ffffffffa0006f50 erofs_init_inode_xattrs
+K KLG-SYM erofs ffffffffa0007290 erofs_xattr_iter_inline
+K KLG-SYM erofs ffffffffa00079c0 erofs_getxattr_foreach
+K KLG-SYM erofs ffffffffa0006f40 .Ltmp4
+K KLG-SYM erofs ffffffffa0007280 .Ltmp8
+K KLG-SYM erofs ffffffffa0007b70 erofs_listxattr_foreach
+K KLG-SYM erofs ffffffffa00073e0 .Ltmp9
+K KLG-SYM erofs ffffffffa00075d0 .Ltmp10
+K KLG-SYM erofs ffffffffa0007660 .Ltmp11
+K KLG-SYM erofs ffffffffa00078c0 .Ltmp12
+K KLG-SYM erofs ffffffffa00079b0 .Ltmp13
+K KLG-SYM erofs ffffffffa0007d60 erofs_xattr_copy_to_buffer
+K KLG-SYM erofs ffffffffa0007b60 .Ltmp14
+K KLG-SYM erofs ffffffffa0007d50 .Ltmp15
+K KLG-SYM erofs ffffffffa0007e10 .Ltmp0
+K KLG-SYM erofs ffffffffa0007e70 .Ltmp1
+K KLG-SYM erofs ffffffffa0008190 z_erofs_load_lz4_config
+K KLG-SYM erofs ffffffffa0008180 .Ltmp2
+K KLG-SYM erofs ffffffffa0008210 z_erofs_lz4_decompress
+K KLG-SYM erofs ffffffffa0008200 .Ltmp3
+K KLG-SYM erofs ffffffffa00087e0 z_erofs_transform_plain
+K KLG-SYM erofs ffffffffa00087d0 .Ltmp4
+K KLG-SYM erofs ffffffffa0008a10 .Ltmp5
+K KLG-SYM erofs ffffffffa000f190 .Ltmp6
+K KLG-SYM erofs ffffffffa0008c20 .Ltmp7
+K KLG-SYM erofs ffffffffa0008ca0 .Ltmp0
+K KLG-SYM erofs ffffffffa00095f0 z_erofs_map_blocks_fo
+K KLG-SYM erofs ffffffffa00095e0 .Ltmp6
+K KLG-SYM erofs ffffffffa0009cc0 z_erofs_load_lcluster_from_disk
+K KLG-SYM erofs ffffffffa0009b60 z_erofs_iomap_begin_report
+K KLG-SYM erofs ffffffffa0009b50 .Ltmp7
+K KLG-SYM erofs ffffffffa0009cb0 .Ltmp8
+K KLG-SYM erofs ffffffffa000a210 .Ltmp0
+K KLG-SYM erofs ffffffffa000a250 z_erofs_destroy_pcluster_pool
+K KLG-SYM erofs ffffffffa000a240 .Ltmp1
+K KLG-SYM erofs ffffffffa000f220 .Ltmp2
+K KLG-SYM erofs ffffffffa000a310 .Ltmp8
+K KLG-SYM erofs ffffffffa000a3b0 .Ltmp9
+K KLG-SYM erofs ffffffffa000ab10 __erofs_try_to_release_pcluster
+K KLG-SYM erofs ffffffffa000ac30 z_erofs_rcu_callback
+K KLG-SYM erofs ffffffffa000a4f0 z_erofs_read_folio
+K KLG-SYM erofs ffffffffa000a4e0 .Ltmp11
+K KLG-SYM erofs ffffffffa000acd0 z_erofs_pcluster_readmore
+K KLG-SYM erofs ffffffffa000ae80 z_erofs_scan_folio
+K KLG-SYM erofs ffffffffa000be30 z_erofs_runqueue
+K KLG-SYM erofs ffffffffa000a6e0 z_erofs_readahead
+K KLG-SYM erofs ffffffffa000a6d0 .Ltmp14
+K KLG-SYM erofs ffffffffa000a980 z_erofs_cache_invalidate_folio
+K KLG-SYM erofs ffffffffa000a970 .Ltmp21
+K KLG-SYM erofs ffffffffa000a9f0 z_erofs_cache_release_folio
+K KLG-SYM erofs ffffffffa000a9e0 .Ltmp22
+K KLG-SYM erofs ffffffffa000ab00 .Ltmp26
+K KLG-SYM erofs ffffffffa000ac20 .Ltmp31
+K KLG-SYM erofs ffffffffa000acc0 .Ltmp32
+K KLG-SYM erofs ffffffffa000ae70 .Ltmp35
+K KLG-SYM erofs ffffffffa000be20 .Ltmp46
+K KLG-SYM erofs ffffffffa000d880 z_erofs_decompressqueue_work
+K KLG-SYM erofs ffffffffa000d460 z_erofs_endio
+K KLG-SYM erofs ffffffffa000d740 z_erofs_decompress_kickoff
+K KLG-SYM erofs ffffffffa000c7c0 z_erofs_decompress_queue
+K KLG-SYM erofs ffffffffa000c7b0 .Ltmp58
+K KLG-SYM erofs ffffffffa000d450 .Ltmp70
+K KLG-SYM erofs ffffffffa000d730 .Ltmp83
+K KLG-SYM erofs ffffffffa000d870 .Ltmp85
+K KLG-SYM erofs ffffffffa000d8f0 .Ltmp0
+K KLG-SYM erofs ffffffffa000d970 .Ltmp1
+K KLG-SYM erofs ffffffffa000d9b0 .Ltmp2
+K KLG-SYM erofs ffffffffa000f4e0 .Ltmp3
+K KLG-SYM erofs ffffffffa000dba0 .Ltmp9
+K KLG-SYM erofs ffffffffa000dcb0 .Ltmp12
+K KLG-SYM erofs ffffffffa000dd50 .Ltmp13
+K KLG-SYM erofs ffffffffa000de40 .Ltmp16
+K KLG-SYM erofs ffffffffa000dec0 .Ltmp17
+K KLG-SYM erofs ffffffffa000f5e0 .Ltmp18
+K KLG-SYM erofs ffffffffa000df70 erofs_shrink_count
+K KLG-SYM erofs ffffffffa000dfb0 erofs_shrink_scan
+K KLG-SYM erofs ffffffffa000df60 .Ltmp19
+K KLG-SYM erofs ffffffffa000dfa0 .Ltmp20
+K KLG-SYM erofs ffffffffa000e0c0 .Ltmp21
+K KLG-SYM erofs ffffffffa000e0f0 .Ltmp0
+K KLG-SYM erofs ffffffffa000e180 .Ltmp1
+K KLG-SYM erofs ffffffffa000e1c0 erofs_fileio_rq_submit
+K KLG-SYM erofs ffffffffa000e1b0 .Ltmp2
+K KLG-SYM erofs ffffffffa000e740 erofs_fileio_ki_complete
+K KLG-SYM erofs ffffffffa000e3c0 erofs_fileio_read_folio
+K KLG-SYM erofs ffffffffa000e3b0 .Ltmp4
+K KLG-SYM erofs ffffffffa000ea40 erofs_fileio_scan_folio
+K KLG-SYM erofs ffffffffa000e520 erofs_fileio_readahead
+K KLG-SYM erofs ffffffffa000e510 .Ltmp6
+K KLG-SYM erofs ffffffffa000e730 .Ltmp12
+K KLG-SYM erofs ffffffffa000ea30 .Ltmp24
+K KLG-SYM erofs ffffffffa0001340 __pfx_trace_event_raw_event_erofs_lookup
+K KLG-SYM erofs ffffffffa0001490 __pfx_perf_trace_erofs_lookup
+K KLG-SYM erofs ffffffffa0001610 __pfx_trace_event_raw_event_erofs_fill_inode
+K KLG-SYM erofs ffffffffa0001790 __pfx_perf_trace_erofs_fill_inode
+K KLG-SYM erofs ffffffffa0001930 __pfx_trace_event_raw_event_erofs_read_folio
+K KLG-SYM erofs ffffffffa0001a60 __pfx_perf_trace_erofs_read_folio
+K KLG-SYM erofs ffffffffa0001bb0 __pfx_trace_event_raw_event_erofs_readahead
+K KLG-SYM erofs ffffffffa0001cb0 __pfx_perf_trace_erofs_readahead
+K KLG-SYM erofs ffffffffa0001dd0 __pfx_trace_event_raw_event_erofs_map_blocks_enter
+K KLG-SYM erofs ffffffffa0001ed0 __pfx_perf_trace_erofs_map_blocks_enter
+K KLG-SYM erofs ffffffffa0001ff0 __pfx_trace_event_raw_event_erofs_map_blocks_exit
+K KLG-SYM erofs ffffffffa0002110 __pfx_perf_trace_erofs_map_blocks_exit
+K KLG-SYM erofs ffffffffa00024a0 __pfx_erofs_alloc_inode
+K KLG-SYM erofs ffffffffa0002540 __pfx_erofs_free_inode
+K KLG-SYM erofs ffffffffa0002590 __pfx_erofs_evict_inode
+K KLG-SYM erofs ffffffffa00025d0 __pfx_erofs_put_super
+K KLG-SYM erofs ffffffffa00026a0 __pfx_erofs_statfs
+K KLG-SYM erofs ffffffffa0002780 __pfx_erofs_show_options
+K KLG-SYM erofs ffffffffa0002890 __pfx_trace_raw_output_erofs_lookup
+K KLG-SYM erofs ffffffffa0002920 __pfx_trace_raw_output_erofs_fill_inode
+K KLG-SYM erofs ffffffffa00029a0 __pfx_trace_raw_output_erofs_read_folio
+K KLG-SYM erofs ffffffffa0002a60 __pfx_trace_raw_output_erofs_readahead
+K KLG-SYM erofs ffffffffa0002af0 __pfx_trace_raw_output_erofs_map_blocks_enter
+K KLG-SYM erofs ffffffffa0002bd0 __pfx_trace_raw_output_erofs_map_blocks_exit
+K KLG-SYM erofs ffffffffa0002d10 __pfx_erofs_release_device_info
+K KLG-SYM erofs ffffffffa0002d60 __pfx_erofs_inode_init_once
+K KLG-SYM erofs ffffffffa0002d90 __pfx_erofs_init_fs_context
+K KLG-SYM erofs ffffffffa0002e70 __pfx_erofs_kill_sb
+K KLG-SYM erofs ffffffffa0002f10 __pfx_erofs_fc_free
+K KLG-SYM erofs ffffffffa0002f40 __pfx_erofs_fc_parse_param
+K KLG-SYM erofs ffffffffa00031a0 __pfx_erofs_fc_get_tree
+K KLG-SYM erofs ffffffffa0003260 __pfx_erofs_fc_reconfigure
+K KLG-SYM erofs ffffffffa00032f0 __pfx_erofs_sb_free
+K KLG-SYM erofs ffffffffa0003380 __pfx_erofs_fc_fill_super
+K KLG-SYM erofs ffffffffa0003a90 __pfx_erofs_set_sysfs_name
+K KLG-SYM erofs ffffffffa0003b30 __pfx_erofs_scan_devices
+K KLG-SYM erofs ffffffffa0003dc0 __pfx_erofs_init_device
+K KLG-SYM erofs ffffffffa0003fa0 __pfx_erofs_encode_fh
+K KLG-SYM erofs ffffffffa0004020 __pfx_erofs_fh_to_dentry
+K KLG-SYM erofs ffffffffa0004070 __pfx_erofs_fh_to_parent
+K KLG-SYM erofs ffffffffa00040c0 __pfx_erofs_get_parent
+K KLG-SYM erofs ffffffffa0004160 __pfx_super_set_sysfs_name_generic
+K KLG-SYM erofs ffffffffa00049b0 __pfx_erofs_iget5_eq
+K KLG-SYM erofs ffffffffa00049e0 __pfx_erofs_iget5_set
+K KLG-SYM erofs ffffffffa00057d0 __pfx_erofs_read_folio
+K KLG-SYM erofs ffffffffa0005850 __pfx_erofs_readahead
+K KLG-SYM erofs ffffffffa00058e0 __pfx_erofs_bmap
+K KLG-SYM erofs ffffffffa0005910 __pfx_erofs_file_llseek
+K KLG-SYM erofs ffffffffa00059b0 __pfx_erofs_file_read_iter
+K KLG-SYM erofs ffffffffa0005a20 __pfx_erofs_iomap_begin
+K KLG-SYM erofs ffffffffa0005c90 __pfx_erofs_iomap_end
+K KLG-SYM erofs ffffffffa00061e0 __pfx_erofs_lookup
+K KLG-SYM erofs ffffffffa0006310 __pfx_erofs_readdir
+K KLG-SYM erofs ffffffffa0006940 __pfx_erofs_attr_show
+K KLG-SYM erofs ffffffffa00069f0 __pfx_erofs_attr_store
+K KLG-SYM erofs ffffffffa0006bc0 __pfx_erofs_sb_release
+K KLG-SYM erofs ffffffffa0006bf0 __pfx_erofs_xattr_user_list
+K KLG-SYM erofs ffffffffa0006c30 __pfx_erofs_xattr_generic_get
+K KLG-SYM erofs ffffffffa0006c80 __pfx_erofs_xattr_trusted_list
+K KLG-SYM erofs ffffffffa0006f40 __pfx_erofs_init_inode_xattrs
+K KLG-SYM erofs ffffffffa0007280 __pfx_erofs_xattr_iter_inline
+K KLG-SYM erofs ffffffffa00079b0 __pfx_erofs_getxattr_foreach
+K KLG-SYM erofs ffffffffa0007b60 __pfx_erofs_listxattr_foreach
+K KLG-SYM erofs ffffffffa0007d50 __pfx_erofs_xattr_copy_to_buffer
+K KLG-SYM erofs ffffffffa0008180 __pfx_z_erofs_load_lz4_config
+K KLG-SYM erofs ffffffffa0008200 __pfx_z_erofs_lz4_decompress
+K KLG-SYM erofs ffffffffa00087d0 __pfx_z_erofs_transform_plain
+K KLG-SYM erofs ffffffffa00095e0 __pfx_z_erofs_map_blocks_fo
+K KLG-SYM erofs ffffffffa0009b50 __pfx_z_erofs_iomap_begin_report
+K KLG-SYM erofs ffffffffa0009cb0 __pfx_z_erofs_load_lcluster_from_disk
+K KLG-SYM erofs ffffffffa000a240 __pfx_z_erofs_destroy_pcluster_pool
+K KLG-SYM erofs ffffffffa000a4e0 __pfx_z_erofs_read_folio
+K KLG-SYM erofs ffffffffa000a6d0 __pfx_z_erofs_readahead
+K KLG-SYM erofs ffffffffa000a970 __pfx_z_erofs_cache_invalidate_folio
+K KLG-SYM erofs ffffffffa000a9e0 __pfx_z_erofs_cache_release_folio
+K KLG-SYM erofs ffffffffa000ab00 __pfx___erofs_try_to_release_pcluster
+K KLG-SYM erofs ffffffffa000ac20 __pfx_z_erofs_rcu_callback
+K KLG-SYM erofs ffffffffa000acc0 __pfx_z_erofs_pcluster_readmore
+K KLG-SYM erofs ffffffffa000ae70 __pfx_z_erofs_scan_folio
+K KLG-SYM erofs ffffffffa000be20 __pfx_z_erofs_runqueue
+K KLG-SYM erofs ffffffffa000c7b0 __pfx_z_erofs_decompress_queue
+K KLG-SYM erofs ffffffffa000d450 __pfx_z_erofs_endio
+K KLG-SYM erofs ffffffffa000d730 __pfx_z_erofs_decompress_kickoff
+K KLG-SYM erofs ffffffffa000d870 __pfx_z_erofs_decompressqueue_work
+K KLG-SYM erofs ffffffffa000df60 __pfx_erofs_shrink_count
+K KLG-SYM erofs ffffffffa000dfa0 __pfx_erofs_shrink_scan
+K KLG-SYM erofs ffffffffa000e1b0 __pfx_erofs_fileio_rq_submit
+K KLG-SYM erofs ffffffffa000e3b0 __pfx_erofs_fileio_read_folio
+K KLG-SYM erofs ffffffffa000e510 __pfx_erofs_fileio_readahead
+K KLG-SYM erofs ffffffffa000e730 __pfx_erofs_fileio_ki_complete
+K KLG-SYM erofs ffffffffa000ea30 __pfx_erofs_fileio_scan_folio
+K KLG-SYM erofs ffffffffa0001000 
+K KLG-SYM erofs ffffffffa000ee7c 
+K KLG-SYM erofs ffffffffa000f000 
+K KLG-SYM erofs ffffffffa000eeb0 
+K KLG-SYM erofs ffffffffa000eef0 
+K KLG-SYM erofs ffffffffa0004fa0 erofs_read_metabuf
+K KLG-SYM erofs ffffffffa0004cb0 erofs_put_metabuf
+K KLG-SYM erofs ffffffffa000a320 z_erofs_init_super
+K KLG-SYM erofs ffffffffa0004210 erofs_iget
+K KLG-SYM erofs ffffffffa000de50 erofs_shrinker_register
+K KLG-SYM erofs ffffffffa0007670 erofs_xattr_prefixes_init
+K KLG-SYM erofs ffffffffa0006800 erofs_register_sysfs
+K KLG-SYM erofs ffffffffa0008a20 z_erofs_parse_cfgs
+K KLG-SYM erofs ffffffffa0005d50 erofs_namei
+K KLG-SYM erofs ffffffffa0004a60 erofs_getattr
+K KLG-SYM erofs ffffffffa0004b20 erofs_ioctl
+K KLG-SYM erofs ffffffffa0004bd0 erofs_compat_ioctl
+K KLG-SYM erofs ffffffffa00078d0 erofs_get_acl
+K KLG-SYM erofs ffffffffa00073f0 erofs_listxattr
+K KLG-SYM erofs ffffffffa00057a0 erofs_fiemap
+K KLG-SYM erofs ffffffffa0004c80 erofs_unmap_metabuf
+K KLG-SYM erofs ffffffffa0004f20 erofs_init_metabuf
+K KLG-SYM erofs ffffffffa0005030 erofs_map_blocks
+K KLG-SYM erofs ffffffffa0005500 erofs_map_dev
+K KLG-SYM erofs ffffffffa00056d0 erofs_onlinefolio_init
+K KLG-SYM erofs ffffffffa0005700 erofs_onlinefolio_split
+K KLG-SYM erofs ffffffffa0005730 erofs_onlinefolio_end
+K KLG-SYM erofs ffffffffa000a3c0 z_erofs_shrink_scan
+K KLG-SYM erofs ffffffffa0006cc0 erofs_getxattr
+K KLG-SYM erofs ffffffffa0007e20 z_erofs_fixup_insize
+K KLG-SYM erofs ffffffffa0007e80 z_erofs_stream_switch_bufs
+K KLG-SYM erofs ffffffffa000dcc0 __erofs_allocpage
+K KLG-SYM erofs ffffffffa000d9c0 z_erofs_gbuf_growsize
+K KLG-SYM erofs ffffffffa000d900 z_erofs_get_gbuf
+K KLG-SYM erofs ffffffffa000d980 z_erofs_put_gbuf
+K KLG-SYM erofs ffffffffa000f1a0 z_erofs_init_decompressor
+K KLG-SYM erofs ffffffffa0008c30 z_erofs_exit_decompressor
+K KLG-SYM erofs ffffffffa000f4f0 z_erofs_gbuf_init
+K KLG-SYM erofs ffffffffa000dbb0 z_erofs_gbuf_exit
+K KLG-SYM erofs ffffffffa0008cb0 z_erofs_map_blocks_iter
+K KLG-SYM erofs ffffffffa000dd60 erofs_release_pages
+K KLG-SYM erofs ffffffffa000e190 erofs_fileio_submit_bio
+K KLG-SYM erofs ffffffffa000e100 erofs_fileio_bio_alloc
+K KLG-SYM erofs ffffffffa0001000 __pfx___traceiter_erofs_lookup
+K KLG-SYM erofs ffffffffa0001070 __pfx___probestub_erofs_lookup
+K KLG-SYM erofs ffffffffa0001090 __pfx___traceiter_erofs_fill_inode
+K KLG-SYM erofs ffffffffa00010f0 __pfx___probestub_erofs_fill_inode
+K KLG-SYM erofs ffffffffa0001110 __pfx___traceiter_erofs_read_folio
+K KLG-SYM erofs ffffffffa0001170 __pfx___probestub_erofs_read_folio
+K KLG-SYM erofs ffffffffa0001190 __pfx___traceiter_erofs_readahead
+K KLG-SYM erofs ffffffffa0001200 __pfx___probestub_erofs_readahead
+K KLG-SYM erofs ffffffffa0001220 __pfx___traceiter_erofs_map_blocks_enter
+K KLG-SYM erofs ffffffffa0001290 __pfx___probestub_erofs_map_blocks_enter
+K KLG-SYM erofs ffffffffa00012b0 __pfx___traceiter_erofs_map_blocks_exit
+K KLG-SYM erofs ffffffffa0001320 __pfx___probestub_erofs_map_blocks_exit
+K KLG-SYM erofs ffffffffa0001080 __probestub_erofs_lookup
+K KLG-SYM erofs ffffffffa000ee7c __SCT__tp_func_erofs_lookup
+K KLG-SYM erofs ffffffffa0001010 __traceiter_erofs_lookup
+K KLG-SYM erofs ffffffffa0001100 __probestub_erofs_fill_inode
+K KLG-SYM erofs ffffffffa000ee84 __SCT__tp_func_erofs_fill_inode
+K KLG-SYM erofs ffffffffa00010a0 __traceiter_erofs_fill_inode
+K KLG-SYM erofs ffffffffa0001180 __probestub_erofs_read_folio
+K KLG-SYM erofs ffffffffa000ee8c __SCT__tp_func_erofs_read_folio
+K KLG-SYM erofs ffffffffa0001120 __traceiter_erofs_read_folio
+K KLG-SYM erofs ffffffffa0002260 __pfx__erofs_printk
+K KLG-SYM erofs ffffffffa0002360 __pfx_erofs_read_metadata
+K KLG-SYM erofs ffffffffa0001210 __probestub_erofs_readahead
+K KLG-SYM erofs ffffffffa000ee94 __SCT__tp_func_erofs_readahead
+K KLG-SYM erofs ffffffffa00011a0 __traceiter_erofs_readahead
+K KLG-SYM erofs ffffffffa00012a0 __probestub_erofs_map_blocks_enter
+K KLG-SYM erofs ffffffffa000ee9c __SCT__tp_func_erofs_map_blocks_enter
+K KLG-SYM erofs ffffffffa0001230 __traceiter_erofs_map_blocks_enter
+K KLG-SYM erofs ffffffffa0001330 __probestub_erofs_map_blocks_exit
+K KLG-SYM erofs ffffffffa000eea4 __SCT__tp_func_erofs_map_blocks_exit
+K KLG-SYM erofs ffffffffa00012c0 __traceiter_erofs_map_blocks_exit
+K KLG-SYM erofs ffffffffa0002270 _erofs_printk
+K KLG-SYM erofs ffffffffa0002370 erofs_read_metadata
+K KLG-SYM erofs ffffffffa0004d30 erofs_bread
+K KLG-SYM erofs ffffffffa0004200 __pfx_erofs_iget
+K KLG-SYM erofs ffffffffa0004a50 __pfx_erofs_getattr
+K KLG-SYM erofs ffffffffa0004b10 __pfx_erofs_ioctl
+K KLG-SYM erofs ffffffffa0004bc0 __pfx_erofs_compat_ioctl
+K KLG-SYM erofs ffffffffa0004c70 __pfx_erofs_unmap_metabuf
+K KLG-SYM erofs ffffffffa0004ca0 __pfx_erofs_put_metabuf
+K KLG-SYM erofs ffffffffa0004d20 __pfx_erofs_bread
+K KLG-SYM erofs ffffffffa0004f10 __pfx_erofs_init_metabuf
+K KLG-SYM erofs ffffffffa0004f90 __pfx_erofs_read_metabuf
+K KLG-SYM erofs ffffffffa0005020 __pfx_erofs_map_blocks
+K KLG-SYM erofs ffffffffa00054f0 __pfx_erofs_map_dev
+K KLG-SYM erofs ffffffffa00056c0 __pfx_erofs_onlinefolio_init
+K KLG-SYM erofs ffffffffa00056f0 __pfx_erofs_onlinefolio_split
+K KLG-SYM erofs ffffffffa0005720 __pfx_erofs_onlinefolio_end
+K KLG-SYM erofs ffffffffa0005790 __pfx_erofs_fiemap
+K KLG-SYM erofs ffffffffa00068b0 erofs_unregister_sysfs
+K KLG-SYM erofs ffffffffa000ded0 erofs_shrinker_unregister
+K KLG-SYM erofs ffffffffa00075e0 erofs_xattr_prefixes_cleanup
+K KLG-SYM erofs ffffffffa0005d40 __pfx_erofs_namei
+K KLG-SYM erofs ffffffffa00067f0 __pfx_erofs_register_sysfs
+K KLG-SYM erofs ffffffffa00068a0 __pfx_erofs_unregister_sysfs
+K KLG-SYM erofs ffffffffa0006900 __pfx_erofs_exit_sysfs
+K KLG-SYM erofs ffffffffa000f010 init_module
+K KLG-SYM erofs ffffffffa0006cb0 __pfx_erofs_getxattr
+K KLG-SYM erofs ffffffffa000f5f0 erofs_init_shrinker
+K KLG-SYM erofs ffffffffa00073e0 __pfx_erofs_listxattr
+K KLG-SYM erofs ffffffffa00075d0 __pfx_erofs_xattr_prefixes_cleanup
+K KLG-SYM erofs ffffffffa0007660 __pfx_erofs_xattr_prefixes_init
+K KLG-SYM erofs ffffffffa00078c0 __pfx_erofs_get_acl
+K KLG-SYM erofs ffffffffa000f230 z_erofs_init_subsystem
+K KLG-SYM erofs ffffffffa000e0d0 erofs_exit_shrinker
+K KLG-SYM erofs ffffffffa0007e10 __pfx_z_erofs_fixup_insize
+K KLG-SYM erofs ffffffffa0007e70 __pfx_z_erofs_stream_switch_bufs
+K KLG-SYM erofs ffffffffa000f100 erofs_init_sysfs
+K KLG-SYM erofs ffffffffa0006910 erofs_exit_sysfs
+K KLG-SYM erofs ffffffffa0008a10 __pfx_z_erofs_parse_cfgs
+K KLG-SYM erofs ffffffffa0008c20 __pfx_z_erofs_exit_decompressor
+K KLG-SYM erofs ffffffffa0008ca0 __pfx_z_erofs_map_blocks_iter
+K KLG-SYM erofs ffffffffa000a220 z_erofs_exit_subsystem
+K KLG-SYM erofs ffffffffa000eec0 cleanup_module
+K KLG-SYM erofs ffffffffa000a210 __pfx_z_erofs_exit_subsystem
+K KLG-SYM erofs ffffffffa000a310 __pfx_z_erofs_init_super
+K KLG-SYM erofs ffffffffa000a3b0 __pfx_z_erofs_shrink_scan
+K KLG-SYM erofs ffffffffa000d8f0 __pfx_z_erofs_get_gbuf
+K KLG-SYM erofs ffffffffa000d970 __pfx_z_erofs_put_gbuf
+K KLG-SYM erofs ffffffffa000d9b0 __pfx_z_erofs_gbuf_growsize
+K KLG-SYM erofs ffffffffa000dba0 __pfx_z_erofs_gbuf_exit
+K KLG-SYM erofs ffffffffa000dcb0 __pfx___erofs_allocpage
+K KLG-SYM erofs ffffffffa000dd50 __pfx_erofs_release_pages
+K KLG-SYM erofs ffffffffa000de40 __pfx_erofs_shrinker_register
+K KLG-SYM erofs ffffffffa000dec0 __pfx_erofs_shrinker_unregister
+K KLG-SYM erofs ffffffffa000e0c0 __pfx_erofs_exit_shrinker
+K KLG-SYM erofs ffffffffa000e0f0 __pfx_erofs_fileio_bio_alloc
+K KLG-SYM erofs ffffffffa000e180 __pfx_erofs_fileio_submit_bio
+K KLG-SYM erofs ffffffffa000f000 __pfx_init_module
+K KLG-SYM erofs ffffffffa000f0f0 __pfx_erofs_init_sysfs
+K KLG-SYM erofs ffffffffa000f190 __pfx_z_erofs_init_decompressor
+K KLG-SYM erofs ffffffffa000f220 __pfx_z_erofs_init_subsystem
+K KLG-SYM erofs ffffffffa000f4e0 __pfx_z_erofs_gbuf_init
+K KLG-SYM erofs ffffffffa000f5e0 __pfx_erofs_init_shrinker
+K KLG-SYM erofs ffffffffa000eeb0 __pfx_cleanup_module
+@@END
+@@BEGIN n=85
+@@ATTEMPT n=85 ret=0 errno=0 injected=1
+K KLG-MOD erofs text=ffffffffa0001000+e000 init=ffffffffa000f000+1000
+K FAULT_INJECTION: forcing a failure.\x0aname failslab, interval 1, probability 0, space 0, times -1
+K CPU: 0 UID: 0 PID: 77 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K Call Trace:
+K  <TASK>
+K  dump_stack_lvl+0x84/0xc0
+K  should_fail_ex+0x38f/0x3a0
+K  ? should_failslab+0x56/0x70
+K  ? __kmalloc_cache_noprof+0x41/0x420
+K  ? sysfs_slab_add+0xa8/0x270
+K  ? do_kmem_cache_create+0x560/0x650
+K  ? __kmem_cache_create_args+0x12b/0x350
+K  ? z_erofs_init_subsystem+0x77/0x2b0 [erofs]
+K  ? init_module+0x98/0xe0 [erofs]
+K  ? do_one_initcall+0x119/0x300
+K  ? do_init_module+0x60/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __create_object+0x5e/0x100
+K  ? sysfs_slab_add+0xa8/0x270
+K  should_failslab+0x56/0x70
+K  __kmalloc_cache_noprof+0x41/0x420
+K  sysfs_slab_add+0xa8/0x270
+K  do_kmem_cache_create+0x560/0x650
+K  __kmem_cache_create_args+0x12b/0x350
+K  z_erofs_init_subsystem+0x77/0x2b0 [erofs]
+K  init_module+0x98/0xe0 [erofs]
+K  ? __pfx_erofs_inode_init_once+0x10/0x10 [erofs]
+K  ? __pfx_init_module+0x10/0x10 [erofs]
+K  do_one_initcall+0x119/0x300
+K  ? unwind_next_frame+0xba0/0xd00
+K  ? arch_stack_walk+0x103/0x170
+K  ? __is_insn_slot_addr+0x4c/0x60
+K  ? kernel_text_address+0xb2/0xd0
+K  ? __pfx_stack_trace_consume_entry+0x10/0x10
+K  ? __kernel_text_address+0x12/0x40
+K  ? unwind_get_return_address+0x1b/0x40
+K  ? arch_stack_walk+0x11b/0x170
+K  ? stack_depot_save_flags+0x3f/0x710
+K  ? set_track_prepare+0xeb/0x120
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  ? do_init_module+0x22/0x250
+K  ? __se_sys_finit_module+0x27f/0x370
+K  ? do_syscall_64+0xc8/0x260
+K  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K  ? __link_object+0x15b/0x1c0
+K  ? __create_object+0x5e/0x100
+K  ? do_init_module+0x22/0x250
+K  ? __kmalloc_cache_noprof+0x1b5/0x420
+K  do_init_module+0x60/0x250
+K  __se_sys_finit_module+0x27f/0x370
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007ffc469d3258 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+K RAX: ffffffffffffffda RBX: 0000000000000055 RCX: 000000000042d90d
+K RDX: 0000000000000000 RSI: 00000000004a9e09 RDI: 0000000000000006
+K RBP: 00007ffc469d3265 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffc469d3420
+K R13: 0000000000000006 R14: 0000000000000001 R15: 00007ffc469d3260
+K  </TASK>
+K SLUB: Unable to add cache erofs_pcluster-1 to sysfs
+K ------------[ cut here ]------------
+K kobject: '(null)' (000000009bff6528): is not initialized, yet kobject_put() is being called.
+K WARNING: CPU: 0 PID: 77 at lib/kobject.c:736 kobject_put+0x3b/0xc0
+K Modules linked in: erofs(-) klg_modwatch(O) [last unloaded: erofs]
+K CPU: 0 UID: 0 PID: 77 Comm: klg-agent Tainted: G           O        6.18.55 #8 PREEMPT(voluntary) 
+K Tainted: [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K RIP: 0010:kobject_put+0x3b/0xc0
+K Code: 00 00 00 48 89 fb eb 08 4c 89 fb 4d 85 ff 74 78 f6 43 3c 01 75 18 90 48 8b 33 48 c7 c7 8e 8d a4 82 48 89 da e8 46 ea ea fe 90 <0f> 0b 90 90 b8 ff ff ff ff f0 0f c1 43 38 83 f8 01 75 49 4c 8b 33
+K RSP: 0018:ff11000006033e10 EFLAGS: 00010246
+K RAX: 895565b566258800 RBX: ff1100000556e980 RCX: 895565b566258800
+K RDX: 0000000000000000 RSI: 00000000fff7ffff RDI: ff1100007b665000
+K RBP: ff11000006033f00 R08: 000000000007ffff R09: ff1100007e265000
+K R10: 000000000017fffd R11: 00000000fff7ffff R12: ffffffffa020ff80
+K R13: 0000000000000000 R14: ffffffffa020ff98 R15: ffffffffa020ff88
+K FS:  0000000003a4c3c0(0000) GS:ff110000f5488000(0000) knlGS:0000000000000000
+K CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+K CR2: 0000000003a4e000 CR3: 0000000006090000 CR4: 0000000000751ef0
+K PKRU: 55555554
+K Call Trace:
+K  <TASK>
+K  z_erofs_destroy_pcluster_pool+0x16/0xc0 [erofs]
+K  z_erofs_exit_subsystem+0x1a/0x20 [erofs]
+K  cleanup_module+0x1f/0x140 [erofs]
+K  __se_sys_delete_module+0x289/0x310
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007ffc469d3258 EFLAGS: 00000246 ORIG_RAX: 00000000000000b0
+K RAX: ffffffffffffffda RBX: 0000000000000055 RCX: 000000000042d90d
+K RDX: 0000000000468996 RSI: 0000000000000800 RDI: 00007ffc469d3260
+K RBP: 0000000000000000 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000001
+K R13: 0000000000000006 R14: 0000000000000000 R15: 00007ffc469d3260
+K  </TASK>
+K ---[ end trace 0000000000000000 ]---
+K ------------[ cut here ]------------
+K refcount_t: underflow; use-after-free.
+K WARNING: CPU: 0 PID: 77 at lib/refcount.c:28 refcount_warn_saturate+0xb4/0x140
+K Modules linked in: erofs(-) klg_modwatch(O) [last unloaded: erofs]
+K CPU: 0 UID: 0 PID: 77 Comm: klg-agent Tainted: G        W  O        6.18.55 #8 PREEMPT(voluntary) 
+K Tainted: [W]=WARN, [O]=OOT_MODULE
+K Hardware name: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+K RIP: 0010:refcount_warn_saturate+0xb4/0x140
+K Code: ff 90 0f 0b 90 90 c3 cc cc cc cc cc 80 3d a7 36 c9 01 00 75 90 c6 05 9e 36 c9 01 01 90 48 c7 c7 27 fc a7 82 e8 ad 80 9e ff 90 <0f> 0b 90 90 c3 cc cc cc cc cc 80 3d 7c 36 c9 01 00 0f 85 64 ff ff
+K RSP: 0018:ff11000006033e30 EFLAGS: 00010246
+K RAX: 895565b566258800 RBX: 0000000000000800 RCX: 895565b566258800
+K RDX: 0000000000000000 RSI: 00000000fff7ffff RDI: ff1100007b665000
+K RBP: ff11000006033f00 R08: 000000000007ffff R09: ff1100007e265000
+K R10: 000000000017fffd R11: 00000000fff7ffff R12: ffffffffa020ff80
+K R13: 0000000000000000 R14: ffffffffa020ff98 R15: ffffffffa020ff88
+K FS:  0000000003a4c3c0(0000) GS:ff110000f5488000(0000) knlGS:0000000000000000
+K CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+K CR2: 0000000003a4e000 CR3: 0000000006090000 CR4: 0000000000751ef0
+K PKRU: 55555554
+K Call Trace:
+K  <TASK>
+K  z_erofs_destroy_pcluster_pool+0x16/0xc0 [erofs]
+K  z_erofs_exit_subsystem+0x1a/0x20 [erofs]
+K  cleanup_module+0x1f/0x140 [erofs]
+K  __se_sys_delete_module+0x289/0x310
+K  do_syscall_64+0xc8/0x260
+K  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+K RIP: 0033:0x42d90d
+K Code: 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 f0 ff ff ff f7 d8 64 89 01 48
+K RSP: 002b:00007ffc469d3258 EFLAGS: 00000246 ORIG_RAX: 00000000000000b0
+K RAX: ffffffffffffffda RBX: 0000000000000055 RCX: 000000000042d90d
+K RDX: 0000000000468996 RSI: 0000000000000800 RDI: 00007ffc469d3260
+K RBP: 0000000000000000 R08: 0000000000000000 R09: 6f6b0073666f7265
+K R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000001
+K R13: 0000000000000006 R14: 0000000000000000 R15: 00007ffc469d3260
+K  </TASK>
+K ---[ end trace 0000000000000000 ]---
+@@END

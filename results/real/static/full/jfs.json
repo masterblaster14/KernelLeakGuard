@@ -133,8 +133,8 @@
   },
   "stats": {
     "alloc_sites": 18,
-    "analysis_ms": 105.848976,
-    "budget_exhausted": 2,
+    "analysis_ms": 250.086438,
+    "budget_exhausted": 1,
     "candidates": 0,
     "functions": 320
   },

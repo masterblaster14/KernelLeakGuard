@@ -1,0 +1,63 @@
+unreferenced object 0xff11000005fa6380 (size 32):
+  comm "klg-agent", pid 591, jiffies 4294747591
+  hex dump (first 32 bytes):
+    65 72 6f 66 73 5f 70 63 6c 75 73 74 65 72 2d 36  erofs_pcluster-6
+    34 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  4...............
+  backtrace (crc b423452):
+    __kmalloc_node_track_caller_noprof+0x2cf/0x4d0
+    kstrdup+0x34/0x70
+    __kmem_cache_create_args+0x95/0x350
+    0xffffffffa000f3bb
+    0xffffffffa000f0a8
+    do_one_initcall+0x119/0x300
+    do_init_module+0x60/0x250
+    __se_sys_finit_module+0x27f/0x370
+    do_syscall_64+0xc8/0x260
+    entry_SYSCALL_64_after_hwframe+0x77/0x7f
+unreferenced object 0xff11000006429600 (size 208):
+  comm "klg-agent", pid 591, jiffies 4294747592
+  hex dump (first 32 bytes):
+    00 a4 da 83 ff ff ff ff 00 00 00 00 00 00 00 00  ................
+    00 80 02 00 00 00 00 00 05 00 00 00 00 00 00 00  ................
+  backtrace (crc 5e3cee1f):
+    kmem_cache_alloc_noprof+0x1ac/0x400
+    __kmem_cache_create_args+0x10f/0x350
+    0xffffffffa000f3bb
+    0xffffffffa000f0a8
+    do_one_initcall+0x119/0x300
+    do_init_module+0x60/0x250
+    __se_sys_finit_module+0x27f/0x370
+    do_syscall_64+0xc8/0x260
+    entry_SYSCALL_64_after_hwframe+0x77/0x7f
+unreferenced object 0xff11000006428480 (size 72):
+  comm "klg-agent", pid 591, jiffies 4294747592
+  hex dump (first 32 bytes):
+    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+    90 84 42 06 00 00 11 ff 90 84 42 06 00 00 11 ff  ..B.......B.....
+  backtrace (crc 85af6635):
+    kmem_cache_alloc_node_noprof+0x215/0x420
+    do_kmem_cache_create+0x362/0x650
+    __kmem_cache_create_args+0x12b/0x350
+    0xffffffffa000f3bb
+    0xffffffffa000f0a8
+    do_one_initcall+0x119/0x300
+    do_init_module+0x60/0x250
+    __se_sys_finit_module+0x27f/0x370
+    do_syscall_64+0xc8/0x260
+    entry_SYSCALL_64_after_hwframe+0x77/0x7f
+unreferenced object (percpu) 0xffffffff83daa400 (size 48):
+  comm "klg-agent", pid 591, jiffies 4294747592
+  hex dump (first 32 bytes on cpu 0):
+    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+  backtrace (crc af449247):
+    pcpu_alloc_noprof+0x5f7/0x8b0
+    do_kmem_cache_create+0x487/0x650
+    __kmem_cache_create_args+0x12b/0x350
+    0xffffffffa000f3bb
+    0xffffffffa000f0a8
+    do_one_initcall+0x119/0x300
+    do_init_module+0x60/0x250
+    __se_sys_finit_module+0x27f/0x370
+    do_syscall_64+0xc8/0x260
+    entry_SYSCALL_64_after_hwframe+0x77/0x7f

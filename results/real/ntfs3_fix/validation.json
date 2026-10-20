@@ -1,0 +1,29 @@
+{
+  "module": "ntfs3",
+  "file": "fs/ntfs3/fslog.c",
+  "compiles": true,
+  "warnings_original": 5,
+  "warnings_patched": 4,
+  "removed": [
+    [
+      "do_action",
+      3166,
+      3173,
+      "high"
+    ],
+    [
+      "do_action",
+      3166,
+      3837,
+      "high"
+    ]
+  ],
+  "added": [
+    [
+      "do_action",
+      3166,
+      3842,
+      "high"
+    ]
+  ]
+}

@@ -1,0 +1,17 @@
+ufs: free the ufs_buffer_head in ubh_bforget()
+
+ubh_bread() allocates a struct ufs_buffer_head that ubh_brelse() frees but
+ubh_bforget() does not, so free_full_branch(), its only caller, leaks one
+per indirect block it frees. The same fix was proposed in 2018 ("ufs: Fix
+memory leak in the unlink path", Luis Henriques) but is not in mainline.
+---
+--- a/fs/ufs/util.c	2026-10-20 16:53:32.835970204 +0000
++++ b/fs/ufs/util.c	2026-10-20 16:53:32.846490364 +0000
+@@ -119,6 +119,7 @@
+ 		return;
+ 	for ( i = 0; i < ubh->count; i++ ) if ( ubh->bh[i] ) 
+ 		bforget (ubh->bh[i]);
++	kfree(ubh);
+ }
+  
+ int ubh_buffer_dirty (struct ufs_buffer_head * ubh)

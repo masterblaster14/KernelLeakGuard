@@ -113,11 +113,39 @@ w.table(["Command", "What it does"], [
      "(compile, re-analyse, VM re-run); patches in results/fixes/patches"],
     ["python3 -m klg real [--only m1,m2]", "analyse the real Linux modules of "
      "vm/real_modules.fragment and verify their initialisation in the VM (results/real)"],
-    ["python3 -m klg seed [--only name]", "reintroduce a known leak into a real kernel module "
-     "(seeds/) and run detect -> confirm -> fix on it (results/seeded)"],
+    ["python3 -m klg seed [--only name] [--skip-vm]", "reintroduce a known leak into a real "
+     "kernel module (seeds/) and run detect -> confirm -> fix on it (results/seeded); "
+     "--skip-vm re-checks only the static part and keeps earlier VM results"],
+    ["python3 scripts/make_real_triage.py", "write the manual-review labels of the real-module "
+     "warnings (results/real/triage.json)"],
+    ["python3 scripts/make_root_causes.py", "summarise the root-cause probe runs of the real-code "
+     "findings (results/real/root_causes.json)"],
     [".venv/bin/python -m klg.figures", "regenerate the charts in docs/figures"],
     ["scripts/repeat_runs.sh N", "run the pipeline N times to check reproducibility"],
 ], "Command reference", widths=[6.5, 9.5])
+w.para("A seed is a JSON file in seeds/ with the fields name, module_file (path in the kernel "
+       "tree), function, remove (the release statement to comment out), occurrence, bug and "
+       "reachable (descriptions for the report). Optional fields: module (the kernel module "
+       "name when it is built from several files, e.g. null_blk from main.c), sweep_max (map "
+       "only the first N fault points of module initialisation) and vm: false with vm_note "
+       "(skip the VM for a seed whose leak kmemleak cannot observe, with the reason).")
+w.para("**Reproducing the real-kernel findings.** The helpers below re-run the evidence behind "
+       "Section 4.4 of the report (results/real/root_causes.json). A fault-probe run boots the "
+       "guest, loads one module with fail-nth set to each value in a range, and stores the "
+       "kmemleak report and kernel log per batch.")
+w.table(["Command", "What it does"], [
+    ["python3 scripts/fault_probe.py erofs 85 85 1 OUT",
+     "fail the 85th fault point of erofs initialisation: SLUB leaks a slab cache (kmemleak)"],
+    ["bash scripts/build_patched_kernel.sh patches/0001-*.patch ~/klg-build/kbuild-slubfix",
+     "build a guest kernel with the SLUB fix in its own build directory"],
+    ["PROBE_KBUILD=~/klg-build/kbuild-slubfix python3 scripts/fault_probe.py erofs 85 85 1 OUT",
+     "the same fault point on the patched kernel: nothing leaks"],
+    ["PROBE_KO=path/to/f2fs.ko python3 scripts/fault_probe.py f2fs 369 429 61 OUT",
+     "probe another build of a module (e.g. f2fs with patches/0003)"],
+    ["python3 scripts/validate_patch.py ntfs3 fs/ntfs3 fslog.c PATCHED_FILE OUT",
+     "build a module with a patched source file and compare the static warnings"],
+    ["python3 scripts/make_root_causes.py", "summarise all of the above into root_causes.json"],
+], "Real-kernel finding helpers", widths=[8, 8])
 w.h2("4.3 The dashboard")
 w.code(".venv/bin/streamlit run dashboard/app.py")
 w.para("Open http://localhost:8501 in a Windows browser. Tabs:")

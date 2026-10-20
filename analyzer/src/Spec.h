@@ -34,6 +34,9 @@ public:
   /// Returns the released argument indices, or nullptr if not a deallocator.
   const std::vector<int> *releasedArgs(llvm::StringRef Name) const;
   bool isNonEscaping(llvm::StringRef Name) const;
+  /// Takes ownership of its pointer argument only when it succeeds; on
+  /// failure the caller still owns (and must release) the object.
+  bool transfersOnSuccess(llvm::StringRef Name) const;
 
   /// Merge additional entries from a JSON file:
   ///   {"allocators": [..], "managed_prefixes": [..],

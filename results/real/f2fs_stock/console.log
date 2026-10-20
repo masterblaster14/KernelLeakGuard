@@ -1,0 +1,40 @@
+c[?7l[2J[0mSeaBIOS (version 1.17.0-debian-1.17.0-1ubuntu1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+7EFC8B80+7EF08B80 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from ROM..c[?7l[2J[0m.KLG-GUEST-READY 6.18.55
+[   13.261624] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   14.433166] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   15.590731] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   16.759768] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   17.928500] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   19.213922] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   20.453697] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   21.794083] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   23.124098] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   24.794233] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   27.468735] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   28.735753] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   30.000226] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   31.188892] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   32.442917] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   33.698799] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   34.910987] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   36.104850] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   37.427561] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   38.702218] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   39.923672] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   41.078189] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   42.370583] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   43.681875] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   44.961926] kobject: kobject_add_internal failed for features (error: -12 parent: f2fs)
+[   46.192595] kobject: can not set name properly!
+[   47.421578] kobject: kobject_add_internal failed for tuning (error: -12 parent: f2fs)
+[   48.622406] kobject: kobject_add_internal failed for tuning (error: -12 parent: f2fs)
+[   49.800916] kobject: kobject_add_internal failed for tuning (error: -12 parent: f2fs)
+[   50.989485] kobject: kobject_add_internal failed for tuning (error: -12 parent: f2fs)
+KLG-JOB-EXIT 0
+[   58.835063] reboot: Power down

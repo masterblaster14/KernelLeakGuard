@@ -1,0 +1,952 @@
+[    0.000000] Linux version 6.18.55 (gupta@OmLOQ) (Ubuntu clang version 21.1.8 (6ubuntu1), Ubuntu LLD 21.1.8) #8 SMP PREEMPT_DYNAMIC Mon Oct 12 19:49:56 UTC 2026
+[    0.000000] Command line: console=ttyS0 quiet loglevel=4 kmemleak=on log_buf_len=16M panic=-1 oops=panic nokaslr init_on_alloc=1 init_on_free=1 
+[    0.000000] BIOS-provided physical RAM map:
+[    0.000000] BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] usable
+[    0.000000] BIOS-e820: [mem 0x000000000009fc00-0x000000000009ffff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000000f0000-0x00000000000fffff] reserved
+[    0.000000] BIOS-e820: [mem 0x0000000000100000-0x000000007ffdffff] usable
+[    0.000000] BIOS-e820: [mem 0x000000007ffe0000-0x000000007fffffff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000fffc0000-0x00000000ffffffff] reserved
+[    0.000000] BIOS-e820: [mem 0x000000fd00000000-0x000000ffffffffff] reserved
+[    0.000000] NX (Execute Disable) protection: active
+[    0.000000] APIC: Static calls initialized
+[    0.000000] SMBIOS 2.8 present.
+[    0.000000] DMI: QEMU Ubuntu 26.04 PC (i440FX + PIIX, 1996), BIOS 1.17.0-debian-1.17.0-1ubuntu1 04/01/2014
+[    0.000000] DMI: Memory slots populated: 1/1
+[    0.000000] e820: update [mem 0x00000000-0x00000fff] usable ==> reserved
+[    0.000000] e820: remove [mem 0x000a0000-0x000fffff] usable
+[    0.000000] last_pfn = 0x7ffe0 max_arch_pfn = 0x10000000000
+[    0.000000] MTRR map: 4 entries (3 fixed + 1 variable; max 19), built from 8 variable MTRRs
+[    0.000000] x86/PAT: Configuration [0-7]: WB  WC  UC- UC  WB  WP  UC- WT  
+[    0.000000] found SMP MP-table at [mem 0x000f5450-0x000f545f]
+[    0.000000] Using GB pages for direct mapping
+[    0.000000] printk: log buffer data + meta data: 16777216 + 58720256 = 75497472 bytes
+[    0.000000] printk: early log buf free: 2095584(99%)
+[    0.000000] RAMDISK: [mem 0x7fe65000-0x7ffdffff]
+[    0.000000] ACPI: Early table checksum verification disabled
+[    0.000000] ACPI: RSDP 0x00000000000F5270 000014 (v00 BOCHS )
+[    0.000000] ACPI: RSDT 0x000000007FFE2396 000034 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: FACP 0x000000007FFE2242 000074 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: DSDT 0x000000007FFE0040 002202 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: FACS 0x000000007FFE0000 000040
+[    0.000000] ACPI: APIC 0x000000007FFE22B6 000080 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: HPET 0x000000007FFE2336 000038 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: WAET 0x000000007FFE236E 000028 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: Reserving FACP table memory at [mem 0x7ffe2242-0x7ffe22b5]
+[    0.000000] ACPI: Reserving DSDT table memory at [mem 0x7ffe0040-0x7ffe2241]
+[    0.000000] ACPI: Reserving FACS table memory at [mem 0x7ffe0000-0x7ffe003f]
+[    0.000000] ACPI: Reserving APIC table memory at [mem 0x7ffe22b6-0x7ffe2335]
+[    0.000000] ACPI: Reserving HPET table memory at [mem 0x7ffe2336-0x7ffe236d]
+[    0.000000] ACPI: Reserving WAET table memory at [mem 0x7ffe236e-0x7ffe2395]
+[    0.000000] No NUMA configuration found
+[    0.000000] Faking a node at [mem 0x0000000000000000-0x000000007ffdffff]
+[    0.000000] NODE_DATA(0) allocated [mem 0x7b661800-0x7b664fff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000000001000-0x0000000000ffffff]
+[    0.000000]   DMA32    [mem 0x0000000001000000-0x000000007ffdffff]
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000000001000-0x000000000009efff]
+[    0.000000]   node   0: [mem 0x0000000000100000-0x000000007ffdffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000000001000-0x000000007ffdffff]
+[    0.000000] On node 0, zone DMA: 1 pages in unavailable ranges
+[    0.000000] On node 0, zone DMA: 97 pages in unavailable ranges
+[    0.000000] On node 0, zone DMA32: 32 pages in unavailable ranges
+[    0.000000] ACPI: PM-Timer IO Port: 0x608
+[    0.000000] ACPI: LAPIC_NMI (acpi_id[0xff] dfl dfl lint[0x1])
+[    0.000000] IOAPIC[0]: apic_id 0, version 32, address 0xfec00000, GSI 0-23
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 5 global_irq 5 high level)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 10 global_irq 10 high level)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 11 global_irq 11 high level)
+[    0.000000] ACPI: Using ACPI (MADT) for SMP configuration information
+[    0.000000] ACPI: HPET id: 0x8086a201 base: 0xfed00000
+[    0.000000] CPU topo: Max. logical packages:   1
+[    0.000000] CPU topo: Max. logical dies:       1
+[    0.000000] CPU topo: Max. dies per package:   1
+[    0.000000] CPU topo: Max. threads per core:   1
+[    0.000000] CPU topo: Num. cores per package:     2
+[    0.000000] CPU topo: Num. threads per package:   2
+[    0.000000] CPU topo: Allowing 2 present CPUs plus 0 hotplug CPUs
+[    0.000000] PM: hibernation: Registered nosave memory: [mem 0x00000000-0x00000fff]
+[    0.000000] PM: hibernation: Registered nosave memory: [mem 0x0009f000-0x000fffff]
+[    0.000000] [mem 0x80000000-0xfffbffff] available for PCI devices
+[    0.000000] Booting paravirtualized kernel on bare hardware
+[    0.000000] clocksource: refined-jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1910969940391419 ns
+[    0.000000] setup_percpu: NR_CPUS:64 nr_cpumask_bits:2 nr_cpu_ids:2 nr_node_ids:1
+[    0.000000] percpu: Embedded 52 pages/cpu s172568 r8192 d32232 u1048576
+[    0.000000] pcpu-alloc: s172568 r8192 d32232 u1048576 alloc=1*2097152
+[    0.000000] pcpu-alloc: [0] 0 1 
+[    0.000000] Kernel command line: console=ttyS0 quiet loglevel=4 kmemleak=on log_buf_len=16M panic=-1 oops=panic nokaslr init_on_alloc=1 init_on_free=1 
+[    0.000000] Unknown kernel command line parameters "nokaslr", will be passed to user space.
+[    0.000000] random: crng init done
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.000000] Fallback order for Node 0: 0 
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 524158
+[    0.000000] Policy zone: DMA32
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:on, heap free:on
+[    0.000000] mem auto-init: clearing system memory may take some time...
+[    0.000000] stackdepot: allocating hash table via alloc_large_system_hash
+[    0.000000] stackdepot hash table entries: 131072 (order: 9, 2097152 bytes, linear)
+[    0.000000] stackdepot: allocating space for 8192 stack pools via memblock
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+[    0.000000] ftrace: allocating 56036 entries in 220 pages
+[    0.000000] ftrace: allocated 220 pages with 5 groups
+[    0.000000] Dynamic Preempt: voluntary
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=64 to nr_cpu_ids=2.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] 	Rude variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 100 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=2
+[    0.000000] RCU Tasks: Setting shift to 1 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=2.
+[    0.000000] RCU Tasks Rude: Setting shift to 1 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=2.
+[    0.000000] RCU Tasks Trace: Setting shift to 1 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=2.
+[    0.000000] NR_IRQS: 4352, nr_irqs: 440, preallocated irqs: 16
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1911260446275000 ns
+[    0.000000] Console: colour VGA+ 80x25
+[    0.000000] printk: legacy console [ttyS0] enabled
+[    0.000000] ACPI: Core revision 20250807
+[    0.000000] clocksource: hpet: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604467 ns
+[    0.005000] APIC: Switch to symmetric I/O mode setup
+[    0.009000] x2apic: IRQ remapping doesn't support X2APIC mode
+[    0.024000] ..TIMER: vector=0x30 apic1=0 pin1=2 apic2=-1 pin2=-1
+[    0.033000] tsc: Unable to calibrate against PIT
+[    0.033000] tsc: using HPET reference calibration
+[    0.033000] tsc: Detected 3289.908 MHz processor
+[    0.001875] clocksource: tsc-early: mask: 0xffffffffffffffff max_cycles: 0x2f6c0ec8b0e, max_idle_ns: 440795202126 ns
+[    0.003974] Calibrating delay loop (skipped), value calculated using timer frequency.. 6579.81 BogoMIPS (lpj=3289908)
+[    0.019965] x86/cpu: User Mode Instruction Prevention (UMIP) activated
+[    0.050277] Last level iTLB entries: 4KB 0, 2MB 0, 4MB 0
+[    0.051726] Last level dTLB entries: 4KB 0, 2MB 0, 4MB 0, 1GB 0
+[    0.057142] mitigations: Enabled attack vectors: user_kernel, user_user, SMT mitigations: auto
+[    0.059989] Speculative Store Bypass: Vulnerable
+[    0.061127] Spectre V2 : Mitigation: Retpolines
+[    0.061947] Spectre V1 : Mitigation: usercopy/swapgs barriers and __user pointer sanitization
+[    0.062250] Spectre V2 : Spectre v2 / SpectreRSB: Filling RSB on context switch and VMEXIT
+[    0.074928] x86/fpu: Supporting XSAVE feature 0x001: 'x87 floating point registers'
+[    0.079220] x86/fpu: Supporting XSAVE feature 0x002: 'SSE registers'
+[    0.079352] x86/fpu: Supporting XSAVE feature 0x004: 'AVX registers'
+[    0.079373] x86/fpu: Supporting XSAVE feature 0x008: 'MPX bounds registers'
+[    0.079391] x86/fpu: Supporting XSAVE feature 0x010: 'MPX CSR'
+[    0.079587] x86/fpu: Supporting XSAVE feature 0x200: 'Protection Keys User registers'
+[    0.080037] x86/fpu: xstate_offset[2]:  576, xstate_sizes[2]:  256
+[    0.080644] x86/fpu: xstate_offset[3]:  960, xstate_sizes[3]:   64
+[    0.080690] x86/fpu: xstate_offset[4]: 1024, xstate_sizes[4]:   64
+[    0.080840] x86/fpu: xstate_offset[9]: 2688, xstate_sizes[9]:    8
+[    0.080923] x86/fpu: Enabled xstate features 0x21f, context size is 2696 bytes, using 'standard' format.
+[    0.575081] Freeing SMP alternatives memory: 60K
+[    0.577052] pid_max: default: 32768 minimum: 301
+[    0.610610] LSM: initializing lsm=capability,selinux
+[    0.619717] SELinux:  Initializing.
+[    0.642809] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.643104] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.869755] smpboot: CPU0: AMD QEMU TCG CPU version 2.5+ (family: 0x6, model: 0x6, stepping: 0x3)
+[    0.925990] Performance Events: PMU not available due to virtualization, using software events only.
+[    0.930025] signal: max sigframe size: 3632
+[    0.939240] rcu: Hierarchical SRCU implementation.
+[    0.939393] rcu: 	Max phase no-delay instances is 400.
+[    0.955687] Timer migration: 1 hierarchy levels; 8 children per group; 1 crossnode level
+[    0.993961] smp: Bringing up secondary CPUs ...
+[    1.030057] smpboot: x86: Booting SMP configuration:
+[    1.030224] .... node  #0, CPUs:      #1
+[    0.000000] calibrate_delay_direct() dropping max bogoMips estimate 4 = 4616485
+[    1.161173] smp: Brought up 1 node, 2 CPUs
+[    1.161943] smpboot: Total of 2 processors activated (13412.92 BogoMIPS)
+[    1.207233] Memory: 1921744K/2096632K available (20037K kernel code, 9054K rwdata, 7608K rodata, 3364K init, 6452K bss, 168544K reserved, 0K cma-reserved)
+[    1.256188] devtmpfs: initialized
+[    1.369703] posixtimers hash table entries: 1024 (order: 2, 16384 bytes, linear)
+[    1.370900] futex hash table entries: 512 (32768 bytes on 1 NUMA nodes, total 32 KiB, linear).
+[    1.401921] PM: RTC time: 14:21:33, date: 2026-10-20
+[    1.443990] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    1.463083] audit: initializing netlink subsys (disabled)
+[    1.472852] audit: type=2000 audit(1792506092.503:1): state=initialized audit_enabled=0 res=1
+[    1.504966] thermal_sys: Registered thermal governor 'step_wise'
+[    1.510086] cpuidle: using governor menu
+[    1.535008] PCI: Using configuration type 1 for base access
+[    1.536530] mtrr: your CPUs had inconsistent fixed MTRR settings
+[    1.536684] mtrr: your CPUs had inconsistent variable MTRR settings
+[    1.536734] mtrr: your CPUs had inconsistent MTRRdefType settings
+[    1.536760] mtrr: probably your BIOS does not setup all CPUs.
+[    1.537661] mtrr: corrected configuration.
+[    1.542147] kprobes: kprobe jump-optimization is enabled. All kprobes are optimized if possible.
+[    1.879254] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    1.879254] HugeTLB: 28 KiB vmemmap can be freed for a 2.00 MiB page
+[    1.930530] ACPI: Added _OSI(Module Device)
+[    1.930530] ACPI: Added _OSI(Processor Device)
+[    1.930530] ACPI: Added _OSI(Processor Aggregator Device)
+[    2.194180] ACPI: 1 ACPI AML tables successfully acquired and loaded
+[    2.344530] ACPI: Interpreter enabled
+[    2.347937] ACPI: PM: (supports S0 S3 S4 S5)
+[    2.348278] ACPI: Using IOAPIC for interrupt routing
+[    2.354681] PCI: Using host bridge windows from ACPI; if necessary, use "pci=nocrs" and report a bug
+[    2.354833] PCI: Using E820 reservations for host bridge windows
+[    2.377794] ACPI: Enabled 2 GPEs in block 00 to 0F
+[    3.089870] ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+[    3.093215] acpi PNP0A03:00: _OSC: OS supports [ASPM ClockPM Segments MSI HPX-Type3]
+[    3.093877] acpi PNP0A03:00: _OSC: not requesting OS control; OS requires [ExtendedConfig ASPM ClockPM MSI]
+[    3.097859] acpi PNP0A03:00: fail to add MMCONFIG information, can't access extended configuration space under this bridge
+[    3.113609] PCI host bridge to bus 0000:00
+[    3.116230] pci_bus 0000:00: root bus resource [io  0x0000-0x0cf7 window]
+[    3.116764] pci_bus 0000:00: root bus resource [io  0x0d00-0xffff window]
+[    3.116831] pci_bus 0000:00: root bus resource [mem 0x000a0000-0x000bffff window]
+[    3.117580] pci_bus 0000:00: root bus resource [mem 0x80000000-0xfebfffff window]
+[    3.117580] pci_bus 0000:00: root bus resource [mem 0x100000000-0x17fffffff window]
+[    3.118043] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    3.124864] pci 0000:00:00.0: [8086:1237] type 00 class 0x060000 conventional PCI endpoint
+[    3.146286] pci 0000:00:01.0: [8086:7000] type 00 class 0x060100 conventional PCI endpoint
+[    3.158261] pci 0000:00:01.1: [8086:7010] type 00 class 0x010180 conventional PCI endpoint
+[    3.162580] pci 0000:00:01.1: BAR 4 [io  0xc060-0xc06f]
+[    3.162987] pci 0000:00:01.1: BAR 0 [io  0x01f0-0x01f7]: legacy IDE quirk
+[    3.163099] pci 0000:00:01.1: BAR 1 [io  0x03f6]: legacy IDE quirk
+[    3.163209] pci 0000:00:01.1: BAR 2 [io  0x0170-0x0177]: legacy IDE quirk
+[    3.163294] pci 0000:00:01.1: BAR 3 [io  0x0376]: legacy IDE quirk
+[    3.179789] pci 0000:00:01.3: [8086:7113] type 00 class 0x068000 conventional PCI endpoint
+[    3.184286] pci 0000:00:01.3: quirk: [io  0x0600-0x063f] claimed by PIIX4 ACPI
+[    3.185022] pci 0000:00:01.3: quirk: [io  0x0700-0x070f] claimed by PIIX4 SMB
+[    3.197164] pci 0000:00:02.0: [1234:1111] type 00 class 0x030000 conventional PCI endpoint
+[    3.197530] pci 0000:00:02.0: BAR 0 [mem 0xfd000000-0xfdffffff pref]
+[    3.197530] pci 0000:00:02.0: BAR 2 [mem 0xfebb0000-0xfebb0fff]
+[    3.197530] pci 0000:00:02.0: ROM [mem 0xfeba0000-0xfebaffff pref]
+[    3.197530] pci 0000:00:02.0: Video device with shadowed ROM at [mem 0x000c0000-0x000dffff]
+[    3.211776] pci 0000:00:03.0: [8086:100e] type 00 class 0x020000 conventional PCI endpoint
+[    3.212530] pci 0000:00:03.0: BAR 0 [mem 0xfeb80000-0xfeb9ffff]
+[    3.212530] pci 0000:00:03.0: BAR 1 [io  0xc000-0xc03f]
+[    3.212530] pci 0000:00:03.0: ROM [mem 0xfeb00000-0xfeb7ffff pref]
+[    3.315669] pci 0000:00:04.0: [1af4:1009] type 00 class 0x000200 conventional PCI endpoint
+[    3.316530] pci 0000:00:04.0: BAR 0 [io  0xc040-0xc05f]
+[    3.316530] pci 0000:00:04.0: BAR 1 [mem 0xfebb1000-0xfebb1fff]
+[    3.316530] pci 0000:00:04.0: BAR 4 [mem 0xfe000000-0xfe003fff 64bit pref]
+[    3.484158] ACPI: PCI: Interrupt link LNKA configured for IRQ 10
+[    3.495361] ACPI: PCI: Interrupt link LNKB configured for IRQ 10
+[    3.511746] ACPI: PCI: Interrupt link LNKC configured for IRQ 11
+[    3.523013] ACPI: PCI: Interrupt link LNKD configured for IRQ 11
+[    3.527330] ACPI: PCI: Interrupt link LNKS configured for IRQ 9
+[    3.568530] iommu: Default domain type: Translated
+[    3.568530] iommu: DMA domain TLB invalidation policy: lazy mode
+[    3.579935] SCSI subsystem initialized
+[    3.588133] libata version 3.00 loaded.
+[    3.598221] ACPI: bus type USB registered
+[    3.604203] usbcore: registered new interface driver usbfs
+[    3.607051] usbcore: registered new interface driver hub
+[    3.609808] usbcore: registered new device driver usb
+[    3.614755] pps_core: LinuxPPS API ver. 1 registered
+[    3.614873] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    3.615818] PTP clock support registered
+[    3.628180] Advanced Linux Sound Architecture Driver Initialized.
+[    3.673705] NetLabel: Initializing
+[    3.673824] NetLabel:  domain hash size = 128
+[    3.673888] NetLabel:  protocols = UNLABELED CIPSOv4 CALIPSO
+[    3.676399] NetLabel:  unlabeled traffic allowed by default
+[    3.710684] PCI: Using ACPI for IRQ routing
+[    3.710988] PCI: pci_cache_line_size set to 64 bytes
+[    3.713693] e820: reserve RAM buffer [mem 0x0009fc00-0x0009ffff]
+[    3.715111] e820: reserve RAM buffer [mem 0x7ffe0000-0x7fffffff]
+[    3.721530] pci 0000:00:02.0: vgaarb: setting as boot VGA device
+[    3.721530] pci 0000:00:02.0: vgaarb: bridge control possible
+[    3.721530] pci 0000:00:02.0: vgaarb: VGA device added: decodes=io+mem,owns=io+mem,locks=none
+[    3.721530] vgaarb: loaded
+[    3.725530] hpet0: at MMIO 0xfed00000, IRQs 2, 8, 0
+[    3.725530] hpet0: 3 comparators, 64-bit 100.000000 MHz counter
+[    3.735993] clocksource: Switched to clocksource tsc-early
+[    3.812248] VFS: Disk quotas dquot_6.6.0
+[    3.813070] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    3.890057] pnp: PnP ACPI init
+[    3.932886] pnp 00:02: [dma 2]
+[    4.034462] pnp: PnP ACPI: found 5 devices
+[    4.564963] clocksource: acpi_pm: mask: 0xffffff max_cycles: 0xffffff, max_idle_ns: 2085701024 ns
+[    4.571253] NET: Registered PF_INET protocol family
+[    4.580305] IP idents hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    4.648676] tcp_listen_portaddr_hash hash table entries: 1024 (order: 2, 16384 bytes, linear)
+[    4.652294] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    4.653094] TCP established hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    4.655253] TCP bind hash table entries: 16384 (order: 7, 524288 bytes, linear)
+[    4.656473] TCP: Hash tables configured (established 16384 bind 16384)
+[    4.665325] UDP hash table entries: 1024 (order: 4, 65536 bytes, linear)
+[    4.668276] UDP-Lite hash table entries: 1024 (order: 4, 65536 bytes, linear)
+[    4.689293] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    4.724362] RPC: Registered named UNIX socket transport module.
+[    4.724872] RPC: Registered udp transport module.
+[    4.724928] RPC: Registered tcp transport module.
+[    4.724962] RPC: Registered tcp-with-tls transport module.
+[    4.725005] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    4.759627] pci_bus 0000:00: resource 4 [io  0x0000-0x0cf7 window]
+[    4.759788] pci_bus 0000:00: resource 5 [io  0x0d00-0xffff window]
+[    4.759819] pci_bus 0000:00: resource 6 [mem 0x000a0000-0x000bffff window]
+[    4.759844] pci_bus 0000:00: resource 7 [mem 0x80000000-0xfebfffff window]
+[    4.759866] pci_bus 0000:00: resource 8 [mem 0x100000000-0x17fffffff window]
+[    4.768615] pci 0000:00:01.0: PIIX3: Enabling Passive Release
+[    4.769087] pci 0000:00:00.0: Limiting direct PCI/PCI transfers
+[    4.769895] PCI: CLS 0 bytes, default 64
+[    4.839286] Trying to unpack rootfs image as initramfs...
+[    4.961680] Initialise system trusted keyrings
+[    4.994403] workingset: timestamp_bits=56 max_order=19 bucket_order=0
+[    5.043871] NFS: Registering the id_resolver key type
+[    5.045028] Key type id_resolver registered
+[    5.045122] Key type id_legacy registered
+[    5.057212] 9p: Installing v9fs 9p2000 file system support
+[    5.217154] Freeing initrd memory: 1516K
+[    5.316970] Key type asymmetric registered
+[    5.317335] Asymmetric key parser 'x509' registered
+[    5.320106] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 251)
+[    5.322529] io scheduler mq-deadline registered
+[    5.322919] io scheduler kyber registered
+[    5.349253] input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+[    5.369337] ACPI: button: Power Button [PWRF]
+[    5.688962] ACPI: \_SB_.LNKD: Enabled at IRQ 11
+[    5.737124] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    5.766231] 00:04: ttyS0 at I/O 0x3f8 (irq = 4, base_baud = 115200) is a 16550A
+[    5.846951] Non-volatile memory driver v1.3
+[    5.846951] Linux agpgart interface v0.103
+[    5.867415] ACPI: bus type drm_connector registered
+[    6.224491] loop: module loaded
+[    6.313116] scsi host0: ata_piix
+[    6.346937] scsi host1: ata_piix
+[    6.354895] ata1: PATA max MWDMA2 cmd 0x1f0 ctl 0x3f6 bmdma 0xc060 irq 14 lpm-pol 0
+[    6.354895] ata2: PATA max MWDMA2 cmd 0x170 ctl 0x376 bmdma 0xc068 irq 15 lpm-pol 0
+[    6.454260] e100: Intel(R) PRO/100 Network Driver
+[    6.454382] e100: Copyright(c) 1999-2006 Intel Corporation
+[    6.457889] e1000: Intel(R) PRO/1000 Network Driver
+[    6.458075] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[    6.591336] ata2: found unknown device (class 0)
+[    6.624657] ata2.00: ATAPI: QEMU DVD-ROM, 2.5+, max UDMA/100
+[    6.707087] scsi 1:0:0:0: CD-ROM            QEMU     QEMU DVD-ROM     2.5+ PQ: 0 ANSI: 5
+[    6.743586] ACPI: \_SB_.LNKC: Enabled at IRQ 10
+[    6.827892] sr 1:0:0:0: [sr0] scsi3-mmc drive: 4x/4x cd/rw xa/form2 tray
+[    6.847988] tsc: Refined TSC clocksource calibration: 3293.876 MHz
+[    6.851834] clocksource: tsc: mask: 0xffffffffffffffff max_cycles: 0x2f7ab32ed1c, max_idle_ns: 440795249431 ns
+[    6.865160] clocksource: Switched to clocksource tsc
+[    6.892224] cdrom: Uniform CD-ROM driver Revision: 3.20
+[    6.952808] sr 1:0:0:0: Attached scsi CD-ROM sr0
+[    6.975685] sr 1:0:0:0: Attached scsi generic sg0 type 5
+[    7.404315] e1000 0000:00:03.0 eth0: (PCI:33MHz:32-bit) 52:54:00:12:34:56
+[    7.404315] e1000 0000:00:03.0 eth0: Intel(R) PRO/1000 Network Connection
+[    7.404315] e1000e: Intel(R) PRO/1000 Network Driver
+[    7.404315] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    7.414118] sky2: driver version 1.30
+[    7.492489] usbcore: registered new interface driver usblp
+[    7.499270] usbcore: registered new interface driver usb-storage
+[    7.514397] i8042: PNP: PS/2 Controller [PNP0303:KBD,PNP0f13:MOU] at 0x60,0x64 irq 1,12
+[    7.543697] serio: i8042 KBD port at 0x60,0x64 irq 1
+[    7.543697] serio: i8042 AUX port at 0x60,0x64 irq 12
+[    7.583405] rtc_cmos PNP0B00:00: RTC can wake from S4
+[    7.597651] input: AT Translated Set 2 keyboard as /devices/platform/i8042/serio0/input/input1
+[    7.620470] rtc_cmos PNP0B00:00: registered as rtc0
+[    7.634350] rtc_cmos PNP0B00:00: alarms up to one day, y3k, 242 bytes nvram, hpet irqs
+[    7.659010] device-mapper: ioctl: 4.50.0-ioctl (2025-04-28) initialised: dm-devel@lists.linux.dev
+[    7.664999] amd_pstate: the _CPC object is not present in SBIOS or ACPI disabled
+[    7.668968] hid: raw HID events driver (C) Jiri Kosina
+[    7.735349] usbcore: registered new interface driver usbhid
+[    7.735504] usbhid: USB HID core driver
+[    7.815272] Initializing XFRM netlink socket
+[    7.817808] NET: Registered PF_INET6 protocol family
+[    7.915060] Segment Routing with IPv6
+[    7.917054] In-situ OAM (IOAM) with IPv6
+[    7.928778] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    7.963608] NET: Registered PF_PACKET protocol family
+[    7.982006] 9pnet: Installing 9P2000 support
+[    8.029005] Key type dns_resolver registered
+[    8.070901] IPI shorthand broadcast: enabled
+[    8.154819] input: ImExPS/2 Generic Explorer Mouse as /devices/platform/i8042/serio1/input/input3
+[    8.905132] sched_clock: Marking stable (8938296048, -33469822)->(10393743784, -1488917558)
+[    8.955068] registered taskstats version 1
+[    8.955521] Loading compiled-in X.509 certificates
+[    9.292924] Demotion targets for Node 0: null
+[    9.293881] kmemleak: Kernel memory leak detector initialized (mem pool available: 15831)
+[    9.374408] PM:   Magic number: 14:834:384
+[    9.375146] container PNP0A06:02: hash matches
+[    9.375214] acpi PNP0A06:02: hash matches
+[    9.375474] netconsole: network logging started
+[    9.389428] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+[    9.459207] kworker/u8:0 (60) used greatest stack depth: 14472 bytes left
+[    9.470490] kworker/u8:0 (61) used greatest stack depth: 14280 bytes left
+[    9.543408] Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+[    9.553378] Loaded X.509 cert 'wens: 61c038651aabdcf94bd0ac7ff06c7248db18c600'
+[    9.558396] ALSA device list:
+[    9.558989]   No soundcards found.
+[    9.567406] faux_driver regulatory: Direct firmware load for regulatory.db failed with error -2
+[    9.568062] cfg80211: failed to load regulatory.db
+[   11.271744] Freeing unused kernel image (initmem) memory: 3364K
+[   11.277816] Write protecting the kernel read-only data: 28672k
+[   11.290261] Freeing unused kernel image (text/rodata gap) memory: 440K
+[   11.298324] Freeing unused kernel image (rodata/data gap) memory: 584K
+[   11.889926] x86/mm: Checked W+X mappings: passed, no W+X pages found.
+[   11.893946] Run /init as init process
+[   11.894130]   with arguments:
+[   11.894180]     /init
+[   11.894216]     nokaslr
+[   11.894237]   with environment:
+[   11.894270]     HOME=/
+[   11.894306]     TERM=linux
+[   12.922966] busybox (63) used greatest stack depth: 8 bytes left
+[   14.272173] klg_modwatch: loading out-of-tree module taints kernel.
+[   14.500158] KLG-MOD configfs text=ffffffffa0001000+5000 init=ffffffffa0006000+1000
+[   14.500956] KLG-SYM configfs ffffffffa0001000 .Ltmp0
+[   14.501005] KLG-SYM configfs ffffffffa00011c0 .Ltmp1
+[   14.501022] KLG-SYM configfs ffffffffa0001280 .Ltmp2
+[   14.501036] KLG-SYM configfs ffffffffa0001310 .Ltmp3
+[   14.501050] KLG-SYM configfs ffffffffa0001370 .Ltmp7
+[   14.501065] KLG-SYM configfs ffffffffa0001410 configfs_read_iter
+[   14.501082] KLG-SYM configfs ffffffffa0001400 .Ltmp0
+[   14.501097] KLG-SYM configfs ffffffffa0001560 configfs_write_iter
+[   14.501112] KLG-SYM configfs ffffffffa0001550 .Ltmp9
+[   14.501128] KLG-SYM configfs ffffffffa0001690 configfs_open_file
+[   14.501142] KLG-SYM configfs ffffffffa0001680 .Ltmp10
+[   14.501158] KLG-SYM configfs ffffffffa0001c40 __configfs_open_file
+[   14.501172] KLG-SYM configfs ffffffffa00016c0 configfs_release
+[   14.501188] KLG-SYM configfs ffffffffa00016b0 .Ltmp11
+[   14.501202] KLG-SYM configfs ffffffffa0001710 configfs_bin_read_iter
+[   14.501218] KLG-SYM configfs ffffffffa0001700 .Ltmp12
+[   14.501271] KLG-SYM configfs ffffffffa00018e0 configfs_bin_write_iter
+[   14.501286] KLG-SYM configfs ffffffffa00018d0 .Ltmp17
+[   14.501300] KLG-SYM configfs ffffffffa0001a40 configfs_open_bin_file
+[   14.501315] KLG-SYM configfs ffffffffa0001a30 .Ltmp22
+[   14.501330] KLG-SYM configfs ffffffffa0001a70 configfs_release_bin_file
+[   14.501344] KLG-SYM configfs ffffffffa0001a60 .Ltmp23
+[   14.501359] KLG-SYM configfs ffffffffa0001b10 .Ltmp24
+[   14.501373] KLG-SYM configfs ffffffffa0001ba0 .Ltmp25
+[   14.501388] KLG-SYM configfs ffffffffa0001c30 .Ltmp26
+[   14.501405] KLG-SYM configfs ffffffffa0001e10 configfs_d_iput
+[   14.501419] KLG-SYM configfs ffffffffa0001e00 .Ltmp0
+[   14.501430] KLG-SYM configfs ffffffffa0001eb0 .Ltmp8
+[   14.501461] KLG-SYM configfs ffffffffa0001ee0 .Ltmp10
+[   14.501471] KLG-SYM configfs ffffffffa0001f10 .Ltmp12
+[   14.501510] KLG-SYM configfs ffffffffa0001f90 configfs_new_dirent
+[   14.501526] KLG-SYM configfs ffffffffa0001f80 .Ltmp18
+[   14.501543] KLG-SYM configfs ffffffffa0002090 .Ltmp20
+[   14.501558] KLG-SYM configfs ffffffffa00020e0 .Ltmp21
+[   14.501574] KLG-SYM configfs ffffffffa0002220 configfs_remove_dirent
+[   14.501589] KLG-SYM configfs ffffffffa0002210 .Ltmp33
+[   14.501603] KLG-SYM configfs ffffffffa00022b0 .Ltmp41
+[   14.505975] KLG-SYM configfs ffffffffa0002330 .Ltmp42
+[   14.506007] KLG-SYM configfs ffffffffa0003fe0 configfs_depend_prep
+[   14.506023] KLG-SYM configfs ffffffffa0002430 .Ltmp43
+[   14.506036] KLG-SYM configfs ffffffffa0002480 .Ltmp47
+[   14.506051] KLG-SYM configfs ffffffffa00025f0 configfs_lookup
+[   14.506064] KLG-SYM configfs ffffffffa00025e0 .Ltmp48
+[   14.506078] KLG-SYM configfs ffffffffa00027e0 configfs_mkdir
+[   14.506143] KLG-SYM configfs ffffffffa00027d0 .Ltmp60
+[   14.506167] KLG-SYM configfs ffffffffa0003580 link_group
+[   14.506184] KLG-SYM configfs ffffffffa0004060 link_obj
+[   14.506200] KLG-SYM configfs ffffffffa0003d10 configfs_attach_group
+[   14.506217] KLG-SYM configfs ffffffffa00040c0 configfs_attach_item
+[   14.506233] KLG-SYM configfs ffffffffa0004390 client_disconnect_notify
+[   14.506248] KLG-SYM configfs ffffffffa0003730 unlink_group
+[   14.506262] KLG-SYM configfs ffffffffa00043d0 unlink_obj
+[   14.506277] KLG-SYM configfs ffffffffa0004430 client_drop_item
+[   14.506292] KLG-SYM configfs ffffffffa00036e0 configfs_dir_set_ready
+[   14.506306] KLG-SYM configfs ffffffffa0002bb0 configfs_rmdir
+[   14.506321] KLG-SYM configfs ffffffffa0002ba0 .Ltmp65
+[   14.506336] KLG-SYM configfs ffffffffa0003940 configfs_detach_prep
+[   14.506353] KLG-SYM configfs ffffffffa0004670 configfs_detach_rollback
+[   14.506370] KLG-SYM configfs ffffffffa0004510 detach_attrs
+[   14.506386] KLG-SYM configfs ffffffffa0004480 configfs_remove_dir
+[   14.506401] KLG-SYM configfs ffffffffa00046c0 detach_groups
+[   14.506415] KLG-SYM configfs ffffffffa0002f80 configfs_dir_lseek
+[   14.506430] KLG-SYM configfs ffffffffa0002f70 .Ltmp81
+[   14.506445] KLG-SYM configfs ffffffffa0003080 configfs_readdir
+[   14.506459] KLG-SYM configfs ffffffffa0003070 .Ltmp82
+[   14.506473] KLG-SYM configfs ffffffffa00032c0 configfs_dir_open
+[   14.506488] KLG-SYM configfs ffffffffa00032b0 .Ltmp83
+[   14.506503] KLG-SYM configfs ffffffffa0003370 configfs_dir_close
+[   14.506517] KLG-SYM configfs ffffffffa0003360 .Ltmp84
+[   14.506531] KLG-SYM configfs ffffffffa0003420 .Ltmp86
+[   14.506545] KLG-SYM configfs ffffffffa0003630 create_default_group
+[   14.506560] KLG-SYM configfs ffffffffa0003570 .Ltmp89
+[   14.506575] KLG-SYM configfs ffffffffa0003620 .Ltmp93
+[   14.506589] KLG-SYM configfs ffffffffa00036d0 .Ltmp97
+[   14.506746] KLG-SYM configfs ffffffffa0003720 .Ltmp98
+[   14.506768] KLG-SYM configfs ffffffffa00037c0 .Ltmp99
+[   14.506782] KLG-SYM configfs ffffffffa0003930 .Ltmp104
+[   14.506800] KLG-SYM configfs ffffffffa00039f0 .Ltmp105
+[   14.506815] KLG-SYM configfs ffffffffa0003a80 .Ltmp106
+[   14.506830] KLG-SYM configfs ffffffffa0003ab0 .Ltmp107
+[   14.506845] KLG-SYM configfs ffffffffa0003d00 .Ltmp114
+[   14.506860] KLG-SYM configfs ffffffffa0003df0 .Ltmp115
+[   14.506874] KLG-SYM configfs ffffffffa0003fd0 .Ltmp120
+[   14.506888] KLG-SYM configfs ffffffffa0004050 .Ltmp121
+[   14.506902] KLG-SYM configfs ffffffffa00040b0 .Ltmp122
+[   14.506917] KLG-SYM configfs ffffffffa0004380 .Ltmp138
+[   14.506931] KLG-SYM configfs ffffffffa00043c0 .Ltmp142
+[   14.506945] KLG-SYM configfs ffffffffa0004420 .Ltmp143
+[   14.506960] KLG-SYM configfs ffffffffa0004470 .Ltmp147
+[   14.506976] KLG-SYM configfs ffffffffa0004500 .Ltmp148
+[   14.506995] KLG-SYM configfs ffffffffa0004660 .Ltmp156
+[   14.507010] KLG-SYM configfs ffffffffa00046b0 .Ltmp157
+[   14.507026] KLG-SYM configfs ffffffffa0004820 .Ltmp0
+[   14.507040] KLG-SYM configfs ffffffffa0004e10 .Ltmp28
+[   14.507056] KLG-SYM configfs ffffffffa0004fb0 .Ltmp0
+[   14.507072] KLG-SYM configfs ffffffffa0004fe0 .Ltmp1
+[   14.507087] KLG-SYM configfs ffffffffa0005030 .Ltmp2
+[   14.507102] KLG-SYM configfs ffffffffa0006000 .Ltmp3
+[   14.507119] KLG-SYM configfs ffffffffa0005770 .Ltmp4
+[   14.507136] KLG-SYM configfs ffffffffa0005070 configfs_init_fs_context
+[   14.507154] KLG-SYM configfs ffffffffa0005060 .Ltmp5
+[   14.507169] KLG-SYM configfs ffffffffa00050a0 configfs_get_tree
+[   14.507184] KLG-SYM configfs ffffffffa0005090 .Ltmp6
+[   14.507199] KLG-SYM configfs ffffffffa00050d0 configfs_fill_super
+[   14.507215] KLG-SYM configfs ffffffffa00050c0 .Ltmp7
+[   14.507230] KLG-SYM configfs ffffffffa00051b0 configfs_free_inode
+[   14.507246] KLG-SYM configfs ffffffffa00051a0 .Ltmp8
+[   14.507263] KLG-SYM configfs ffffffffa00051f0 .Ltmp0
+[   14.507279] KLG-SYM configfs ffffffffa0005310 .Ltmp1
+[   14.507295] KLG-SYM configfs ffffffffa0005370 .Ltmp2
+[   14.507311] KLG-SYM configfs ffffffffa00053e0 .Ltmp3
+[   14.507326] KLG-SYM configfs ffffffffa0005430 .Ltmp4
+[   14.507340] KLG-SYM configfs ffffffffa0005490 .Ltmp6
+[   14.507358] KLG-SYM configfs ffffffffa0005510 .Ltmp8
+[   14.507372] KLG-SYM configfs ffffffffa0005740 config_group_put
+[   14.507387] KLG-SYM configfs ffffffffa00055e0 config_item_release
+[   14.507403] KLG-SYM configfs ffffffffa00055d0 .Ltmp10
+[   14.507418] KLG-SYM configfs ffffffffa0005690 .Ltmp12
+[   14.507435] KLG-SYM configfs ffffffffa0005730 .Ltmp14
+[   14.507450] KLG-SYM configfs ffffffffa0001400 __pfx_configfs_read_iter
+[   14.507468] KLG-SYM configfs ffffffffa0001550 __pfx_configfs_write_iter
+[   14.507485] KLG-SYM configfs ffffffffa0001680 __pfx_configfs_open_file
+[   14.507503] KLG-SYM configfs ffffffffa00016b0 __pfx_configfs_release
+[   14.507522] KLG-SYM configfs ffffffffa0001700 __pfx_configfs_bin_read_iter
+[   14.513952] KLG-SYM configfs ffffffffa00018d0 __pfx_configfs_bin_write_iter
+[   14.514059] KLG-SYM configfs ffffffffa0001a30 __pfx_configfs_open_bin_file
+[   14.514078] KLG-SYM configfs ffffffffa0001a60 __pfx_configfs_release_bin_file
+[   14.514094] KLG-SYM configfs ffffffffa0001c30 __pfx___configfs_open_file
+[   14.514108] KLG-SYM configfs ffffffffa0001e00 __pfx_configfs_d_iput
+[   14.514122] KLG-SYM configfs ffffffffa0001f80 __pfx_configfs_new_dirent
+[   14.514135] KLG-SYM configfs ffffffffa0002210 __pfx_configfs_remove_dirent
+[   14.514150] KLG-SYM configfs ffffffffa00025e0 __pfx_configfs_lookup
+[   14.514171] KLG-SYM configfs ffffffffa00027d0 __pfx_configfs_mkdir
+[   14.514195] KLG-SYM configfs ffffffffa0002ba0 __pfx_configfs_rmdir
+[   14.514211] KLG-SYM configfs ffffffffa0002f70 __pfx_configfs_dir_lseek
+[   14.514227] KLG-SYM configfs ffffffffa0003070 __pfx_configfs_readdir
+[   14.514244] KLG-SYM configfs ffffffffa00032b0 __pfx_configfs_dir_open
+[   14.514260] KLG-SYM configfs ffffffffa0003360 __pfx_configfs_dir_close
+[   14.514278] KLG-SYM configfs ffffffffa0003570 __pfx_link_group
+[   14.514294] KLG-SYM configfs ffffffffa0003620 __pfx_create_default_group
+[   14.514310] KLG-SYM configfs ffffffffa00036d0 __pfx_configfs_dir_set_ready
+[   14.514326] KLG-SYM configfs ffffffffa0003720 __pfx_unlink_group
+[   14.514342] KLG-SYM configfs ffffffffa0003930 __pfx_configfs_detach_prep
+[   14.514359] KLG-SYM configfs ffffffffa0003d00 __pfx_configfs_attach_group
+[   14.514375] KLG-SYM configfs ffffffffa0003fd0 __pfx_configfs_depend_prep
+[   14.514396] KLG-SYM configfs ffffffffa0004050 __pfx_link_obj
+[   14.514411] KLG-SYM configfs ffffffffa00040b0 __pfx_configfs_attach_item
+[   14.514425] KLG-SYM configfs ffffffffa0004380 __pfx_client_disconnect_notify
+[   14.514442] KLG-SYM configfs ffffffffa00043c0 __pfx_unlink_obj
+[   14.514458] KLG-SYM configfs ffffffffa0004420 __pfx_client_drop_item
+[   14.514473] KLG-SYM configfs ffffffffa0004470 __pfx_configfs_remove_dir
+[   14.514488] KLG-SYM configfs ffffffffa0004500 __pfx_detach_attrs
+[   14.514500] KLG-SYM configfs ffffffffa0004660 __pfx_configfs_detach_rollback
+[   14.514514] KLG-SYM configfs ffffffffa00046b0 __pfx_detach_groups
+[   14.514528] KLG-SYM configfs ffffffffa0005060 __pfx_configfs_init_fs_context
+[   14.514544] KLG-SYM configfs ffffffffa0005090 __pfx_configfs_get_tree
+[   14.514559] KLG-SYM configfs ffffffffa00050c0 __pfx_configfs_fill_super
+[   14.514574] KLG-SYM configfs ffffffffa00051a0 __pfx_configfs_free_inode
+[   14.514590] KLG-SYM configfs ffffffffa00055d0 __pfx_config_item_release
+[   14.514767] KLG-SYM configfs ffffffffa0005730 __pfx_config_group_put
+[   14.514794] KLG-SYM configfs ffffffffa0001000 
+[   14.514811] KLG-SYM configfs ffffffffa0006000 
+[   14.514825] KLG-SYM configfs ffffffffa0005770 
+[   14.514840] KLG-SYM configfs ffffffffa0001f20 configfs_make_dirent
+[   14.514854] KLG-SYM configfs ffffffffa0001bb0 configfs_create_bin_file
+[   14.514867] KLG-SYM configfs ffffffffa00022c0 configfs_remove_default_groups
+[   14.514882] KLG-SYM configfs ffffffffa0002340 configfs_depend_item
+[   14.514896] KLG-SYM configfs ffffffffa0002440 configfs_undepend_item
+[   14.514912] KLG-SYM configfs ffffffffa0002490 configfs_depend_item_unlocked
+[   14.514928] KLG-SYM configfs ffffffffa0003430 configfs_register_group
+[   14.514948] KLG-SYM configfs ffffffffa00037d0 configfs_unregister_group
+[   14.514965] KLG-SYM configfs ffffffffa0003a00 configfs_register_default_group
+[   14.514981] KLG-SYM configfs ffffffffa0003a90 configfs_unregister_default_group
+[   14.514998] KLG-SYM configfs ffffffffa0003ac0 configfs_register_subsystem
+[   14.515014] KLG-SYM configfs ffffffffa0003e00 configfs_unregister_subsystem
+[   14.515031] KLG-SYM configfs ffffffffa0001ec0 put_fragment
+[   14.515047] KLG-SYM configfs ffffffffa0001ef0 get_fragment
+[   14.515061] KLG-SYM configfs ffffffffa00020a0 configfs_dirent_is_ready
+[   14.515076] KLG-SYM configfs ffffffffa00020f0 configfs_create_link
+[   14.515093] KLG-SYM configfs ffffffffa0005520 config_item_put
+[   14.515109] KLG-SYM configfs ffffffffa0004ff0 configfs_pin_fs
+[   14.515122] KLG-SYM configfs ffffffffa0005040 configfs_release_fs
+[   14.515136] KLG-SYM configfs ffffffffa0004fc0 configfs_is_root
+[   14.515151] KLG-SYM configfs ffffffffa0005440 config_item_get
+[   14.515166] KLG-SYM configfs ffffffffa0005380 config_group_init_type_name
+[   14.515182] KLG-SYM configfs ffffffffa0004e20 configfs_unlink
+[   14.515198] KLG-SYM configfs ffffffffa0004830 configfs_symlink
+[   14.515252] KLG-SYM configfs ffffffffa0006010 init_module
+[   14.515271] KLG-SYM configfs ffffffffa0005780 cleanup_module
+[   14.515287] KLG-SYM configfs ffffffffa00053f0 config_group_init
+[   14.515303] KLG-SYM configfs ffffffffa0005200 config_item_set_name
+[   14.515319] KLG-SYM configfs ffffffffa0005320 config_item_init_type_name
+[   14.515338] KLG-SYM configfs ffffffffa00054a0 config_item_get_unless_zero
+[   14.515350] KLG-SYM configfs ffffffffa00056a0 config_group_find_item
+[   14.515375] KLG-SYM configfs ffffffffa0001000 __pfx_configfs_setattr
+[   14.515398] KLG-SYM configfs ffffffffa00011c0 __pfx_configfs_new_inode
+[   14.515413] KLG-SYM configfs ffffffffa0001280 __pfx_configfs_create
+[   14.515431] KLG-SYM configfs ffffffffa0001310 __pfx_configfs_get_name
+[   14.515448] KLG-SYM configfs ffffffffa0001370 __pfx_configfs_drop_dentry
+[   14.515464] KLG-SYM configfs ffffffffa0001010 configfs_setattr
+[   14.515479] KLG-SYM configfs ffffffffa0001b10 __pfx_configfs_create_file
+[   14.515494] KLG-SYM configfs ffffffffa0001ba0 __pfx_configfs_create_bin_file
+[   14.515510] KLG-SYM configfs ffffffffa00011d0 configfs_new_inode
+[   14.515526] KLG-SYM configfs ffffffffa0001eb0 __pfx_put_fragment
+[   14.515542] KLG-SYM configfs ffffffffa0001ee0 __pfx_get_fragment
+[   14.515555] KLG-SYM configfs ffffffffa0001f10 __pfx_configfs_make_dirent
+[   14.515569] KLG-SYM configfs ffffffffa0002090 __pfx_configfs_dirent_is_ready
+[   14.515583] KLG-SYM configfs ffffffffa00020e0 __pfx_configfs_create_link
+[   14.515797] KLG-SYM configfs ffffffffa00022b0 __pfx_configfs_remove_default_groups
+[   14.515826] KLG-SYM configfs ffffffffa0002330 __pfx_configfs_depend_item
+[   14.515842] KLG-SYM configfs ffffffffa0002430 __pfx_configfs_undepend_item
+[   14.515856] KLG-SYM configfs ffffffffa0002480 __pfx_configfs_depend_item_unlocked
+[   14.515871] KLG-SYM configfs ffffffffa0001290 configfs_create
+[   14.515885] KLG-SYM configfs ffffffffa0001320 configfs_get_name
+[   14.515899] KLG-SYM configfs ffffffffa0001380 configfs_drop_dentry
+[   14.515914] KLG-SYM configfs ffffffffa0003420 __pfx_configfs_register_group
+[   14.515929] KLG-SYM configfs ffffffffa00037c0 __pfx_configfs_unregister_group
+[   14.515950] KLG-SYM configfs ffffffffa00039f0 __pfx_configfs_register_default_group
+[   14.515964] KLG-SYM configfs ffffffffa0003a80 __pfx_configfs_unregister_default_group
+[   14.515979] KLG-SYM configfs ffffffffa0003ab0 __pfx_configfs_register_subsystem
+[   14.515993] KLG-SYM configfs ffffffffa0003df0 __pfx_configfs_unregister_subsystem
+[   14.516009] KLG-SYM configfs ffffffffa0004820 __pfx_configfs_symlink
+[   14.516025] KLG-SYM configfs ffffffffa0004e10 __pfx_configfs_unlink
+[   14.516040] KLG-SYM configfs ffffffffa0004fb0 __pfx_configfs_is_root
+[   14.516054] KLG-SYM configfs ffffffffa0004fe0 __pfx_configfs_pin_fs
+[   14.516069] KLG-SYM configfs ffffffffa0005030 __pfx_configfs_release_fs
+[   14.516085] KLG-SYM configfs ffffffffa00051f0 __pfx_config_item_set_name
+[   14.516105] KLG-SYM configfs ffffffffa0005310 __pfx_config_item_init_type_name
+[   14.516122] KLG-SYM configfs ffffffffa0005370 __pfx_config_group_init_type_name
+[   14.516139] KLG-SYM configfs ffffffffa00053e0 __pfx_config_group_init
+[   14.516155] KLG-SYM configfs ffffffffa0005430 __pfx_config_item_get
+[   14.516171] KLG-SYM configfs ffffffffa0005490 __pfx_config_item_get_unless_zero
+[   14.516192] KLG-SYM configfs ffffffffa0005510 __pfx_config_item_put
+[   14.516219] KLG-SYM configfs ffffffffa0001b20 configfs_create_file
+[   14.516237] KLG-SYM configfs ffffffffa0005690 __pfx_config_group_find_item
+[   14.516255] KLG-SYM configfs ffffffffa0006000 __pfx_init_module
+[   14.516271] KLG-SYM configfs ffffffffa0005770 __pfx_cleanup_module
+[   28.693038] KLG: attempt n=0 target=/mnt/host/mods/null_blk.ko
+[   28.980271] KLG-MOD null_blk text=ffffffffa0006000+6000 init=ffffffffa000c000+1000
+[   28.980809] KLG-SYM null_blk ffffffffa0006000 .Ltmp0
+[   28.980846] KLG-SYM null_blk ffffffffa00060c0 null_free_sector
+[   28.980912] KLG-SYM null_blk ffffffffa00060b0 .Ltmp1
+[   28.980937] KLG-SYM null_blk ffffffffa0006180 .Ltmp6
+[   28.980957] KLG-SYM null_blk ffffffffa0006290 .Ltmp7
+[   28.980973] KLG-SYM null_blk ffffffffa0006a30 null_make_cache_space
+[   28.980988] KLG-SYM null_blk ffffffffa0006e80 null_insert_page
+[   28.981001] KLG-SYM null_blk ffffffffa00067a0 .Ltmp16
+[   28.981014] KLG-SYM null_blk ffffffffa000c000 .Ltmp17
+[   28.981030] KLG-SYM null_blk ffffffffa0007230 null_alloc_dev
+[   28.981047] KLG-SYM null_blk ffffffffa0008e60 null_add_dev
+[   28.981061] KLG-SYM null_blk ffffffffa00070c0 null_destroy_dev
+[   28.981074] KLG-SYM null_blk ffffffffa000b410 .Ltmp18
+[   28.981088] KLG-SYM null_blk ffffffffa0006930 null_set_queue_mode
+[   28.981101] KLG-SYM null_blk ffffffffa0006920 .Ltmp19
+[   28.981115] KLG-SYM null_blk ffffffffa00069b0 null_set_irqmode
+[   28.981130] KLG-SYM null_blk ffffffffa00069a0 .Ltmp20
+[   28.981143] KLG-SYM null_blk ffffffffa0006a20 .Ltmp21
+[   28.981158] KLG-SYM null_blk ffffffffa0006e70 .Ltmp22
+[   28.981172] KLG-SYM null_blk ffffffffa00070b0 .Ltmp43
+[   28.981188] KLG-SYM null_blk ffffffffa0009550 null_del_dev
+[   28.981204] KLG-SYM null_blk ffffffffa00074c0 null_free_device_storage
+[   28.981256] KLG-SYM null_blk ffffffffa0007110 nullb_group_make_group
+[   28.981275] KLG-SYM null_blk ffffffffa0007100 .Ltmp44
+[   28.981294] KLG-SYM null_blk ffffffffa00071c0 nullb_group_drop_item
+[   28.981310] KLG-SYM null_blk ffffffffa00071b0 .Ltmp45
+[   28.981330] KLG-SYM null_blk ffffffffa0007220 .Ltmp47
+[   28.981345] KLG-SYM null_blk ffffffffa0007460 nullb_device_release
+[   28.981359] KLG-SYM null_blk ffffffffa0007450 .Ltmp48
+[   28.981374] KLG-SYM null_blk ffffffffa00074b0 .Ltmp49
+[   28.981389] KLG-SYM null_blk ffffffffa0007680 nullb_device_badblocks_show
+[   28.981405] KLG-SYM null_blk ffffffffa0007670 .Ltmp54
+[   28.981420] KLG-SYM null_blk ffffffffa00076c0 nullb_device_badblocks_store
+[   28.981436] KLG-SYM null_blk ffffffffa00076b0 .Ltmp55
+[   28.981450] KLG-SYM null_blk ffffffffa0007830 nullb_device_badblocks_once_show
+[   28.981464] KLG-SYM null_blk ffffffffa0007820 .Ltmp57
+[   28.981477] KLG-SYM null_blk ffffffffa0007880 nullb_device_badblocks_once_store
+[   28.981490] KLG-SYM null_blk ffffffffa0007870 .Ltmp58
+[   28.981503] KLG-SYM null_blk ffffffffa0007960 nullb_device_badblocks_partial_io_show
+[   28.981518] KLG-SYM null_blk ffffffffa0007950 .Ltmp59
+[   28.981532] KLG-SYM null_blk ffffffffa00079b0 nullb_device_badblocks_partial_io_store
+[   28.981547] KLG-SYM null_blk ffffffffa00079a0 .Ltmp60
+[   28.981561] KLG-SYM null_blk ffffffffa0007a90 nullb_device_blocking_show
+[   28.981580] KLG-SYM null_blk ffffffffa0007a80 .Ltmp61
+[   28.981788] KLG-SYM null_blk ffffffffa0007ae0 nullb_device_blocking_store
+[   28.981813] KLG-SYM null_blk ffffffffa0007ad0 .Ltmp62
+[   28.981828] KLG-SYM null_blk ffffffffa0007bc0 nullb_device_blocksize_show
+[   28.981846] KLG-SYM null_blk ffffffffa0007bb0 .Ltmp63
+[   28.981861] KLG-SYM null_blk ffffffffa0007c10 nullb_device_blocksize_store
+[   28.981877] KLG-SYM null_blk ffffffffa0007c00 .Ltmp64
+[   28.981897] KLG-SYM null_blk ffffffffa0007cf0 nullb_device_cache_size_show
+[   28.981912] KLG-SYM null_blk ffffffffa0007ce0 .Ltmp65
+[   28.981927] KLG-SYM null_blk ffffffffa0007d40 nullb_device_cache_size_store
+[   28.981944] KLG-SYM null_blk ffffffffa0007d30 .Ltmp66
+[   28.981960] KLG-SYM null_blk ffffffffa0007e20 nullb_device_completion_nsec_show
+[   28.981980] KLG-SYM null_blk ffffffffa0007e10 .Ltmp67
+[   28.981998] KLG-SYM null_blk ffffffffa0007e70 nullb_device_completion_nsec_store
+[   28.982017] KLG-SYM null_blk ffffffffa0007e60 .Ltmp68
+[   28.995275] KLG-SYM null_blk ffffffffa0007f50 nullb_device_discard_show
+[   28.995437] KLG-SYM null_blk ffffffffa0007f40 .Ltmp69
+[   28.995462] KLG-SYM null_blk ffffffffa0007fa0 nullb_device_discard_store
+[   28.995481] KLG-SYM null_blk ffffffffa0007f90 .Ltmp70
+[   28.995499] KLG-SYM null_blk ffffffffa0008080 nullb_device_fua_show
+[   28.995513] KLG-SYM null_blk ffffffffa0008070 .Ltmp71
+[   28.995528] KLG-SYM null_blk ffffffffa00080d0 nullb_device_fua_store
+[   28.995542] KLG-SYM null_blk ffffffffa00080c0 .Ltmp72
+[   28.995556] KLG-SYM null_blk ffffffffa00081b0 nullb_device_home_node_show
+[   28.995570] KLG-SYM null_blk ffffffffa00081a0 .Ltmp73
+[   28.995583] KLG-SYM null_blk ffffffffa0008200 nullb_device_home_node_store
+[   28.995597] KLG-SYM null_blk ffffffffa00081f0 .Ltmp74
+[   28.995657] KLG-SYM null_blk ffffffffa00082e0 nullb_device_hw_queue_depth_show
+[   28.995688] KLG-SYM null_blk ffffffffa00082d0 .Ltmp75
+[   28.995702] KLG-SYM null_blk ffffffffa0008330 nullb_device_hw_queue_depth_store
+[   28.995719] KLG-SYM null_blk ffffffffa0008320 .Ltmp76
+[   28.995733] KLG-SYM null_blk ffffffffa0008410 nullb_device_index_show
+[   28.995748] KLG-SYM null_blk ffffffffa0008400 .Ltmp77
+[   28.995761] KLG-SYM null_blk ffffffffa0008460 nullb_device_index_store
+[   28.995776] KLG-SYM null_blk ffffffffa0008450 .Ltmp78
+[   28.995790] KLG-SYM null_blk ffffffffa0008540 nullb_device_irqmode_show
+[   28.995804] KLG-SYM null_blk ffffffffa0008530 .Ltmp79
+[   28.995819] KLG-SYM null_blk ffffffffa0008590 nullb_device_irqmode_store
+[   28.995837] KLG-SYM null_blk ffffffffa0008580 .Ltmp80
+[   28.995858] KLG-SYM null_blk ffffffffa0008670 nullb_device_max_sectors_show
+[   28.995874] KLG-SYM null_blk ffffffffa0008660 .Ltmp81
+[   28.995886] KLG-SYM null_blk ffffffffa00086c0 nullb_device_max_sectors_store
+[   28.995902] KLG-SYM null_blk ffffffffa00086b0 .Ltmp82
+[   28.995914] KLG-SYM null_blk ffffffffa00087a0 nullb_device_mbps_show
+[   28.995926] KLG-SYM null_blk ffffffffa0008790 .Ltmp83
+[   28.995941] KLG-SYM null_blk ffffffffa00087f0 nullb_device_mbps_store
+[   28.995954] KLG-SYM null_blk ffffffffa00087e0 .Ltmp84
+[   28.995968] KLG-SYM null_blk ffffffffa00088d0 nullb_device_memory_backed_show
+[   28.995981] KLG-SYM null_blk ffffffffa00088c0 .Ltmp85
+[   28.995996] KLG-SYM null_blk ffffffffa0008920 nullb_device_memory_backed_store
+[   28.996009] KLG-SYM null_blk ffffffffa0008910 .Ltmp86
+[   28.996022] KLG-SYM null_blk ffffffffa0008a00 nullb_device_no_sched_show
+[   28.996074] KLG-SYM null_blk ffffffffa00089f0 .Ltmp87
+[   28.996099] KLG-SYM null_blk ffffffffa0008a50 nullb_device_no_sched_store
+[   28.996116] KLG-SYM null_blk ffffffffa0008a40 .Ltmp88
+[   28.996128] KLG-SYM null_blk ffffffffa0008b30 nullb_device_poll_queues_show
+[   28.996144] KLG-SYM null_blk ffffffffa0008b20 .Ltmp89
+[   28.996156] KLG-SYM null_blk ffffffffa0008b80 nullb_device_poll_queues_store
+[   28.996175] KLG-SYM null_blk ffffffffa0008b70 .Ltmp90
+[   28.996195] KLG-SYM null_blk ffffffffa0008cf0 nullb_device_power_show
+[   28.996214] KLG-SYM null_blk ffffffffa0008ce0 .Ltmp91
+[   28.996229] KLG-SYM null_blk ffffffffa0008d40 nullb_device_power_store
+[   28.996245] KLG-SYM null_blk ffffffffa0008d30 .Ltmp92
+[   28.996257] KLG-SYM null_blk ffffffffa0008e50 .Ltmp98
+[   28.996272] KLG-SYM null_blk ffffffffa0009640 nullb_setup_bwtimer
+[   28.996288] KLG-SYM null_blk ffffffffa0009540 .Ltmp101
+[   28.996305] KLG-SYM null_blk ffffffffa0009630 .Ltmp102
+[   28.996325] KLG-SYM null_blk ffffffffa0009ea0 nullb_bwtimer_fn
+[   28.996345] KLG-SYM null_blk ffffffffa00096b0 null_queue_rq
+[   28.996362] KLG-SYM null_blk ffffffffa00096a0 .Ltmp103
+[   28.996382] KLG-SYM null_blk ffffffffa0009e60 null_cmd_timer_expired
+[   28.996394] KLG-SYM null_blk ffffffffa0009950 null_queue_rqs
+[   28.996405] KLG-SYM null_blk ffffffffa0009940 .Ltmp109
+[   28.996420] KLG-SYM null_blk ffffffffa0009a30 null_timeout_rq
+[   28.996436] KLG-SYM null_blk ffffffffa0009a20 .Ltmp110
+[   28.996451] KLG-SYM null_blk ffffffffa0009af0 null_poll
+[   28.996470] KLG-SYM null_blk ffffffffa0009ae0 .Ltmp111
+[   28.996488] KLG-SYM null_blk ffffffffa0009cc0 null_complete_rq
+[   28.996501] KLG-SYM null_blk ffffffffa0009cb0 .Ltmp112
+[   28.996514] KLG-SYM null_blk ffffffffa0009cf0 null_init_hctx
+[   28.996527] KLG-SYM null_blk ffffffffa0009ce0 .Ltmp113
+[   28.996543] KLG-SYM null_blk ffffffffa0009d60 null_map_queues
+[   28.996558] KLG-SYM null_blk ffffffffa0009d50 .Ltmp114
+[   28.996630] KLG-SYM null_blk ffffffffa0009e50 .Ltmp119
+[   28.996678] KLG-SYM null_blk ffffffffa0009e90 .Ltmp120
+[   28.996706] KLG-SYM null_blk ffffffffa0009f20 nullb_device_queue_mode_show
+[   28.996729] KLG-SYM null_blk ffffffffa0009f10 .Ltmp121
+[   28.996745] KLG-SYM null_blk ffffffffa0009f70 nullb_device_queue_mode_store
+[   28.996761] KLG-SYM null_blk ffffffffa0009f60 .Ltmp122
+[   28.996781] KLG-SYM null_blk ffffffffa000a050 nullb_device_rotational_show
+[   28.996803] KLG-SYM null_blk ffffffffa000a040 .Ltmp123
+[   28.996824] KLG-SYM null_blk ffffffffa000a0a0 nullb_device_rotational_store
+[   28.996841] KLG-SYM null_blk ffffffffa000a090 .Ltmp124
+[   28.996854] KLG-SYM null_blk ffffffffa000a180 nullb_device_shared_tag_bitmap_show
+[   28.996872] KLG-SYM null_blk ffffffffa000a170 .Ltmp125
+[   28.996889] KLG-SYM null_blk ffffffffa000a1d0 nullb_device_shared_tag_bitmap_store
+[   28.996946] KLG-SYM null_blk ffffffffa000a1c0 .Ltmp126
+[   28.996972] KLG-SYM null_blk ffffffffa000a2b0 nullb_device_shared_tags_show
+[   28.996988] KLG-SYM null_blk ffffffffa000a2a0 .Ltmp127
+[   28.997005] KLG-SYM null_blk ffffffffa000a300 nullb_device_shared_tags_store
+[   28.997019] KLG-SYM null_blk ffffffffa000a2f0 .Ltmp128
+[   28.997352] KLG-SYM null_blk ffffffffa000a3e0 nullb_device_size_show
+[   28.997384] KLG-SYM null_blk ffffffffa000a3d0 .Ltmp129
+[   28.997400] KLG-SYM null_blk ffffffffa000a430 nullb_device_size_store
+[   28.997415] KLG-SYM null_blk ffffffffa000a420 .Ltmp130
+[   28.997430] KLG-SYM null_blk ffffffffa000a510 nullb_device_submit_queues_show
+[   28.997447] KLG-SYM null_blk ffffffffa000a500 .Ltmp131
+[   28.997462] KLG-SYM null_blk ffffffffa000a560 nullb_device_submit_queues_store
+[   28.997479] KLG-SYM null_blk ffffffffa000a550 .Ltmp132
+[   28.997493] KLG-SYM null_blk ffffffffa000a6d0 nullb_device_use_per_node_hctx_show
+[   28.997508] KLG-SYM null_blk ffffffffa000a6c0 .Ltmp133
+[   28.997523] KLG-SYM null_blk ffffffffa000a720 nullb_device_use_per_node_hctx_store
+[   28.997538] KLG-SYM null_blk ffffffffa000a710 .Ltmp134
+[   28.997552] KLG-SYM null_blk ffffffffa000a800 nullb_device_virt_boundary_show
+[   28.997565] KLG-SYM null_blk ffffffffa000a7f0 .Ltmp135
+[   28.997579] KLG-SYM null_blk ffffffffa000a850 nullb_device_virt_boundary_store
+[   28.997695] KLG-SYM null_blk ffffffffa000a840 .Ltmp136
+[   28.997717] KLG-SYM null_blk ffffffffa000a930 nullb_device_zone_append_max_sectors_show
+[   28.997733] KLG-SYM null_blk ffffffffa000a920 .Ltmp137
+[   28.997747] KLG-SYM null_blk ffffffffa000a980 nullb_device_zone_append_max_sectors_store
+[   28.997761] KLG-SYM null_blk ffffffffa000a970 .Ltmp138
+[   28.997780] KLG-SYM null_blk ffffffffa000aa60 nullb_device_zone_capacity_show
+[   28.997795] KLG-SYM null_blk ffffffffa000aa50 .Ltmp139
+[   28.997808] KLG-SYM null_blk ffffffffa000aab0 nullb_device_zone_capacity_store
+[   28.997822] KLG-SYM null_blk ffffffffa000aaa0 .Ltmp140
+[   28.997836] KLG-SYM null_blk ffffffffa000ab90 nullb_device_zone_full_show
+[   28.997849] KLG-SYM null_blk ffffffffa000ab80 .Ltmp141
+[   28.997862] KLG-SYM null_blk ffffffffa000abe0 nullb_device_zone_full_store
+[   28.997876] KLG-SYM null_blk ffffffffa000abd0 .Ltmp142
+[   28.997889] KLG-SYM null_blk ffffffffa000acc0 nullb_device_zone_max_active_show
+[   28.997904] KLG-SYM null_blk ffffffffa000acb0 .Ltmp143
+[   28.997921] KLG-SYM null_blk ffffffffa000ad10 nullb_device_zone_max_active_store
+[   28.997937] KLG-SYM null_blk ffffffffa000ad00 .Ltmp144
+[   28.997950] KLG-SYM null_blk ffffffffa000adf0 nullb_device_zone_max_open_show
+[   28.997965] KLG-SYM null_blk ffffffffa000ade0 .Ltmp145
+[   28.997979] KLG-SYM null_blk ffffffffa000ae40 nullb_device_zone_max_open_store
+[   28.997995] KLG-SYM null_blk ffffffffa000ae30 .Ltmp146
+[   28.998043] KLG-SYM null_blk ffffffffa000af20 nullb_device_zone_nr_conv_show
+[   28.998068] KLG-SYM null_blk ffffffffa000af10 .Ltmp147
+[   28.998083] KLG-SYM null_blk ffffffffa000af70 nullb_device_zone_nr_conv_store
+[   28.998098] KLG-SYM null_blk ffffffffa000af60 .Ltmp148
+[   28.998113] KLG-SYM null_blk ffffffffa000b050 nullb_device_zone_offline_store
+[   29.010588] KLG-SYM null_blk ffffffffa000b040 .Ltmp149
+[   29.010656] KLG-SYM null_blk ffffffffa000b090 nullb_device_zone_readonly_store
+[   29.010671] KLG-SYM null_blk ffffffffa000b080 .Ltmp150
+[   29.010685] KLG-SYM null_blk ffffffffa000b0d0 nullb_device_zone_size_show
+[   29.010698] KLG-SYM null_blk ffffffffa000b0c0 .Ltmp151
+[   29.010714] KLG-SYM null_blk ffffffffa000b120 nullb_device_zone_size_store
+[   29.010728] KLG-SYM null_blk ffffffffa000b110 .Ltmp152
+[   29.010742] KLG-SYM null_blk ffffffffa000b200 nullb_device_zoned_show
+[   29.010756] KLG-SYM null_blk ffffffffa000b1f0 .Ltmp153
+[   29.010769] KLG-SYM null_blk ffffffffa000b250 nullb_device_zoned_store
+[   29.010783] KLG-SYM null_blk ffffffffa000b240 .Ltmp154
+[   29.010797] KLG-SYM null_blk ffffffffa000b330 memb_group_features_show
+[   29.010812] KLG-SYM null_blk ffffffffa000b320 .Ltmp155
+[   29.010830] KLG-SYM null_blk ffffffffa00060b0 __pfx_null_free_sector
+[   29.010847] KLG-SYM null_blk ffffffffa0006920 __pfx_null_set_queue_mode
+[   29.010863] KLG-SYM null_blk ffffffffa00069a0 __pfx_null_set_irqmode
+[   29.010878] KLG-SYM null_blk ffffffffa0006a20 __pfx_null_make_cache_space
+[   29.010892] KLG-SYM null_blk ffffffffa0006e70 __pfx_null_insert_page
+[   29.010907] KLG-SYM null_blk ffffffffa00070b0 __pfx_null_destroy_dev
+[   29.010922] KLG-SYM null_blk ffffffffa0007100 __pfx_nullb_group_make_group
+[   29.010937] KLG-SYM null_blk ffffffffa00071b0 __pfx_nullb_group_drop_item
+[   29.010951] KLG-SYM null_blk ffffffffa0007220 __pfx_null_alloc_dev
+[   29.010967] KLG-SYM null_blk ffffffffa0007450 __pfx_nullb_device_release
+[   29.010982] KLG-SYM null_blk ffffffffa00074b0 __pfx_null_free_device_storage
+[   29.010997] KLG-SYM null_blk ffffffffa0007670 __pfx_nullb_device_badblocks_show
+[   29.011013] KLG-SYM null_blk ffffffffa00076b0 __pfx_nullb_device_badblocks_store
+[   29.011028] KLG-SYM null_blk ffffffffa0007820 __pfx_nullb_device_badblocks_once_show
+[   29.011042] KLG-SYM null_blk ffffffffa0007870 __pfx_nullb_device_badblocks_once_store
+[   29.011055] KLG-SYM null_blk ffffffffa0007950 __pfx_nullb_device_badblocks_partial_io_show
+[   29.011069] KLG-SYM null_blk ffffffffa00079a0 __pfx_nullb_device_badblocks_partial_io_store
+[   29.011083] KLG-SYM null_blk ffffffffa0007a80 __pfx_nullb_device_blocking_show
+[   29.011095] KLG-SYM null_blk ffffffffa0007ad0 __pfx_nullb_device_blocking_store
+[   29.011108] KLG-SYM null_blk ffffffffa0007bb0 __pfx_nullb_device_blocksize_show
+[   29.011122] KLG-SYM null_blk ffffffffa0007c00 __pfx_nullb_device_blocksize_store
+[   29.011137] KLG-SYM null_blk ffffffffa0007ce0 __pfx_nullb_device_cache_size_show
+[   29.011151] KLG-SYM null_blk ffffffffa0007d30 __pfx_nullb_device_cache_size_store
+[   29.011166] KLG-SYM null_blk ffffffffa0007e10 __pfx_nullb_device_completion_nsec_show
+[   29.011180] KLG-SYM null_blk ffffffffa0007e60 __pfx_nullb_device_completion_nsec_store
+[   29.011195] KLG-SYM null_blk ffffffffa0007f40 __pfx_nullb_device_discard_show
+[   29.011208] KLG-SYM null_blk ffffffffa0007f90 __pfx_nullb_device_discard_store
+[   29.011223] KLG-SYM null_blk ffffffffa0008070 __pfx_nullb_device_fua_show
+[   29.011240] KLG-SYM null_blk ffffffffa00080c0 __pfx_nullb_device_fua_store
+[   29.011254] KLG-SYM null_blk ffffffffa00081a0 __pfx_nullb_device_home_node_show
+[   29.011268] KLG-SYM null_blk ffffffffa00081f0 __pfx_nullb_device_home_node_store
+[   29.011814] KLG-SYM null_blk ffffffffa00082d0 __pfx_nullb_device_hw_queue_depth_show
+[   29.011854] KLG-SYM null_blk ffffffffa0008320 __pfx_nullb_device_hw_queue_depth_store
+[   29.011871] KLG-SYM null_blk ffffffffa0008400 __pfx_nullb_device_index_show
+[   29.011887] KLG-SYM null_blk ffffffffa0008450 __pfx_nullb_device_index_store
+[   29.011903] KLG-SYM null_blk ffffffffa0008530 __pfx_nullb_device_irqmode_show
+[   29.011918] KLG-SYM null_blk ffffffffa0008580 __pfx_nullb_device_irqmode_store
+[   29.011934] KLG-SYM null_blk ffffffffa0008660 __pfx_nullb_device_max_sectors_show
+[   29.011950] KLG-SYM null_blk ffffffffa00086b0 __pfx_nullb_device_max_sectors_store
+[   29.011966] KLG-SYM null_blk ffffffffa0008790 __pfx_nullb_device_mbps_show
+[   29.011982] KLG-SYM null_blk ffffffffa00087e0 __pfx_nullb_device_mbps_store
+[   29.011998] KLG-SYM null_blk ffffffffa00088c0 __pfx_nullb_device_memory_backed_show
+[   29.012014] KLG-SYM null_blk ffffffffa0008910 __pfx_nullb_device_memory_backed_store
+[   29.012031] KLG-SYM null_blk ffffffffa00089f0 __pfx_nullb_device_no_sched_show
+[   29.012048] KLG-SYM null_blk ffffffffa0008a40 __pfx_nullb_device_no_sched_store
+[   29.012066] KLG-SYM null_blk ffffffffa0008b20 __pfx_nullb_device_poll_queues_show
+[   29.012081] KLG-SYM null_blk ffffffffa0008b70 __pfx_nullb_device_poll_queues_store
+[   29.012097] KLG-SYM null_blk ffffffffa0008ce0 __pfx_nullb_device_power_show
+[   29.012113] KLG-SYM null_blk ffffffffa0008d30 __pfx_nullb_device_power_store
+[   29.012128] KLG-SYM null_blk ffffffffa0008e50 __pfx_null_add_dev
+[   29.012145] KLG-SYM null_blk ffffffffa0009540 __pfx_null_del_dev
+[   29.012159] KLG-SYM null_blk ffffffffa0009630 __pfx_nullb_setup_bwtimer
+[   29.012176] KLG-SYM null_blk ffffffffa00096a0 __pfx_null_queue_rq
+[   29.012192] KLG-SYM null_blk ffffffffa0009940 __pfx_null_queue_rqs
+[   29.012207] KLG-SYM null_blk ffffffffa0009a20 __pfx_null_timeout_rq
+[   29.012223] KLG-SYM null_blk ffffffffa0009ae0 __pfx_null_poll
+[   29.012238] KLG-SYM null_blk ffffffffa0009cb0 __pfx_null_complete_rq
+[   29.012253] KLG-SYM null_blk ffffffffa0009ce0 __pfx_null_init_hctx
+[   29.012268] KLG-SYM null_blk ffffffffa0009d50 __pfx_null_map_queues
+[   29.012288] KLG-SYM null_blk ffffffffa0009e50 __pfx_null_cmd_timer_expired
+[   29.012304] KLG-SYM null_blk ffffffffa0009e90 __pfx_nullb_bwtimer_fn
+[   29.012319] KLG-SYM null_blk ffffffffa0009f10 __pfx_nullb_device_queue_mode_show
+[   29.012335] KLG-SYM null_blk ffffffffa0009f60 __pfx_nullb_device_queue_mode_store
+[   29.012351] KLG-SYM null_blk ffffffffa000a040 __pfx_nullb_device_rotational_show
+[   29.012367] KLG-SYM null_blk ffffffffa000a090 __pfx_nullb_device_rotational_store
+[   29.012383] KLG-SYM null_blk ffffffffa000a170 __pfx_nullb_device_shared_tag_bitmap_show
+[   29.012399] KLG-SYM null_blk ffffffffa000a1c0 __pfx_nullb_device_shared_tag_bitmap_store
+[   29.012415] KLG-SYM null_blk ffffffffa000a2a0 __pfx_nullb_device_shared_tags_show
+[   29.012431] KLG-SYM null_blk ffffffffa000a2f0 __pfx_nullb_device_shared_tags_store
+[   29.012447] KLG-SYM null_blk ffffffffa000a3d0 __pfx_nullb_device_size_show
+[   29.012463] KLG-SYM null_blk ffffffffa000a420 __pfx_nullb_device_size_store
+[   29.012478] KLG-SYM null_blk ffffffffa000a500 __pfx_nullb_device_submit_queues_show
+[   29.012496] KLG-SYM null_blk ffffffffa000a550 __pfx_nullb_device_submit_queues_store
+[   29.012512] KLG-SYM null_blk ffffffffa000a6c0 __pfx_nullb_device_use_per_node_hctx_show
+[   29.012530] KLG-SYM null_blk ffffffffa000a710 __pfx_nullb_device_use_per_node_hctx_store
+[   29.012546] KLG-SYM null_blk ffffffffa000a7f0 __pfx_nullb_device_virt_boundary_show
+[   29.012562] KLG-SYM null_blk ffffffffa000a840 __pfx_nullb_device_virt_boundary_store
+[   29.012577] KLG-SYM null_blk ffffffffa000a920 __pfx_nullb_device_zone_append_max_sectors_show
+[   29.012949] KLG-SYM null_blk ffffffffa000a970 __pfx_nullb_device_zone_append_max_sectors_store
+[   29.012986] KLG-SYM null_blk ffffffffa000aa50 __pfx_nullb_device_zone_capacity_show
+[   29.013003] KLG-SYM null_blk ffffffffa000aaa0 __pfx_nullb_device_zone_capacity_store
+[   29.013024] KLG-SYM null_blk ffffffffa000ab80 __pfx_nullb_device_zone_full_show
+[   29.013040] KLG-SYM null_blk ffffffffa000abd0 __pfx_nullb_device_zone_full_store
+[   29.013058] KLG-SYM null_blk ffffffffa000acb0 __pfx_nullb_device_zone_max_active_show
+[   29.013075] KLG-SYM null_blk ffffffffa000ad00 __pfx_nullb_device_zone_max_active_store
+[   29.013091] KLG-SYM null_blk ffffffffa000ade0 __pfx_nullb_device_zone_max_open_show
+[   29.013107] KLG-SYM null_blk ffffffffa000ae30 __pfx_nullb_device_zone_max_open_store
+[   29.013126] KLG-SYM null_blk ffffffffa000af10 __pfx_nullb_device_zone_nr_conv_show
+[   29.026022] KLG-SYM null_blk ffffffffa000af60 __pfx_nullb_device_zone_nr_conv_store
+[   29.026118] KLG-SYM null_blk ffffffffa000b040 __pfx_nullb_device_zone_offline_store
+[   29.026134] KLG-SYM null_blk ffffffffa000b080 __pfx_nullb_device_zone_readonly_store
+[   29.026148] KLG-SYM null_blk ffffffffa000b0c0 __pfx_nullb_device_zone_size_show
+[   29.026162] KLG-SYM null_blk ffffffffa000b110 __pfx_nullb_device_zone_size_store
+[   29.026175] KLG-SYM null_blk ffffffffa000b1f0 __pfx_nullb_device_zoned_show
+[   29.026189] KLG-SYM null_blk ffffffffa000b240 __pfx_nullb_device_zoned_store
+[   29.026209] KLG-SYM null_blk ffffffffa000b320 __pfx_memb_group_features_show
+[   29.026224] KLG-SYM null_blk ffffffffa0006000 
+[   29.026238] KLG-SYM null_blk ffffffffa000c000 
+[   29.026251] KLG-SYM null_blk ffffffffa000b410 
+[   29.026264] KLG-SYM null_blk ffffffffa0006000 __pfx_null_handle_discard
+[   29.026278] KLG-SYM null_blk ffffffffa0006010 null_handle_discard
+[   29.026292] KLG-SYM null_blk ffffffffa0006180 __pfx_null_handle_badblocks
+[   29.026306] KLG-SYM null_blk ffffffffa0006290 __pfx_null_handle_memory_backed
+[   29.026321] KLG-SYM null_blk ffffffffa00067a0 __pfx_null_process_cmd
+[   29.026336] KLG-SYM null_blk ffffffffa0006190 null_handle_badblocks
+[   29.026360] KLG-SYM null_blk ffffffffa00062a0 null_handle_memory_backed
+[   29.026376] KLG-SYM null_blk ffffffffa00067b0 null_process_cmd
+[   29.026391] KLG-SYM null_blk ffffffffa000c010 init_module
+[   29.026405] KLG-SYM null_blk ffffffffa000b420 cleanup_module
+[   29.026419] KLG-SYM null_blk ffffffffa000c000 __pfx_init_module
+[   29.026431] KLG-SYM null_blk ffffffffa000b410 __pfx_cleanup_module
+[   29.417354] null_blk: disk nullb0 created
+[   29.470099] null_blk: module loaded
+[   30.119975] KLG: attempt n=743 target=/mnt/host/mods/null_blk.ko
+[   30.391097] KLG-MOD null_blk text=ffffffffa0006000+6000 init=ffffffffa000c000+1000
+[   30.586995] null_blk: disk nullb0 created
+[   30.589193] null_blk: module loaded
+[   43.893780] hrtimer: interrupt took 7217453 ns
+[   44.552919] KLG: attempt n=0 target=/mnt/host/mods/null_blk.ko
+[   44.638011] KLG-MOD null_blk text=ffffffffa0006000+6000 init=ffffffffa000c000+1000
+[   44.745105] null_blk: disk nullb0 created
+[   44.748440] null_blk: module loaded
+[   44.879823] KLG: attempt n=744 target=/mnt/host/mods/null_blk.ko
+[   44.929512] KLG-MOD null_blk text=ffffffffa0006000+6000 init=ffffffffa000c000+1000
+[   45.060128] null_blk: disk nullb0 created
+[   45.064984] null_blk: module loaded
