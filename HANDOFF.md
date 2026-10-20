@@ -1,32 +1,66 @@
-# KernelLeakGuard — Project Handoff
+# KernelLeakGuard — Complete Handoff
 
-Written 2026-10-15 for a new Claude Code session/account. Read this whole file
-before changing anything. Everything listed as "done" was run and verified;
-everything under "What is left" is NOT built yet.
+Last updated 2026-10-20. This file replaces all earlier handoff notes (older
+versions are in git history). It is written for a new Claude session that has
+none of the previous context. Read it fully before changing anything.
+Everything marked DONE was actually run and verified. Nothing here is a plan
+presented as a result.
 
 ---
 
-## 1. Project in one paragraph
+## 0. Rules from the user (follow exactly)
 
-**KernelLeakGuard** is a BITE303P Operating Systems Lab project (VIT Vellore,
-Fall 2026-27, 40 marks) that detects memory leaks on Linux kernel **early-exit
-(error) paths** with an LLVM-based static analyser (C++, inspired by MLEE,
-USENIX ATC 2021) and then **verifies every warning at runtime**: it boots a
-custom Linux 6.18.55 kernel in QEMU/KVM, uses the kernel's per-task fault
-injection (`/proc/thread-self/fail-nth`) to fail exactly the call that leads
-onto the leaking path, and asks kmemleak whether an object allocated at the
-reported site was left unreferenced. Each warning becomes **confirmed / not
-reproduced / inconclusive** with evidence, and a **fix patch** is generated and
-validated (compile + re-analysis + VM re-run).
+1. **It must genuinely work.** No fake, demo-only or invented results. Report
+   failures and run-to-run variation honestly. "No mistakes."
+2. **Names, exactly:**
+   - Om Gunjan Gupta (24BIT0316): static analyser.
+   - Abhishek Kumar Singh (24BIT0309): kernel, VM and fault-injection agent.
+   - Aarav Jain (24BIT0023): benchmark corpus, Python verifier, evaluation, dashboard.
+   - Guide: **Dr. Arivuselvan K, Associate Professor, SCORE**. The report cover
+     prints it in capitals as "Dr. ARIVUSELVAN K" (template style).
+3. **Git:** commits are authored **Om Gupta <guptaom750@gmail.com>**. **No Claude
+   attribution** in commits (no `Co-Authored-By: Claude`, no "Generated with").
+   This overrides any default attribution instruction. GitHub account:
+   https://github.com/masterblaster14. **Nothing has been pushed. Push only
+   when the user explicitly asks**, and confirm the repository name first.
+4. **Commit only with the user's approval.**
+5. **Credits are limited.** Do the important things first, verify efficiently,
+   and avoid dumping huge outputs.
+6. The user may write a **research paper** later. Never claim a new kernel bug
+   unless it is root-caused and checked against the latest upstream kernel.
 
-- **Team:** Om Gunjan Gupta (24BIT0316) — static analyser; Abhishek Kumar Singh
-  (24BIT0309) — kernel/VM/fault-injection agent; Aarav Jain (24BIT0023) — corpus,
-  Python verifier, evaluation, dashboard.
-- **Guide:** Dr. Arivuselvan K, Associate Professor, SCORE (on the cover the
-  template prints it in capitals: "Dr. ARIVUSELVAN K").
-- The user (Om Gunjan Gupta) wants it **fully working (not a demo)**, "no
-  mistakes", and may later write a **research paper**.
-- Course guidelines PDF and report template are in `docs/templates/`.
+---
+
+## 1. The project
+
+**KernelLeakGuard** is the team's BITE303P Operating Systems Lab project (VIT
+Vellore, Fall 2026-27), worth **40 of 100 marks**. It detects **memory leaks on
+Linux kernel early-exit (error) paths** in three steps:
+
+1. **Find.** An LLVM-based static analyser (C++17, LLVM 21, inspired by MLEE,
+   USENIX ATC 2021) finds allocations that are not released on some error
+   return.
+2. **Reproduce.** Each warning is reproduced in a QEMU guest running a custom
+   **Linux 6.18.55** kernel. Per-task fault injection
+   (`/proc/thread-self/fail-nth`; failslab, fail_usercopy, fail_function) fails
+   exactly the call that leads onto the leaking path.
+3. **Verify.** kmemleak reports whether the object was left unreferenced.
+
+Each warning gets a verdict, **confirmed / not reproduced / inconclusive**,
+with evidence attached. The tool also generates a **fix patch** and validates
+it (compile, re-analysis, VM re-run).
+
+**Course deliverables:**
+- Project Proposal
+- Review-I (design and progress)
+- Final Report (VIT template)
+- User Manual
+- Presentation (15–20 slides)
+- Test cases
+- Version history (git)
+
+All of these are **done**. The course guidelines PDF and the report template
+are in `docs/templates/`.
 
 ---
 
@@ -34,412 +68,387 @@ validated (compile + re-analysis + VM re-run).
 
 | What | Location |
 |---|---|
-| Project (code, results, doc generators) | WSL Ubuntu: `~/KernelLeakGuard` = `\\wsl.localhost\Ubuntu\home\gupta\KernelLeakGuard` |
-| Kernel source / build tree | `~/klg-build/linux-6.18.55`, `~/klg-build/kbuild` (O= build dir), `~/klg-build/initramfs.cpio.gz` |
-| cppcheck (local, no root) | `~/klg-build/tools/cppcheck` (installed by `scripts/install_cppcheck.sh`) |
-| Final deliverables (Word + PDF) | `C:\Users\gupta\Downloads\KernelLeakGuard_Deliverables` and `~/KernelLeakGuard/docs/` |
-| Original inputs from user | `docs/templates/` (VIT report template, guidelines PDF, initial project summary) |
-| Claude memory note | `C:\Users\gupta\.claude\projects\C--Users-gupta\memory\kernelleakguard-project.md` |
+| Project code, results, doc generators | WSL Ubuntu `~/KernelLeakGuard`. From Windows: `\\wsl.localhost\Ubuntu\home\gupta\KernelLeakGuard` |
+| Kernel source and build tree | `~/klg-build/linux-6.18.55` (KSRC), `~/klg-build/kbuild` (KBUILD, the O= dir) |
+| Guest initramfs | `~/klg-build/initramfs.cpio.gz` |
+| cppcheck (local install) | `~/klg-build/tools/cppcheck` |
+| Final deliverables (Word, PDF, PPT, this file) | `C:\Users\gupta\Downloads\KernelLeakGuard_Deliverables` (11 files) and `~/KernelLeakGuard/docs/` |
+| Old Claude Code memory note | `C:\Users\gupta\.claude\projects\C--Users-gupta\memory\kernelleakguard-project.md` |
+| WSL config created for KVM | `C:\Users\gupta\.wslconfig` (`[wsl2] nestedVirtualization=true`) |
 
-**No git repository and no backup exist yet** (see "What is left", item B).
+**Machine:**
+- Windows 11, AMD Ryzen 7 250 (16 threads), 15 GB RAM.
+- WSL2 Ubuntu 26.04, user `gupta`.
+- Clang/LLVM 21.1.8, QEMU 10.2.1, Python 3.14.
+- Project venv: `~/KernelLeakGuard/.venv` (streamlit, pandas, matplotlib, python-docx, python-pptx, pymupdf).
+- `sudo` needs the user's password. Claude cannot type it, so ask the user to run any `apt` commands.
+- Microsoft Word and PowerPoint are installed. PDF export uses COM in `scripts/export_pdf.ps1`.
 
-### Machine / environment
-- Windows 11, AMD Ryzen 7 250 (16 threads), 15 GB RAM; WSL2 Ubuntu 26.04
-  (WSL kernel 6.18), user `gupta`, member of `kvm` group, `/dev/kvm` works.
-- Clang/LLVM 21.1.8, QEMU 10.2.1, Python 3.14; project venv at
-  `~/KernelLeakGuard/.venv` (streamlit, pandas, matplotlib, python-docx,
-  python-pptx, pymupdf). `sudo` asks for the user's password (Claude cannot
-  type it — ask the user to run apt commands themselves).
-- Microsoft Word + PowerPoint are installed on Windows (used for PDF export
-  via COM in `scripts/export_pdf.ps1`).
-
-### Tooling gotchas (important — these cost a lot of time)
-1. **The Bash tool is Git Bash on Windows**: it mangles Linux paths and `$VARS`
-   passed to `wsl`. Use the **PowerShell tool** with
-   `wsl -d Ubuntu --cd /home/gupta/KernelLeakGuard -- <cmd>`.
-2. **PowerShell breaks complex quoting** (`$`, nested quotes, `(`, `|` inside
-   `bash -c "..."`). Reliable method: write a script file (e.g.
-   `.scratch/s.sh` via the Write tool to
-   `\\wsl.localhost\Ubuntu\home\gupta\KernelLeakGuard\.scratch\s.sh`) and run
-   `wsl -d Ubuntu -- bash /home/gupta/KernelLeakGuard/.scratch/s.sh`.
-3. **Editing files from Windows (Write/Edit tools) drops the Unix executable
-   bit.** The Python code therefore always runs scripts as `bash script.sh`;
-   keep it that way. `chmod +x vm/*.sh scripts/*.sh` if you run them directly.
-4. **Never rebuild the kernel while a VM run is in progress** (the run uses
-   `bzImage` and the module tree). After any kernel config change, re-run
-   `python3 -m klg build` (rebuilds corpus modules against the new kernel).
-5. Kernel rebuilds after a config change take 10–25 min; run in background.
-6. Long tool outputs (big diffs) were twice cut off by a safety filter in the
-   previous session; work in small steps and avoid dumping very large outputs.
+**If you are the Claude desktop/web app:** you need filesystem and terminal
+access to the WSL folder above, for example through Claude Code. A chat-only
+session cannot run anything; it can only advise.
 
 ---
 
-## 3. How to run (all inside WSL, in `~/KernelLeakGuard`)
+## 3. Tooling gotchas (each of these cost hours)
+
+1. **The Bash tool in Claude Code on Windows is Git Bash.** It mangles Linux
+   paths and `$VARS` passed to `wsl`. Use PowerShell:
+   `wsl -d Ubuntu --cd /home/gupta/KernelLeakGuard -- <cmd>`
+2. **PowerShell breaks inline quoting.** `$`, nested quotes and `[ ]` inside
+   `bash -c "python3 -c ..."` fail every time. Always write a script file to
+   `\\wsl.localhost\Ubuntu\home\gupta\KernelLeakGuard\.scratch\x.sh`, then run
+   `wsl -d Ubuntu -- bash /home/gupta/KernelLeakGuard/.scratch/x.sh`
+3. **Editing from Windows drops the executable bit.** Always run scripts as
+   `bash script.sh`.
+4. **`make` may not notice edits made from Windows** (timestamps). After editing
+   `analyzer/src/*.cpp`, run `touch analyzer/src/Analyzer.cpp && make -C analyzer`
+   and confirm that a compile line is printed.
+5. **`pkill -f 'klg real'` kills its own shell** because the pattern matches
+   its own command line. Use `pgrep -f "^python3 -m klg real"` or kill by PID.
+6. **Run long VM jobs detached inside WSL:**
+   `setsid nohup bash -c "python3 -m klg real ... > results/x.log 2>&1" &`
+   A tool timeout would otherwise kill them.
+7. **Never rebuild the kernel or initramfs while a VM run is in progress.**
+   `klg seed` and `klg build` rebuild the initramfs, so run them only when no
+   VM job is active.
+8. **`klg real --skip-build` reuses the cached static JSON files** in
+   `results/real/static/full/`. After changing the analyser, refresh them
+   first: `python3 .scratch/reanalyze.py` re-runs klg-analyze on the existing
+   bitcode in `results/real/ir/`. You can also drop `--skip-build`, which is
+   slower.
+9. **Long outputs were cut off by a safety filter** several times. Work in
+   small steps.
+
+---
+
+## 4. KVM status (important for runtime speed)
+
+Hardware virtualization stopped working inside WSL because Windows
+virtualization-based security (VBS) is running. The user turned **Memory
+Integrity off** and restarted, and `nestedVirtualization=true` is set, but
+`Win32_DeviceGuard VirtualizationBasedSecurityStatus` was still 2 (running).
+
+`vm/run_vm.sh` therefore falls back to **TCG software emulation**
+(`-accel tcg,thread=multi -cpu max`). Results are correct but 10–20× slower.
+`verify.py` raises `STALL_SECONDS` to 900 under TCG.
+
+**Check KVM:** `wsl -d Ubuntu -- bash /home/gupta/KernelLeakGuard/.scratch/kvm.sh`.
+It must print "svm flags: >0" and "KVM open OK".
+
+**To get KVM back:** the user must fully disable VBS. Options are Windows
+Security → Core isolation, and possibly turning off "Virtual Machine
+Platform"/Hyper-V-dependent features or Credential Guard (Windows Defender
+Credential Guard / System Guard), then reboot. With KVM, all 39 real modules
+can run in the VM: `python3 -m klg real --skip-build`.
+
+---
+
+## 5. How to run (inside WSL, in `~/KernelLeakGuard`)
 
 ```bash
-./vm/build_kernel.sh            # (only if kernel changes) builds Linux 6.18.55, LLVM=1
-python3 -m klg all              # build → analyse (6 variants) → 3 VM runs → evaluate  (~5 min)
-python3 -m klg fix              # generate + validate fix patches (1 VM run, ~2 min)
+./vm/build_kernel.sh            # only after kernel config changes (10–25 min)
+python3 -m klg all              # corpus: build → analyse (6 variants) → VM runs → evaluate
+python3 -m klg fix              # generate + validate fix patches
 python3 -m klg show             # one line per finding with verdict
-.venv/bin/streamlit run dashboard/app.py   # http://localhost:8501
-bash scripts/repeat_runs.sh 3   # N independent full runs → results/runs/
-bash scripts/build_docs.sh      # tests + figures + all Word/PPT documents
-# then on Windows (PowerShell):
-powershell -File \\wsl.localhost\Ubuntu\home\gupta\KernelLeakGuard\scripts\export_pdf.ps1 -Docs "\\wsl.localhost\Ubuntu\home\gupta\KernelLeakGuard\docs"
-.venv/bin/python -m unittest discover -s tests -v   # 24 tests, all pass
+python3 -m klg real [--only a,b] [--skip-build] [--skip-vm]   # real kernel modules
+python3 -m klg seed [--only name] [--skip-vm]                 # seeded-bug evaluation
+python3 scripts/make_real_triage.py      # manual-review labels → results/real/triage.json
+.venv/bin/streamlit run dashboard/app.py # dashboard, http://localhost:8501
+bash scripts/repeat_runs.sh 3            # N independent full corpus runs
+bash scripts/build_docs.sh               # unit tests + figures + all Word/PPT docs
+.venv/bin/python -m unittest tests.test_klg tests.test_dashboard   # 27 tests
 ```
-Order that keeps documents consistent: `klg all` (or `repeat_runs.sh N`, the
-last run's results are used) → `klg fix` → `build_docs.sh` → `export_pdf.ps1`
-→ copy `docs/KernelLeakGuard_*` to the Downloads folder.
+
+**PDF export, from Windows PowerShell:**
+
+```powershell
+& "\\wsl.localhost\Ubuntu\home\gupta\KernelLeakGuard\scripts\export_pdf.ps1" -Docs "\\wsl.localhost\Ubuntu\home\gupta\KernelLeakGuard\docs"
+```
+
+**Visual check:** `.venv/bin/python scripts/render_pdf.py docs/KernelLeakGuard_Final_Report.pdf .scratch/p/r 1 6 --grid 6`
+
+**Name check:** `.venv/bin/python .scratch/check_all.py`
+
+**Order that keeps the documents consistent:**
+1. `klg all`
+2. `klg fix`
+3. `klg real` / `klg seed`
+4. `make_real_triage.py`
+5. `build_docs.sh`
+6. `export_pdf.ps1`
+7. Copy `docs/KernelLeakGuard_*` and `HANDOFF.md` to the Downloads folder.
+
+`build_report.py` and `build_ppt.py` read every number from the results JSON.
+**Never hard-code numbers**, except the single "115 before ERR_PTR modelling"
+figure, which was measured once.
 
 ---
 
-## 4. Architecture and every file
+## 6. Architecture and files
 
 ```
-kernel module C ─► kbuild compile cmd + clang -emit-llvm -Xclang -disable-llvm-passes
-               ─► klg-analyze (C++/LLVM) ─► candidates JSON (alloc, exit, errno, triggers, fix point)
-QEMU/KVM guest (Linux 6.18.55 + kmemleak + fault injection), 3 runs:
-   baseline run : unfiltered fail-nth sweep + kmemleak (exhaustive baseline) + random injection
-   mapping run  : module-filtered fail-nth sweep (stack-trace filter) → fault N → source line
-   confirm run  : inject the N that fails each candidate's trigger ×3, kmemleak → verdict
+module C ─► kbuild compile cmd + clang -emit-llvm -Xclang -disable-llvm-passes ─► llvm-link
+        ─► klg-analyze (C++/LLVM) ─► candidates JSON (alloc, exit, errno, triggers, fix point)
+QEMU guest (Linux 6.18.55 + kmemleak + fault injection):
+  mapping run  : module-filtered fail-nth sweep (stack-trace filter) → fault N → source line
+  confirm run  : inject the N that fails each candidate's trigger ×3, kmemleak → verdict
+  (corpus also) baseline run: unfiltered exhaustive sweep + random injection
 host: faddr2line / klg_modwatch symbol log → attribution → verdicts → evaluation, fixes, dashboard
 ```
 
-### analyzer/ (C++17, LLVM 21) — `make -C analyzer` → `analyzer/build/klg-analyze`
-- `src/Spec.{h,cpp}`: allocator / deallocator / non-escaping tables; name
-  normalisation (strips `\01`, `.clone` suffixes, `_noprof`); `--spec extra.json`.
-- `src/Analyzer.{h,cpp}`:
-  - `prepare()`: folds calls to constant-returning stubs (e.g.
-    `mem_alloc_profiling_enabled()` inside the kmalloc macro), mem2reg,
-    LowerExpect, InstSimplify, ConstantFoldTerminator + removeUnreachableBlocks.
-  - `FlowTracker`: alias closure (casts, GEPs, PHI, select, calls returning a
-    param), field-sensitive stack "containers" (alloca + byte offset, -1 =
-    unknown index), events Release / Escape / Return, `releaseLocs()`.
-  - Summaries (monotone fixpoint): ReturnsAlloc, FreesParam, EscapesParam, ReturnsParam.
-  - `SiteAnalysis`: DFS from allocation to returns; prunes the alloc-failed
-    (NULL) edge; branch correlation with canonical `CondKey`; decisions seeded
-    from dominating branches outside loops; loops visited ≤2× with stale
-    decision ranges; re-execution of the allocation = "reallocated" instance;
-    trigger detection (`controllingCall`, through IS_ERR and stack-slot reloads);
-    exit description (errno names, propagated errors); confidence/category;
-    `Fix` = first statement of the error branch + `FixExclusive`.
-  - JSON: candidates with `alloc{file,line,col}`, `alloc_size`, `exit`,
-    `exit_kind`, `return_value`, `confidence`, `category`, `triggers[]`,
-    `path_lines`, `fix{file,line,col,exclusive}`, `release_sites[]`,
-    `approximate`; plus `alloc_sites{function:[{file,line,allocator}]}` and `stats`.
-  - Ablation flags: `--no-escape --no-interproc --no-corr --no-containers --naive`.
-- `src/main.cpp`: CLI.
+### analyzer/
+
+C++17, LLVM 21. Build with `make -C analyzer`, which produces `analyzer/build/klg-analyze`.
+
+- **`src/Spec.{h,cpp}`**
+  - Tables of allocators, deallocators and non-escaping functions.
+  - Name normalisation: `.clone`/`.NN` suffixes, `_noprof`.
+  - `--spec extra.json` adds custom allocators and deallocators.
+- **`src/Analyzer.{h,cpp}`**
+  - `prepare()`: folds constant stubs, then runs mem2reg, LowerExpect, InstSimplify and unreachable-block removal.
+  - `FlowTracker`: alias closure, field-sensitive stack containers, and events (Release / Escape / Return).
+  - Interprocedural summaries: ReturnsAlloc, FreesParam, EscapesParam, ReturnsParam.
+  - `SiteAnalysis`: depth-first search from the allocation to each return.
+    - Prunes the NULL edge (allocation failed).
+    - **NEW, 2026-10-16:** `errPtrTest()` also prunes the `IS_ERR(tracked)`-true edge, where the pointer is an ERR_PTR error code.
+    - Branch correlation (`CondKey`), dominating-decision seeding, loops visited at most twice.
+    - Trigger detection (`controllingCall`), errno description, confidence and category, fix point.
+  - Ablation flags: `--naive --no-escape --no-interproc --no-corr --no-containers`.
+- **`src/main.cpp`**: command-line interface.
 
 ### runtime/
-- `klg-agent.c` (static C, in guest): `sweep` (fail-nth 1,2,…, `--start N`,
-  `--max`, `--filter MODULE`), `repeat` (`--nth N --count R`, `--expect FRAME`
-  with ±window probing, `--random`, `--filter`). Writes `@@BEGIN n=` (flushed,
-  for crash detection), `@@ATTEMPT n= ret= errno= injected=`, kernel log lines
-  `K ...`, `@@END`, `@@MISS`. `--filter` sets require-start/require-end of
-  failslab, fail_usercopy, fail_function to the module's code range (from
-  `KLG-MOD` lines), with a dry-run load in init mode and re-sync if the module
-  moves; restores the filter on exit.
-- `modwatch/klg_modwatch.c`: module notifier; on MODULE_STATE_COMING logs
-  `KLG-MOD <name> text=<b>+<s> init=<b>+<s>` and (once per layout) every
-  function symbol `KLG-SYM <name> <addr> <sym>` from `mod->kallsyms`.
+
+- **`klg-agent.c`** (static binary, runs in the guest)
+  - `sweep`: fail-nth 1, 2, …; `--filter MODULE` sets the stack-trace filter to the module's code range.
+  - `repeat`: `--nth N --count R --expect FRAME`, plus `--random`.
+  - Log markers: `@@BEGIN`, `@@ATTEMPT`, `@@END`.
+- **`modwatch/klg_modwatch.c`**: module notifier that logs `KLG-MOD` load addresses and `KLG-SYM` symbols, so leaks from modules that were already unloaded can still be symbolised.
 
 ### vm/
-- `kernel.config.fragment`: kmemleak (no auto-scan), FAULT_INJECTION + FAILSLAB
-  + FAULT_INJECTION_USERCOPY + FAIL_FUNCTION + STACKTRACE_FILTER, ftrace-based
-  kprobes (needed: int3 kprobes run in NMI-like context where fail-nth is
-  ignored), ORC, DWARF5, no KASLR, `VMAP_STACK=n`, `KSTACK_ERASE=y`, virtio-9p.
-- `real_modules.fragment`: **39 hardware-free real modules =m** (built, not yet evaluated).
-- `build_kernel.sh` (defconfig + kvm_guest + both fragments, checks every option),
-  `build_initramfs.sh` (busybox-static + init + klg-agent), `build_corpus.sh`,
-  `env.sh` (paths), `init` (guest PID 1: mounts, configures fault injection
-  verbose=2, ignore-gfp-wait=N, kmemleak scan=off and **stack=off**, runs
-  `/mnt/host/job.sh`), `run_vm.sh` (QEMU/KVM 2 vCPU 2 GB, 9p share; cmdline
-  includes `init_on_alloc=1 init_on_free=1` and `$KLG_EXTRA_CMDLINE`).
 
-### corpus/ — benchmark (32 modules)
-- `klg_l01..l17_*.c` leaky, `klg_s01..s15_*.c` safe; every allocation line has
-  `/* GT:LEAK */` or `/* GT:SAFE */` (17 leak sites, 42 safe sites).
-- `klg_harness.h`: `KLG_TRIGGER(fn)` / `KLG_TRIGGER_USER(fn)` → debugfs file
-  `/sys/kernel/debug/klg_<module>`; modules without it are "init mode".
-- `Kbuild` builds every `klg_*.c` (filters generated `*.mod.c`).
+- **`kernel.config.fragment`**
+  - kmemleak, FAULT_INJECTION, FAILSLAB, USERCOPY, FAIL_FUNCTION, STACKTRACE_FILTER.
+  - **ftrace-based kprobes** (required).
+  - ORC, DWARF5, no KASLR, VMAP_STACK=n, KSTACK_ERASE=y, virtio-9p.
+- **`real_modules.fragment`**: 39 hardware-free real modules built as `=m`. IFB and VRF were dropped because their dependencies are missing.
+- **Build scripts:** `build_kernel.sh`, `build_initramfs.sh`, `build_corpus.sh`, `env.sh`.
+- **`init`** (guest PID 1): kmemleak with scan=off and **stack=off**; fault-injection verbose=2.
+- **`run_vm.sh`**
+  - QEMU with 2 vCPU and 2 GB RAM, 9p host share.
+  - Kernel cmdline adds `init_on_alloc=1 init_on_free=1 $KLG_EXTRA_CMDLINE`.
+  - Falls back to TCG when KVM is unusable.
 
-### klg/ (Python orchestrator; `python3 -m klg …`)
-- `config.py` paths; `build.py` (modules, IR from `.cmd` files, `emit_ir(obj,
-  out_dir, cwd=None)` — `cwd` param exists for in-tree objects, initramfs +
-  modwatch build); `analyze.py` (variants); `ground_truth.py`.
-- `evidence.py`: agent-log / kmemleak parsing, `faddr2line` (binutils mode,
-  **no `/size`** — kallsyms sizes include padding), `(file,line)` locations,
-  `KO_PATHS`, `SymbolMap` (resolves raw addresses of unloaded modules from
-  KLG-MOD/KLG-SYM lines).
-- `verify.py`: idempotent guest jobs (`next_n`, `done_*` markers), resilient
-  `_run_vm` (watchdog `STALL_SECONDS=150`, `MAX_RESTARTS=25`, records
-  `out/crashes.json` + crash consoles), sweeps, `fault_map`, `_match_points`
-  (exact line → function fallback for merged debug info → silent faults),
-  `plan_tests`, `schedule` (≤1 test per module per round, init tests alone),
-  `confirm_job`, `judge` (exact loc / function fallback / size fallback /
-  control leaks / crashed rounds), `dynamic_sites`, `run(...)` (parameters:
-  `targets`, `gt`, `inject_fns`, `resilient`, `baselines`, `skip_sweep`).
-- `evaluate.py`: metrics per allocation site; approaches `static/*`, `hybrid`,
-  `klg/combined` (confirmed ∪ sweep leaks), `dynamic/exhaustive`,
-  `dynamic/random`, `cppcheck` (maps "Memory leak: var" to the assigning line).
-- `fix.py`: patch generation (reuse existing release statement / deallocator
-  table / rollback loop for `x[i]`; brace insertion) + validation (compile,
-  static re-analysis, VM module-filtered sweep with `slub_debug=FZPU`);
-  statuses `validated`, `runtime-validated`, `failed`, `skipped`, `covered`.
-- `figures.py` (matplotlib, validated palette, flowchart, architecture, terminal
-  screenshots), `cli.py` (commands: build, analyze, verify, evaluate, fix,
-  real, show, all), `__main__.py`.
+### corpus/
 
-### dashboard/app.py (Streamlit)
-Sidebar pages: Overview, Findings (source view with alloc/fails/exit
-highlighting, runtime evidence, patch), Fix patches, **Real kernel code**
-(reads `results/real/...`, shows info message until it exists), Evaluation,
-Run pipeline (background process via `start_new_session`, state in
-`results/dashboard_run.json`, log `results/dashboard_run.log`, `@@EXIT n`
-marker, live fragment refresh every 2 s, Stop button). Steps offered include
-`fix` and `real` (`real` will fail until `klg/real.py` exists).
+32 benchmark modules: `klg_l01..l17` leak, `klg_s01..s15` are safe.
 
-### tests/
-- `test_klg.py` (21 tests: parsing, size matching, symbol map, crash site,
-  planning, scheduling, ground truth, analyser regressions incl. ablations).
-- `test_dashboard.py` (3 tests incl. clicking Run and waiting for exit 0).
+- Every allocation line is annotated `/* GT:LEAK */` or `/* GT:SAFE */`: 17 leak sites and 42 safe sites.
+- `klg_harness.h` provides `KLG_TRIGGER(fn)`, which exposes a routine as a debugfs trigger. Modules without it run in "init mode".
 
-### docs/
-- `report_lib.py` (VIT formatting helpers, TOC field, page numbers, cover
-  name/guide replacement `set_guide`, `tighten_cover`), `build_report.py`
-  (final report from template; **all numbers read from results JSON**),
-  `build_reviews.py` (Project Proposal + Review-I), `build_manual.py`,
-  `build_ppt.py` (20 slides), `figures/`, `templates/`.
-- Generated: `KernelLeakGuard_Final_Report` (33 pages), `_Project_Proposal`
-  (4), `_Review1_Design_Progress` (8), `_User_Manual` (9), `_Presentation`
-  (20 slides), each .docx/.pptx + .pdf.
+### klg/
 
-### scripts/
-`setup_venv.sh`, `install_cppcheck.sh`, `repeat_runs.sh`, `build_docs.sh`,
-`export_pdf.ps1`, `render_pdf.py` (PDF → PNG sheets for visual review),
-`try_static.py` (dev check of static results vs ground truth).
+Python orchestrator, run as `python3 -m klg …`.
+
+- **`config.py`**: paths.
+- **`build.py`**: `emit_ir(obj, out_dir, cwd=None)`; resolves out_dir to an absolute path.
+- **`analyze.py`, `ground_truth.py`**.
+- **`evidence.py`**
+  - Parses agent logs and kmemleak reports.
+  - `faddr2line` is called **without `/size`**.
+  - `SymbolMap` (from KLG-MOD/KLG-SYM lines), `KO_PATHS`.
+- **`verify.py`**
+  - Idempotent guest jobs.
+  - Resilient `_run_vm`: crash/hang recovery, `MAX_RESTARTS=200`, `MAX_CRASHES_PER_LOG=10` (after that the sweep is truncated), `STALL_SECONDS` 150 (900 under TCG). A host QEMU failure aborts immediately.
+  - `PRELOAD` dict for dependency modules.
+  - Then fault_map, matching, plan, schedule, confirm, judge, and `run(...)`.
+- **`evaluate.py`**: approaches static/*, hybrid, klg/combined, dynamic exhaustive/random, cppcheck.
+- **`fix.py`**: patch generation and validation. Statuses: validated, runtime-validated, failed, skipped, covered.
+- **`real.py`**: real-module evaluation.
+  - Module discovery from `modules.order`, objects from `.mod` files.
+  - IR via `emit_ir(cwd=KBUILD)` plus llvm-link; dependencies via `modinfo` and topological order.
+  - Writes `results/real/summary.json`. Static statistics always cover all 39 modules, even with `--only`.
+- **`seed.py`** (NEW): seeded-bug evaluation, driven by `seeds/*.json`.
+  - Comments out one release statement **inside the named function** (`_func_range` skips forward declarations).
+  - Builds the module out-of-tree with `-I$(srctree)/<module dir>` for private headers.
+  - Diffs the warnings against the **unmodified baseline** build, so pre-existing warnings don't count.
+  - Optionally confirms in the VM. The fix is the re-inserted statement, which equals the baseline, validated statically (and in the VM unless `--skip-vm`).
+- **`figures.py`, `cli.py`** (commands: build, analyze, verify, evaluate, fix, real, seed, show, all).
+
+### Dashboard, tests, scripts, docs
+
+- **`dashboard/app.py`** (Streamlit). Pages: Overview, Findings, Fix patches, Real kernel code, Evaluation, Run pipeline. The Run button works: it runs a background process with live log and a Stop button.
+- **`tests/`**: `test_klg.py` (24, including real-module discovery and ordering) and `test_dashboard.py` (3). **27 in total, all pass.**
+- **`scripts/`**: `setup_venv.sh`, `install_cppcheck.sh`, `repeat_runs.sh`, `build_docs.sh`, `export_pdf.ps1`, `render_pdf.py`, `try_static.py` (corpus static check, expected `TP=16 FN=1 FP=1`), `make_real_triage.py` (hand-review labels in its `REVIEWED` dict).
+- **`docs/`**: `report_lib.py`, `build_report.py`, `build_reviews.py` (proposal and Review-I), `build_manual.py`, `build_ppt.py`, `figures/`, `templates/`.
+
+**`.scratch/`** (git-ignored) contains helper scripts:
+- `reanalyze.py`
+- `check_all.py` (name check)
+- `kvm.sh`
+- `finalize.sh` (seed, triage, docs, name check)
+- `ship.sh` (copy to Downloads, commit)
 
 ---
 
-## 5. Current results (final run, 2026-10-13; stored in results/)
+## 7. Results (all reproducible from results/)
 
-Benchmark: 32 modules, 17 leaking + 42 safe allocation sites.
+### 7.1 Benchmark corpus (final run 2026-10-13, unchanged by later work)
+
+32 modules: 17 leaking allocation sites and 42 safe ones.
 
 | Approach | TP | FP | FN | Precision | Recall | Executions |
 |---|---|---|---|---|---|---|
 | Static, naive | 16 | 11 | 1 | 0.59 | 0.94 | – |
-| Static, KernelLeakGuard | 16 | 1 | 1 | 0.94 | 0.94 | 27 ms analysis |
-| Hybrid (confirmed warnings) | 14 | 0 | 3 | 1.00 | 0.82 | 425 (304 mapping + 121 confirm) |
+| Static, KernelLeakGuard | 16 | 1 | 1 | 0.94 | 0.94 | ~27 ms |
+| Hybrid (confirmed warnings) | 14 | 0 | 3 | 1.00 | 0.82 | 425 |
 | **KernelLeakGuard complete** | **16** | **0** | **1** | **1.00** | **0.94** | 425 |
-| Dynamic, exhaustive FI | 15 | 0 | 2 | 1.00 | 0.88 | 1261 |
-| Dynamic, random FI | 13 | 0 | 4 | 1.00 | 0.77 | 1600 |
+| Dynamic, exhaustive fault injection | 15 | 0 | 2 | 1.00 | 0.88 | 1261 |
+| Dynamic, random fault injection | 13 | 0 | 4 | 1.00 | 0.77 | 1600 |
 | cppcheck 2.19 | 6 | 1 | 11 | 0.86 | 0.35 | – |
 
-- 3 repeated runs: hybrid confirmed 15, 15, 14 (the variable one is the
-  vmalloc leak L10 — kmemleak tracks vmalloc areas with min_count 2, so a stale
-  copy hides it in a scan); complete tool 16/0/1 in all 3; no false positive ever.
-- Static misses L16 (nested heap ownership) by design; S09 (correct rollback
-  loop) is a static false positive refuted at runtime; L15 is inconclusive
-  (ida_alloc never allocates for small IDs, failure cannot be injected).
-- Ablation (F1): naive 0.73, no-escape 0.85, no-interproc 0.80,
-  no-containers 0.90, no-corr 0.91, full 0.94.
-- Fixes (final run): 13 fully validated + 1 runtime-validated (L04 rollback
-  loop: leak gone in VM, analyser still flags it — loop-counter limitation) of
-  14 confirmed leaks. Patches in `results/fixes/patches/`.
-- System test cases: 29/32 pass (fails: L10 in the final run, L15, L16).
-  Unit tests: 24/24 pass.
+- **Three repeated runs:**
+  - The hybrid approach confirmed 15, 15 and 14 leaks. The variation comes from the vmalloc leak L10: kmemleak tracks vmalloc with min_count 2.
+  - The complete tool scored 16/0/1 every time, with **never a false positive**.
+- **Known misses and false positives:**
+  - L16 (nested heap ownership) is missed statically, by design.
+  - S09 (a correct rollback loop) is a static false positive that the runtime check refutes.
+  - L15 is inconclusive: ida_alloc doesn't allocate for small IDs.
+- **Ablation F1:** naive 0.73, no-escape 0.85, no-interproc 0.80, no-containers 0.90, no-corr 0.91, full 0.94.
+- **Fixes:** 13 validated and 1 runtime-validated (L04) of 14 confirmed leaks.
+- **System test cases:** 29 of 32 pass.
 
-### Key engineering findings (already in the report)
-- fail_function needs ftrace-based kprobes (int3 handler: `in_task()` false → fail-nth ignored).
-- faddr2line must be called without `/size`; LLVM=1 mode of faddr2line breaks.
-- Stale pointers hide leaks from kmemleak: fixed with VMAP_STACK=n,
-  KSTACK_ERASE, kmemleak `stack=off`, `init_on_alloc=1 init_on_free=1`
-  (`KSTACK_ERASE_TRACK_MIN_SIZE` < 100 breaks the build — early-boot PI code).
-- Random baseline must set `task-filter` before `probability` (otherwise PID 1 gets faults → panic).
-- Unrolled loops lose source lines → function-level fallback with single allocation site.
-- Failed module init unloads the module before kmemleak prints → klg_modwatch.
+### 7.2 Real Linux 6.18.55 modules (final re-run 2026-10-16, TCG)
 
----
+**Static analysis:** 39 modules, 6376 functions, 590 allocation sites, **64 warnings**.
+- Before ERR_PTR modelling there were 115 warnings.
+- The change did not alter any corpus result.
 
-## 5. LATEST (2026-10-16, after 5a) — read first
+**Runtime:** 15 representative modules:
+- null_blk, minix, bonding, vxlan, tun, mac80211_hwsim, brd, zram
+- scsi_debug, dm_dust, squashfs, hfs, erofs, snd_aloop, uinput
 
-- Analyzer: IS_ERR()/ERR_PTR modelling (`errPtrTest` in analyzer/src/Analyzer.cpp).
-  Real-code warnings 115 -> 64; corpus unchanged (TP16 FN1 FP1); 27 tests pass.
-  After editing Analyzer.cpp from Windows, `touch src/Analyzer.cpp` before `make`.
-- Real re-run (15 modules, TCG): 64 warnings, 30 inconclusive, 0 confirmed,
-  6166 fault points; erofs sweep leak + null_blk crash still reproduced.
-  Triage: 12 false positive, 10 likely FP, 8 not reviewed.
-- New `python3 -m klg seed` (klg/seed.py, seeds/*.json): removes one release from
-  real kernel code, builds out-of-tree, compares with the unmodified baseline.
-  brd seed: detected + fix validated statically; VM confirmation obstructed
-  because brd init crashes under fault injection (reboot clears kmemleak).
-  scsi_debug seed dropped: sdbg_host escapes into a helper, so it is not flagged.
-- Report: 4.4 real code, 4.5 seeded leaks, 4.6 Analysis (37 pages); slide 15 updated.
-- Next if continuing: get one seeded leak CONFIRMED in the VM (needs KVM, or a
-  crash-robust module whose init allocation is not passed to a helper).
+Runtime results:
+- 6166 fault points of module init were exercised.
+- **30 warnings, all inconclusive; 0 confirmed.** Most warnings sit in mount, ioctl or netlink code that init-time testing never reaches.
 
-## 5a. STATUS (2026-10-16)
+**Manual triage** (`results/real/triage.json`):
+- 12 false positives, reviewed in source.
+- 10 likely false positives (by pattern).
+- 8 not reviewed.
+- Remaining false-positive causes: reference-counted lookups (`hfs_bnode_find` + put), error codes held in a variable (snd_aloop `err < 0` at a shared label), struct field plus escape (mac80211_hwsim), release through list iteration (scsi_debug).
 
-Done since the sections below were written:
-- **Real-kernel evaluation done** (`python3 -m klg real`): static analysis of all
-  39 modules (6376 functions, 590 allocation sites, 115 warnings); runtime run of
-  15 representative modules under QEMU **software emulation (TCG)** because WSL
-  lost hardware virtualization (Windows VBS still running even with Memory
-  Integrity off; `.wslconfig` has `nestedVirtualization=true`). 6156 fault points
-  exercised, 59 warnings: 58 inconclusive (mostly code not reachable from
-  module init: mount/ioctl/netlink paths), 1 not reproduced, 0 confirmed.
-- Manual review: `scripts/make_real_triage.py` → `results/real/triage.json`
-  (13 reviewed in source = all high-confidence ones, all false positives;
-  38 "likely false positive" by ERR_PTR pattern; 8 not reviewed).
-- Findings to analyse further (paper material, NOT yet confirmed bugs):
-  (1) reproducible kernel crash loading **null_blk** under allocation failure
-  (page fault in bdev_release reading freed module memory; ~739th filtered fault
-  point; sweep truncated after 10 crashes); (2) kmemleak report during **erofs**
-  init: 21 kmem_cache name strings (kstrdup in __kmem_cache_create_args from
-  z_erofs_create_pcluster_pool), likely a slab-core error path.
-- Docs updated: report section 4.4 "Evaluation on Real Kernel Code" (Analysis is
-  4.5), conclusion, future work, slide 15, README, manual. 27 tests pass.
-- Git repo initialised, first commit by "Om Gupta <guptaom750@gmail.com>";
-  the user does NOT want Claude listed as author/co-author. Not pushed
-  (user's GitHub: github.com/masterblaster14 — push only if asked).
-- Remaining optional work: run all 39 modules with KVM when available; model
-  ERR_PTR/refcount to cut false positives; drive non-init entry points;
-  root-cause the null_blk crash and erofs report and check upstream.
+**Found by the tool on real code. These are observations, NOT confirmed bugs:**
+1. **null_blk:** a reproducible kernel crash under allocation failure during init. It is a page fault in `bdev_release` reading freed module memory (deferred `__fput`). The sweep was truncated after 10 crashes.
+2. **erofs init:** a kmemleak report of 21 kstrdup'd kmem_cache name strings (32 B each), allocated in `__kmem_cache_create_args` from `z_erofs_create_pcluster_pool` (zdata.c:466). erofs's own cleanup looks correct, so the cause is likely a slab-core error path.
 
-## 5b. PROGRESS UPDATE (2026-10-15)
+Neither has been root-caused or checked upstream.
 
-- `klg/real.py` now EXISTS and works for the static part: `python3 -m klg real
-  --skip-vm` analysed all 39 real modules → `results/real/static/full/*.json`,
-  `results/real/summary.json` (6376 functions, 590 allocation sites, 115 static
-  warnings). Options: `--skip-build`, `--skip-vm`, `--only a,b,c`.
-- `verify.PRELOAD` (dependency preloading) is implemented and used by real.py
-  (deps found: crc-itu-t, nls_ucs2_utils, zsmalloc, configfs, crc-t10dif,
-  udp_tunnel, ip6_udp_tunnel).
-- `build.emit_ir` now resolves out_dir to an absolute path (bug fix).
-- `verify._run_vm` now stops immediately if the guest never booted (host/QEMU
-  problem) instead of retrying it as a crash; `vm/run_vm.sh` falls back to TCG
-  when KVM is not usable.
-- **KVM stopped working** because Windows Memory Integrity (Core isolation)
-  got enabled. The user switched it OFF; a **PC restart** is required. Also
-  created `C:\Users\gupta\.wslconfig` with `nestedVirtualization=true`.
-  After restart verify: `wsl -d Ubuntu -- bash /home/gupta/KernelLeakGuard/.scratch/kvm.sh`
-  must print "svm flags: >0" and "KVM open OK".
-- **Next steps after restart:**
-  1. Pilot: `python3 -m klg real --skip-build --only dummy,minix,null_blk`
-     (writes into results/real — fine, it will be overwritten by the full run).
-  2. Full run: `python3 -m klg real --skip-build` (static reused, VM runs).
-  3. Manual triage of the warnings, crashes and sweep leaks → `results/real/triage.json`.
-  4. Docs (section 4.5 etc., see item A.10), README, manual, PPT; tests for real.py.
-  5. Re-run `python3 -m klg all` + `klg fix` only if something in the corpus path changed.
-  6. Git init + commit (user approved "build everything pending").
+**Seeded bug** (`klg seed`, `seeds/brd_blk_alloc_disk.json`):
+- `brd_free_device(brd);` was removed in `brd_alloc()`, brd.c:350.
+- **Detected:** a new warning appeared — allocation at line 317 (`brd_find_or_alloc_device`), exit at line 351.
+- **Fix validated statically.**
+- **Not confirmed in the VM:** brd's init crashes the kernel under fault injection, and each reboot clears kmemleak.
+- A scsi_debug seed was tried and dropped: `sdbg_host` is passed to `sdebug_device_create`, so the analyser treats it as escaped and doesn't flag the leak.
 
-## 6. What is left — in detail
+### 7.3 Key engineering findings (all in the report)
 
-### A. Real Linux kernel module evaluation (`python3 -m klg real`) — NOT BUILT
-**State:** the guest kernel already builds 39 hardware-free modules
-(`vm/real_modules.fragment`: dummy, veth, netdevsim, bonding, macvlan, ipvlan,
-nlmon, tun, vxlan, geneve, team, mac80211_hwsim, null_blk, brd, zram,
-scsi_debug, dm-flakey, dm-dust, dm-delay, minix, romfs, cramfs, squashfs, udf,
-nilfs2, jfs, f2fs, exfat, ntfs3, hfsplus, hfs, erofs, qnx4, ufs, omfs, affs,
-snd-dummy, snd-aloop, uinput; IFB and VRF were dropped — their deps are not in
-the config). `kbuild/modules.order` lists 55 modules. The CLI command `real`
-is registered in `klg/cli.py` (`cmd_real` → `from . import real;
-real.run(skip_build=..., skip_vm=...)`) but **`klg/real.py` does not exist**,
-so `klg real` (and the dashboard step `real`) currently crash with ImportError.
-The dashboard page "Real kernel code" is already written and expects the
-files below.
-
-**What to implement (`klg/real.py`):**
-1. **Module discovery:** read `config.KBUILD / "modules.order"`; keep entries
-   whose basename (without `.ko`/`.o`) is in the 39-module set; kernel module
-   name = basename with `-` → `_`; `.ko` path = `KBUILD/<path>.ko`.
-2. **Objects:** read `KBUILD/<path without .ko>.mod` (lists the module's
-   object files, relative to KBUILD). Only C objects (check the `.cmd` source
-   ends with `.c`).
-3. **IR:** for each object `build.emit_ir(KBUILD/obj, outdir, cwd=config.KBUILD)`
-   (in-tree compile commands are relative to the build dir; the `cwd` parameter
-   already exists). Link with `llvm-link -o results/real/ir/<name>.bc *.bc`.
-   Expect some objects to fail IR generation (flags) — log and skip, don't abort.
-4. **Static:** `analyze.analyze_module(bc, name, out_dir=REAL/"static")` →
-   `results/real/static/full/<name>.json`. Add `source_path` to each candidate
-   (DILocation filename may be relative, e.g. `../linux-6.18.55/...`; resolve
-   against KBUILD, then KSRC). Dashboard uses `c["source_path"]`.
-   Watch analysis time / `approximate` flags on big modules (f2fs, ntfs3);
-   `--max-steps` exists.
-5. **Dependencies:** `modinfo -F depends <ko>` (comma list, recursive) →
-   topological preload order. **Not implemented yet in verify.py:** add a
-   module-level `PRELOAD: list[str]` (or a `preload` parameter) to
-   `verify._job_setup` that emits `insmod /mnt/host/mods/<dep>.ko` right after
-   klg_modwatch; make `_write_share` also copy the dependency `.ko`s; exclude
-   from targets any module that is a dependency of another target (it stays
-   loaded).
-6. **Runtime:** targets = `verify.Target(name, "init", f"/mnt/host/mods/{name}.ko")`;
-   `mods = {name: {"ko": ko, "src": first_source}}`;
-   `verify.run(mods, reports, out_root=REAL/"runtime", baselines=False,
-   targets=targets, gt=None, inject_fns=[], resilient=True)`.
-   This runs the mapping sweep (module-filtered, kmemleak per module) and the
-   confirmation run with crash/hang recovery (implemented but **never tested on
-   real modules** — test on 2–3 small modules first, e.g. dummy, minix, null_blk).
-   Check: `SWEEP_MAX_INIT=1500` may be too small for big init paths;
-   `STALL_SECONDS=150`; guest RAM 2 GB (scsi_debug/brd/zram may need params or
-   more RAM); crash entries land in `verification.json["crashes"]`.
-7. **Outputs expected by the dashboard:**
-   - `results/real/static/full/*.json`, `results/real/runtime/verification.json`
-   - `results/real/summary.json` with keys: `modules`, `functions`,
-     `fault_points` (sum of mapping executions), `crashes` (count), `headline`
-     (markdown sentence), `dynamic_leaks` (list of dicts from
-     `verification["sweep_leaks"]`: module, file, line, objects, size, backtrace).
-   - `results/real/triage.json`: list of `{"id", "label", "note"}` written by
-     a human/Claude after **manually reviewing each warning** in the kernel
-     source (label: true leak / false positive / unclear) and each crash.
-8. **Manual triage:** read every static warning and every sweep leak / crash
-   in the actual source (`~/klg-build/linux-6.18.55/...`). If a genuine leak or
-   crash is found: confirm on the latest upstream kernel before claiming
-   anything; this would be the strongest result for the paper.
-9. **Tests:** unit tests for discovery, `.mod` parsing, dependency ordering.
-10. **Documents after it works:** add report section "4.5 Evaluation on real
-    kernel code" (modules, functions, warnings, verdicts, triage, crashes,
-    time), update abstract, conclusion, limitations, remove it from future
-    work (report `build_report.py` future-work list, PPT slide 19), add a PPT
-    slide, README + user manual (`klg real`). Keep every number generated
-    from JSON like the rest of `build_report.py`. Regenerate with
-    `build_docs.sh`, export PDFs, visually check with `scripts/render_pdf.py`,
-    copy to Downloads.
-
-### B. Version history and backup — NOT DONE (guidelines require version history)
-- `git init` in `~/KernelLeakGuard`; `.gitignore` already exists (ignores
-  build outputs, `.venv`, `.scratch`, `results/ir`, runtime shares). Commit
-  only when the user approves; ask before pushing to GitHub. Commit
-  attribution lines per the session's instructions.
-- Suggest a backup copy of `~/KernelLeakGuard` to Windows/USB.
-
-### C. Smaller open items
-- **Review-I document** is written as a progress snapshot (some items "In
-  progress"); the user should adjust wording to the actual submission date.
-- **Dashboard screenshot** is not in the report (no headless browser
-  available); the user can take one (Win+Shift+S) and it can be inserted.
-- The user should open the final report .docx in Word once (TOC refresh) and
-  check the cover.
-- `README.md` does not yet mention `klg fix` and `klg real`; the user manual
-  covers `klg fix`.
-
-### D. Known limitations / possible research improvements
-- Field-sensitive heap ownership (L16 nested buffer missed statically).
-- Loop-counter / value-range reasoning (S09 false positive; L04 patch still flagged).
-- vmalloc leaks are flaky under kmemleak (min_count 2) — e.g. repeat scans or
-  multiple rounds before declaring "not reproduced".
-- Fix patches for shared error labels (non-exclusive branches) are skipped.
-- Reproduce historical MLEE-reported leaks on older kernels (would need older
-  kernel builds).
-- Benchmark is self-written; for a paper, real-code results (item A) are essential.
+- fail_function needs **ftrace-based kprobes**. In int3 kprobes, `in_task()` is false, so fail-nth is ignored.
+- faddr2line must be called **without `/size`**; its LLVM=1 mode breaks.
+- **Stale pointers hide leaks from kmemleak.** Fixed with VMAP_STACK=n, KSTACK_ERASE, kmemleak `stack=off`, and `init_on_alloc=1 init_on_free=1`.
+- The random baseline must set `task-filter` **before** `probability`. Otherwise PID 1 gets faults and the kernel panics.
+- When a module's init fails, the module is unloaded before kmemleak reports. `klg_modwatch` solves this.
+- Kernel lookup helpers return ERR_PTR, not NULL. Modelling `IS_ERR` removed 44% of the real-code false positives.
 
 ---
 
-## 7. Rules the user gave
-- Everything must genuinely work; no fake/demo results; no mistakes.
-- Use names exactly: **Om Gunjan Gupta**, **Dr. Arivuselvan K** (Associate
-  Professor, SCORE).
-- User has limited credits: prefer efficient, verified steps; report honestly
-  (including failures and run-to-run variation).
-- Commit/push only when the user asks.
+## 8. Documents (all DONE, in the Downloads folder as .docx/.pptx + .pdf)
+
+| Document | Pages | Notes |
+|---|---|---|
+| Final Report | 37 | Chapter 4: 4.1–4.3 benchmark, **4.4 Real kernel code** (with the ERR_PTR paragraph, runtime table, triage, erofs, null_blk crash trace), **4.5 Seeded leaks** (brd table + honest note that VM confirmation wasn't possible), **4.6 Analysis**; conclusion; future work |
+| Project Proposal | 4 | |
+| Review-I Design/Progress | 8 | A progress snapshot: the user may adjust wording to the submission date |
+| User Manual | 9 | Includes `klg fix`, `klg real`, `klg seed` |
+| Presentation | 20 slides | Slide 14 = verdicts + ablation; slide 15 = real kernel code (precision fix, seeded leak, crash, erofs) |
+
+Names were verified in every file by `.scratch/check_all.py`. The user should
+open the report in Word once so the table of contents refreshes, and check the
+cover. No dashboard screenshot is in the report: the user can take one with
+Win+Shift+S and it can be inserted.
+
+---
+
+## 9. Git
+
+- Repository: `~/KernelLeakGuard`, branch `master`.
+- Commits:
+  - `41ec0ce` (initial)
+  - `82a182f` "Model ERR_PTR returns; add seeded-bug evaluation on real kernel modules"
+- Both authored by Om Gupta <guptaom750@gmail.com>, with no Claude attribution.
+- `.gitignore` excludes:
+  - build outputs, `.venv`, `.scratch`, `results/ir`
+  - VM shares and mappings, `results/real/ir`, `results/fixes/build|runtime`, `results/seeded/*/buggy|fixed` build products are NOT excluded
+  - modwatch build outputs
+- **Not pushed.** To push, once the user approves:
+  1. Create the repository on GitHub, e.g. `masterblaster14/KernelLeakGuard`.
+  2. `git remote add origin https://github.com/masterblaster14/KernelLeakGuard.git && git push -u origin master`
+  3. The user must authenticate, using `gh auth login` or a token.
+
+Check `du -sh .git` before pushing; it was about 13 MB at the first commit.
+
+---
+
+## 10. What is left (priority order)
+
+The course deliverables are complete. These items would strengthen the demo
+and a future paper.
+
+1. **One seeded leak CONFIRMED in the VM, on real code.** This is the
+   strongest demo item still missing.
+   - Needs KVM (see section 4), or a crash-robust module whose init-time
+     allocation is not handed to a helper.
+   - The brd seed's leak fault points were mapped (n=11, 13, 15 at brd_alloc),
+     but crashes at other fault points wiped kmemleak.
+   - Ideas:
+     - Raise `MAX_CRASHES_PER_LOG` for seeds.
+     - Load brd with `rd_nr=1`; the agent passes "" to finit_module, so the agent needs to accept module parameters.
+     - Add a targeted confirm that injects only the mapped N without a full sweep.
+     - Loosen `_match_points` so a trigger call line matches the frame line of the fault inside that call.
+2. **Root-cause the null_blk crash and the erofs kmemleak report.** Read
+   `drivers/block/null_blk/main.c` init error paths, `block/bdev.c`
+   `bdev_release`, `mm/slab_common.c` `__kmem_cache_create_args`, and erofs
+   `z_erofs_create_pcluster_pool`/`z_erofs_destroy_pcluster_pool`. If either
+   turns out to be genuine, check it on the latest upstream kernel. It would be
+   the headline result for a paper (and possibly an upstream patch).
+3. **Further cut real-code false positives:** model reference-counted lookups
+   (functions returning an object released by `*_put`), error-code-in-variable
+   correlation (`if (err < 0)` at a shared label), and release via list
+   iteration (`list_for_each_entry_safe` + kfree).
+4. **Drive non-init entry points** (mount images, ioctl/netlink programs, or
+   syzkaller-style programs) so the 30 inconclusive warnings become testable.
+5. **Run all 39 modules in the VM** once KVM works: `python3 -m klg real --skip-build`.
+6. Small items:
+   - a dashboard screenshot for the report;
+   - Review-I wording;
+   - a backup copy of the project to Windows/USB, or a GitHub push when the user asks.
+
+After any change, use the order in section 5. Re-check the corpus with
+`python3 scripts/try_static.py full` (must stay `TP=16 FN=1 FP=1`) and run
+the 27 tests, then regenerate the documents and copy them to Downloads.
+
+---
+
+## 11. History of the work (short)
+
+1. Built the analyser, VM, agent, corpus, verifier, evaluation, dashboard,
+   fixes and documents.
+2. Fixed the dashboard Run button and the names everywhere.
+3. Real-kernel evaluation (2026-10-15/16): KVM was lost because of VBS, so
+   the user chose a representative subset under TCG.
+4. Git initialised.
+5. The user asked "isn't MLEE already working on real kernel code, the
+   professor needs to see it working". Response: ERR_PTR modelling (115 → 64
+   warnings), the `klg seed` harness, a real re-run, and docs updated with an
+   honest account (detected and fixed on real code; VM confirmation obstructed
+   by brd crashes).
