@@ -31,6 +31,7 @@ STATUS = {"confirmed": ("✔", "#0ca30c"), "not-reproduced": ("✖", "#d03b3b"),
           "inconclusive": ("?", "#898781"), "unverified": ("·", "#898781")}
 RUN_LOG = config.RESULTS / "dashboard_run.log"
 RUN_STATE = config.RESULTS / "dashboard_run.json"
+LIVE_DIR = ROOT / ".scratch" / "live_kernel"      # log, state and shell input of the live guest
 STEPS = {
     "all": "Complete pipeline: build → analyse → verify in VM → evaluate (~4 min)",
     "build": "Build corpus modules, LLVM IR, klg-agent and guest initramfs",
@@ -111,6 +112,96 @@ def stop_run(pid: int):
     subprocess.run(["pkill", "-f", "qemu-system-x86_64"], check=False)
 
 
+# --------------------------------------------------------- live kernel -----
+def live_state() -> dict:
+    st_ = _json(LIVE_DIR / "state.json", {})
+    pid = st_.get("pid")
+    running = False
+    if pid:
+        try:                       # reap the guest if it was our child and has exited
+            os.waitpid(pid, os.WNOHANG)
+        except ChildProcessError:
+            pass
+        try:                       # alive = exists and is not a zombie
+            running = Path(f"/proc/{pid}/stat").read_text().split(") ")[-1][0] != "Z"
+        except OSError:
+            pass
+    log = (LIVE_DIR / "console.log").read_text(errors="replace") \
+        if (LIVE_DIR / "console.log").exists() else ""
+    return {**st_, "running": running, "log": log}
+
+
+def live_start(mode: str, window: bool = False):
+    """Boot the guest kernel (scripts/live_demo.py) in the background. Shell mode
+    reads its input from a FIFO that the launcher keeps open (no EOF)."""
+    LIVE_DIR.mkdir(parents=True, exist_ok=True)
+    fifo = LIVE_DIR / "input"
+    if fifo.exists():
+        fifo.unlink()
+    os.mkfifo(fifo)
+    arg = (" shell" if mode == "shell" else "") + (" --window" if window else "")
+    cmd = (f'exec 3<>"{fifo}"; cd "{ROOT}" && exec "{sys.executable}" -u '
+           f'scripts/live_demo.py{arg} <&3')
+    with open(LIVE_DIR / "console.log", "w") as log:
+        proc = subprocess.Popen(["bash", "-c", cmd], stdout=log, stderr=subprocess.STDOUT,
+                                cwd=ROOT, start_new_session=True)
+    (LIVE_DIR / "state.json").write_text(json.dumps({"pid": proc.pid, "mode": mode, "window": window,
+                                                     "started": time.time()}))
+
+
+def live_send(line: str):
+    fd = os.open(LIVE_DIR / "input", os.O_WRONLY | os.O_NONBLOCK)
+    try:
+        os.write(fd, (line + "\n").encode())
+    finally:
+        os.close(fd)
+
+
+def live_stop(pid: int):
+    try:
+        os.killpg(pid, signal.SIGTERM)
+    except OSError:
+        pass
+    for _ in range(20):            # wait (up to 2 s) and reap, so the page shows it stopped
+        try:
+            if os.waitpid(pid, os.WNOHANG)[0]:
+                break
+        except ChildProcessError:
+            break
+        time.sleep(0.1)
+
+
+ANSI_STYLE = {"1;36": "color:#4fc3f7;font-weight:700", "1;33": "color:#ffd54f;font-weight:700"}
+LIVE_MARKS = [("unreferenced object", "#ff6b6b"), ("FAULT_INJECTION", "#ffa94d"),
+              ("WARNING:", "#ff6b6b"), ("is not initialized", "#ff6b6b"),
+              ("refcount_t", "#ff6b6b"), ("   <- ", "#8ce99a"), ("KLG-JOB-EXIT", "#868e96")]
+
+
+def console_html(text: str) -> str:
+    """Kernel console output as HTML: guest colours kept, key lines highlighted."""
+    import re
+    text = text.replace("\r", "")
+    text = re.sub(r"\x1b\[\?[0-9;]*[a-zA-Z]|\x1b\[[0-9;]*[HJKc]|\x1bc", "", text)
+    out = []
+    for line in text.splitlines()[-400:]:
+        parts = re.split(r"\x1b\[([0-9;]*)m", line)
+        h, style = "", None
+        for i, part in enumerate(parts):
+            if i % 2:
+                style = ANSI_STYLE.get(part)
+                continue
+            esc = html.escape(part)
+            h += f"<span style='{style}'>{esc}</span>" if style and esc else esc
+        colour = next((c for key, c in LIVE_MARKS if key in line), None)
+        out.append(f"<span style='color:{colour}'>{h}</span>" if colour and "<span" not in h else h)
+    return ("<style>html,body{margin:0;overflow:hidden;background:#111418}</style>"
+            "<div id='con' style='box-sizing:border-box;background:#111418;color:#d5d8dc;"
+            "font:13px/1.45 monospace;padding:12px;border-radius:6px;height:100vh;"
+            "overflow-y:auto;white-space:pre-wrap'>"
+            + "\n".join(out) + "</div><script>var c=document.getElementById('con');"
+            "c.scrollTop=c.scrollHeight;</script>")
+
+
 # ------------------------------------------------------------- helpers ------
 def source_view(src: Path, c: dict) -> str:
     lines = src.read_text(errors="replace").splitlines()
@@ -185,7 +276,7 @@ st.sidebar.title("🛡️ KernelLeakGuard")
 st.sidebar.caption("Hybrid static analysis and runtime verification of memory leaks on "
                    "Linux kernel early-exit paths")
 page = st.sidebar.radio("View", ["Overview", "Findings", "Fix patches", "Real kernel code",
-                                 "Evaluation", "Run pipeline"], key="page")
+                                 "Live kernel", "Evaluation", "Run pipeline"], key="page")
 rs = run_state()
 if rs["running"]:
     st.sidebar.info(f"⏳ `klg {rs.get('step')}` running for "
@@ -363,6 +454,52 @@ elif page == "Real kernel code":
                 if s.get("fix_patch"):
                     with st.expander(f"{s['module']} fix patch"):
                         st.code(s["fix_patch"], language="diff")
+
+elif page == "Live kernel":
+    st.title("Live: our Linux 6.18.55 kernel")
+    st.markdown(
+        "Boots the guest kernel (QEMU) and shows its own console output. **Live demo**: the "
+        "real erofs module loads cleanly; one allocation is failed with fail-nth while it "
+        "initialises; kmemleak reports the slab cache leaked by the SLUB bug and the kernel "
+        "warns; then the bonding leak Linux shipped until 2010 is caught the same way. "
+        "**Kernel shell**: a root shell in the same kernel (modules in `/mnt/host/mods`).")
+    ls = live_state()
+    busy = ls["running"] or rs["running"]
+    win = st.checkbox("Also show the VM's own screen in a window on this laptop (the kernel's "
+                      "boot log and every command appear on the virtual machine's display; "
+                      "for the shell, type into that window)",
+                      value=bool(os.environ.get("DISPLAY")), disabled=busy or not os.environ.get("DISPLAY"))
+    b1, b2, b3, _ = st.columns([1.3, 1.3, 1, 3])
+    if b1.button("▶ Run live demo", type="primary", disabled=busy):
+        live_start("demo", win)
+        st.rerun()
+    if b2.button("⌨ Kernel shell", disabled=busy):
+        live_start("shell", win)
+        st.rerun()
+    if b3.button("■ Stop", disabled=not ls["running"]):
+        live_stop(ls["pid"])
+        st.rerun()
+    if rs["running"]:
+        st.warning("A pipeline step is using the VM; wait for it to finish.")
+    if ls.get("mode") == "shell" and ls["running"] and not ls.get("window"):
+        cmd = st.chat_input("Command for the guest kernel, e.g.  uname -a  ·  lsmod  ·  "
+                            "cat /sys/kernel/debug/kmemleak")
+        if cmd:
+            live_send(cmd)
+        st.caption("Type a command and press Enter; leave the shell with `poweroff -f` (or Stop).")
+
+    @st.fragment(run_every=1)
+    def live_console():
+        s_ = live_state()
+        if s_["running"]:
+            st.info(f"{'Live demo' if s_.get('mode') == 'demo' else 'Kernel shell'} running — "
+                    f"{int(time.time() - s_.get('started', time.time()))} s "
+                    "(software emulation: the kernel boots in about 30 s)")
+        elif s_.get("pid"):
+            st.success("Guest kernel powered off.")
+        if s_["log"]:
+            st.iframe(console_html(s_["log"]), height=590)
+    live_console()
 
 elif page == "Evaluation":
     st.title("Evaluation")

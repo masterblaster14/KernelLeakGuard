@@ -191,6 +191,9 @@ python3 scripts/make_real_triage.py      # manual-review labels → results/real
 bash scripts/repeat_runs.sh 3            # N independent full corpus runs
 bash scripts/build_docs.sh               # unit tests + figures + all Word/PPT docs
 .venv/bin/python -m unittest tests.test_klg tests.test_dashboard   # 32 tests
+python3 scripts/live_demo.py [shell]     # LIVE in the guest kernel: SLUB + bonding leaks on screen / root shell
+                                         # --window: on the VM's own screen (QEMU GTK window via WSLg)
+                                         # (same modes on the dashboard's "Live kernel" page)
 python3 scripts/make_root_causes.py      # real-kernel findings → results/real/root_causes.json
 python3 scripts/fault_probe.py MOD LO HI BATCH OUT    # probe init fault points (kmemleak+dmesg)
 bash scripts/build_patched_kernel.sh PATCH OUT_KBUILD # guest kernel with one patch, own O= dir
@@ -355,7 +358,7 @@ Python orchestrator, run as `python3 -m klg …`.
 
 ## 7. Results (all reproducible from results/)
 
-### 7.1 Benchmark corpus (re-run 2026-10-20 with the final analyser: analyze, verify --skip-sweep, evaluate, fix; baselines from 2026-10-13 reused)
+### 7.1 Benchmark corpus (2026-10-20: full `klg all` from the dashboard with the final analyser, incl. fresh baselines; `klg fix` run just before on the same confirmed set)
 
 32 modules: 17 leaking allocation sites and 42 safe ones.
 
@@ -364,9 +367,9 @@ Python orchestrator, run as `python3 -m klg …`.
 | Static, naive | 16 | 11 | 1 | 0.59 | 0.94 | 0.73 |
 | Static, KernelLeakGuard | 16 | 1 | 1 | 0.94 | 0.94 | 0.94 |
 | Hybrid (confirmed warnings) | 15 | 0 | 2 | 1.00 | 0.88 | 0.94 |
-| **KernelLeakGuard complete** | **16** | **0** | **1** | **1.00** | **0.94** | **0.97** |
-| Dynamic, exhaustive fault injection | 15 | 0 | 2 | 1.00 | 0.88 | 0.94 |
-| Dynamic, random fault injection | 13 | 0 | 4 | 1.00 | 0.77 | 0.87 |
+| **KernelLeakGuard complete** (424 executions) | **16** | **0** | **1** | **1.00** | **0.94** | **0.97** |
+| Dynamic, exhaustive fault injection (1279 executions) | 16 | 0 | 1 | 1.00 | 0.94 | 0.97 |
+| Dynamic, random fault injection | 14 | 0 | 3 | 1.00 | 0.82 | 0.90 |
 | cppcheck 2.19 | 6 | 1 | 11 | 0.86 | 0.35 | 0.50 |
 
 - Ablation F1 unchanged: naive 0.73, no-escape 0.85, no-interproc 0.80, no-containers 0.90, no-corr 0.91, full 0.94.
@@ -374,7 +377,7 @@ Python orchestrator, run as `python3 -m klg …`.
 - The final analyser drops two low-confidence corpus warnings on impossible paths
   (`klg_l04:19:28`, `klg_s09:20:29`); site-level results are identical.
 - Known misses: L16 (nested heap ownership), S09 static FP refuted at runtime, L15 inconclusive.
-- Earlier repeated runs (old analyser): hybrid 15/15/14 confirmed, complete tool always 16/0/1.
+- Earlier repeated runs (old analyser): hybrid 15/15/14 confirmed, complete tool always 16/0/1; exhaustive/random baselines vary run to run (vmalloc leak L10). The report shows all runs plus the final one.
 
 ### 7.2 Real Linux 6.18.55 modules (2026-10-20, TCG, ALL 39 modules in the VM)
 

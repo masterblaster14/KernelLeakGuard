@@ -1,13 +1,14 @@
-test_findings_filters (test_dashboard.TestDashboard.test_findings_filters) ... 2026-10-20 17:01:45.609 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+test_findings_filters (test_dashboard.TestDashboard.test_findings_filters) ... 2026-10-23 16:56:01.449 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ok
-test_pages_render (test_dashboard.TestDashboard.test_pages_render) ... 2026-10-20 17:01:46.395 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-10-20 17:01:46.513 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-10-20 17:01:46.627 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-10-20 17:01:46.738 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-10-20 17:01:46.929 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-10-20 17:01:47.076 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+test_pages_render (test_dashboard.TestDashboard.test_pages_render) ... 2026-10-23 16:56:02.123 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-23 16:56:02.247 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-23 16:56:02.366 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-23 16:56:02.480 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-23 16:56:02.668 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-23 16:56:02.792 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-23 16:56:02.941 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ok
-test_run_button_starts_and_finishes (test_dashboard.TestDashboard.test_run_button_starts_and_finishes) ... 2026-10-20 17:01:47.191 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+test_run_button_starts_and_finishes (test_dashboard.TestDashboard.test_run_button_starts_and_finishes) ... 2026-10-23 16:56:03.077 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ok
 test_alloc_size_reported (test_klg.TestAnalyzer.test_alloc_size_reported) ... ok
 test_branch_correlation (test_klg.TestAnalyzer.test_branch_correlation) ... ok
@@ -40,6 +41,6 @@ test_load_order_dependencies_first (test_klg.TestRealModules.test_load_order_dep
 test_modname (test_klg.TestRealModules.test_modname) ... ok
 
 ----------------------------------------------------------------------
-Ran 32 tests in 2.894s
+Ran 32 tests in 2.959s
 
 OK

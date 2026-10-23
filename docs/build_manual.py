@@ -134,6 +134,14 @@ w.para("**Reproducing the real-kernel findings.** The helpers below re-run the e
        "guest, loads one module with fail-nth set to each value in a range, and stores the "
        "kmemleak report and kernel log per batch.")
 w.table(["Command", "What it does"], [
+    ["python3 scripts/live_demo.py",
+     "narrated live demo in the guest kernel: the SLUB leak (erofs, fault 85) and the historical "
+     "bonding leak, reported by kmemleak on screen (about 2 minutes without KVM)"],
+    ["python3 scripts/live_demo.py shell",
+     "root shell in the guest kernel (modules in /mnt/host/mods; leave with poweroff -f)"],
+    ["python3 scripts/live_demo.py --window  (or: shell --window)",
+     "the same, on the virtual machine's own screen: a QEMU window on the desktop shows the "
+     "kernel booting and every command, like a VirtualBox VM; the terminal mirrors the demo"],
     ["python3 scripts/fault_probe.py erofs 85 85 1 OUT",
      "fail the 85th fault point of erofs initialisation: SLUB leaks a slab cache (kmemleak)"],
     ["bash scripts/build_patched_kernel.sh patches/0001-*.patch ~/klg-build/kbuild-slubfix",
@@ -154,6 +162,14 @@ w.bullets([
     ("Findings: ", "filterable table of all findings. Selecting one shows the source with the "
      "allocation (blue), the failing call (orange) and the leaking exit (red), the suggested "
      "fix, and the runtime tests with kmemleak backtraces."),
+    ("Fix patches: ", "the generated patches with their compile, re-analysis and VM status."),
+    ("Real kernel code: ", "the 39 real modules: warnings with review notes, leaks found by the "
+     "sweep, root causes and patches of the kernel bugs found, and the re-introduced leaks."),
+    ("Live kernel: ", "boots the guest kernel and streams its console into the page. 'Run live "
+     "demo' shows the SLUB leak and the historical bonding leak being caught by kmemleak; "
+     "'Kernel shell' gives a root shell in the guest (type a command and press Enter). With "
+     "'Also show the VM's own screen' ticked, the virtual machine's display opens as a window "
+     "on the laptop at the same time."),
     ("Evaluation: ", "comparison table and precision/recall chart; triage of warnings."),
     ("Run pipeline: ", "runs any step and streams its output into the page."),
 ])

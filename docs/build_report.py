@@ -432,8 +432,10 @@ w.para(
     "plans the confirmation tests, schedules them in kmemleak rounds so that leaks can be "
     "attributed unambiguously, and computes verdicts and metrics. The Streamlit dashboard "
     "lists findings with verdicts, highlights the allocation, failing call and leaking exit "
-    "in the source, shows the kmemleak backtraces, compares approaches and can run the "
-    "pipeline.")
+    "in the source, shows the kmemleak backtraces, compares approaches, presents the "
+    "real-kernel findings with their patches, can run the pipeline, and has a live page that "
+    "boots the guest kernel and streams its console, so that a leak being caught by kmemleak "
+    "can be watched as it happens.")
 w.h3("3.2.5 Operating-system concepts used")
 w.table(["OS concept", "Where it appears in the project"], [
     ["Memory management", "Kernel slab allocator (kmalloc caches, kmem_cache), vmalloc, "
@@ -774,11 +776,17 @@ if run_evs:
                                                        "dynamic/exhaustive", "dynamic/random"))
         rr.append([f"Run {i}", f"{h['tp']} / {h['fp']} / {h['fn']}", f"{kc['tp']} / {kc['fp']} / {kc['fn']}",
                    f"{ex['tp']} / {ex['fp']} / {ex['fn']}", f"{rd['tp']} / {rd['fp']} / {rd['fn']}"])
-    hy_tp = [e["approaches"]["hybrid"]["tp"] for e in run_evs]
-    hy_fp = [e["approaches"]["hybrid"]["fp"] for e in run_evs]
+    fa = A
+    rr.append(["Final (main results)",
+               *(f"{fa[k]['tp']} / {fa[k]['fp']} / {fa[k]['fn']}"
+                 for k in ("hybrid", "klg/combined", "dynamic/exhaustive", "dynamic/random"))])
+    hy_tp = [e["approaches"]["hybrid"]["tp"] for e in run_evs] + [fa["hybrid"]["tp"]]
+    hy_fp = [e["approaches"]["hybrid"]["fp"] for e in run_evs] + [fa["hybrid"]["fp"]]
     same = len(set(hy_tp)) == 1
     w.para(f"The complete pipeline was run {len(run_evs)} times from scratch (new VM boots, "
-           "new fault-point sweeps); the main results above are those of the last run. "
+           "new fault-point sweeps) with the analyser of the benchmark evaluation, and once more "
+           "with the final analyser, whose run gives the main results above (its static results "
+           "find the same sites; it drops two low-confidence warnings on impossible paths). "
            + ("The hybrid verdicts are identical in every run. " if same else
               f"The hybrid confirmed between {min(hy_tp)} and {max(hy_tp)} leaks with "
               f"{max(hy_fp)} false positives in every run. The variation comes from the vmalloc "

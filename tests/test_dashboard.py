@@ -20,7 +20,8 @@ except ImportError:  # system python without the venv
 from klg import config  # noqa: E402
 
 APP = str(ROOT / "dashboard" / "app.py")
-PAGES = ["Overview", "Findings", "Fix patches", "Real kernel code", "Evaluation", "Run pipeline"]
+PAGES = ["Overview", "Findings", "Fix patches", "Real kernel code", "Live kernel", "Evaluation",
+         "Run pipeline"]
 
 
 @unittest.skipIf(AppTest is None, "streamlit not installed (use .venv/bin/python)")
