@@ -72,7 +72,14 @@ make -C analyzer                # build klg-analyze
 
 python3 -m klg all              # build corpus → analyse → verify in VM → evaluate
 .venv/bin/streamlit run dashboard/app.py   # open http://localhost:8501
+
+python3 scripts/live_demo.py --window       # live demo on the VM's own screen
+python3 scripts/live_demo.py shell --window # root shell inside the VM
 ```
+
+Real-kernel experiments (`python3 -m klg real`, `klg seed`) also need the
+39 modules of `vm/real_modules.fragment`, which `build_kernel.sh` builds.
+`HANDOFF.md` describes the whole project state in detail.
 
 Individual steps: `python3 -m klg build | analyze [--all-variants] | verify | evaluate | show`.
 
