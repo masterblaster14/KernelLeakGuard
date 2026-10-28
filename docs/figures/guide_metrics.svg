@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+  <text x="20" y="26" font-weight="700">Scoring a leak detector (our test set has 17 real leaks and 42 safe places)</text>
+  <rect x="170" y="45" width="300" height="40" fill="#f6f6f4" stroke="#888"/><text x="320" y="71" text-anchor="middle" font-weight="700">tool says "LEAK"</text>
+  <rect x="470" y="45" width="300" height="40" fill="#f6f6f4" stroke="#888"/><text x="620" y="71" text-anchor="middle" font-weight="700">tool says nothing</text>
+  <rect x="20" y="85" width="150" height="70" fill="#f6f6f4" stroke="#888"/><text x="95" y="125" text-anchor="middle" font-weight="700">really a leak</text>
+  <rect x="20" y="155" width="150" height="70" fill="#f6f6f4" stroke="#888"/><text x="95" y="195" text-anchor="middle" font-weight="700">really safe</text>
+  <rect x="170" y="85" width="300" height="70" fill="#e9f6ec" stroke="#888"/><text x="320" y="115" text-anchor="middle" font-weight="700" fill="#2e9e4f">True Positive (TP)</text><text x="320" y="138" text-anchor="middle">found a real leak — good</text>
+  <rect x="470" y="85" width="300" height="70" fill="#fdecec" stroke="#888"/><text x="620" y="115" text-anchor="middle" font-weight="700" fill="#d03b3b">False Negative (FN)</text><text x="620" y="138" text-anchor="middle">missed a real leak</text>
+  <rect x="170" y="155" width="300" height="70" fill="#fdecec" stroke="#888"/><text x="320" y="185" text-anchor="middle" font-weight="700" fill="#d03b3b">False Positive (FP)</text><text x="320" y="208" text-anchor="middle">false alarm on safe code</text>
+  <rect x="470" y="155" width="300" height="70" fill="#e9f6ec" stroke="#888"/><text x="620" y="185" text-anchor="middle" font-weight="700" fill="#2e9e4f">True Negative</text><text x="620" y="208" text-anchor="middle">correctly silent</text>
+  <text x="20" y="250">Precision = TP / (TP+FP): how many alarms are right.   Recall = TP / (TP+FN): how many leaks are found.   F1 = balance of both.</text>
+</svg>

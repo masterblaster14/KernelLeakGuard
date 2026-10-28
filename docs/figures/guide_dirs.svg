@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" font-family="Segoe UI, Arial, sans-serif" font-size="13">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <text x="20" y="24" font-weight="700" font-size="15">~/KernelLeakGuard — who does what (arrows = data flow)</text>
+  <g stroke-width="2">
+  <rect x="20" y="45" width="200" height="80" rx="10" fill="#f6f6f4" stroke="#888"/>
+  <rect x="20" y="150" width="200" height="80" rx="10" fill="#eaf2fb" stroke="#2a78d6"/>
+  <rect x="350" y="45" width="200" height="80" rx="10" fill="#eaf2fb" stroke="#2a78d6"/>
+  <rect x="350" y="150" width="200" height="80" rx="10" fill="#fdecec" stroke="#d03b3b"/>
+  <rect x="350" y="255" width="200" height="80" rx="10" fill="#fdecec" stroke="#d03b3b"/>
+  <rect x="680" y="45" width="200" height="80" rx="10" fill="#fff4e8" stroke="#eb6834"/>
+  <rect x="680" y="150" width="200" height="80" rx="10" fill="#e9f6ec" stroke="#2e9e4f"/>
+  <rect x="680" y="255" width="200" height="80" rx="10" fill="#e9f6ec" stroke="#2e9e4f"/>
+  <rect x="20" y="255" width="200" height="80" rx="10" fill="#f6f6f4" stroke="#888"/>
+  <rect x="20" y="360" width="860" height="90" rx="10" fill="#f6f6f4" stroke="#888"/></g>
+  <text x="120" y="75" text-anchor="middle" font-weight="700">corpus/  seeds/</text><text x="120" y="97" text-anchor="middle">test modules (C) with</text><text x="120" y="115" text-anchor="middle">known answers; seed specs</text>
+  <text x="120" y="180" text-anchor="middle" font-weight="700">klg/build.py</text><text x="120" y="202" text-anchor="middle">compile modules +</text><text x="120" y="220" text-anchor="middle">LLVM IR (.bc)</text>
+  <text x="450" y="75" text-anchor="middle" font-weight="700">analyzer/ (C++)</text><text x="450" y="97" text-anchor="middle">klg-analyze: FIND</text><text x="450" y="115" text-anchor="middle">→ candidates JSON</text>
+  <text x="450" y="180" text-anchor="middle" font-weight="700">klg/verify.py</text><text x="450" y="202" text-anchor="middle">plans tests, writes job.sh,</text><text x="450" y="220" text-anchor="middle">boots VM, judges: PROVE</text>
+  <text x="450" y="285" text-anchor="middle" font-weight="700">vm/  runtime/</text><text x="450" y="307" text-anchor="middle">kernel, QEMU, guest init,</text><text x="450" y="325" text-anchor="middle">klg-agent, klg_modwatch</text>
+  <text x="780" y="75" text-anchor="middle" font-weight="700">klg/fix.py</text><text x="780" y="97" text-anchor="middle">FIX: patches,</text><text x="780" y="115" text-anchor="middle">re-check in VM</text>
+  <text x="780" y="180" text-anchor="middle" font-weight="700">klg/evaluate.py</text><text x="780" y="202" text-anchor="middle">scores vs ground truth</text><text x="780" y="220" text-anchor="middle">→ results/*.json</text>
+  <text x="780" y="285" text-anchor="middle" font-weight="700">dashboard/  docs/</text><text x="780" y="307" text-anchor="middle">web dashboard; report,</text><text x="780" y="325" text-anchor="middle">slides, manual generators</text>
+  <text x="120" y="285" text-anchor="middle" font-weight="700">klg/real.py  seed.py</text><text x="120" y="307" text-anchor="middle">same pipeline on 39 real</text><text x="120" y="325" text-anchor="middle">Linux modules; seeds</text>
+  <text x="40" y="388" font-weight="700">scripts/</text><text x="110" y="388">live_demo, demo_ready, fault_probe, validate_patch, capture_screenshots, regress, build_docs ...</text>
+  <text x="40" y="412" font-weight="700">tests/</text><text x="110" y="412">32 automatic tests      <tspan font-weight="700">patches/</tspan>  our 4 Linux fixes      <tspan font-weight="700">results/</tspan>  every number in the documents</text>
+  <text x="40" y="436" font-weight="700">klg/cli.py</text><text x="110" y="436">"python3 -m klg &lt;step&gt;" — the single entry point that calls all of the above</text>
+  <g stroke="#555" stroke-width="2" fill="none"><line x1="120" y1="125" x2="120" y2="146" marker-end="url(#a)"/><line x1="220" y1="175" x2="345" y2="100" marker-end="url(#a)"/>
+  <line x1="450" y1="125" x2="450" y2="146" marker-end="url(#a)"/><line x1="450" y1="230" x2="450" y2="251" marker-end="url(#a)"/>
+  <line x1="550" y1="175" x2="676" y2="100" marker-end="url(#a)"/><line x1="550" y1="190" x2="676" y2="190" marker-end="url(#a)"/><line x1="780" y1="230" x2="780" y2="251" marker-end="url(#a)"/></g>
+</svg>

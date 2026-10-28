@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker>
+  <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#d03b3b"/></marker></defs>
+  <g font-weight="700"><text x="20" y="25">sensor_setup() — normal path goes down the middle, error exits go right</text></g>
+  <g fill="#eaf2fb" stroke="#2a78d6" stroke-width="2">
+    <rect x="40" y="45" width="300" height="44" rx="8"/><rect x="40" y="125" width="300" height="44" rx="8"/><rect x="40" y="205" width="300" height="44" rx="8"/><rect x="40" y="285" width="300" height="44" rx="8"/></g>
+  <text x="190" y="72" text-anchor="middle">rx = kmalloc(...)   take memory #1</text>
+  <text x="190" y="152" text-anchor="middle">tx = kmalloc(...)   take memory #2</text>
+  <text x="190" y="232" text-anchor="middle">name = kasprintf(...)   step 3</text>
+  <text x="190" y="312" text-anchor="middle">... use them ..., then clean up</text>
+  <g stroke="#444" stroke-width="2"><line x1="190" y1="89" x2="190" y2="122" marker-end="url(#a)"/><line x1="190" y1="169" x2="190" y2="202" marker-end="url(#a)"/><line x1="190" y1="249" x2="190" y2="282" marker-end="url(#a)"/></g>
+  <g fill="#f6f6f4" stroke="#888" stroke-width="2"><rect x="560" y="250" width="300" height="44" rx="8"/><rect x="560" y="330" width="300" height="44" rx="8"/></g>
+  <text x="710" y="270" text-anchor="middle" font-weight="700">err_tx:</text><text x="710" y="288" text-anchor="middle">kfree(tx)   give back #2</text>
+  <text x="710" y="350" text-anchor="middle" font-weight="700">err_rx:</text><text x="710" y="368" text-anchor="middle">kfree(rx); return error</text>
+  <line x1="710" y1="294" x2="710" y2="327" stroke="#444" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="340" y1="140" x2="555" y2="345" stroke="#444" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#a)"/>
+  <text x="400" y="185" font-size="13">if #2 fails: nothing</text><text x="400" y="201" font-size="13">to give back but #1 ✔</text>
+  <line x1="340" y1="227" x2="555" y2="352" stroke="#d03b3b" stroke-width="3" marker-end="url(#r)"/>
+  <text x="40" y="358" fill="#d03b3b" font-weight="700">Red arrow: if step 3 fails, it jumps to err_rx ✘</text>
+  <text x="40" y="378" fill="#d03b3b">→ skips err_tx, so memory #2 (tx) is LEAKED</text>
+  <line x1="340" y1="307" x2="555" y2="275" stroke="#444" stroke-width="2" marker-end="url(#a)"/>
+  <text x="40" y="410" fill="#333">The fix is one word: "goto err_tx" instead of "goto err_rx". Normal testing never makes step 3 fail, so nobody notices.</text>
+</svg>

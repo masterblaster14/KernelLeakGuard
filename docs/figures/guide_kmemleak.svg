@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2a78d6"/></marker></defs>
+  <text x="20" y="28" font-weight="700">kmemleak: "is anybody still pointing at this memory?"  (like a garbage-collector check, but it only reports)</text>
+  <rect x="20" y="50" width="200" height="200" rx="10" fill="#eaf2fb" stroke="#2a78d6" stroke-width="2"/>
+  <text x="120" y="78" text-anchor="middle" font-weight="700">places kmemleak scans</text>
+  <text x="120" y="110" text-anchor="middle">global variables</text><text x="120" y="140" text-anchor="middle">other allocations</text><text x="120" y="170" text-anchor="middle">lists, tables</text><text x="120" y="200" text-anchor="middle">(task stacks: off,</text><text x="120" y="220" text-anchor="middle">to avoid stale copies)</text>
+  <rect x="380" y="60" width="170" height="60" rx="8" fill="#e9f6ec" stroke="#2e9e4f" stroke-width="2"/><text x="465" y="88" text-anchor="middle">object A</text><text x="465" y="108" text-anchor="middle" font-size="12">someone points to it ✔</text>
+  <rect x="380" y="150" width="170" height="60" rx="8" fill="#e9f6ec" stroke="#2e9e4f" stroke-width="2"/><text x="465" y="178" text-anchor="middle">object B</text><text x="465" y="198" text-anchor="middle" font-size="12">someone points to it ✔</text>
+  <rect x="640" y="105" width="240" height="90" rx="8" fill="#fdecec" stroke="#d03b3b" stroke-width="3"/><text x="760" y="135" text-anchor="middle" font-weight="700">object C</text><text x="760" y="157" text-anchor="middle" fill="#d03b3b">nobody points to it</text><text x="760" y="177" text-anchor="middle" fill="#d03b3b" font-weight="700">"unreferenced object"</text>
+  <line x1="220" y1="100" x2="375" y2="90" stroke="#2a78d6" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="220" y1="170" x2="375" y2="180" stroke="#2a78d6" stroke-width="2" marker-end="url(#a)"/>
+  <text x="20" y="280">Report = address, size, first bytes, and the backtrace (the chain of functions that allocated it) → that tells us WHICH line leaked.</text>
+</svg>

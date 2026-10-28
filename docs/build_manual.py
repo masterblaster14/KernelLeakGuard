@@ -26,8 +26,7 @@ w = R.Writer(doc)
 # Title page
 for text, size, bold in (("KernelLeakGuard", 28, True),
                          ("User Manual", 20, True),
-                         ("Hybrid static analysis and runtime verification of memory leaks "
-                          "on Linux kernel early-exit paths", 13, False),
+                         (R.SUBTITLE, 13, False),
                          ("", 12, False),
                          ("BITE303P Operating Systems Lab, Fall 2026-27, VIT Vellore", 12, False),
                          ("Om Gunjan Gupta (24BIT0316) · Abhishek Kumar Singh (24BIT0309) · "
@@ -140,8 +139,9 @@ w.table(["Command", "What it does"], [
     ["python3 scripts/live_demo.py shell",
      "root shell in the guest kernel (modules in /mnt/host/mods; leave with poweroff -f)"],
     ["python3 scripts/live_demo.py --window  (or: shell --window)",
-     "the same, on the virtual machine's own screen: a QEMU window on the desktop shows the "
-     "kernel booting and every command, like a VirtualBox VM; the terminal mirrors the demo"],
+     "the same, on the virtual machine's own screen, shown in a browser tab (QEMU's VNC "
+     "screen with the noVNC viewer): the kernel booting and every command, like a VirtualBox "
+     "window, with keyboard input; the terminal mirrors the demo"],
     ["python3 scripts/fault_probe.py erofs 85 85 1 OUT",
      "fail the 85th fault point of erofs initialisation: SLUB leaks a slab cache (kmemleak)"],
     ["bash scripts/build_patched_kernel.sh patches/0001-*.patch ~/klg-build/kbuild-slubfix",
@@ -168,11 +168,21 @@ w.bullets([
     ("Live kernel: ", "boots the guest kernel and streams its console into the page. 'Run live "
      "demo' shows the SLUB leak and the historical bonding leak being caught by kmemleak; "
      "'Kernel shell' gives a root shell in the guest (type a command and press Enter). With "
-     "'Also show the VM's own screen' ticked, the virtual machine's display opens as a window "
-     "on the laptop at the same time."),
+     "'Show the VM's own screen' ticked, the page also shows the virtual machine's display "
+     "(click it to type into the VM)."),
     ("Evaluation: ", "comparison table and precision/recall chart; triage of warnings."),
     ("Run pipeline: ", "runs any step and streams its output into the page."),
 ])
+from PIL import Image  # noqa: E402
+for name, cap in (("ss_dash_overview.png", "Dashboard: Overview"),
+                  ("ss_dash_finding_detail.png", "Dashboard: one finding with its source and "
+                   "runtime test"),
+                  ("ss_dash_live.png", "Dashboard: Live kernel page after a demo run"),
+                  ("ss_vm_step4_kmemleak.png", "The VM screen during the live demo: kmemleak "
+                   "reports the leaked memory")):
+    if (FIG / name).exists():
+        iw, ih = Image.open(FIG / name).size
+        w.figure(FIG / name, cap, min(15.5, 18.5 * iw / ih))
 
 w.chapter_heading(5, "Reading the Results")
 w.table(["Verdict", "Meaning", "What to do"], [

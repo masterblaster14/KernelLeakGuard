@@ -134,8 +134,7 @@ band = s.shapes.add_shape(MSO_SHAPE.RECTANGLE, 0, 0, W, Inches(0.25))
 band.fill.solid(); band.fill.fore_color.rgb = BLUE; band.line.fill.background()
 text(s, Inches(0.9), Inches(1.5), Inches(11.5), Inches(1.2), "KernelLeakGuard", 54, True)
 text(s, Inches(0.9), Inches(2.6), Inches(11.5), Inches(1.4),
-     "Hybrid Static Analysis and Runtime Verification of Memory Leaks "
-     "in Linux Kernel Early-Exit Paths", 26, color=INK2)
+     "Detecting and Verifying Linux Kernel Memory Leaks", 30, color=INK2)
 text(s, Inches(0.9), Inches(4.3), Inches(11.5), Inches(1.6), [
     "Om Gunjan Gupta (24BIT0316)   ·   Abhishek Kumar Singh (24BIT0309)   ·   Aarav Jain (24BIT0023)",
     "Guide: Dr. Arivuselvan K, Associate Professor, SCORE",
@@ -392,15 +391,19 @@ bullets(s, Inches(7.8), Inches(1.5), Inches(5.2), Inches(5), [
 
 # 18 Demo -----------------------------------------------------------------------
 s = slide("Demonstration")
-code(s, Inches(0.6), Inches(1.4), Inches(6.3), Inches(3.2),
-     "cd ~/KernelLeakGuard\npython3 -m klg all\npython3 -m klg show\n\n"
-     ".venv/bin/streamlit run dashboard/app.py\n# → http://localhost:8501", 16)
-bullets(s, Inches(7.2), Inches(1.5), Inches(5.8), Inches(5), [
-    "Pipeline: build → analyse → VM sweep → targeted injection → kmemleak → verdicts",
-    "Dashboard: findings with verdicts; source with allocation / failing call / exit "
-    "highlighted; kmemleak backtraces; evaluation charts",
-    "Live: introduce a bug in a module, rerun, watch it get confirmed",
-], 17, 12)
+code(s, Inches(0.5), Inches(1.35), Inches(5.6), Inches(2.6),
+     "cd ~/KernelLeakGuard\nbash scripts/demo_ready.sh --open\n\n"
+     "python3 scripts/live_demo.py --window\n"
+     "python3 scripts/live_demo.py shell --window", 14)
+bullets(s, Inches(0.5), Inches(4.15), Inches(5.6), Inches(3), [
+    "VM screen: our Linux 6.18.55 boots in QEMU, shown in the browser",
+    "erofs loads cleanly; one allocation failed (fault 85); kmemleak reports the leaked "
+    "slab cache; the kernel warns (SLUB bug)",
+    "The 2010 bonding bug: kmemleak reports the leaked net_device",
+    "Dashboard: findings, evaluation, real-kernel root causes, Live kernel page",
+], 14, 6)
+if (FIG / "ss_vm_step4_kmemleak.png").exists():
+    picture(s, FIG / "ss_vm_step4_kmemleak.png", Inches(6.4), Inches(1.35), w=Inches(6.6))
 
 # 19 Conclusion -----------------------------------------------------------------
 s = slide("Conclusion and future work")

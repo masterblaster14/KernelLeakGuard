@@ -140,7 +140,8 @@ def live_start(mode: str, window: bool = False):
         fifo.unlink()
     os.mkfifo(fifo)
     arg = (" shell" if mode == "shell" else "") + (" --window" if window else "")
-    cmd = (f'exec 3<>"{fifo}"; cd "{ROOT}" && exec "{sys.executable}" -u '
+    # The page embeds the VM screen itself: no extra browser tab (LIVE_NO_BROWSER).
+    cmd = (f'exec 3<>"{fifo}"; cd "{ROOT}" && LIVE_NO_BROWSER=1 exec "{sys.executable}" -u '
            f'scripts/live_demo.py{arg} <&3')
     with open(LIVE_DIR / "console.log", "w") as log:
         proc = subprocess.Popen(["bash", "-c", cmd], stdout=log, stderr=subprocess.STDOUT,
@@ -273,10 +274,16 @@ def finding_detail(c, v, src: Path):
 
 # --------------------------------------------------------------- layout -----
 st.sidebar.title("🛡️ KernelLeakGuard")
-st.sidebar.caption("Hybrid static analysis and runtime verification of memory leaks on "
-                   "Linux kernel early-exit paths")
-page = st.sidebar.radio("View", ["Overview", "Findings", "Fix patches", "Real kernel code",
-                                 "Live kernel", "Evaluation", "Run pipeline"], key="page")
+st.sidebar.caption("Detecting and verifying Linux kernel memory leaks")
+PAGES = ["Overview", "Findings", "Fix patches", "Real kernel code", "Live kernel", "Evaluation",
+         "Run pipeline"]
+# ?page=<name> opens a page directly (bookmarks, documentation screenshots);
+# ?section=root|seeds on "Real kernel code" shows only that part.
+_qp = st.query_params.get("page")
+if _qp in PAGES and "page" not in st.session_state:
+    st.session_state["page"] = _qp
+SECTION = st.query_params.get("section")
+page = st.sidebar.radio("View", PAGES, key="page")
 rs = run_state()
 if rs["running"]:
     st.sidebar.info(f"⏳ `klg {rs.get('step')}` running for "
@@ -318,6 +325,10 @@ elif page == "Findings":
     st.title("Findings on the benchmark corpus")
     if not cands:
         st.info("No static results yet. Run the pipeline first.")
+    elif SECTION == "detail" and st.query_params.get("finding") in {c["id"] for c in cands}:
+        fid = st.query_params["finding"]          # one finding only (?finding=<id>&section=detail)
+        c = next(x for x in cands if x["id"] == fid)
+        finding_detail(c, verdicts.get(fid, {}), config.CORPUS / f"{c['module']}.c")
     else:
         df = finding_table(cands, verdicts)
         f1, f2 = st.columns(2)
@@ -372,7 +383,7 @@ elif page == "Real kernel code":
         c4.metric("Fault points exercised", summ.get("fault_points", 0))
         c5.metric("VM crashes recovered", summ.get("crashes", 0))
         st.markdown(summ.get("headline", ""))
-        if r_cands:
+        if r_cands and not SECTION:
             df = finding_table(r_cands, r_verdicts)
             df["manual review"] = [triage.get(i, {}).get("label", "—") for i in df["id"]]
             st.dataframe(df.drop(columns=["id"]), width="stretch", hide_index=True)
@@ -383,14 +394,15 @@ elif page == "Real kernel code":
                 st.markdown(f"**Manual review:** {triage[choice]['label']} — {triage[choice]['note']}")
             src = Path(c.get("source_path", ""))
             finding_detail(c, r_verdicts.get(choice, {}), src)
-        dyn = summ.get("dynamic_leaks", [])
-        st.subheader("Leaks found by exhaustive fault injection in module init")
-        if dyn:
-            st.dataframe(pd.DataFrame(dyn), width="stretch", hide_index=True)
-        else:
-            st.markdown("None: every injected failure in the initialisation of these modules "
-                        "released its memory correctly.")
-        rc = _json(real / "root_causes.json", {})
+        dyn = summ.get("dynamic_leaks", []) if SECTION in (None, "sweep") else None
+        if dyn is not None:
+            st.subheader("Leaks found by exhaustive fault injection in module init")
+            if dyn:
+                st.dataframe(pd.DataFrame(dyn), width="stretch", hide_index=True)
+            else:
+                st.markdown("None: every injected failure in the initialisation of these modules "
+                            "released its memory correctly.")
+        rc = _json(real / "root_causes.json", {}) if SECTION in (None, "root") else {}
         if rc:
             st.subheader("Root causes of the findings on real code")
             for key, title in (("slub_sysfs_leak", "Slab-cache leak in the SLUB allocator"),
@@ -399,7 +411,8 @@ elif page == "Real kernel code":
                                ("ufs_bforget_leak", "Leak in ufs truncation (static finding, known since 2018)"),
                                ("null_blk_crash", "Use-after-free of module memory (null_blk)")):
                 f = rc.get(key)
-                if not f:
+                only = st.query_params.get("rc")       # ?rc=key1,key2: only these root causes
+                if not f or (only and key not in only.split(",")):
                     continue
                 st.markdown(f"**{title}** — `{f['component']}`  \n**Trigger:** "
                             f"{f.get('trigger', f.get('found_by', ''))}")
@@ -437,7 +450,8 @@ elif page == "Real kernel code":
                 else:
                     st.markdown(f"**Crashed at fault points:** {f['crashed']} of {f['probed']}  \n"
                                 f"**Fix:** {f['fix']}")
-        seeds = _json(config.RESULTS / "seeded" / "summary.json", [])
+        seeds = (_json(config.RESULTS / "seeded" / "summary.json", [])
+                 if SECTION in (None, "seeds") else [])
         if seeds:
             st.subheader("Seeded leaks (detect → confirm → fix on real code)")
             st.dataframe(pd.DataFrame([{
@@ -465,10 +479,9 @@ elif page == "Live kernel":
         "**Kernel shell**: a root shell in the same kernel (modules in `/mnt/host/mods`).")
     ls = live_state()
     busy = ls["running"] or rs["running"]
-    win = st.checkbox("Also show the VM's own screen in a window on this laptop (the kernel's "
-                      "boot log and every command appear on the virtual machine's display; "
-                      "for the shell, type into that window)",
-                      value=bool(os.environ.get("DISPLAY")), disabled=busy or not os.environ.get("DISPLAY"))
+    win = st.checkbox("Show the VM's own screen (the kernel's boot log and every command appear "
+                      "on the virtual machine's display; for the shell, click the screen and type)",
+                      value=True, disabled=busy)
     b1, b2, b3, _ = st.columns([1.3, 1.3, 1, 3])
     if b1.button("▶ Run live demo", type="primary", disabled=busy):
         live_start("demo", win)
@@ -487,6 +500,11 @@ elif page == "Live kernel":
         if cmd:
             live_send(cmd)
         st.caption("Type a command and press Enter; leave the shell with `poweroff -f` (or Stop).")
+
+    if ls["running"] and ls.get("window"):
+        screen = ("http://localhost:6080/vnc_lite.html?host=localhost&port=5701&path=&scale=true")
+        st.markdown(f"**VM screen** — [open it in its own browser tab]({screen})")
+        st.iframe(screen, height=520)
 
     @st.fragment(run_every=1)
     def live_console():

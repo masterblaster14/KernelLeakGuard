@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 250" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker></defs>
+  <rect x="20" y="40" width="250" height="170" rx="14" fill="#eaf2fb" stroke="#2a78d6" stroke-width="2"/>
+  <text x="145" y="72" text-anchor="middle" font-size="20" font-weight="700" fill="#2a78d6">1. FIND</text>
+  <text x="145" y="100" text-anchor="middle">read the code (no running)</text>
+  <text x="145" y="125" text-anchor="middle">"memory from line 32 is not</text><text x="145" y="145" text-anchor="middle">given back at line 54, when</text><text x="145" y="165" text-anchor="middle">kasprintf() fails"</text>
+  <text x="145" y="195" text-anchor="middle" font-size="12" fill="#555">klg-analyze (C++ / LLVM)</text>
+  <rect x="325" y="40" width="250" height="170" rx="14" fill="#fff4e8" stroke="#eb6834" stroke-width="2"/>
+  <text x="450" y="72" text-anchor="middle" font-size="20" font-weight="700" fill="#eb6834">2. PROVE</text>
+  <text x="450" y="100" text-anchor="middle">run our real Linux kernel in a VM</text>
+  <text x="450" y="125" text-anchor="middle">make exactly kasprintf() fail</text><text x="450" y="145" text-anchor="middle">ask kmemleak: was memory lost?</text>
+  <text x="450" y="170" text-anchor="middle" font-weight="700">confirmed / not reproduced / inconclusive</text>
+  <text x="450" y="195" text-anchor="middle" font-size="12" fill="#555">QEMU + klg-agent + kmemleak</text>
+  <rect x="630" y="40" width="250" height="170" rx="14" fill="#e9f6ec" stroke="#2e9e4f" stroke-width="2"/>
+  <text x="755" y="72" text-anchor="middle" font-size="20" font-weight="700" fill="#2e9e4f">3. FIX</text>
+  <text x="755" y="100" text-anchor="middle">write the missing kfree()</text><text x="755" y="125" text-anchor="middle">check: it compiles, the warning</text><text x="755" y="145" text-anchor="middle">is gone, the VM test is clean</text>
+  <text x="755" y="195" text-anchor="middle" font-size="12" fill="#555">klg fix → .patch files</text>
+  <line x1="272" y1="125" x2="320" y2="125" stroke="#444" stroke-width="3" marker-end="url(#a)"/>
+  <line x1="577" y1="125" x2="625" y2="125" stroke="#444" stroke-width="3" marker-end="url(#a)"/>
+  <text x="450" y="236" text-anchor="middle" fill="#333">Static tools stop after step 1 (a person must check every warning). We add steps 2 and 3 automatically.</text>
+</svg>

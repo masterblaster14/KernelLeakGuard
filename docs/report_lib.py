@@ -14,6 +14,10 @@ from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
 
+# Project title, used on every document (short form; the subtitle explains it).
+TITLE = "KernelLeakGuard: Detecting and Verifying Linux Kernel Memory Leaks"
+SUBTITLE = "Detecting and Verifying Linux Kernel Memory Leaks"
+
 FONT = "Times New Roman"
 MONO = "Consolas"
 

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker></defs>
+  <rect x="10" y="10" width="880" height="380" rx="14" fill="#f6f6f4" stroke="#888" stroke-width="2"/>
+  <text x="30" y="38" font-weight="700">Your laptop — Windows 11</text>
+  <text x="560" y="38">browser: dashboard (localhost:8501), VM screen (6080)</text>
+  <rect x="30" y="55" width="840" height="320" rx="12" fill="#eaf2fb" stroke="#2a78d6" stroke-width="2"/>
+  <text x="50" y="82" font-weight="700">WSL2 — Ubuntu Linux inside Windows ("the host")</text>
+  <text x="50" y="108">~/KernelLeakGuard : analyser, Python tools, dashboard, results</text>
+  <text x="50" y="130">~/klg-build : Linux 6.18.55 source and our kernel build</text>
+  <rect x="380" y="150" width="470" height="210" rx="12" fill="#fdecec" stroke="#d03b3b" stroke-width="2"/>
+  <text x="400" y="177" font-weight="700">QEMU virtual machine ("the guest")</text>
+  <text x="400" y="202">our own Linux 6.18.55 kernel + kmemleak + fault injection</text>
+  <text x="400" y="226">tiny BusyBox file system (initramfs)</text>
+  <text x="400" y="250">init → runs job.sh → klg-agent loads modules,</text><text x="400" y="270">injects failures, kmemleak scans</text>
+  <text x="400" y="300">/mnt/host  =  shared folder (9p)</text>
+  <text x="400" y="322">serial console → terminal / dashboard</text>
+  <text x="400" y="344">VGA screen → VNC → browser tab</text>
+  <rect x="60" y="170" width="250" height="150" rx="10" fill="#fff" stroke="#2a78d6"/>
+  <text x="185" y="198" text-anchor="middle" font-weight="700">share folder</text>
+  <text x="185" y="224" text-anchor="middle">mods/*.ko  (modules)</text>
+  <text x="185" y="248" text-anchor="middle">job.sh  (what to do)</text>
+  <text x="185" y="272" text-anchor="middle">out/*.log, kmemleak.txt</text>
+  <text x="185" y="296" text-anchor="middle">(results come back)</text>
+  <line x1="312" y1="230" x2="376" y2="230" stroke="#444" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="376" y1="275" x2="312" y2="275" stroke="#444" stroke-width="2" marker-end="url(#a)"/>
+</svg>

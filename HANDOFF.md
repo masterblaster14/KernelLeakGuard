@@ -191,8 +191,11 @@ python3 scripts/make_real_triage.py      # manual-review labels → results/real
 bash scripts/repeat_runs.sh 3            # N independent full corpus runs
 bash scripts/build_docs.sh               # unit tests + figures + all Word/PPT docs
 .venv/bin/python -m unittest tests.test_klg tests.test_dashboard   # 32 tests
+bash scripts/demo_ready.sh [--open]      # demo preflight: checks, starts dashboard, opens docs
+.venv/bin/python scripts/build_demo_guide.py   # DEMO.md → docs/KernelLeakGuard_Demo_Guide.pdf (Edge)
 python3 scripts/live_demo.py [shell]     # LIVE in the guest kernel: SLUB + bonding leaks on screen / root shell
-                                         # --window: on the VM's own screen (QEMU GTK window via WSLg)
+                                         # --window: VM's own screen in the browser (QEMU VNC + noVNC in dashboard/novnc;
+                                         #   WSLg windows do not render on this laptop)
                                          # (same modes on the dashboard's "Live kernel" page)
 python3 scripts/make_root_causes.py      # real-kernel findings → results/real/root_causes.json
 python3 scripts/fault_probe.py MOD LO HI BATCH OUT    # probe init fault points (kmemleak+dmesg)
@@ -424,15 +427,28 @@ confirmed by kmemleak in the VM, fixed (VM re-run clean), 0 crashes:**
 
 ---
 
-## 8. Documents (all DONE 2026-10-20, in the Downloads folder as .docx/.pptx + .pdf)
+## 8. Documents (regenerated 2026-10-24, in the Downloads folder as .docx/.pptx + .pdf)
+
+Project title shortened (user request) to **"KernelLeakGuard: Detecting and Verifying Linux
+Kernel Memory Leaks"** — one constant, `TITLE` in `docs/report_lib.py`, used by every document.
 
 | Document | Pages | Notes |
 |---|---|---|
-| Final Report | 41 | Abstract includes the real-code results. 3.2.1 describes the new analyser rules. **4.4 Real kernel code**: precision table (115→11), all-39-module runtime table, manual review, sweep leaks, root causes of SLUB / f2fs / ntfs3 / ufs / null_blk. **4.5 Re-introduced leaks**: bonding (historical, 8d6184e4881b) + null_blk, rejected seeds. Conclusion + future work updated |
-| Project Proposal | 4 | |
-| Review-I Design/Progress | 8 | A progress snapshot: the user may adjust wording to the submission date |
-| User Manual | 10 | Includes `klg seed` fields, triage/root-cause scripts, fault-probe helpers |
-| Presentation | 20 slides | Slide 14 = verdicts + ablation; slide 15 = real kernel code (refinements, re-introduced leaks, SLUB, f2fs, ntfs3/ufs, null_blk) |
+| Final Report | 62 | 40 numbered figures, 31 of them screenshots (dashboard pages, VM screen at every live-demo step, terminal output, patches); plain-language "In simple words" summary at each chapter start; 4.6 Live Demonstration; appendix with `dfsBlock` excerpt and git log |
+| Project Proposal | 11 | rewritten in plain language: introduction, problem with code example, motivation, objectives, scope, background + literature, method (architecture, flowchart), OS concepts, tools, evaluation plan, work plan, team, risks, references |
+| Review-I Design/Progress | 12 | rewritten in plain language: architecture, module design, data format, algorithms, progress table (snapshot ~2/3 done), 7 screenshots, challenges, plan for Review-II |
+| User Manual | 12 | adds dashboard and VM screenshots |
+| Presentation | 20 slides | slide 18 (Demonstration) shows the live-demo commands and a VM screenshot |
+| Demo Guide | 6 | `DEMO.md` → `scripts/build_demo_guide.py` |
+| Study Guide | 22 | `GUIDE.md` → `scripts/build_demo_guide.py GUIDE.md docs/KernelLeakGuard_Study_Guide.pdf`; plain-language explanation of everything, 9 SVG diagrams (`docs/figures/guide_*.svg`), code tour, glossary, viva Q&A |
+
+Screenshots: `scripts/capture_screenshots.py [dashboard] [vm] [terminal]` writes
+`docs/figures/ss_*.png`. Dashboard pages are captured with a normal Edge window placed
+off-screen and rendered with PrintWindow (`scripts/winshot.ps1`), from a temporary
+light-theme dashboard on port 8502 — the Streamlit frontend does not render in headless
+Edge. The dashboard accepts `?page=`, `?section=root|seeds|sweep|detail`, `?finding=`,
+`?rc=` for this. VM screens come from QEMU `screendump` via a monitor socket
+(`LIVE_MONITOR`), timed by the demo's serial markers.
 
 Every number is read from `results/` by the generators. Names verified by
 `.scratch/check_all.py`. Open the report in Word once so the table of contents refreshes.

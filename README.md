@@ -1,7 +1,6 @@
 # KernelLeakGuard
 
-**Hybrid static analysis and runtime verification of memory leaks on Linux
-kernel early-exit paths.**
+**Detecting and Verifying Linux Kernel Memory Leaks.**
 
 BITE303P Operating Systems Lab project, VIT Vellore, Fall 2026-27:
 Om Gunjan Gupta (24BIT0316), Abhishek Kumar Singh (24BIT0309), Aarav Jain (24BIT0023).
@@ -73,13 +72,17 @@ make -C analyzer                # build klg-analyze
 python3 -m klg all              # build corpus → analyse → verify in VM → evaluate
 .venv/bin/streamlit run dashboard/app.py   # open http://localhost:8501
 
-python3 scripts/live_demo.py --window       # live demo on the VM's own screen
+bash scripts/demo_ready.sh --open           # before a demo: check everything, open dashboard/slides
+python3 scripts/live_demo.py --window       # live demo on the VM's own screen (opens in the browser)
 python3 scripts/live_demo.py shell --window # root shell inside the VM
 ```
 
 Real-kernel experiments (`python3 -m klg real`, `klg seed`) also need the
 39 modules of `vm/real_modules.fragment`, which `build_kernel.sh` builds.
-`HANDOFF.md` describes the whole project state in detail.
+`GUIDE.md` (and `docs/KernelLeakGuard_Study_Guide.pdf`) explains the whole project in
+plain language with diagrams, a code tour and a glossary; `DEMO.md` (and
+`docs/KernelLeakGuard_Demo_Guide.pdf`) is the step-by-step demo script; `HANDOFF.md`
+describes the whole project state in detail.
 
 Individual steps: `python3 -m klg build | analyze [--all-variants] | verify | evaluate | show`.
 
@@ -100,3 +103,8 @@ analyzer/build/klg-analyze module.bc -o findings.json [--naive|--no-escape|--no-
 ```
 
 See `docs/User_Manual.docx` for a complete walkthrough.
+
+## Third-party code
+
+`dashboard/novnc/` is the noVNC 1.5.0 viewer (https://github.com/novnc/noVNC,
+MPL-2.0, see its `LICENSE.txt`), used unmodified to show the VM screen in the browser.

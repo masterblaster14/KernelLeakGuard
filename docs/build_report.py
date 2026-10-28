@@ -24,8 +24,7 @@ DOCS = ROOT / "docs"
 FIG = DOCS / "figures"
 RES = ROOT / "results"
 
-TITLE = ("KernelLeakGuard: Hybrid Static Analysis and Runtime Verification of "
-         "Memory Leaks in Linux Kernel Early-Exit Paths")
+TITLE = R.TITLE
 TEAM = [("Om Gunjan Gupta", "24BIT0316"), ("Abhishek Kumar Singh", "24BIT0309"),
         ("Aarav Jain", "24BIT0023")]
 
@@ -72,7 +71,8 @@ _has_real = _rs.exists() and json.loads(_rs.read_text()).get("runtime_modules")
 _seed_file = RES / "seeded" / "summary.json"
 seeds = json.loads(_seed_file.read_text()) if _seed_file.exists() else []
 SEC_SEED = "4.5" if _has_real else "4.4"
-SEC_AN = f"4.{4 + bool(_has_real) + bool(seeds)}"
+SEC_DEMO = f"4.{4 + bool(_has_real) + bool(seeds)}"
+SEC_AN = f"4.{5 + bool(_has_real) + bool(seeds)}"
 
 # ---------------------------------------------------------------- template --
 doc = Document(DOCS / "templates" / "OS_Project_Report_Template.docx")
@@ -112,6 +112,22 @@ abstract_head = next(p for p in doc.paragraphs if p.text.strip() == "ABSTRACT")
 R.remove_from(doc, abstract_head._p)
 
 w = R.Writer(doc)
+
+
+def shot(name: str, caption: str, max_w: float = 16.0, max_h: float = 19.0):
+    """Insert a screenshot scaled to fit one page; skipped if it was not captured."""
+    from PIL import Image
+    path = FIG / name
+    if not path.exists():
+        print(f"  (missing {name}, skipped)")
+        return None
+    iw, ih = Image.open(path).size
+    return w.figure(path, caption, min(max_w, max_h * iw / ih))
+
+
+def simply(text: str):
+    """A short plain-language summary at the start of a chapter or section."""
+    w.para("**In simple words:** " + text, italic=True)
 
 # ---------------------------------------------------------------- abstract --
 w.chapter_heading(None, "Abstract")
@@ -174,6 +190,10 @@ if _has_real:
 
 # ------------------------------------------------------------ chapter 1 -----
 w.chapter_heading(1, "Introduction")
+simply("the Linux kernel sometimes forgets to give memory back when something goes wrong. "
+       "That memory is lost until the machine restarts. Our tool finds these places in the "
+       "code, proves each one by making the failure happen inside a real Linux kernel, and "
+       "writes a fix.")
 w.h2("1.1 Motivation")
 w.para(
     "The Linux kernel manages memory for itself through allocators such as kmalloc(), "
@@ -239,11 +259,17 @@ w.para("Chapter 2 surveys research on kernel leak detection, error-handling bugs
        "injection and identifies the gap this project addresses. Chapter 3 presents the "
        "architecture, each module, the algorithms with pseudo-code, the benchmark corpus and "
        "the tools used. Chapter 4 describes the experimental setup and reports the results, "
-       "performance and their analysis. Chapter 5 concludes and outlines future work. "
-       "References follow in MLA format.")
+       "performance, the evaluation on real Linux modules, a live demonstration with "
+       "screenshots and the analysis. Chapter 5 concludes and outlines future work. "
+       "References follow in MLA format, then an appendix with the source code layout, a "
+       "key excerpt and the version history.")
 
 # ------------------------------------------------------------ chapter 2 -----
 w.chapter_heading(2, "Literature Survey")
+simply("other researchers either read the code and guess (many false alarms that a person "
+       "must check) or run the code and wait for leaks to happen (they only see what they "
+       "happen to reach). Nobody combined the two so that the code reader points at a leak "
+       "and the running kernel proves it. That is the gap we fill.")
 w.h2("2.1 Overview")
 w.para(
     "Research relevant to this project falls into three groups: static detectors for memory "
@@ -335,6 +361,11 @@ w.para(
 
 # ------------------------------------------------------------ chapter 3 -----
 w.chapter_heading(3, "Proposed Technique")
+simply("there are three parts. A C++ program reads the compiled kernel code and lists places "
+       "where memory may not be given back, with the failure that leads there. A virtual "
+       "machine runs our own Linux kernel and makes exactly that failure happen. Python code "
+       "compares what the kernel's leak detector says with the prediction and gives each "
+       "warning a verdict. A dashboard shows everything.")
 w.h2("3.1 System Architecture")
 fig_arch = w.next_figure()
 w.para(f"{fig_arch} shows the architecture. The pipeline has a static half that runs on the "
@@ -396,6 +427,7 @@ w.bullets([
      "path become triggers; confidence is high when the function frees the object on "
      "another path and the leaking path returns an error."),
 ])
+shot("ss_term_analyzer.png", "Output of klg-analyze for one benchmark module (shortened)", 14)
 w.h3("3.2.2 Guest kernel and virtual machine - Abhishek Kumar Singh")
 w.para(
     "Linux 6.18.55 LTS is built with clang from defconfig, the KVM guest fragment and the "
@@ -408,6 +440,9 @@ w.para(
     "zeroed on allocation and free (init_on_alloc=1 init_on_free=1). The guest boots from a "
     "busybox initramfs in about two seconds, mounts the host directory over 9p, configures "
     "fault injection through debugfs and runs the job script generated by the host.")
+shot("ss_vm_boot.png", "The guest: our Linux 6.18.55 kernel booting in QEMU (VM screen)", 15)
+shot("ss_vm_shell.png", "A root shell inside the guest: kernel version, loaded modules, "
+     "kmemleak and fail-nth available", 15)
 w.h3("3.2.3 Fault-injection agent (klg-agent, C) - Abhishek Kumar Singh")
 w.para(
     "klg-agent is a statically linked C program that drives one kernel routine at a time. "
@@ -425,6 +460,7 @@ w.para(
     "log lets the host resolve kmemleak backtraces of modules that were already unloaded. "
     "Before each attempt the agent writes a marker to the host, so that if the guest kernel "
     "crashes or hangs, the host records the faulting fault point, reboots the VM and resumes.")
+shot("shot_agent.png", "klg-agent injecting a failure inside the guest", 16)
 w.h3("3.2.4 Verifier, evaluation and dashboard (Python) - Aarav Jain")
 w.para(
     "The klg package builds modules and IR, runs the analyser, generates the guest job "
@@ -436,6 +472,11 @@ w.para(
     "real-kernel findings with their patches, can run the pipeline, and has a live page that "
     "boots the guest kernel and streams its console, so that a leak being caught by kmemleak "
     "can be watched as it happens.")
+w.para("The figures below show the main dashboard pages; Section 4 shows the pages with the "
+       "results.")
+shot("ss_dash_overview.png", "Dashboard: overview of the benchmark run", 16)
+shot("ss_dash_findings.png", "Dashboard: all findings with their runtime verdicts", 16)
+shot("ss_dash_run.png", "Dashboard: running a pipeline step with a live log", 16)
 w.h3("3.2.5 Operating-system concepts used")
 w.table(["OS concept", "Where it appears in the project"], [
     ["Memory management", "Kernel slab allocator (kmalloc caches, kmem_cache), vmalloc, "
@@ -557,6 +598,12 @@ w.table(["Member", "Register No.", "Modules"], [
 
 # ------------------------------------------------------------ chapter 4 -----
 w.chapter_heading(4, "Results and Discussion")
+simply(f"on our test set of {GT['modules']} modules the complete tool finds "
+       f"{m('klg/combined', 'tp')} of the {GT['leak_sites']} leaks with "
+       f"{m('klg/combined', 'fp')} false alarms, using {m('hybrid', 'executions')} kernel runs "
+       f"where blind testing needs {m('dynamic/exhaustive', 'executions')}. On real Linux "
+       "modules it found and explained several bugs that are still in the newest Linux. "
+       "Screenshots of every part are included.")
 w.h2("4.1 Experimental Setup")
 w.table(["Component", "Configuration"], [
     ["Host", "Laptop, AMD Ryzen 7 250 (8 cores / 16 threads), 15 GB RAM, Windows 11"],
@@ -595,6 +642,7 @@ w.para(f"{t_main} summarises detection quality; {w.next_figure()} plots precisio
 w.table(["Approach", "TP", "FP", "FN", "Precision", "Recall", "F1"], rows,
         "Detection results on the benchmark (per allocation site)", widths=[5, 1.3, 1.3, 1.3, 2.3, 2.3, 2])
 w.figure(FIG / "fig_precision_recall.png", "Precision and recall per approach", 15.5)
+shot("ss_dash_evaluation.png", "Dashboard: the evaluation page with the same comparison", 16)
 w.para(
     f"The static analyser reports {n_warn} warnings on {m('static/full', 'tp') + m('static/full', 'fp')} "
     f"allocation sites, finding {m('static/full', 'tp')} of the {GT['leak_sites']} leaking sites "
@@ -667,6 +715,9 @@ if case:
                "\n    ".join(lk["backtrace"]))
     w.para(f"Verdict: **{v['status']}** ({v['reason']}). Suggested fix: jump to err_tx instead "
            "of err_rx.")
+    shot("ss_dash_finding_detail.png", "The same finding in the dashboard: allocation (blue), "
+         "failing call (orange) and leaking exit (red) in the source, with the runtime test", 16)
+    shot("shot_kmemleak.png", "kmemleak's report for a confirmed benchmark leak", 15)
 w.h3("4.2.3 Test cases and results")
 w.para("Each benchmark module is a system-level test case: the expected outcome comes from the "
        "ground-truth annotations, and the test passes when the static result and the runtime "
@@ -722,6 +773,7 @@ if tr.exists():
             [[re.sub(r" \(.*\)", "", l.split(" ... ")[0]).replace("test_", "").replace("_", " "),
               l.split(" ... ")[1].upper()] for l in unit],
             "Unit and regression tests", widths=[12, 4], size=9)
+    shot("ss_term_tests.png", "Running the unit and regression tests", 15)
 if fixes:
     w.h3("4.2.4 Fix patches")
     w.para(
@@ -754,8 +806,10 @@ if fixes:
     if ex:
         w.para("Example: the generated patch for klg_l02.")
         w.code(ex["patch"], size=8)
+    shot("ss_dash_fix_patches.png", "Dashboard: generated patches and their validation", 16)
 w.h2("4.3 Performance Metrics")
 w.figure(FIG / "fig_cost.png", "Executions of kernel routines needed for verification", 12)
+shot("shot_findings.png", "Command-line summary of all findings (python3 -m klg show)", 16)
 w.table(["Metric", "Value"], [
     ["Functions analysed / allocation sites", f"{funcs_total} / {sites_total}"],
     ["Static analysis time, all 32 modules", f"{an_ms:.0f} ms ({an_ms / GT['modules']:.1f} ms per module)"],
@@ -837,6 +891,7 @@ if real_sum and real_sum.get("runtime_modules"):
     w.table(["Analyser refinement", "Static warnings (39 modules)"],
             [[h["step"], h["warnings"]] for h in _hist],
             "Effect of each precision refinement on real kernel code", widths=[10.5, 4], size=9)
+    shot("ss_term_real.png", "Running the tool on the 39 real modules (summary line)", 16)
     w.para(
         (f"The runtime stage was run on all {len(rmods)} modules "
          if len(rmods) == real_sum["modules"] else
@@ -847,6 +902,8 @@ if real_sum and real_sum.get("runtime_modules"):
         "every fault point of its initialisation reachable from the module's own code (library "
         "modules without an initialisation routine have none), with kmemleak checked after each "
         "module, and every static warning was given a targeted confirmation test.")
+    shot("ss_dash_real.png", "Dashboard: real-module statistics and the remaining warnings "
+         "with their review notes", 16)
     rows = []
     crashes_by = {}
     for run_ in rver.get("crashes", {}).values():
@@ -907,6 +964,8 @@ if real_sum and real_sum.get("runtime_modules"):
            if leaks else "no unreferenced object in any of these modules: every injected failure "
            "in their initialisation released its memory correctly")
         + ".")
+    shot("ss_dash_real_sweep.png", "Dashboard: leak sites found by the fault-injection sweep "
+         "of module initialisation", 16)
     _rc_file = RES / "real" / "root_causes.json"
     rc = json.loads(_rc_file.read_text()) if _rc_file.exists() else {}
     sl = rc.get("slub_sysfs_leak")
@@ -939,6 +998,11 @@ if real_sum and real_sum.get("runtime_modules"):
             f"{sl['stock']['unreferenced']} objects). The fix is validated in the VM but has "
             "not been submitted upstream; the mailing lists should be searched for a pending "
             "fix before it is.")
+    if sl:
+        shot("ss_term_probe.png", "Narrowing down the trigger: kmemleak reports per batch of "
+             "erofs fault points on the stock kernel", 15)
+        shot("ss_term_patch_slub.png", "Our fix for the SLUB leak (patches/0001)", 15)
+        shot("ss_dash_rc_slub.png", "Dashboard: root cause and validation of the SLUB leak", 16)
     ff = rc.get("f2fs_sysfs_leak")
     if ff:
         ib = ff["introduced_by"]
@@ -954,6 +1018,8 @@ if real_sum and real_sum.get("runtime_modules"):
             + f" and the patched module {sum(pt.values())}. The leaked names are allocated inside "
             "the kobject core, outside the module, so only the runtime stage can find this kind "
             "of leak.")
+    if ff:
+        shot("ss_dash_rc_f2fs.png", "Dashboard: root cause and validation of the f2fs leak", 16)
     nt = rc.get("ntfs3_do_action_leak")
     if nt:
         v = nt["validation"]
@@ -975,6 +1041,9 @@ if real_sum and real_sum.get("runtime_modules"):
             f"({uf['patch']}) adds the kfree(); it compiles and re-analysis removes exactly this "
             f"warning ({v['warnings_original']} warnings before, {v['warnings_patched']} after, "
             f"none new). It is {uf['runtime']}.")
+    if nt or uf:
+        shot("ss_dash_rc_static.png", "Dashboard: the ntfs3 and ufs leaks found statically, "
+             "with their patches", 16)
     nb = rc.get("null_blk_crash")
     if crashes_by:
         def _kinds(v):
@@ -1008,6 +1077,7 @@ if real_sum and real_sum.get("runtime_modules"):
                 + " <- ".join(nb["crash_stack"]) + "). Any module that adds a disk and then "
                 f"fails its initialisation is exposed; the code is {nb['upstream']}. We did not "
                 f"validate a fix: {nb['fix']}.")
+            shot("ss_dash_rc_nullblk.png", "Dashboard: root cause of the null_blk crash", 16)
 if seeds:
     w.h2(f"{SEC_SEED} Seeded Leaks in Real Kernel Code")
     w.para(
@@ -1035,6 +1105,10 @@ if seeds:
     w.table(["Module", "Removed at", "Removed statement", "Origin", "Detected", "Confirmed (VM)",
              "Fixed"], srows, "Early-exit leaks re-introduced into real kernel modules",
             widths=[1.8, 2.4, 3.2, 3.2, 1.4, 1.7, 1.1], size=8)
+    shot("ss_term_seed.png", "Running the re-introduced leaks through the whole loop "
+         "(python3 -m klg seed)", 15)
+    shot("ss_dash_seeds.png", "Dashboard: re-introduced leaks with kmemleak evidence and fix "
+         "patches", 16)
     for s_ in seeds:
         h = s_.get("history")
         w.para(f"**{s_['module']}, {s_['function']}()"
@@ -1078,6 +1152,38 @@ if seeds:
         "null_blk seed also revealed two analyser gaps, both fixed generally: the phi-return "
         "false negative (Section 4.4) and the missing model of badblocks_init(), which only "
         "initialises the struct badblocks it is given.")
+w.h2(f"{SEC_DEMO} Live Demonstration in the Kernel")
+simply("we can show the tool working on a real kernel in about one minute. A virtual "
+       "machine boots our own Linux kernel, a real module is loaded, one memory request is "
+       "made to fail, and the kernel's own leak detector reports the lost memory on screen.")
+w.para(
+    "scripts/live_demo.py boots the guest kernel and runs a short, narrated sequence of real "
+    "commands inside it. With --window the virtual machine's own screen is shown in a browser "
+    "tab (QEMU serves the screen over VNC and the noVNC viewer displays it), so the audience "
+    "sees a separate computer booting Linux and running the commands, and keyboard input "
+    "works. The same output also appears in the terminal and on the dashboard's Live kernel "
+    "page. Before a demonstration, scripts/demo_ready.sh checks every requirement and starts "
+    "the dashboard. The figures below are screenshots of the virtual machine's screen taken "
+    "during one run.")
+shot("ss_term_demo_ready.png", "Checking that everything is ready (bash scripts/demo_ready.sh)", 15)
+for name, cap in (
+        ("ss_vm_step1_kernel.png", "Step 1: the kernel version, its command line, and the "
+         "kmemleak and fault-injection controls inside the guest"),
+        ("ss_vm_step2_clean_load.png", "Step 2: the real erofs module loads and unloads normally; "
+         "kmemleak finds no leak"),
+        ("ss_vm_step3_fault.png", "Step 3: exactly one allocation (fault 85) fails while erofs "
+         "initialises; the kernel log shows where"),
+        ("ss_vm_step4_kmemleak.png", "Step 4: kmemleak reports the leaked slab cache; module "
+         "frames are named from klg_modwatch's symbol log"),
+        ("ss_vm_step5_warning.png", "Step 5: the kernel's own warning when erofs destroys that "
+         "cache: the SLUB bug of Section 4.4"),
+        ("ss_vm_step7_bonding.png", "Step 7: the historical bonding bug (fixed upstream by "
+         "8d6184e4881b) re-introduced; kmemleak reports the leaked net_device"),
+        ("ss_vm_end.png", "End of the demonstration")):
+    shot(name, cap, 15)
+shot("ss_vm_browser.png", "The virtual machine's screen in a browser tab, with a root shell "
+     "(python3 scripts/live_demo.py shell --window)", 15)
+shot("ss_dash_live.png", "Dashboard: the Live kernel page with the console of a finished run", 16)
 w.h2(f"{SEC_AN} Analysis")
 w.para(
     "**Static versus hybrid.** Runtime verification removed all static false positives "
@@ -1129,6 +1235,10 @@ w.para(
 
 # ------------------------------------------------------------ chapter 5 -----
 w.chapter_heading(5, "Conclusion and Future Work")
+simply("the tool works: it finds leaks, proves them inside a real kernel and fixes them, "
+       "and on real Linux it found bugs that kernel developers have not fixed yet. Next we "
+       "want it to test code that runs when disks are mounted and to send our patches to the "
+       "Linux developers.")
 w.h2("5.1 Conclusion")
 w.para(
     "KernelLeakGuard detects memory leaks on Linux kernel early-exit paths with an LLVM-based "
@@ -1270,11 +1380,12 @@ w.table(["Path", "Contents", "Lines"], [
                  ("vm", "kernel/initramfs build, QEMU launcher, guest init"),
                  ("corpus", "benchmark modules and harness (C)"),
                  ("klg", "orchestrator, verifier, evaluation (Python)"),
-                 ("dashboard", "Streamlit dashboard (Python)"))
+                 ("dashboard", "Streamlit dashboard (Python)"),
+                 ("scripts", "demo, screenshots, root-cause probes, patch validation, documents"))
 ], "Repository structure", widths=[3.5, 10, 2.5])
 w.para("Key excerpt: the path search of the static analyser (analyzer/src/Analyzer.cpp).")
 src = (ROOT / "analyzer" / "src" / "Analyzer.cpp").read_text().splitlines()
-start = next(i for i, l in enumerate(src) if l.strip().startswith("void dfs(BasicBlock *BB"))
+start = next(i for i, l in enumerate(src) if l.strip().startswith("void dfsBlock(BasicBlock *BB"))
 end = start + 1
 depth = 0
 for j in range(start, len(src)):
@@ -1283,6 +1394,9 @@ for j in range(start, len(src)):
         end = j + 1
         break
 w.code("\n".join(src[start:end]), size=8)
+w.para("Version history: the project is kept in a git repository; the latest commits are "
+       "shown below.")
+shot("ss_term_git_log.png", "Version history (git log)", 15)
 
 R.page_numbers(doc)
 R.update_fields_on_open(doc)

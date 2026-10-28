@@ -4,10 +4,14 @@
     python3 scripts/live_demo.py shell             # root shell in the guest ('poweroff -f' to leave)
     python3 scripts/live_demo.py --window          # same demo on the VM's own screen (QEMU window)
     python3 scripts/live_demo.py shell --window    # root shell on the VM's screen: click and type
+    python3 scripts/live_demo.py --step [--window] # one step at a time: press Enter for the next
 
---window opens the virtual machine's display as a window on the desktop (WSLg),
-like VirtualBox/VMware: the kernel's boot log and every demo command appear on
-the VM's screen; the serial console still mirrors the demo on the terminal.
+--window shows the virtual machine's own screen (like a VirtualBox/VMware window):
+QEMU serves the screen over VNC and the browser shows it with the noVNC viewer
+(dashboard/novnc), so keyboard and mouse work and nothing depends on WSLg. The
+kernel's boot log and every demo command appear on the VM's screen; the serial
+console still mirrors the demo on the terminal. VM screen:
+http://localhost:6080/vnc_lite.html?host=localhost&port=5701&path=&scale=true
 
 The demo boots our kernel and shows, with the kernel's own output:
   1. the kernel and its leak/fault-injection machinery;
@@ -33,7 +37,19 @@ BONDING = (config.RESULTS / "seeded" / "bonding_bond_create_8d6184e4881b" / "bug
 DEMO_HEAD = r'''
 D=/sys/kernel/debug
 PAUSE=${PAUSE:-2}
-say()  { printf '\n\033[1;36m==== %s\033[0m\n' "$*"; sleep $PAUSE; }
+STEP=${STEP:-0}
+# Step mode: wait for Enter from the VM screen's keyboard (tty0) or from the
+# terminal / dashboard (serial line ttyS0), whichever comes first.
+wait_enter() {
+  printf '\033[2m   ... press Enter to run this step\033[0m\n'
+  rm -f /tmp/go
+  ( read x < /dev/tty0 2>/dev/null && touch /tmp/go ) & r1=$!
+  ( read x < /dev/ttyS0 2>/dev/null && touch /tmp/go ) & r2=$!
+  while [ ! -f /tmp/go ]; do sleep 0.2; done
+  kill $r1 $r2 2>/dev/null
+}
+say()  { printf '\n\033[1;36m==== %s\033[0m\n' "$*"
+         if [ "$STEP" = 1 ]; then wait_enter; else sleep $PAUSE; fi; }
 run()  { printf '\033[1;33m# %s\033[0m\n' "$*"; sh -c "$*"; sleep 1; }
 scan() { sleep 5; echo scan > $D/kmemleak; echo scan > $D/kmemleak; }
 log()  { :; }
@@ -96,9 +112,56 @@ DEMO_SERIAL = DEMO_HEAD + "demo > /dev/console 2>&1\nsleep 3\n"
 DEMO_WINDOW = DEMO_HEAD + r'''
 dmesg -n 1
 demo 2>&1 | tee /dev/ttyS0 > /dev/tty0
-printf '\n\033[1;36mPress Enter in this window to power off (or wait 2 minutes).\033[0m\n' > /dev/tty0
+printf '\n\033[1;36mClick this screen and press Enter to power off (or wait 2 minutes).\033[0m\n' > /dev/tty0
 read -t 120 x < /dev/tty0
 '''
+
+
+NOVNC_PORT, VNC_WS_PORT = 6080, 5701
+SCREEN_URL = (f"http://localhost:{NOVNC_PORT}/vnc_lite.html?host=localhost&port={VNC_WS_PORT}"
+              "&path=&scale=true")
+
+
+def serve_viewer():
+    """Serve the noVNC viewer (static files) on localhost:6080 unless already running."""
+    import socket
+    with socket.socket() as s:
+        if s.connect_ex(("127.0.0.1", NOVNC_PORT)) == 0:
+            return
+    subprocess.Popen([sys.executable, "-m", "http.server", str(NOVNC_PORT), "--bind", "127.0.0.1",
+                      "--directory", str(config.ROOT / "dashboard" / "novnc")],
+                     stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
+
+
+def open_screen_later():
+    """Open the VM screen in the Windows browser once QEMU's VNC server listens."""
+    cmd = (f"for i in $(seq 1 40); do (exec 3<>/dev/tcp/127.0.0.1/{VNC_WS_PORT}) 2>/dev/null && break; "
+           f"sleep 0.5; done; powershell.exe -NoProfile -Command \"Start-Process '{SCREEN_URL}'\"")
+    subprocess.Popen(["bash", "-c", cmd], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                     start_new_session=True)
+
+
+def stop_previous(share: Path):
+    """Stop a live-demo VM that is still running (e.g. a demo started twice); it
+    holds the VM-screen ports and its shared folder is about to be replaced.
+    Only QEMU processes using this demo's share folder are touched."""
+    import signal
+    import time
+    for proc in Path("/proc").iterdir():
+        if not proc.name.isdigit():
+            continue
+        try:
+            cmd = (proc / "cmdline").read_bytes().split(b"\0")
+        except OSError:
+            continue
+        if cmd and cmd[0].endswith(b"qemu-system-x86_64") and \
+                any(f"path={share},".encode() in a for a in cmd):
+            print(f"Stopping the previous live-demo VM (pid {proc.name}) ...", flush=True)
+            os.kill(int(proc.name), signal.SIGTERM)
+            for _ in range(20):
+                if not (proc / "cmdline").exists():
+                    break
+                time.sleep(0.25)
 
 
 def main():
@@ -106,16 +169,18 @@ def main():
     window = "--window" in args
     mode = "shell" if "shell" in args else "demo"
     share = (config.ROOT / ".scratch" / "live_demo").resolve()
+    stop_previous(share)
     mods = real.built_modules()
     verify.PRELOAD.clear()
-    job = [] if mode == "shell" else (["PAUSE=5", DEMO_WINDOW] if window else [DEMO_SERIAL])
+    step = ["STEP=1"] if "--step" in args else []      # wait for Enter before each step
+    job = [] if mode == "shell" else (step + (["PAUSE=5", DEMO_WINDOW] if window else [DEMO_SERIAL]))
     verify._write_share(share, {"erofs": {"ko": mods["erofs"]}}, job)
     if BONDING.exists():
         shutil.copy(BONDING, share / "mods" / "bonding.ko")
     if mode == "shell":
         (share / "job.sh").unlink()          # no job: the guest init drops to a root shell
         print("Root shell in the guest kernel"
-              + (" on the VM window: click into it and type." if window else ".")
+              + (" on the VM screen in the browser: click into it and type." if window else ".")
               + " Modules are in /mnt/host/mods. Leave with: poweroff -f")
     env_sh = config.ROOT / "vm" / "env.sh"
     out = subprocess.run(["bash", "-c", f"source {env_sh}; echo $BZIMAGE; echo $INITRAMFS"],
@@ -129,12 +194,19 @@ def main():
                else f"console=ttyS0 quiet loglevel=4 {common}")
     print(f"Booting Linux 6.18.55 ({'KVM' if kvm else 'software emulation, ~30 s to boot'}) ...",
           flush=True)
+    if window:
+        serve_viewer()
+        if not os.environ.get("LIVE_NO_BROWSER"):
+            open_screen_later()
+        print(f"VM screen: {SCREEN_URL}", flush=True)
     os.execvp("qemu-system-x86_64", [
         "qemu-system-x86_64", *accel, "-smp", "2", "-m", "2G",
         "-kernel", bzimage, "-initrd", initramfs, "-append", cmdline,
         "-virtfs", f"local,path={share},mount_tag=host0,security_model=none,id=host0",
         "-no-reboot", "-name", "KernelLeakGuard VM - Linux 6.18.55",
-        *(["-display", "gtk,zoom-to-fit=on,window-close=on", "-vga", "std",
+        "-audio", "none",                       # no sound card (avoids PipeWire messages)
+        *(["-display", "none", "-vga", "std",
+           "-vnc", f"127.0.0.1:{VNC_WS_PORT - 5700},websocket=on",
            "-serial", "stdio",
            # LIVE_MONITOR=path: QEMU monitor socket (tests take VM screenshots with it)
            "-monitor", (f"unix:{os.environ['LIVE_MONITOR']},server,nowait"

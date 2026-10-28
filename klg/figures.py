@@ -244,6 +244,10 @@ def flowchart():
 
 def terminal(name, title, lines, width=10.5):
     """Render captured command output as a terminal-style image."""
+    import textwrap
+    lines = [part for line in lines
+             for part in (textwrap.wrap(line.expandtabs(8), 140, subsequent_indent="    ",
+                                        drop_whitespace=False) or [""])]
     h = 0.6 + 0.22 * len(lines)
     fig, ax = plt.subplots(figsize=(width, h))
     fig.patch.set_facecolor("#1a1a19")
@@ -261,7 +265,7 @@ def terminal(name, title, lines, width=10.5):
             color = "#86e08a"
         elif "not-reproduced" in line or "inconclusive" in line:
             color = "#f0b08a"
-        ax.text(0.01, len(lines) - i, line[:150], color=color, fontsize=8.2,
+        ax.text(0.01, len(lines) - i, line.expandtabs(8)[:150], color=color, fontsize=8.2,
                 family="DejaVu Sans Mono", va="center")
     FIG_DIR.mkdir(parents=True, exist_ok=True)
     fig.savefig(FIG_DIR / name, dpi=170, facecolor=fig.get_facecolor(), bbox_inches="tight")

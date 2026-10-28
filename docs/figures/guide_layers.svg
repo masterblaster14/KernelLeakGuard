@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" font-family="Segoe UI, Arial, sans-serif" font-size="15">
+  <rect x="20" y="20" width="860" height="80" rx="10" fill="#eaf2fb" stroke="#2a78d6" stroke-width="2"/>
+  <text x="40" y="50" font-weight="700">User space — normal programs</text>
+  <text x="40" y="78">browser, WhatsApp, Python, our klg-agent ... each in its own protected area; a crash only kills that program</text>
+  <rect x="20" y="115" width="860" height="40" rx="8" fill="#fff4e8" stroke="#eb6834" stroke-width="2"/>
+  <text x="450" y="141" text-anchor="middle">system calls (open, read, finit_module ...) — the only door between the two</text>
+  <rect x="20" y="170" width="860" height="140" rx="10" fill="#fdecec" stroke="#d03b3b" stroke-width="2"/>
+  <text x="40" y="200" font-weight="700">Kernel space — the Linux kernel (core of the operating system)</text>
+  <text x="40" y="228">manages memory, files, processes and devices; full power over the machine; a bug here can crash everything</text>
+  <rect x="40" y="245" width="250" height="50" rx="8" fill="#fff" stroke="#d03b3b"/><text x="165" y="275" text-anchor="middle">core kernel (mm/, block/ ...)</text>
+  <rect x="320" y="245" width="250" height="50" rx="8" fill="#fff" stroke="#d03b3b"/><text x="445" y="267" text-anchor="middle">kernel modules (.ko)</text><text x="445" y="287" text-anchor="middle" font-size="13">loaded/unloaded at runtime</text>
+  <rect x="600" y="245" width="260" height="50" rx="8" fill="#fff" stroke="#d03b3b"/><text x="730" y="267" text-anchor="middle">debug tools: kmemleak,</text><text x="730" y="287" text-anchor="middle">fault injection</text>
+</svg>
